@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cái bẫy "Current Cost" trong ERP | Tài liệu</title>
+  <title>Cái bẫy "Current Cost" trong ERP | Blog Hải Còi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
@@ -11,28 +11,8 @@
   <link rel="stylesheet" href="../../assets/css/post.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="site-title">Cái bẫy "Current Cost": vì sao báo cáo giá thành có thể đang sai mà không ai biết</h1>
-      <p class="site-subtitle">Tài liệu ERP</p>
-    </div>
-  </header>
-
-  <nav class="navbar" aria-label="Điều hướng chính">
-    <div class="container nav-inner">
-      <button class="menu-toggle" aria-label="Mở menu">☰</button>
-      <ul class="menu">
-        <li><a data-path="/" href="../../index.html">TRANG CHỦ</a></li>
-        <li><a data-path="/tin-tuc" href="../../tin-tuc/index.html">TIN TỨC</a></li>
-        <li><a data-path="/tai-lieu" href="../index.html">TÀI LIỆU</a></li>
-        <li><a data-path="/lap-trinh" href="../../lap-trinh/index.html">LẬP TRÌNH</a></li>
-        <li><a data-path="/thiet-ke-web" href="../../thiet-ke-web/index.html">THIẾT KẾ WEB</a></li>
-        <li><a data-path="/phan-mem" href="../../phan-mem/index.html">PHẦN MỀM</a></li>
-        <li><a data-path="/giai-tri" href="../../giai-tri/index.html">GIẢI TRÍ</a></li>
-        <li><a data-path="/lien-he.html" href="../../lien-he.html">LIÊN HỆ</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div id="site-banner"></div>
+  <div id="site-nav"></div>
 
   <main class="container main-layout">
     <article class="article">
@@ -206,41 +186,12 @@ AND txn.transaction_date BETWEEN :tu_ngay AND :den_ngay</code></pre>
 
       </div>
     </article>
-
-    <aside>
-      <section class="widget">
-        <h3>Avatar</h3>
-        <div class="avatar-placeholder">Khu vực avatar/profile</div>
-      </section>
-      <section class="widget">
-        <h3>Bài viết gần đây</h3>
-        <ul>
-          <li><a href="erp-current-cost-bay.html">Cái bẫy "Current Cost" trong ERP</a></li>
-        </ul>
-      </section>
-      <section class="widget">
-        <h3>Danh mục</h3>
-        <ul>
-          <li><a href="../index.html">Tài liệu</a></li>
-          <li><a href="../../lap-trinh/index.html">Lập trình</a></li>
-          <li><a href="../../tin-tuc/index.html">Tin tức</a></li>
-        </ul>
-      </section>
-    </aside>
+    <aside id="site-sidebar"></aside>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2026 Blog của Hải Còi. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://github.com/thanvanhai" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:thanvanhai@example.com">Email</a>
-      </div>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
-  <script src="../../assets/js/main.js"></script>
-  <script src="../../assets/js/post.js"></script>
+  <script>window.SITE_ROOT = '../../';</script>
+  <script src="../../assets/js/components.js"></script>
 </body>
 </html>

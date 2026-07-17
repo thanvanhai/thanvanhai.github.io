@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+  =============================================================
+  HƯỚNG DẪN DÙNG TEMPLATE NÀY:
+  =============================================================
+  1. Copy file này vào đúng thư mục danh mục, ví dụ:
+       lap-trinh/posts/ten-bai-viet.html
+       tin-tuc/posts/ten-bai-viet.html
+       tai-lieu/posts/ten-bai-viet.html
+
+  2. Đặt tiêu đề trang ở thẻ <title> bên dưới.
+
+  3. Chỉnh SITE_ROOT theo độ sâu thư mục:
+       - Bài trong category/posts/ → '../../'  (2 cấp lên)
+       - Bài trong category/      → '../'      (1 cấp lên)
+       - Bài ở thư mục gốc        → ''
+
+  4. Chỉnh đường dẫn CSS theo cùng độ sâu:
+       - Cấp 2: href="../../assets/css/..."
+       - Cấp 1: href="../assets/css/..."
+       - Cấp 0: href="assets/css/..."
+
+  5. Viết nội dung bài trong phần <article> bên dưới.
+
+  6. Nếu muốn thêm bài vào menu hoặc sidebar, mở file:
+       assets/js/components.js
+     và thêm entry vào NAV_ITEMS hoặc RECENT_POSTS.
+  =============================================================
+  -->
+
+  <!-- ① Đặt tiêu đề trang tại đây -->
+  <title>Tiêu đề bài viết | Blog Hải Còi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- ② Chỉnh đường dẫn CSS theo độ sâu thư mục -->
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/post.css">
+</head>
+<body>
+  <!-- Banner và nav được inject tự động bởi components.js -->
+  <div id="site-banner"></div>
+  <div id="site-nav"></div>
+
+  <main class="container main-layout">
+    <article class="article">
+
+      <!-- ③ Chỉnh breadcrumb theo đường dẫn thực tế -->
+      <p class="breadcrumb">
+        <a href="../../index.html">Trang chủ</a> /
+        <a href="../index.html">Tên danh mục</a> /
+        Tiêu đề bài viết ngắn
+      </p>
+
+      <!-- ④ Tiêu đề bài viết -->
+      <h2>Tiêu đề đầy đủ của bài viết</h2>
+
+      <!-- ⑤ Thông tin meta: ngày, tác giả, danh mục -->
+      <p class="meta">Ngày đăng: DD/MM/YYYY • Tác giả: Hải Còi • Danh mục: Tên danh mục</p>
+
+      <!-- ⑥ NỘI DUNG BÀI VIẾT — viết HTML tại đây -->
+      <div class="article-content">
+
+        <p>Đoạn mở đầu bài viết...</p>
+
+        <h3>Mục 1</h3>
+        <p>Nội dung mục 1.</p>
+
+        <h3>Mục 2</h3>
+        <p>Nội dung mục 2.</p>
+
+        <!-- Ví dụ chèn code block -->
+        <pre><code>// code ví dụ
+console.log('Hello World');</code></pre>
+
+        <!-- Ví dụ chèn ảnh -->
+        <!-- <img src="../../assets/images/ten-anh.jpg" alt="Mô tả ảnh"> -->
+
+      </div>
+    </article>
+
+    <!-- Sidebar inject tự động -->
+    <aside id="site-sidebar"></aside>
+  </main>
+
+  <!-- Footer inject tự động -->
+  <div id="site-footer"></div>
+
+  <!-- ⑦ Chỉnh SITE_ROOT và đường dẫn script theo độ sâu thư mục -->
+  <script>window.SITE_ROOT = '../../';</script>
+  <script src="../../assets/js/components.js"></script>
+</body>
+</html>
