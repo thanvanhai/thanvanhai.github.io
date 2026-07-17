@@ -152,6 +152,14 @@ a:hover {
   margin: 28px auto;
 }
 
+/* Post pages: narrow sidebar on left, article fills the rest */
+.post-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  margin: 28px auto;
+}
+
 .card,
 .widget,
 .article {
@@ -215,6 +223,10 @@ a:hover {
 
 @media (max-width: 920px) {
   .main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .post-layout {
     grid-template-columns: 1fr;
   }
 
