@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cái bẫy "Current Cost" trong ERP | Tài liệu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/post.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">Cái bẫy "Current Cost": vì sao báo cáo giá thành có thể đang sai mà không ai biết</h1>
+      <p class="site-subtitle">Tài liệu ERP</p>
+    </div>
+  </header>
+
+  <nav class="navbar" aria-label="Điều hướng chính">
+    <div class="container nav-inner">
+      <button class="menu-toggle" aria-label="Mở menu">☰</button>
+      <ul class="menu">
+        <li><a data-path="/" href="../../index.html">TRANG CHỦ</a></li>
+        <li><a data-path="/tin-tuc" href="../../tin-tuc/index.html">TIN TỨC</a></li>
+        <li><a data-path="/tai-lieu" href="../index.html">TÀI LIỆU</a></li>
+        <li><a data-path="/lap-trinh" href="../../lap-trinh/index.html">LẬP TRÌNH</a></li>
+        <li><a data-path="/thiet-ke-web" href="../../thiet-ke-web/index.html">THIẾT KẾ WEB</a></li>
+        <li><a data-path="/phan-mem" href="../../phan-mem/index.html">PHẦN MỀM</a></li>
+        <li><a data-path="/giai-tri" href="../../giai-tri/index.html">GIẢI TRÍ</a></li>
+        <li><a data-path="/lien-he.html" href="../../lien-he.html">LIÊN HỆ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container main-layout">
+    <article class="article">
+      <p class="breadcrumb"><a href="../../index.html">Trang chủ</a> / <a href="../index.html">Tài liệu</a> / ERP / Cái bẫy "Current Cost"</p>
+      <h2>Cái bẫy "Current Cost": vì sao báo cáo giá thành của bạn có thể đang sai mà không ai biết</h2>
+      <p class="meta">Ngày đăng: 17/07/2026 • Tác giả: Hải Còi • Danh mục: Tài liệu / ERP</p>
+
+      <div class="article-content">
+
+        <h3>Mở đầu bằng một câu hỏi tưởng chừng đơn giản</h3>
+        <p>Có lần tôi ngồi xem lại giá của 1 mặt hàng sản xuất qua từng quý: Quý 1 giá 3.0, Quý 2 giá 3.2, Quý 3 giá 4.0 — đúng như kỳ vọng, giá nguyên liệu đầu vào tăng dần theo thời gian.</p>
+        <p>Nhưng khi lên báo cáo, join dữ liệu Job sản xuất với bảng Item để lấy giá, kết quả lại khiến tôi khựng lại: <strong>tất cả các quý đều hiện ra đúng 1 con số — 4.0</strong>. Kể cả những Job đã chạy và đóng sổ từ tận Quý 1.</p>
+        <p>Câu hỏi đầu tiên bật ra: giá của Quý 1, Quý 2 đã biến mất đi đâu? Có phải hệ thống không lưu lại lịch sử?</p>
+        <p>Câu trả lời, hoá ra, đơn giản hơn nhiều — và cũng phổ biến hơn nhiều so với tôi tưởng: <strong>không phải dữ liệu bị mất, mà là báo cáo đang join sai bảng.</strong></p>
+
+        <h3>Gốc rễ vấn đề: 2 loại bảng cost luôn tồn tại song song trong mọi ERP</h3>
+        <p>Đây là điều tôi nhận ra sau khi đào sâu vào cả những hệ thống mình từng làm — Oracle EBS, Epicor, và cả tham chiếu qua SAP, Microsoft Dynamics: bất kỳ ERP nào cũng có 2 kiểu bảng liên quan đến giá, tồn tại song song:</p>
+
+        <table>
+          <thead>
+            <tr><th>Loại bảng</th><th>Đặc điểm</th><th>Ví dụ thực tế</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Master / Snapshot table</strong></td>
+              <td>Chỉ giữ <strong>giá hiện hành duy nhất</strong> — bị ghi đè mỗi lần cập nhật</td>
+              <td><code>Part.Cost</code> (Epicor), <code>CST_ITEM_COSTS</code> (Oracle EBS), <code>MBEW</code> (SAP)</td>
+            </tr>
+            <tr>
+              <td><strong>Transaction / Ledger table</strong></td>
+              <td>Giữ <strong>giá tại đúng thời điểm phát sinh giao dịch</strong> — không bao giờ bị ghi đè</td>
+              <td><code>JobMtl/JobOpr</code> (Epicor), <code>WIP_TRANSACTION_ACCOUNTING_LINES</code> (Oracle EBS), <code>COEP</code> (SAP), <code>InventTrans</code> (Dynamics)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Điều thú vị là: đây không phải là 1 thiếu sót trong thiết kế phần mềm. Đây là nguyên tắc <strong>bắt buộc</strong> của bất kỳ hệ thống kế toán nào — sổ sách của quá khứ không được phép tự đổi theo thời gian. Nếu giá của 1 Job đã đóng ở Quý 1 tự động "nhảy" theo giá hiện tại, toàn bộ báo cáo tài chính đã công bố trước đó coi như vô nghĩa.</p>
+
+        <h3>Cái bẫy nằm ở đâu khi viết SQL</h3>
+        <p>Nhìn lại đúng câu query đã gây ra sai lệch:</p>
+
+        <pre><code>-- SAI: luôn ra giá hiện hành, không phải giá lúc Job thực sự chạy
+SELECT job.job_number, item_cost.current_cost
+FROM job
+JOIN item_cost ON item_cost.item_id = job.item_id</code></pre>
+
+        <p>So với cách viết đúng:</p>
+
+        <pre><code>-- ĐÚNG: lấy giá đã "đóng băng" ngay trên dòng giao dịch
+SELECT job.job_number, txn.transaction_date, txn.unit_cost_at_that_time
+FROM job
+JOIN job_transaction txn ON txn.job_id = job.job_id</code></pre>
+
+        <p>Sự khác biệt chỉ nằm ở <strong>join vào bảng nào</strong> — nhưng hậu quả là toàn bộ báo cáo lịch sử bị "đồng bộ hóa nhầm" về giá hiện tại.</p>
+        <p><strong>Một phép thử nhanh để tự kiểm tra</strong>: nếu bạn chạy lại đúng 1 query sau 3 tháng, mà kết quả của các Job <em>cũ</em> thay đổi theo giá mới hiện tại — thì query đang join sai bảng.</p>
+
+        <h3>Nhìn cụ thể qua Oracle EBS</h3>
+        <p>Ví dụ trên Oracle EBS — hệ thống tôi đang trực tiếp làm việc — có sẵn các bảng phân vai rõ ràng:</p>
+
+        <table>
+          <thead>
+            <tr><th>Nhu cầu</th><th>Bảng nên dùng</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Giá hiện hành của Item</td><td><code>CST_ITEM_COSTS</code>, <code>CST_ITEM_COST_DETAILS</code></td></tr>
+            <tr><td>Giá thực tế đã ghi nhận cho 1 Job tại thời điểm chạy</td><td><code>WIP_TRANSACTION_ACCOUNTING_LINES</code></td></tr>
+            <tr><td>Lịch sử các lần thay đổi Standard Cost</td><td><code>CST_STANDARD_COST_UPDATES</code> + <code>CST_STD_COST_UPDATE_ITM</code></td></tr>
+            <tr><td>Chênh lệch giữa thực tế và chuẩn (Variance)</td><td><code>WIP_PERIOD_BALANCES</code></td></tr>
+          </tbody>
+        </table>
+
+        <pre><code>-- Lịch sử thay đổi giá chuẩn của 1 Item
+SELECT csui.NEW_ITEM_COST, csu.LAST_UPDATE_DATE
+FROM CST_STANDARD_COST_UPDATES csu
+JOIN CST_STD_COST_UPDATE_ITM csui 
+    ON csui.STANDARD_COST_UPDATE_ID = csu.STANDARD_COST_UPDATE_ID
+WHERE csui.INVENTORY_ITEM_ID = :item_id
+AND csu.ORGANIZATION_ID = :org_id
+ORDER BY csu.LAST_UPDATE_DATE</code></pre>
+
+        <p>Ngay cả bản thân "giá chuẩn" của Item cũng có 1 bảng lịch sử riêng — không cần phải suy ngược từ Variance để đoán lại giá quá khứ, chỉ cần biết đúng bảng để tra.</p>
+
+        <h3>Không riêng gì Oracle — nhìn rộng ra các ERP lớn</h3>
+        <p>Sau khi đối chiếu qua nhiều hệ thống — kể cả Epicor và Microsoft Dynamics AX mà tôi từng làm trước đây, cùng SAP — điều khiến tôi bất ngờ là <strong>tất cả đều dùng chung 1 kiến trúc gốc</strong>, chỉ khác tên bảng:</p>
+
+        <table>
+          <thead>
+            <tr><th>Khái niệm</th><th>Oracle EBS</th><th>Epicor</th><th>SAP</th><th>Microsoft Dynamics AX</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Danh mục Item/Part</td><td><code>MTL_SYSTEM_ITEMS_B</code></td><td>Part</td><td>Material Master (<code>MARA</code>)</td><td><code>InventTable</code></td></tr>
+            <tr><td>BOM (nguyên liệu)</td><td><code>BOM_COMPONENTS_B</code></td><td>Method of Manufacturing → Materials</td><td><code>STKO</code>/<code>STPO</code></td><td><code>BOM</code>/<code>BOMTable</code></td></tr>
+            <tr><td>Routing (công đoạn)</td><td><code>BOM_OPERATION_SEQUENCES</code></td><td>Method of Manufacturing → Operations</td><td><code>PLKO</code>/<code>AFVC</code></td><td><code>RouteTable</code></td></tr>
+            <tr><td>Lệnh sản xuất (Job/Order)</td><td><code>WIP_ENTITIES</code></td><td><code>JobHead</code></td><td><code>AFKO</code>/<code>AFPO</code></td><td><code>ProdTable</code></td></tr>
+            <tr><td>Giá hiện hành (bị ghi đè)</td><td><code>CST_ITEM_COSTS</code></td><td><code>Part.Cost</code></td><td><code>MBEW</code></td><td>Item Price hiện hành</td></tr>
+            <tr><td>Giá theo thời điểm (không ghi đè)</td><td><code>WIP_TRANSACTION_ACCOUNTING_LINES</code></td><td><code>JobMtl</code>/<code>JobOpr</code></td><td><code>COEP</code></td><td><code>InventTrans</code></td></tr>
+            <tr><td>Lịch sử giá chuẩn</td><td><code>CST_STANDARD_COST_UPDATES</code></td><td>Cost History</td><td>Costing Run (<code>CK11N</code>)</td><td>Cost Version theo kỳ</td></tr>
+          </tbody>
+        </table>
+
+        <p>Nói cách khác: <strong>bất kể bạn đang dùng ERP nào, nếu viết report join thẳng Job/Order vào bảng Item Master để lấy giá, đều dính đúng lỗi y hệt nhau.</strong> Đây không phải sự trùng hợp của các nhà cung cấp phần mềm — đây là hệ quả tất yếu của nguyên tắc kế toán.</p>
+
+        <h3>Vì sao Job thực tế không bao giờ khớp 100% với BOM chuẩn</h3>
+        <p>Một điều liên quan mà tôi cũng từng thắc mắc: khi tạo Job/Order từ BOM, hệ thống thực chất <strong>copy (snapshot)</strong> toàn bộ BOM + Routing tại đúng thời điểm đó thành 1 bản riêng gắn với Job. Sau đó, người vận hành hoàn toàn có thể sửa trực tiếp trên Job (đổi nguyên liệu thay thế do thiếu hàng, thêm bớt công đoạn...) mà không ảnh hưởng ngược lại BOM gốc.</p>
+        <p>Đây chính là lý do khiến Job thực tế và BOM chuẩn gần như không bao giờ khớp tuyệt đối — và điều này hoàn toàn có chủ đích trong thiết kế ERP, để linh hoạt xử lý phát sinh sản xuất thực tế.</p>
+
+        <h3>Không phải mọi phương pháp tính giá đều dễ dính bẫy như nhau</h3>
+        <p>Đào sâu hơn, tôi nhận ra mức độ "dễ dính bẫy current cost" còn phụ thuộc vào <strong>phương pháp tính giá (Costing Method)</strong> mà doanh nghiệp đang áp dụng:</p>
+        <p><strong>Standard Costing</strong> — giá được thiết lập trước theo kỳ, mọi chênh lệch tách riêng thành Variance. Vì có bảng lịch sử update giá đi kèm, đây là phương pháp tương đối an toàn nếu viết report đúng cách.</p>
+        <p><strong>Actual Costing (FIFO/LIFO/Lot-specific)</strong> — mỗi giao dịch tự mang giá riêng theo đúng lô hàng, không có khái niệm "giá hiện hành" chung để nhầm lẫn.</p>
+        <p><strong>Moving Average Cost</strong> — đây chính là phương pháp <strong>dễ dính bẫy nhất</strong>. Giá được tính lại bình quân mỗi lần nhập kho, và bản chất field lưu giá chỉ là <strong>1 cột duy nhất liên tục bị cập nhật</strong> — giống hệt tình huống "Part.Cost" ở Epicor mà tôi mô tả ban đầu. Nếu không có thêm 1 bảng lưu lại lịch sử giá tại từng thời điểm, sẽ không cách nào tra lại chính xác giá quá khứ.</p>
+        <p><strong>Backflush Costing</strong> — dồn chi phí về thời điểm hoàn thành sản phẩm, dùng cho sản xuất liên tục; đây là 1 dạng xấp xỉ có chủ đích, cần hiểu rõ độ trễ khi phân tích chi tiết.</p>
+
+        <h3>Bài toán khó hơn: 1 kỳ báo cáo, nhiều giá — lấy giá nào?</h3>
+        <p>Đây là câu hỏi thực tế nhất khi lên báo cáo theo quý/năm: nếu trong 1 năm, 1 Item đổi giá 3–4 lần, thì không tồn tại "1 giá đúng duy nhất" cho cả kỳ — chỉ có <strong>giá đúng cho đúng mục đích sử dụng</strong>:</p>
+
+        <table>
+          <thead>
+            <tr><th>Mục đích báo cáo</th><th>Cách xử lý phù hợp</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Xem biến động giá theo thời gian</td><td>Hiển thị đúng từng mốc giá, đúng ngày hiệu lực — không gộp thành 1 số</td></tr>
+            <tr><td>Xem giá vốn của 1 giao dịch cụ thể</td><td>Lấy đúng giá tại transaction đó</td></tr>
+            <tr><td>So sánh hiệu quả chi phí giữa các kỳ</td><td>Weighted Average theo sản lượng thực tế, không phải trung bình cộng đơn giản</td></tr>
+            <tr><td>Xem giá trị tồn kho tại 1 thời điểm chốt kỳ</td><td>Giá hiệu lực đúng tại ngày chốt đó</td></tr>
+          </tbody>
+        </table>
+
+        <pre><code>-- Weighted Average theo sản lượng thực tế trong kỳ
+SELECT 
+    SUM(txn.material_amount) / SUM(txn.quantity) AS weighted_avg_cost
+FROM job_transaction txn
+WHERE txn.item_id = :item_id
+AND txn.transaction_date BETWEEN :tu_ngay AND :den_ngay</code></pre>
+
+        <p>Nguyên tắc xuyên suốt: <strong>dữ liệu hiển thị phải đúng với giao dịch đã thực sự xảy ra tại đúng thời điểm — không suy diễn, không làm tròn cho đẹp, không gán 1 giá đại diện nếu bản chất có nhiều giá khác nhau.</strong></p>
+
+        <h3>Giá mua và giá bán: bài toán "current cost" lặp lại ở cả 2 phía</h3>
+        <p>Một điều tôi chỉ nhận ra sau khi đi sâu hơn: giá mua (chi phí đầu vào) và giá bán (giá ra thị trường) là 2 nhánh khác nhau, nhưng liên kết chặt với nhau — giá nguyên liệu tăng thường kéo theo áp lực tăng giá bán (cost-plus pricing, target margin), dù giá bán còn phụ thuộc nhiều yếu tố khác (cạnh tranh, hợp đồng, nhu cầu thị trường) chứ không chỉ riêng chi phí.</p>
+        <p>Điểm đáng chú ý nhất: khi phân tích <strong>margin</strong> (lợi nhuận gộp), bài toán "point-in-time" lặp lại trên <strong>cả 2 trục cùng lúc</strong>:</p>
+
+        <pre><code>Margin thực tế 1 đơn hàng = Giá bán tại thời điểm bán − Giá vốn tại thời điểm sản xuất/xuất kho</code></pre>
+
+        <p>Nếu báo cáo margin lấy nhầm giá bán theo Price List hiện tại, và giá vốn theo Standard Cost hiện tại — thay vì lấy đúng giá đã chốt tại từng transaction — sai số sẽ dồn theo cả 2 chiều, khiến con số margin cuối cùng lệch xa hơn cả việc chỉ sai 1 phía.</p>
+
+        <h3>Vài lưu ý khác không thể bỏ qua</h3>
+        <ul>
+          <li><strong>Cost Rollup không tự lan truyền</strong>: giá nguyên liệu đổi không tự động cập nhật giá thành phẩm cấp trên (multi-level BOM) cho đến khi chạy lại Cost Rollup.</li>
+          <li><strong>Job đã đóng không bị ảnh hưởng bởi giá đổi sau này</strong> — đúng nguyên tắc, nhưng dễ gây hiểu lầm nếu ai đó kỳ vọng ngược lại.</li>
+          <li><strong>Tỷ giá ngoại tệ</strong> với nguyên liệu nhập khẩu tạo thêm 1 chiều biến động ngoài đơn giá gốc.</li>
+          <li><strong>Lệch ngày hiệu lực giữa BOM/Routing và giá</strong> dễ gây sai lệch cost trong khoảng giao thời mà không ai để ý.</li>
+          <li><strong>Actual Costing theo Lot/Serial</strong> khiến "giá của Item" có thể tồn tại nhiều mức song song cùng lúc, không chỉ biến động theo thời gian.</li>
+          <li><strong>Overhead phân bổ theo %</strong> không cố định như nhiều người tưởng — nó tự đổi theo khi Material Cost thay đổi.</li>
+        </ul>
+
+        <h3>Bài học rộng hơn cả ERP</h3>
+        <p>Nguyên lý "point-in-time value" này thực ra chính là khái niệm <strong>Slowly Changing Dimension (SCD)</strong> quen thuộc trong Data Warehouse — áp dụng cho bất kỳ dữ liệu nào biến động theo thời gian: giá vàng, tỷ giá, giá cổ phiếu... Bất cứ khi nào cần biết "giá trị tại 1 thời điểm quá khứ", câu trả lời không bao giờ nằm ở "giá trị hiện tại", mà phải nằm ở dữ liệu có gắn timestamp.</p>
+
+        <h3>Checklist bỏ túi khi viết báo cáo costing</h3>
+        <ul>
+          <li>Xác định rõ Costing Method đang dùng (Standard/Actual/Moving Average) — mỗi loại có rủi ro khác nhau</li>
+          <li>Xác định rõ bảng nào là <em>current</em>, bảng nào là <em>historical</em> trước khi viết query</li>
+          <li>Tự kiểm tra: chạy lại query sau vài tháng, kết quả dữ liệu cũ có đổi theo giá mới không?</li>
+          <li>Có bảng lưu lịch sử thay đổi giá chuẩn để tra cứu độc lập</li>
+          <li>Xác định rõ mục đích báo cáo trước khi chọn cách tổng hợp giá</li>
+          <li>Khi tính margin, lấy đúng giá bán và giá vốn tại đúng transaction — không join ngược về bảng "giá hiện hành" ở cả 2 phía</li>
+        </ul>
+
+        <hr>
+        <p><em>Không có công thức đúng tuyệt đối cho việc lấy giá trong báo cáo — chỉ có nguyên tắc bất biến: dữ liệu hiển thị phải phản ánh đúng giao dịch thực tế tại đúng thời điểm, và cách tổng hợp phải phù hợp với câu hỏi mà báo cáo đang trả lời. Nguyên tắc này không đổi dù bạn dùng Oracle EBS, Epicor, SAP, Microsoft Dynamics, hay bất kỳ ERP nào khác — vì nó đến từ bản chất kế toán, không phải từ cách 1 phần mềm cụ thể được thiết kế.</em></p>
+
+      </div>
+    </article>
+
+    <aside>
+      <section class="widget">
+        <h3>Avatar</h3>
+        <div class="avatar-placeholder">Khu vực avatar/profile</div>
+      </section>
+      <section class="widget">
+        <h3>Bài viết gần đây</h3>
+        <ul>
+          <li><a href="erp-current-cost-bay.html">Cái bẫy "Current Cost" trong ERP</a></li>
+        </ul>
+      </section>
+      <section class="widget">
+        <h3>Danh mục</h3>
+        <ul>
+          <li><a href="../index.html">Tài liệu</a></li>
+          <li><a href="../../lap-trinh/index.html">Lập trình</a></li>
+          <li><a href="../../tin-tuc/index.html">Tin tức</a></li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Blog của Hải Còi. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://github.com/thanvanhai" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:thanvanhai@example.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/post.js"></script>
+</body>
+</html>
