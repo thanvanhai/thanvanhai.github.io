@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header class="site-header"><div class="container"><h1 class="site-title">Liên hệ</h1><p class="site-subtitle">Chia Sẻ Kinh Nghiệm Lập Trình</p></div></header>
-  <nav class="navbar" aria-label="Điều hướng chính"><div class="container nav-inner"><button class="menu-toggle" aria-label="Mở menu">☰</button><ul class="menu"><li><a data-path="/" href="index.html">TRANG CHỦ</a></li><li><a data-path="/tin-tuc" href="tin-tuc/index.html">TIN TỨC</a></li><li><a data-path="/tai-lieu" href="tai-lieu/index.html">TÀI LIỆU</a></li><li><a data-path="/lap-trinh" href="lap-trinh/index.html">LẬP TRÌNH</a></li><li><a data-path="/thiet-ke-web" href="thiet-ke-web/index.html">THIẾT KẾ WEB</a></li><li><a data-path="/phan-mem" href="phan-mem/index.html">PHẦN MỀM</a></li><li><a data-path="/giai-tri" href="giai-tri/index.html">GIẢI TRÍ</a></li><li><a data-path="/lien-he.html" href="lien-he.html">LIÊN HỆ</a></li></ul></div></nav>
+  <div id="site-banner"></div>
+  <div id="site-nav"></div>
+
   <main class="container main-layout">
     <section class="article">
       <p class="breadcrumb"><a href="index.html">Trang chủ</a> / Liên hệ</p>
@@ -19,12 +20,12 @@
       <p>Email: <a href="mailto:thanvanhai@example.com">thanvanhai@example.com</a></p>
       <p>GitHub: <a href="https://github.com/thanvanhai" target="_blank" rel="noopener">github.com/thanvanhai</a></p>
     </section>
-    <aside>
-      <section class="widget"><h3>Avatar</h3><div class="avatar-placeholder">Khu vực avatar/profile</div></section>
-      <section class="widget"><h3>Danh mục</h3><ul><li><a href="tin-tuc/index.html">Tin tức</a></li><li><a href="lap-trinh/index.html">Lập trình</a></li><li><a href="tai-lieu/index.html">Tài liệu</a></li></ul></section>
-    </aside>
+    <aside id="site-sidebar"></aside>
   </main>
-  <footer class="site-footer"><div class="container"><p>© 2026 Blog của Hải Còi. All rights reserved.</p></div></footer>
-  <script src="assets/js/main.js"></script>
+
+  <div id="site-footer"></div>
+
+  <script>window.SITE_ROOT = '';</script>
+  <script src="assets/js/components.js"></script>
 </body>
 </html>

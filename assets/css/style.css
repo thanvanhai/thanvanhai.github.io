@@ -37,7 +37,7 @@ a:hover {
 }
 
 .container {
-  width: min(1120px, 92%);
+  width: min(1600px, 96%);
   margin: 0 auto;
 }
 
@@ -50,6 +50,17 @@ a:hover {
 .site-title {
   margin: 0;
   font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+.site-title a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.site-title a:hover {
+  opacity: 0.9;
+  text-decoration: none;
 }
 
 .site-subtitle {

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+  =============================================================
+  TEMPLATE CHO TRANG DANH MỤC (category index)
+  =============================================================
+  1. Copy file này vào thư mục danh mục mới, đặt tên index.html
+       ví dụ: ten-danh-muc/index.html
+
+  2. Đặt tiêu đề, chỉnh SITE_ROOT = '../' và đường dẫn CSS.
+
+  3. Mỗi khi có bài mới: thêm 1 khối <article class="post-card">
+     vào phần danh sách bên dưới.
+
+  4. Để thêm danh mục vào menu chính, mở assets/js/components.js
+     và thêm entry vào NAV_ITEMS.
+  =============================================================
+  -->
+
+  <title>Tên danh mục | Blog Hải Còi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/category.css">
+</head>
+<body>
+  <div id="site-banner"></div>
+  <div id="site-nav"></div>
+
+  <main class="container main-layout">
+    <section class="post-grid">
+      <div class="card">
+        <p class="breadcrumb"><a href="../index.html">Trang chủ</a> / Tên danh mục</p>
+        <h2 class="category-title">Danh sách bài viết Tên danh mục</h2>
+        <p class="category-description">Mô tả ngắn về danh mục này.</p>
+
+        <!-- Thêm bài viết mới tại đây -->
+        <article class="post-card">
+          <h3><a href="posts/ten-bai-viet.html">Tiêu đề bài viết</a></h3>
+          <p class="meta">DD/MM/YYYY • Hải Còi</p>
+        </article>
+
+      </div>
+    </section>
+    <aside id="site-sidebar"></aside>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>window.SITE_ROOT = '../';</script>
+  <script src="../assets/js/components.js"></script>
+</body>
+</html>
