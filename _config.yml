@@ -30,9 +30,9 @@ comments:
   active: giscus
   giscus:
     repo: thanvanhai/thanvanhai.github.io
-    repo_id: ""          # Điền sau khi cấu hình Giscus tại https://giscus.app
+    repo_id: "R_kgDOSpBkzw"          # Điền sau khi cấu hình Giscus tại https://giscus.app
     category: "General"
-    category_id: ""      # Điền sau khi cấu hình Giscus
+    category_id: "DIC_kwDOSpBkz84DBbcm"      # Điền sau khi cấu hình Giscus
     mapping: pathname
     strict: 0
     input_position: bottom
