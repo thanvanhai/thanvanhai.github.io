@@ -1,7 +1,7 @@
 ---
 title: "LINQ trong C# 12: Từ cơ bản đến thực chiến với EF Core"
 date: 2026-05-01 09:00:00 +0700
-categories: [Lập trình, CSharp]
+categories: [Lập trình, C#]
 tags: [csharp, linq, dotnet, entity-framework, sql]
 author: haicoi
 ---

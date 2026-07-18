@@ -1,7 +1,7 @@
 ---
 title: 'Cái bẫy "Current Cost": vì sao báo cáo giá thành của bạn có thể đang sai mà không ai biết'
 date: 2026-07-17 08:00:00 +0700
-categories: [ERP Nghiệp vụ, Oracle EBS]
+categories: [ERP Nghiệp vụ, Cost]
 tags: [erp, oracle, sql, manufacturing, costing, reporting]
 author: haicoi
 ---

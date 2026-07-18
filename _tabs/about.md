@@ -36,4 +36,5 @@ Blog này là nơi mình ghi lại và chia sẻ những kiến thức, kinh ngh
 ## Liên hệ
 
 - GitHub: [github.com/thanvanhai](https://github.com/thanvanhai)
-- Email: thanvanhai@example.com
+- Email: thanvanhai1021988@gmail.com
+<p align="center"><strong>Chúc các bạn thành công và vui vẻ!</strong></p>
