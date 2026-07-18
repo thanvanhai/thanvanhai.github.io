@@ -1,0 +1,97 @@
+theme: jekyll-theme-chirpy
+
+lang: vi
+timezone: Asia/Ho_Chi_Minh
+
+title: "Blog của Hải Còi"
+tagline: "Chia Sẻ Kinh Nghiệm Lập Trình & ERP"
+description: >-
+  Blog chia sẻ kinh nghiệm lập trình đa ngôn ngữ (Java, C#, PHP, AutoIT, JavaScript)
+  và nghiệp vụ ERP (Oracle EBS, Epicor, SAP, Microsoft Dynamics).
+
+url: "https://thanvanhai.github.io"
+
+github:
+  username: thanvanhai
+
+social:
+  name: Hải Còi
+  email: thanvanhai@example.com
+  links:
+    - https://github.com/thanvanhai
+
+# theme_mode: [light|dark]   # để trống → theo hệ điều hành người dùng
+
+avatar: /assets/img/avatar.webp
+
+toc: true
+
+comments:
+  active: giscus
+  giscus:
+    repo: thanvanhai/thanvanhai.github.io
+    repo_id: ""          # Điền sau khi cấu hình Giscus tại https://giscus.app
+    category: "General"
+    category_id: ""      # Điền sau khi cấu hình Giscus
+    mapping: pathname
+    strict: 0
+    input_position: bottom
+    lang: vi
+    reactions_enabled: 1
+
+paginate: 10
+
+analytics:
+  google:
+    id: ""               # Điền Google Analytics ID nếu cần
+
+kramdown:
+  footnote_backlink: "&#8617;&#xfe0e;"
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+# Mặc định cho tất cả bài viết trong _posts/
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: true
+      toc: true
+      math: false
+      mermaid: false
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [development]
+
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - README.md
+  - LICENSE
+  - "*.config.js"
+  - package*.json
+  - assets/post-template.html
+  - assets/category-template.html
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
