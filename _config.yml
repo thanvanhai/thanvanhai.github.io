@@ -106,3 +106,7 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+    
+assets:
+  self_host:
+    enabled: false
