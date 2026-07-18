@@ -84,8 +84,6 @@ exclude:
   - LICENSE
   - "*.config.js"
   - package*.json
-  - assets/post-template.html
-  - assets/category-template.html
 
 jekyll-archives:
   enabled: [categories, tags]
