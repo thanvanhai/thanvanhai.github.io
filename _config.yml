@@ -19,6 +19,11 @@ social:
   email: thanvanhai@example.com
   links:
     - https://github.com/thanvanhai
+    
+collections:
+  tabs:
+    output: true
+    sort_by: order
 
 # theme_mode: [light|dark]   # để trống → theo hệ điều hành người dùng
 
@@ -67,6 +72,11 @@ defaults:
       toc: true
       math: false
       mermaid: false
+  - scope:
+      path: ""
+      type: tabs
+    values:
+      layout: page
 
 compress_html:
   clippings: all
@@ -85,6 +95,9 @@ exclude:
   - "*.config.js"
   - package*.json
 
+plugins:
+  - jekyll-archives
+  
 jekyll-archives:
   enabled: [categories, tags]
   layouts:
