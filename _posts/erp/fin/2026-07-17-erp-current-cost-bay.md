@@ -168,3 +168,4 @@ Nguyên lý "point-in-time value" này thực ra chính là khái niệm **Slowl
 ---
 
 *Không có công thức đúng tuyệt đối cho việc lấy giá trong báo cáo — chỉ có nguyên tắc bất biến: dữ liệu hiển thị phải phản ánh đúng giao dịch thực tế tại đúng thời điểm, và cách tổng hợp phải phù hợp với câu hỏi mà báo cáo đang trả lời. Nguyên tắc này không đổi dù bạn dùng Oracle EBS, Epicor, SAP, Microsoft Dynamics, hay bất kỳ ERP nào khác — vì nó đến từ bản chất kế toán, không phải từ cách 1 phần mềm cụ thể được thiết kế.*
+<p style="text-align:center"><strong>Chúc các bạn thành công và vui vẻ!</strong></p>
