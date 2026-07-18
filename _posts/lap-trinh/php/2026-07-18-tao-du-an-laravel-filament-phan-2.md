@@ -1,6 +1,6 @@
 ---
 title: "Hướng Dẫn Tạo 1 Dự Án PHP Laravel v12.10 và Filament v3.3.31 - Phần 2"
-date: 2026-07-18 19:00:00 +0700
+date: 2026-07-18 10:00:00 +0700
 categories: [Lập trình, PHP]
 tags: [laravel, filament, php, spatie, permission, filament-shield]
 author: haicoi

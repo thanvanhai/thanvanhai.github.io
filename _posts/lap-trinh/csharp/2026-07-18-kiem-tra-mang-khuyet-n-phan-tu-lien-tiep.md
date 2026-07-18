@@ -1,6 +1,6 @@
 ---
 title: "Kiểm Tra 2 Mảng Khuyết N Phần Tử Liên Tiếp Trở Lên"
-date: 2026-07-18 17:00:00 +0700
+date: 2026-07-18 10:00:00 +0700
 categories: [Lập trình, C#]
 tags: [c#, algorithm, array, thuật toán]
 author: haicoi

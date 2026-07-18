@@ -1,6 +1,6 @@
 ---
 title: "Món Quà Tặng 8/3 Viết Bằng C#"
-date: 2026-07-18 15:00:00 +0700
+date: 2026-07-18 10:00:00 +0700
 categories: [Lập trình, C#]
 tags: [c#, winforms, đồ án, source code]
 author: haicoi

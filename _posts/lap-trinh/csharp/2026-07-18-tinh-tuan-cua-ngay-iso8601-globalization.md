@@ -1,6 +1,6 @@
 ---
 title: "Tính Tuần Của Ngày Bất Kỳ Trong Năm? Theo Chuẩn ISO 8601 Và Globalization"
-date: 2026-07-18 16:00:00 +0700
+date: 2026-07-18 10:00:00 +0700
 categories: [Lập trình, C#]
 tags: [c#, sql server, datetime, iso 8601]
 author: haicoi
