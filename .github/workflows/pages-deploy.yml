@@ -29,6 +29,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # Lấy toàn bộ lịch sử git để Chirpy tính post.last_modified_at chính xác
 
       - name: Setup Pages
         id: pages
@@ -39,19 +40,6 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install and Build Assets
-        run: |
-          npm ci --ignore-scripts
-          npm run build
-        env:
-          HUSKY: "0"
 
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
