@@ -48,7 +48,7 @@ jobs:
 
       - name: Install and Build Assets
         run: |
-          npm ci --ignore-scripts
+          npm install --ignore-scripts
           npm run build
         env:
           HUSKY: "0"
