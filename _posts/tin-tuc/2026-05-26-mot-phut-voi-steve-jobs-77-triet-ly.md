@@ -1,7 +1,7 @@
 ---
 title: "Một Phút Với Steve Jobs - 77 Triết Lý Truyền Cảm Hứng Của \"Phù Thủy Công Nghệ\""
 date: 2026-05-26 08:00:00 +0700
-categories: [Cảm hứng, Nhân vật công nghệ]
+categories: [Tin tức]
 tags: [steve-jobs, apple, trich-dan, cam-hung, cong-nghe]
 author: haicoi
 ---
