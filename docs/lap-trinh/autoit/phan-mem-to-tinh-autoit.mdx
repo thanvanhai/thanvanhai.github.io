@@ -1,0 +1,157 @@
+---
+id: phan-mem-to-tinh-autoit
+title: "Phần Mềm Tỏ Tình Dành Cho Lập Trình Viên"
+sidebar_label: "Phần Mềm Tỏ Tình (AutoIt)"
+sidebar_position: 1
+tags: [autoit, đồ án, source code]
+---
+
+import { useEffect } from 'react';
+
+**AutoIt** là một **ngôn ngữ kịch bản**.
+
+AutoIt thường được sử dụng để viết Auto (phần mềm tự động thực hiện việc nào đó theo nhu cầu, ví dụ như tự tắt máy sau một thời gian người dùng không hoạt động) và đa số là Auto Game - tự động chơi, tự động điều khiển nhân vật làm nhiệm vụ trong trò chơi,... Tuy nhiên AutoIt cũng thường được sử dụng để viết virus/malware (có vụ đã được lên báo là virus phát tán qua Yahoo, đợt 2006 thì phải). Thậm chí có người viết cả Botnet/RAT bằng AutoIt.
+
+Sau một thời gian dài các mã độc, virus/malware viết bằng AutoIt xuất hiện tràn lan khiến các trình diệt chỉ cần nhận diện "chữ ký" của ứng dụng đó là AutoIt thì coi là virus/malware luôn. Nữa là AutoIt khi biên dịch sẽ có tùy chọn sử dụng UPX (một trình nén tập tin thực thi để giảm dung lượng), mà những tập tin nén bằng UPX thường bị nhận diện luôn chứ chưa nói tới ngôn ngữ là gì.
+
+AutoIt là ngôn ngữ lập trình tốt xấu là do người dùng nó! Xin đừng làm xấu đi 1 ngôn ngữ lập trình cơ bản!
+
+Phiên bản phần mềm được viết từ thời Windows 7 (khoảng năm 2010 bắt đầu tự học AutoIt trên diễn đàn) nên khi chạy trên Win 7, một khi đã chạy phần mềm sẽ không thể tắt được nếu không làm theo những gì phần mềm hướng dẫn — chỉ có cách tắt máy ngang. Có mã nguồn các bạn có thể tham khảo thêm về [Keys Functions](http://autoitvn.com/threads/thao-tac-voi-phim-trong-autoit.66/) để khóa các phím nóng, không cho tắt phần mềm nếu chưa làm xong các yêu cầu; hoặc có thể tham khảo thêm mã lệnh khởi động cùng Windows nữa thì khỏi chạy — không làm xong yêu cầu là khỏi sử dụng máy (cái này thời xưa lúc đi học có đại ca là ông thầy chỉ cho chiêu phá máy người ta làm màn hình xanh — thực ra nó là 1 mã lệnh phá máy nhưng thực chất không cần cài lại win, nếu máy vô được chế độ Safe Mode tắt cái lệnh đó không để khởi động lại cùng win sau đó mở máy lên được thì hủy cái script đó đi là xong; thầy chơi cũng ác dữ, bắt cài lại win chỉ vì nói không được làm ở máy trường lớp đại học, chắc có người còn nhớ đại ca này).
+
+**4 phím nóng quan trọng:** `{!}` Phím ALT, `{#}` Phím WINDOW, `{+}` Phím SHIFT, `{^}` Phím CTRL
+
+Bản Windows lớn hơn Win 7 có 1 số cách tắt được phần mềm, nhưng nếu đối tượng của bạn là người bình thường không chuyên sâu về máy tính lắm thì cũng không biết cách tắt phần mềm một khi đã chạy — là phải làm theo những gì phần mềm ép buộc để thoát khỏi phần mềm.
+
+## Show video sản phẩm và vài hình ảnh cho các bạn
+
+**Vk iu:**
+
+<div className="auto-gallery" id="gallery-1" style={{position: 'relative', maxWidth: '100%', margin: '20px 0', borderRadius: '8px', overflow: 'hidden'}}>
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_43951.jpg" className="gallery-1-slide" style={{width: '100%', display: 'block'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_43991.jpg" className="gallery-1-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_44021.jpg" className="gallery-1-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_44011.jpg" className="gallery-1-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_44001.jpg" className="gallery-1-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_43981.jpg" className="gallery-1-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_43971.jpg" className="gallery-1-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_43961.jpg" className="gallery-1-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_44041.jpg" className="gallery-1-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_44051.jpg" className="gallery-1-slide" style={{width: '100%', display: 'none'}} />
+</div>
+
+export function Gallery1Player() {
+  useEffect(() => {
+    const slides = document.querySelectorAll('#gallery-1 .gallery-1-slide');
+    let i = 0;
+    const timer = setInterval(() => {
+      if (!slides.length) return;
+      slides[i].style.display = 'none';
+      i = (i + 1) % slides.length;
+      slides[i].style.display = 'block';
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+  return null;
+}
+
+<Gallery1Player />
+
+**Khởi động chương trình:**
+
+![Khởi động chương trình](https://haicoiblog.files.wordpress.com/2018/11/khoidong_pic1.jpg)
+*Khởi động chương trình*
+
+**Bắt người iu nhập câu gì đó:**
+
+![Nhập lời yêu thương](https://haicoiblog.files.wordpress.com/2018/11/nhaploiyeuthuong.jpg)
+*Bắt khổ chủ nhập câu gì đó bạn muốn*
+
+Sau khi nhập xong tự động chuyển qua lời chúc 2:
+
+![Lời chúc](https://haicoiblog.files.wordpress.com/2018/11/untitled.jpg)
+
+Sau đó là bài thơ hay lời văn gì đó chuẩn bị trước, tự xuất hiện chạy chữ lên màn hình và phát 1 bài hát nào đó:
+
+![Bài thơ tự chạy](https://haicoiblog.files.wordpress.com/2018/11/baithotuchay.jpg)
+*Bài thơ, lời văn tự chạy + 1 bài hát*
+
+Bước tiếp theo phần mềm tự tạo ra đầy hoa hồng trên màn hình:
+
+<div className="auto-gallery" id="gallery-2" style={{position: 'relative', maxWidth: '100%', margin: '20px 0', borderRadius: '8px', overflow: 'hidden'}}>
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_3385.jpg" className="gallery-2-slide" style={{width: '100%', display: 'block'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_3386.jpg" className="gallery-2-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_3387.jpg" className="gallery-2-slide" style={{width: '100%', display: 'none'}} />
+</div>
+
+export function Gallery2Player() {
+  useEffect(() => {
+    const slides = document.querySelectorAll('#gallery-2 .gallery-2-slide');
+    let i = 0;
+    const timer = setInterval(() => {
+      if (!slides.length) return;
+      slides[i].style.display = 'none';
+      i = (i + 1) % slides.length;
+      slides[i].style.display = 'block';
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+  return null;
+}
+
+<Gallery2Player />
+
+Sau đó tự hiện chữ **I Love You**:
+
+![I Love You](https://haicoiblog.files.wordpress.com/2018/11/ilove-you.jpg)
+*I Love You*
+
+**Hộp thông báo cám ơn và kết thúc chương trình:**
+
+![Kết thúc chương trình](https://haicoiblog.files.wordpress.com/2018/11/ketthuc-1.jpg)
+*Kết thúc chương trình*
+
+**Một vài khoảnh khắc khác:**
+
+<div className="auto-gallery" id="gallery-3" style={{position: 'relative', maxWidth: '100%', margin: '20px 0', borderRadius: '8px', overflow: 'hidden'}}>
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/bich-iu.jpg" className="gallery-3-slide" style={{width: '100%', display: 'block'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/vo-iu.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/bich-7.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_41301.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_40831.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_0289.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_0310.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_0300.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_0301.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_0304.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_0310-1.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_0302.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_0287.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_0294.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+  <img src="https://haicoiblog.wordpress.com/wp-content/uploads/2018/11/img_0295.jpg" className="gallery-3-slide" style={{width: '100%', display: 'none'}} />
+</div>
+
+export function Gallery3Player() {
+  useEffect(() => {
+    const slides = document.querySelectorAll('#gallery-3 .gallery-3-slide');
+    let i = 0;
+    const timer = setInterval(() => {
+      if (!slides.length) return;
+      slides[i].style.display = 'none';
+      i = (i + 1) % slides.length;
+      slides[i].style.display = 'block';
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+  return null;
+}
+
+<Gallery3Player />
+
+Bỏ khái niệm cứ học CNTT là cái gì về máy tính cũng biết nha, CNTT nó rộng lớn: phần mềm, phần cứng. Chuyên mềm thì không thể am hiểu sâu về phần cứng, mà chuyên cứng thì cũng ít am hiểu sâu về mềm. Trong phần mềm còn vô số chuyên ngành khác nên không phải cứ học CNTT là biết tất — hic, cứ nghe học CNTT là thấy máy tính hay điện thoại hư là kêu sửa giùm.
+
+## Link Tải
+
+- **Link Code** (viết bằng AutoIt): [Nhấn vào đây để tải mã nguồn](http://www.mediafire.com/file/y1hpupituijazwi/codeLapTrinhChoTraiTim.rar/file)
+- **Link sản phẩm** (trước khi chạy nhớ bật Unikey và mở loa): [Nhấn vào đây để tải phần mềm](http://www.mediafire.com/file/4n3x08d3xdhhcbb/fileEXE_LapTrinhChoTraiTim.rar/file)
+
+<div align="center"><strong>Chúc các bạn thành công và vui vẻ!</strong></div>
