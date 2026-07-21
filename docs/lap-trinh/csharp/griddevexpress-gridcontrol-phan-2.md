@@ -2,7 +2,9 @@
 id: griddevexpress-gridcontrol-phan-2
 title: "[Code Demo] Show Vẻ Đẹp Của DevExpress 14.2.7 - Demo GridControl (Phần 2)"
 sidebar_label: "GridControl DevExpress - Phần 2"
+slug: /lap-trinh/csharp/griddevexpress-gridcontrol-phan-2
 sidebar_position: 5
+date: 2015-05-20
 tags: [csharp, devexpress, gridcontrol, winform]
 ---
 

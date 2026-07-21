@@ -2,7 +2,9 @@
 id: bieu-thue-luy-tien-tung-phan-csharp
 title: "Demo Biểu Thuế Luỹ Tiến Từng Phần Thuế Thu Nhập Cá Nhân Bằng C#"
 sidebar_label: "Biểu Thuế Luỹ Tiến Từng Phần"
+slug: /lap-trinh/csharp/bieu-thue-luy-tien-tung-phan-csharp
 sidebar_position: 3
+date: 2015-05-08
 tags: [csharp, linq, thue, winform]
 ---
 

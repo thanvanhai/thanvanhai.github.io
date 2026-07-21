@@ -2,7 +2,9 @@
 id: laravel-filament-phan-1
 title: "Hướng Dẫn Tạo 1 Dự Án PHP Laravel v12.10 và Filament v3.3.31 - Phần 1"
 sidebar_label: "Laravel + Filament - Phần 1"
+slug: /lap-trinh/php/laravel-filament-phan-1
 sidebar_position: 1
+date: 2025-08-04
 tags: [laravel, filament, php, activitylog, helper]
 ---
 

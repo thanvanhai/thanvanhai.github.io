@@ -3,8 +3,8 @@ id: so-sanh-group-by-va-over-partition-by
 title: So Sánh GROUP BY và OVER (PARTITION BY … ORDER BY) Trong SQL Server
 sidebar_label: GROUP BY vs OVER (PARTITION BY)
 slug: /database/sql-server/so-sanh-group-by-va-over-partition-by
-sidebar_position: 2
-date: 2026-07-18
+sidebar_position: 1
+date: 2023-09-09
 description: So sánh GROUP BY và Window Function OVER (PARTITION BY ... ORDER BY) trong SQL Server, kèm ví dụ ROW_NUMBER, RANK, DENSE_RANK và ứng dụng tính tồn kho lũy kế.
 tags: [sql-server, window-function, partition-by, group-by, over]
 ---

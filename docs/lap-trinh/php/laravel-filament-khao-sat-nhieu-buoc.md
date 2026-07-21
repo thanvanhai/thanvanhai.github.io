@@ -2,7 +2,9 @@
 id: laravel-filament-khao-sat-nhieu-buoc
 title: "Hướng Dẫn Tạo Trang Khảo Sát Nhiều Bước Kiểu Google Form Bằng Laravel + Filament"
 sidebar_label: "Khảo Sát Nhiều Bước (Google Form Style)"
+slug: /lap-trinh/php/laravel-filament-khao-sat-nhieu-buoc
 sidebar_position: 3
+date: 2025-08-09
 tags: [laravel, filament, php, survey, khao-sat]
 ---
 

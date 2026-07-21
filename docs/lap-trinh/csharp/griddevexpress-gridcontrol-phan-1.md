@@ -2,7 +2,9 @@
 id: griddevexpress-gridcontrol-phan-1
 title: "[GridDevExpress] Demo GridControl Của DevExpress 14.2 (Phần 1)"
 sidebar_label: "GridControl DevExpress - Phần 1"
+slug: /lap-trinh/csharp/griddevexpress-gridcontrol-phan-1
 sidebar_position: 4
+date: 2015-05-15
 tags: [csharp, devexpress, gridcontrol, winform]
 ---
 

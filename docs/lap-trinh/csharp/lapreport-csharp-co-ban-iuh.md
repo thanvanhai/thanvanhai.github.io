@@ -2,7 +2,9 @@
 id: lapreport-csharp-co-ban-iuh
 title: "LapReport - Các Bài Tập C# Căn Bản Học Tập Tại IUH"
 sidebar_label: "LapReport - Bài Tập C# Căn Bản"
+slug: /lap-trinh/csharp/lapreport-csharp-co-ban-iuh
 sidebar_position: 1
+date: 2012-05-08
 tags: [csharp, winform, console, iuh]
 ---
 

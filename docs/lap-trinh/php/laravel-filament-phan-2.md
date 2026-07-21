@@ -2,7 +2,9 @@
 id: laravel-filament-phan-2
 title: "Hướng Dẫn Tạo 1 Dự Án PHP Laravel v12.10 và Filament v3.3.31 - Phần 2"
 sidebar_label: "Laravel + Filament - Phần 2"
+slug: /lap-trinh/php/laravel-filament-phan-2
 sidebar_position: 2
+date: 2025-08-05
 tags: [laravel, filament, php, spatie, permission, filament-shield]
 ---
 

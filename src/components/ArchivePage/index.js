@@ -1,65 +1,75 @@
+// src/components/ArchivePage/index.js
 import React from 'react';
 import Layout from '@theme/Layout';
+import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
-interface ArchivePost {
-  title: string;
-  date: string;
-  permalink: string;
-  tags: string[];
-}
+const MONTH_LABEL = (d) => `${d.getDate().toString().padStart(2, '0')} thg ${d.getMonth() + 1}`;
 
-interface ArchivePageProps {
-  posts: ArchivePost[];
-}
+const UNCATEGORIZED = {slug: '__uncategorized__', label: 'Khác', position: 9999};
 
-function groupByYear(posts: ArchivePost[]): [string, ArchivePost[]][] {
-  const groups: Record<string, ArchivePost[]> = {};
-  posts.forEach((post) => {
-    const year = new Date(post.date).getFullYear().toString();
-    if (!groups[year]) groups[year] = [];
-    groups[year].push(post);
+// posts: [{title, date, permalink, tags, category: {slug,label,position}|null}]
+// -> [{year, categories: [{slug, label, posts: [...]}]}]  (năm giảm dần, category theo position rồi alphabet, bài theo ngày giảm dần)
+function groupByYearThenCategory(posts) {
+  const byYear = new Map();
+
+  for (const post of posts) {
+    const d = new Date(post.date);
+    const year = d.getFullYear();
+    const cat = post.category || UNCATEGORIZED;
+
+    if (!byYear.has(year)) byYear.set(year, new Map());
+    const byCategory = byYear.get(year);
+
+    if (!byCategory.has(cat.slug)) {
+      byCategory.set(cat.slug, {slug: cat.slug, label: cat.label, position: cat.position ?? 999, posts: []});
+    }
+    byCategory.get(cat.slug).posts.push({...post, _date: d});
+  }
+
+  const years = Array.from(byYear.keys()).sort((a, b) => b - a);
+
+  return years.map((year) => {
+    const categories = Array.from(byYear.get(year).values())
+      .map((c) => ({
+        ...c,
+        posts: c.posts.sort((a, b) => b._date - a._date),
+      }))
+      .sort((a, b) => a.position - b.position || a.label.localeCompare(b.label));
+
+    return {year, categories};
   });
-  return Object.entries(groups).sort((a, b) => Number(b[0]) - Number(a[0]));
 }
 
-function formatDayMonth(dateStr: string): string {
-  const d = new Date(dateStr);
-  return d.toLocaleDateString('vi-VN', {day: '2-digit', month: 'short'});
-}
-
-export default function ArchivePage({posts}: ArchivePageProps): JSX.Element {
-  const grouped = groupByYear(posts);
+export default function ArchivePage({posts}) {
+  const grouped = groupByYearThenCategory(posts || []);
 
   return (
-    <Layout
-      title="Archives"
-      description="Danh sách tất cả bài viết theo thời gian">
+    <Layout title="Archives" description="Danh sách toàn bộ bài viết theo thời gian">
       <div className={styles.container}>
         <h1 className={styles.pageTitle}>Archives</h1>
 
-        {grouped.length === 0 && (
-          <p className={styles.empty}>
-            Chưa có bài viết nào có frontmatter <code>date</code>. Thêm{' '}
-            <code>date: YYYY-MM-DD</code> vào đầu file docs để bài xuất hiện ở đây.
-          </p>
-        )}
+        {grouped.map(({year, categories}) => (
+          <section key={year} className={styles.yearSection}>
+            <h2 className={styles.yearTitle}>{year}</h2>
 
-        {grouped.map(([year, yearPosts]) => (
-          <div key={year} className={styles.yearBlock}>
-            <h2 className={styles.year}>{year}</h2>
-            <ul className={styles.timeline}>
-              {yearPosts.map((post) => (
-                <li key={post.permalink} className={styles.item}>
-                  <span className={styles.date}>{formatDayMonth(post.date)}</span>
-                  <span className={styles.dot} />
-                  <a href={post.permalink} className={styles.link}>
-                    {post.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {categories.map((category) => (
+              <div key={category.slug} className={styles.categoryGroup}>
+                <h3 className={styles.categoryTitle}>{category.label}</h3>
+                <ul className={styles.timeline}>
+                  {category.posts.map((post) => (
+                    <li key={post.permalink} className={styles.timelineItem}>
+                      <span className={styles.timelineDot} />
+                      <span className={styles.timelineDate}>{MONTH_LABEL(post._date)}</span>
+                      <Link to={post.permalink} className={styles.timelineLink}>
+                        {post.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </section>
         ))}
       </div>
     </Layout>

@@ -2,7 +2,9 @@
 id: laravel-filament-firebase-fcm
 title: "Hướng Dẫn Tích Hợp Firebase Cloud Messaging (FCM) Vào Laravel + Filament"
 sidebar_label: "Tích Hợp Firebase FCM"
+slug: /lap-trinh/php/laravel-filament-firebase-fcm
 sidebar_position: 4
+date: 2025-09-13
 tags: [laravel, filament, firebase, fcm, push-notification, php]
 ---
 

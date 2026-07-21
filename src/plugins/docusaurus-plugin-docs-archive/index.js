@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
+const {normalizeUrl} = require('@docusaurus/utils');
 
 function walk(dir, results = []) {
   const entries = fs.readdirSync(dir, {withFileTypes: true});
@@ -35,22 +36,70 @@ function permalinkFromFilePath(filePath, docsDir) {
 
 // Ưu tiên 1 > 2 > 3: slug frontmatter -> tên file -> id frontmatter
 function resolvePermalink(data, filePath, docsDir) {
-  // 1. slug tường minh - luôn được Docusaurus prepend /docs, dù tuyệt đối hay tương đối
   if (data.slug) {
     const normalized = data.slug.startsWith('/') ? data.slug : `/${data.slug}`;
     return `/docs${normalized}`;
   }
-
-  // 2. Suy ra theo tên/đường dẫn file thật (đúng cách Docusaurus mặc định làm)
   try {
     return permalinkFromFilePath(filePath, docsDir);
   } catch (e) {
-    // 3. Fallback cuối cùng nếu vì lý do gì đó không tính được từ path (hiếm khi xảy ra)
     if (data.id) {
       return `/docs/${data.id}`;
     }
     throw e;
   }
+}
+
+// "so-sanh-group-by" -> "So Sanh Group By" (fallback khi không có _category_.json)
+function prettifyFolderName(name) {
+  return stripOrderPrefix(name)
+    .split(/[-_]/)
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
+// Đọc _category_.json (hoặc _category_.yml nếu bạn dùng yaml) của 1 thư mục
+// Trả về {label, position} hoặc null nếu không có file.
+function readCategoryMeta(dirPath) {
+  const jsonPath = path.join(dirPath, '_category_.json');
+  if (!fs.existsSync(jsonPath)) {
+    return null;
+  }
+  try {
+    // .replace(/^\uFEFF/, '') để bỏ BOM nếu file được lưu dạng UTF-8 with BOM
+    // (khá phổ biến khi tạo/sửa file JSON bằng một số tool trên Windows),
+    // vì BOM sẽ khiến JSON.parse ném lỗi "Unexpected token" dù nhìn file vẫn sạch.
+    const rawText = fs.readFileSync(jsonPath, 'utf-8').replace(/^\uFEFF/, '');
+    const raw = JSON.parse(rawText);
+    return {
+      label: raw.label || null,
+      position: typeof raw.position === 'number' ? raw.position : null,
+    };
+  } catch (e) {
+    // Không nuốt lỗi âm thầm nữa — in cảnh báo ra terminal để dễ debug lần sau.
+    console.warn(`[docusaurus-plugin-docs-archive] Không đọc được ${jsonPath}: ${e.message}`);
+    return null;
+  }
+}
+
+// Category = thư mục cấp 1 ngay dưới docs/ (vd: docs/database/... -> "database")
+// Nếu bài nằm ngay tại docs/ (không có thư mục con) -> không có category.
+function resolveCategory(filePath, docsDir) {
+  const relative = path.relative(docsDir, filePath);
+  const segments = relative.split(path.sep);
+  if (segments.length <= 1) {
+    return null; // file nằm ngay gốc docs/, không thuộc category nào
+  }
+  const topFolder = segments[0];
+  const topFolderPath = path.join(docsDir, topFolder);
+  const meta = readCategoryMeta(topFolderPath);
+
+  return {
+    slug: stripOrderPrefix(topFolder),
+    label: (meta && meta.label) || prettifyFolderName(topFolder),
+    position: meta && meta.position !== null ? meta.position : 999,
+  };
 }
 
 module.exports = function docsArchivePlugin(context) {
@@ -59,10 +108,8 @@ module.exports = function docsArchivePlugin(context) {
   return {
     name: 'docusaurus-plugin-docs-archive',
 
-    // Quan trọng: báo cho Docusaurus biết cần theo dõi thư mục docs
-    // để mỗi khi thêm/sửa file .md, dev server tự re-run loadContent()
     getPathsToWatch() {
-      return [path.join(docsDir, '**/*.{md,mdx}')];
+      return [path.join(docsDir, '**/*.{md,mdx}'), path.join(docsDir, '**/_category_.json')];
     },
 
     async loadContent() {
@@ -81,12 +128,14 @@ module.exports = function docsArchivePlugin(context) {
         if (!data.date) continue;
 
         const permalink = resolvePermalink(data, file, docsDir);
+        const category = resolveCategory(file, docsDir);
 
         posts.push({
           title: data.title || path.basename(file),
           date: String(data.date),
           permalink,
           tags: Array.isArray(data.tags) ? data.tags : [],
+          category, // {slug, label, position} hoặc null
         });
       }
 
@@ -97,6 +146,15 @@ module.exports = function docsArchivePlugin(context) {
 
     async contentLoaded({content, actions}) {
       const {createData, addRoute} = actions;
+      const {baseUrl, i18n} = context;
+      const {currentLocale, defaultLocale} = i18n;
+
+      // Locale mặc định (vi) -> không tiền tố: /archives
+      // Locale khác (en)     -> có tiền tố: /en/archives
+      // Nếu không làm bước này, route sinh ra luôn là /archives bất kể locale nào,
+      // trong khi <Link to="/archives"> ở navbar tự động thêm tiền tố locale hiện tại
+      // -> lúc build "en" sẽ tìm /en/archives, không thấy trang -> broken link, build fail.
+      const localePrefix = currentLocale === defaultLocale ? '' : `/${currentLocale}`;
 
       const postsJsonPath = await createData(
         'docs-archive-posts.json',
@@ -104,9 +162,11 @@ module.exports = function docsArchivePlugin(context) {
       );
 
       addRoute({
-        path: '/archives',
+        path: normalizeUrl([baseUrl, localePrefix, 'archives']),
         component: '@site/src/components/ArchivePage',
-        modules: {posts: postsJsonPath},
+        modules: {
+          posts: postsJsonPath,
+        },
         exact: true,
       });
     },

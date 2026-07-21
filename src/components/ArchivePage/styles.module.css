@@ -1,28 +1,42 @@
+/* src/components/ArchivePage/styles.module.css */
+
 .container {
-  max-width: 720px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 3rem 1.5rem 5rem;
 }
 
 .pageTitle {
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 800;
   margin-bottom: 2.5rem;
 }
 
-.empty {
-  color: var(--ifm-color-emphasis-700);
-}
-
-.yearBlock {
+.yearSection {
   margin-bottom: 2.5rem;
 }
 
-.year {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+.yearTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
   color: var(--ifm-color-primary);
+  margin-bottom: 1rem;
+}
+
+/* Nhóm category trong mỗi năm */
+.categoryGroup {
+  margin-left: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.categoryTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 0.75rem;
+  padding-left: 1.75rem;
 }
 
 .timeline {
@@ -30,42 +44,41 @@
   margin: 0;
   padding: 0;
   border-left: 2px solid var(--ifm-color-emphasis-300);
-  margin-left: 0.4rem;
+  margin-left: 0.5rem;
 }
 
-.item {
+.timelineItem {
   position: relative;
+  padding: 0.4rem 0 0.4rem 1.75rem;
   display: flex;
   align-items: baseline;
-  gap: 0.9rem;
-  padding: 0.55rem 0 0.55rem 1.5rem;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
-.dot {
+.timelineDot {
   position: absolute;
   left: -6px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0.9rem;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: var(--ifm-color-primary);
-  border: 2px solid var(--ifm-background-color);
 }
 
-.date {
-  flex: 0 0 auto;
-  width: 4.2rem;
+.timelineDate {
+  flex-shrink: 0;
+  width: 4.5rem;
   color: var(--ifm-color-emphasis-600);
   font-size: 0.9rem;
 }
 
-.link {
-  font-size: 1.02rem;
-  font-weight: 500;
+.timelineLink {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
   text-decoration: none;
 }
 
-.link:hover {
+.timelineLink:hover {
   text-decoration: underline;
 }

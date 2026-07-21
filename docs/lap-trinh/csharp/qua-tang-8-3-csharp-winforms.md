@@ -2,7 +2,9 @@
 id: qua-tang-8-3-csharp-winforms
 title: "Món Quà Tặng 8/3 Viết Bằng C#"
 sidebar_label: "Món Quà Tặng 8/3 (C#)"
+slug: /lap-trinh/csharp/qua-tang-8-3-csharp-winforms
 sidebar_position: 2
+date: 2012-03-02
 tags: [c#, winforms, đồ án, source code]
 ---
 

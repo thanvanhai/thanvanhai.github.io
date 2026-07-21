@@ -2,7 +2,9 @@
 id: tinh-tuan-cua-ngay-iso-8601
 title: "Tính Tuần Của Ngày Bất Kỳ Trong Năm? Theo Chuẩn ISO 8601 Và Globalization"
 sidebar_label: "Tính Tuần Theo ISO 8601"
-sidebar_position: 6
+slug: /lap-trinh/csharp/tinh-tuan-cua-ngay-iso-8601
+sidebar_position: 7
+date: 2023-07-08
 tags: [c#, sql server, datetime, iso 8601]
 ---
 

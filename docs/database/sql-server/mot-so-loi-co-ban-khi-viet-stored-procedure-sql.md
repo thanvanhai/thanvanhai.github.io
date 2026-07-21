@@ -3,8 +3,8 @@ id: loi-co-ban-khi-viet-stored-procedure-sql
 title: Một Số Lỗi Cơ Bản Khi Viết Stored Procedure Trong SQL
 sidebar_label: Lỗi Cơ Bản Khi Viết Stored Procedure
 slug: /database/sql-server/mot-so-loi-co-ban-khi-viet-stored-procedure-sql
-sidebar_position: 1
-date: 2026-07-18
+sidebar_position: 2
+date: 20224-08-10
 description: Tổng hợp 8 lỗi cơ bản, phổ biến khi viết Stored Procedure trong SQL Server và cách khắc phục.
 tags: [sql-server, stored-procedure, dynamic-sql, debug]
 ---
