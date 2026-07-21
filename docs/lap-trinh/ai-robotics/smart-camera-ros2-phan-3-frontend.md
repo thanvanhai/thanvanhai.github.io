@@ -2,7 +2,9 @@
 id: smart-camera-ros2-phan-3-frontend
 title: "Xây Dựng Hệ Thống Smart Camera Với ROS 2 - Phần 3: Xây Dựng Frontend"
 sidebar_label: "ROS 2 - Phần 3: Frontend"
-sidebar_position: 6
+slug: /lap-trinh/ai-robotics/smart-camera-ros2-phan-3-frontend
+sidebar_position: 9
+date: 2025-08-27
 tags: [ros2, php, laravel, filament, livewire, smart-camera, frontend]
 ---
 

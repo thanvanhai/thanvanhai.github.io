@@ -1,19 +1,14 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+tin-tuc:
+  label: Tin tức
+  permalink: /tin-tuc
+  description: Các bài viết tin tức, cập nhật mới nhất.
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+thong-bao:
+  label: Thông báo
+  permalink: /thong-bao
+  description: Thông báo chính thức từ Blog của Hải Còi.
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
-
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+su-kien:
+  label: Sự kiện
+  permalink: /su-kien
+  description: Các bài viết về sự kiện.

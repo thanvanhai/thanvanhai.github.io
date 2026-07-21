@@ -2,7 +2,9 @@
 id: smart-camera-ros2-phan-1-nen-tang
 title: "Xây Dựng Hệ Thống Smart Camera Với ROS 2 - Phần 1: Xây Dựng Nền Tảng ROS 2"
 sidebar_label: "ROS 2 - Phần 1: Nền Tảng"
-sidebar_position: 4
+slug: /lap-trinh/ai-robotics/smart-camera-ros2-phan-1-nen-tang
+sidebar_position: 7
+date: 2025-08-19
 tags: [ros2, python, yolo, smart-camera, robotics, colcon]
 ---
 

@@ -2,7 +2,9 @@
 id: web-serial-api-rfid-barcode
 title: "Web Serial API: Kết nối RFID/Barcode trực tiếp từ trình duyệt"
 sidebar_label: Web Serial API - RFID/Barcode
+slug: /lap-trinh/javascript/web-serial-api-rfid-barcode
 sidebar_position: 1
+date: 2026-05-26
 tags: [javascript, web-serial-api, hardware, rfid, barcode, automation]
 ---
 

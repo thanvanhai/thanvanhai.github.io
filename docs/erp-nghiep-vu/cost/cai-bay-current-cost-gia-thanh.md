@@ -2,7 +2,9 @@
 id: cai-bay-current-cost-gia-thanh
 title: "Cái Bẫy \"Current Cost\": Vì Sao Báo Cáo Giá Thành Của Bạn Có Thể Đang Sai Mà Không Ai Biết"
 sidebar_label: "Cái Bẫy \"Current Cost\""
+slug: /erp-nghiep-vu/cost/cai-bay-current-cost-gia-thanh
 sidebar_position: 1
+date: 2026-07-17
 tags: [erp, oracle, sql, manufacturing, costing, reporting]
 ---
 

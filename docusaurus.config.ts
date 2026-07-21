@@ -79,11 +79,19 @@ const config: Config = {
     ],
   ],
 
+  plugins: ['./src/plugins/docusaurus-plugin-docs-archive'],
+
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       // Tương đương "theme_mode: để trống → theo hệ điều hành" bên Jekyll
       respectPrefersColorScheme: true,
+    },
+    docs: {
+      sidebar: {
+        hideable: true,           // 👈 hiện nút mũi tên để thu gọn/mở rộng sidebar
+        autoCollapseCategories: true, // 👈 tự đóng category khác khi mở 1 category (tùy chọn)
+      },
     },
     navbar: {
       title: 'Blog của Hải Còi',
@@ -91,8 +99,8 @@ const config: Config = {
         alt: 'Hải Còi Logo',
         src: 'img/logo-light.png',
         srcDark: 'img/logo-dark.png',
-        width: 36,
-        height: 36,
+        width: 40,
+        height: 40,
       },
       items: [
         {
@@ -101,6 +109,7 @@ const config: Config = {
           position: 'left',
           label: 'Tutorial',
         },
+        { to: '/archives', label: 'Archive', position: 'left' }, 
         { to: '/blog', label: 'Blog', position: 'left' },
         {
           // Nút chuyển ngôn ngữ (tương đương language switcher đã bàn ở jekyll-polyglot)

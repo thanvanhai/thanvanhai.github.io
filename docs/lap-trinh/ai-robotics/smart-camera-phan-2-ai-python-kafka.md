@@ -2,7 +2,9 @@
 id: smart-camera-phan-2-ai-python-kafka
 title: "Xây Dựng Hệ Thống Camera Thông Minh - Phần 2: \"Đôi Mắt\" AI Với Python Và Kafka"
 sidebar_label: "Phần 2: AI Service Python & Kafka"
-sidebar_position: 3
+slug: /lap-trinh/ai-robotics/smart-camera-phan-2-ai-python-kafka
+sidebar_position: 6
+date: 2025-10-05
 tags: [python, kafka, yolo, ai, opencv, smart-camera, microservices]
 ---
 

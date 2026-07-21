@@ -2,7 +2,9 @@
 id: game-show-rong-vang
 title: "Game Show Rồng Vàng - Chương Trình Mô Phỏng Game Show Truyền Hình"
 sidebar_label: Game Show Rồng Vàng
+slug: /lap-trinh/java/game-show-rong-vang
 sidebar_position: 1
+date: 2012-02-27
 tags: [java, game, source-code, do-an]
 ---
 

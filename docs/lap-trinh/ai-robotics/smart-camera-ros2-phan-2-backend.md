@@ -2,7 +2,9 @@
 id: smart-camera-ros2-phan-2-backend
 title: "Xây Dựng Hệ Thống Smart Camera Với ROS 2 - Phần 2: Xây Dựng Backend"
 sidebar_label: "ROS 2 - Phần 2: Backend"
-sidebar_position: 5
+slug: /lap-trinh/ai-robotics/smart-camera-ros2-phan-2-backend
+sidebar_position: 8
+date: 2025-08-22
 tags: [ros2, python, fastapi, rabbitmq, smart-camera, backend, postgresql]
 ---
 

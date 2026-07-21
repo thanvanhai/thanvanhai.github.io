@@ -2,7 +2,9 @@
 id: smart-camera-phan-1-backend-dotnet
 title: "Xây Dựng Hệ Thống Camera Thông Minh - Phần 1: \"Bộ Não\" Backend Với .NET 8"
 sidebar_label: "Phần 1: Backend .NET 8"
-sidebar_position: 2
+slug: /lap-trinh/ai-robotics/smart-camera-phan-1-backend-dotnet
+sidebar_position: 5
+date: 2025-09-13
 tags: [dotnet, csharp, webapi, rabbitmq, smart-camera, backend, entity-framework]
 ---
 

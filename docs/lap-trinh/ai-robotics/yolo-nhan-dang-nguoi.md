@@ -2,7 +2,9 @@
 id: yolo-nhan-dang-nguoi
 title: Demo Sử Dụng YOLO Để Nhận Dạng Người Trong Video Hoặc Ảnh
 sidebar_label: Demo YOLO Nhận Dạng Người
+slug: /lap-trinh/ai-robotics/yolo-nhan-dang-nguoi
 sidebar_position: 1
+date: 2025-08-12
 tags: [python, yolo, opencv, computer-vision, object-detection, streamlit]
 ---
 
