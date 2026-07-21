@@ -1,1 +1,8 @@
-﻿{"label": "ERP Nghiệp vụ", "position": 2}
+﻿{
+  "label": "ERP Nghiệp vụ",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Kiến thức và kinh nghiệm triển khai nghiệp vụ ERP: Chuỗi cung ứng, Sản xuất, Tài chính kế toán."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "label": "Giá thành (Costing)",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Tính giá thành sản xuất, phân bổ chi phí trong ERP."
+  }
+}

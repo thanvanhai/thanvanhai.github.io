@@ -1,0 +1,8 @@
+﻿{
+  "label": "Kỹ thuật sản xuất (Engineering)",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "BOM, Routing và các nghiệp vụ kỹ thuật trước sản xuất."
+  }
+}

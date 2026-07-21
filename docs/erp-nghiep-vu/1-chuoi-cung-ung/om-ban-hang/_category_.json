@@ -1,0 +1,8 @@
+{
+  "label": "Bán hàng (SO/OM)",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Quy trình đơn hàng bán, xuất kho, giao hàng cho khách."
+  }
+}

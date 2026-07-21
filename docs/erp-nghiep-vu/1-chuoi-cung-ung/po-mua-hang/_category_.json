@@ -1,0 +1,8 @@
+{
+  "label": "Mua hàng (PO)",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Quy trình đặt hàng, duyệt mua, nhận hàng từ nhà cung cấp."
+  }
+}

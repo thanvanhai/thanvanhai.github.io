@@ -1,0 +1,8 @@
+{
+  "label": "MES - Giám sát thiết bị (PLC/SCADA)",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Kết nối PLC, cảm biến IoT và giám sát real-time trạng thái máy móc, OEE."
+  }
+}

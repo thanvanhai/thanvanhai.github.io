@@ -1,0 +1,8 @@
+{
+  "label": "Tồn kho (INV - Inventory)",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Quản lý tồn kho, nhập xuất, kiểm kê trong ERP."
+  }
+}

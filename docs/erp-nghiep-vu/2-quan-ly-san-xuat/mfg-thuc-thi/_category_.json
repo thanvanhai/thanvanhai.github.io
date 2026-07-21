@@ -1,0 +1,8 @@
+﻿{
+  "label": "Lệnh sản xuất (Job/Work Order - ERP)",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Quản lý Job, Work Order và tiến độ sản xuất ở tầng ERP."
+  }
+}

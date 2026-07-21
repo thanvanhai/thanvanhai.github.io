@@ -1,0 +1,8 @@
+﻿{
+  "label": "Quản lý sản xuất",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Nghiệp vụ kỹ thuật, lệnh sản xuất tầng ERP và thực thi sản xuất MES trên xưởng."
+  }
+}
