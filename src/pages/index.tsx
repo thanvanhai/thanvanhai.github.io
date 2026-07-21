@@ -17,6 +17,18 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs">
+            Khám phá tài liệu 📚
+          </Link>
+          <Link
+            className="button button--secondary button--lg margin-left--md"
+            to="/blog">
+            Xem Blog ✍️
+          </Link>
+        </div>
       </div>
     </header>
   );
@@ -26,8 +38,8 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={siteConfig.title}
+      description="Chia sẻ kinh nghiệm lập trình, ERP, Database và các thủ thuật thực chiến từ Hải Còi.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

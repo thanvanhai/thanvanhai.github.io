@@ -82,7 +82,7 @@ const config: Config = {
   plugins: ['./src/plugins/docusaurus-plugin-docs-archive'],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/og-banner-1280x640.png',
     colorMode: {
       // Tương đương "theme_mode: để trống → theo hệ điều hành" bên Jekyll
       respectPrefersColorScheme: true,
@@ -107,10 +107,11 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Tài liệu',
         },
-        { to: '/archives', label: 'Archive', position: 'left' }, 
+        { to: '/archives', label: 'Lưu trữ', position: 'left' },
         { to: '/blog', label: 'Blog', position: 'left' },
+        { to: '/about', label: 'Giới thiệu', position: 'left' },
         {
           // Nút chuyển ngôn ngữ (tương đương language switcher đã bàn ở jekyll-polyglot)
           type: 'localeDropdown',
@@ -127,8 +128,12 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Tài liệu',
           items: [
+            {
+              label: 'Tất cả tài liệu',
+              to: '/docs',
+            },
           ],
         },
         {

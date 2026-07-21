@@ -1,0 +1,79 @@
+.tree {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-card-border-radius);
+  overflow: hidden;
+}
+
+.group + .group {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.parentRow,
+.childRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  cursor: pointer;
+}
+
+.parentRow {
+  background: var(--ifm-color-emphasis-100);
+  font-weight: 600;
+}
+
+.parentRow:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.childRow {
+  padding-left: 42px;
+  cursor: default;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.childRow:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.rowLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--ifm-color-emphasis-500);
+}
+
+.parentLabel {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.childLabel {
+  font-weight: 500;
+}
+
+.meta {
+  color: var(--ifm-color-emphasis-500);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+.chevron {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--ifm-color-emphasis-500);
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}

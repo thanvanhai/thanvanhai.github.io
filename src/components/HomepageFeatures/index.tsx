@@ -11,32 +11,32 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Kiến thức Lập trình',
+    Svg: require('@site/static/img/feature-programming.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Kinh nghiệm thực chiến với C#, Java, JavaScript, PHP, AI-Robotics
+        và AutoIT từ các dự án thực tế.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Giải pháp ERP',
+    Svg: require('@site/static/img/feature-erp.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Chia sẻ nghiệp vụ, quy trình triển khai và các bài toán thường gặp
+        khi xây dựng hệ thống ERP.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Database & Backend',
+    Svg: require('@site/static/img/feature-database.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        SQL Server, Stored Procedure, tối ưu truy vấn và các lỗi thường
+        gặp khi làm việc với dữ liệu.
       </>
     ),
   },

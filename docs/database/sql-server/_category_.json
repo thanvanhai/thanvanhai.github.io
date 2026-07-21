@@ -1,1 +1,6 @@
-﻿{"label": "SQL Server", "position": 3}
+﻿{"label": "SQL Server", "position": 3,
+ "link": {
+    "type": "generated-index",
+    "description": "Tổng hợp các bài viết chia sẻ kiến thức về SQL Server."
+  }
+}

@@ -1,0 +1,22 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <!-- database cylinder -->
+  <ellipse cx="64" cy="32" rx="36" ry="16" fill="url(#g1)"/>
+  <rect x="28" y="32" width="72" height="56" fill="#1E293B" stroke="url(#g1)" stroke-width="2"/>
+  <ellipse cx="64" cy="88" rx="36" ry="16" fill="#1E293B" stroke="url(#g1)" stroke-width="2"/>
+  <ellipse cx="64" cy="32" rx="36" ry="16" fill="none" stroke="#22D3EE" stroke-width="1.5" opacity="0.6"/>
+  <!-- inner lines representing data -->
+  <line x1="40" y1="52" x2="88" y2="52" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+  <line x1="40" y1="64" x2="88" y2="64" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+  <line x1="40" y1="76" x2="72" y2="76" stroke="#22D3EE" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="84" cy="76" r="4" fill="#22D3EE"/>
+</svg>

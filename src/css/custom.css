@@ -28,3 +28,56 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+/* Ẩn các mục tài liệu được đánh dấu ẩn ở cả menu trái và thẻ Card */
+.theme-doc-sidebar-item-hidden {
+  display: none !important;
+}
+
+/* ==== Thu gọn chiều cao footer ==== */
+footer.footer {
+  padding: 1rem 0 !important;
+}
+
+.footer__links {
+  margin-bottom: 0.5rem !important;
+}
+
+.footer__col {
+  margin-bottom: 0 !important;
+}
+
+.footer__title {
+  margin-bottom: 0.4rem !important;
+  font-size: 0.9rem !important;
+}
+
+.footer__items {
+  margin: 0 !important;
+}
+
+.footer__item {
+  margin-bottom: 0 !important;
+}
+
+.footer__link-item {
+  display: inline-block;
+  padding: 0.15rem 0 !important;
+  line-height: 1.3 !important;
+}
+
+.footer__bottom {
+  margin-top: 0.5rem !important;
+  padding-top: 0.5rem !important;
+  font-size: 0.8rem !important;
+}
+
+/* ==== Cột "Kết nối" (cột thứ 3): GitHub + Email nằm chung 1 hàng ==== */
+.footer__col:nth-child(3) .footer__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+}
+
+.footer__col:nth-child(3) .footer__item {
+  margin: 0 !important;
+}
