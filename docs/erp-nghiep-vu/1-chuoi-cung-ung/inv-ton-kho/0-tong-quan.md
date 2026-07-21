@@ -67,6 +67,6 @@ Trang này tổng hợp lộ trình các bài viết về nghiệp vụ **Tồn 
 ## 9. Tích hợp & lỗi thường gặp
 
 - [ ] Đồng bộ tồn kho giữa các module (INV ↔ PO ↔ SO ↔ MFG)
-- [x] [Lỗi quy đổi đơn vị tính (UOM) — Pattern lỗi phổ biến khiến báo cáo ERP sai lệch](./loi-quy-doi-uom.md)
+- [x] [Lỗi quy đổi đơn vị tính (UOM) — Pattern lỗi phổ biến khiến báo cáo ERP sai lệch](./loi-quy-doi-uom-thuong-gap.md)
 - [ ] Xử lý âm kho (Negative Inventory)
 - [ ] Xử lý tồn kho khi đổi kỳ kế toán (Period Close)
