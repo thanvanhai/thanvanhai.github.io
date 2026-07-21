@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -89,7 +89,10 @@ const config: Config = {
       title: 'Blog của Hải Còi',
       logo: {
         alt: 'Hải Còi Logo',
-        src: 'img/avatar.webp', // tương đương "avatar: /assets/img/avatar.webp"
+        src: 'img/logo-light.png',
+        srcDark: 'img/logo-dark.png',
+        width: 36,
+        height: 36,
       },
       items: [
         {
@@ -98,7 +101,7 @@ const config: Config = {
           position: 'left',
           label: 'Tutorial',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        { to: '/blog', label: 'Blog', position: 'left' },
         {
           // Nút chuyển ngôn ngữ (tương đương language switcher đã bàn ở jekyll-polyglot)
           type: 'localeDropdown',
@@ -116,7 +119,7 @@ const config: Config = {
       links: [
         {
           title: 'Docs',
-          items: [           
+          items: [
           ],
         },
         {
