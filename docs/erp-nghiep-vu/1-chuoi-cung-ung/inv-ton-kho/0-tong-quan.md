@@ -13,8 +13,8 @@ Trang này tổng hợp lộ trình các bài viết về nghiệp vụ **Tồn 
 
 ## 1. Nghiệp vụ nhập kho
 
-- [ ] Nhập kho từ mua hàng (Receipt from PO)
-- [ ] Nhập kho từ sản xuất (Receipt from Work Order)
+- [x] [Nhập kho từ mua hàng (Receipt from PO)](./nhap-kho-tu-mua-hang-po.md)
+- [x] [Nhập kho từ sản xuất (Receipt from Work Order)](./nhap-kho-tu-san-xuat-wo.md)
 - [ ] Nhập kho trả hàng từ khách (Sales Return)
 - [ ] Nhập kho điều chỉnh (Inventory Adjustment - tăng)
 
