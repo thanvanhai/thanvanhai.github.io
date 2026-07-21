@@ -146,23 +146,21 @@ module.exports = function docsArchivePlugin(context) {
 
     async contentLoaded({content, actions}) {
       const {createData, addRoute} = actions;
-      const {baseUrl, i18n} = context;
-      const {currentLocale, defaultLocale} = i18n;
+      const {baseUrl} = context;
 
-      // Locale mặc định (vi) -> không tiền tố: /archives
-      // Locale khác (en)     -> có tiền tố: /en/archives
-      // Nếu không làm bước này, route sinh ra luôn là /archives bất kể locale nào,
-      // trong khi <Link to="/archives"> ở navbar tự động thêm tiền tố locale hiện tại
-      // -> lúc build "en" sẽ tìm /en/archives, không thấy trang -> broken link, build fail.
-      const localePrefix = currentLocale === defaultLocale ? '' : `/${currentLocale}`;
-
+      // QUAN TRỌNG: KHÔNG tự thêm tiền tố locale (vd "/en") ở đây.
+      // Khi Docusaurus build 1 locale không phải mặc định, nó đã tự động
+      // gắn sẵn locale vào `context.baseUrl` (vd baseUrl = "/en/") trước khi
+      // truyền vào plugin. Nếu mình cộng thêm locale thủ công như bản trước,
+      // route sẽ bị nhân đôi thành "/en/en/archives" -> vẫn broken link,
+      // chỉ là bị lệch theo hướng ngược lại.
       const postsJsonPath = await createData(
         'docs-archive-posts.json',
         JSON.stringify(content.posts),
       );
 
       addRoute({
-        path: normalizeUrl([baseUrl, localePrefix, 'archives']),
+        path: normalizeUrl([baseUrl, 'archives']),
         component: '@site/src/components/ArchivePage',
         modules: {
           posts: postsJsonPath,

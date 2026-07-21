@@ -3,7 +3,7 @@ slug: tieu-su-steve-jobs-vs-apple
 title: "Tiểu Sử Steve Jobs vs Apple"
 authors: [haicoi]
 tags: [tin-tuc, steve-jobs, apple, lich-su, cau-chuyen]
-date: 2026-07-18T09:00:00+07:00
+date: 2020-01-02T09:00:00+07:00
 ---
 
 ![Timeline Steve Jobs và Apple](https://haicoiblog.files.wordpress.com/2020/01/img_5399.jpg)

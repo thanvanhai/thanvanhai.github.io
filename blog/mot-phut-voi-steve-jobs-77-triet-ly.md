@@ -3,7 +3,7 @@ slug: mot-phut-voi-steve-jobs-77-triet-ly
 title: "Một Phút Với Steve Jobs - 77 Triết Lý Truyền Cảm Hứng Của \"Phù Thủy Công Nghệ\""
 authors: [haicoi]
 tags: [tin-tuc, steve-jobs, apple, trich-dan, cam-hung, cong-nghe]
-date: 2026-05-26T08:00:00+07:00
+date: 2020-01-04T08:00:00+07:00
 ---
 
 ## Sân Khấu Số 1: Tìm Ra "Sức Mạnh Mình Không Có" Từ Tập Thể

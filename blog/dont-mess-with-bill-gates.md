@@ -3,7 +3,7 @@ slug: dont-mess-with-bill-gates
 title: "Don't Mess with Bill Gates"
 authors: [haicoi]
 tags: [tin-tuc, bill-gates, microsoft, suu-tam]
-date: 2026-07-18T08:00:00+07:00
+date: 2015-05-15T08:00:00+07:00
 ---
 
 ![Bill Gates](https://haicoiblog.files.wordpress.com/2015/05/1298910119712812001_574_0.jpg)
