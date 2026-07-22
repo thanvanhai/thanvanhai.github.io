@@ -1,5 +1,6 @@
 import type {ReactNode} from 'react';
 import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
@@ -7,6 +8,7 @@ type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: ReactNode;
+  link: string;
 };
 
 const FeatureList: FeatureItem[] = [
@@ -19,6 +21,7 @@ const FeatureList: FeatureItem[] = [
         và AutoIT từ các dự án thực tế.
       </>
     ),
+    link: '/docs/lap-trinh',
   },
   {
     title: 'Giải pháp ERP',
@@ -29,6 +32,7 @@ const FeatureList: FeatureItem[] = [
         khi xây dựng hệ thống ERP.
       </>
     ),
+    link: '/docs/erp-nghiep-vu',
   },
   {
     title: 'Database & Backend',
@@ -39,19 +43,22 @@ const FeatureList: FeatureItem[] = [
         gặp khi làm việc với dữ liệu.
       </>
     ),
+    link: '/docs/database',
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, Svg, description, link}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
+      <Link to={link} className={styles.featureLink}>
+        <div className="text--center">
+          <Svg className={styles.featureSvg} role="img" />
+        </div>
+        <div className="text--center padding-horiz--md">
+          <Heading as="h3">{title}</Heading>
+          <p>{description}</p>
+        </div>
+      </Link>
     </div>
   );
 }

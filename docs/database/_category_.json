@@ -1,1 +1,10 @@
-﻿{"label": "Database", "position": 1}
+﻿{
+    "label": "Database",
+    "position": 1,
+    "link": {
+        "type": "generated-index",
+        "title": "Database",
+        "slug": "/database",
+        "description": "Kiến thức và kinh nghiệm triển khai cơ sở dữ liệu: SQL Server, MySQL, PostgreSQL, MongoDB, Redis, Oracle, MariaDB, SQLite."
+    }
+}

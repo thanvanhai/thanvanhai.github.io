@@ -1,1 +1,10 @@
-﻿{"label": "Lập trình", "position": 3}
+﻿{
+  "label": "Lập trình",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Lập trình",
+    "slug": "/lap-trinh",
+    "description": "Kiến thức và kinh nghiệm triển khai lập trình: C#, Java, JavaScript, PHP, AI-Robotics và AutoIT."
+  }
+}
