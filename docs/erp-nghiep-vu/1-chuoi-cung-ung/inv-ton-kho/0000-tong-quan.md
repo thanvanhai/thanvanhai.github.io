@@ -141,6 +141,6 @@ Sơ đồ trên mô tả **3 luồng Logistics vật lý** và **1 luồng hạc
 ## 9. Tích hợp & lỗi thường gặp
 
 - [x] [Đồng bộ tồn kho giữa các module (INV ↔ PO ↔ SO ↔ MFG)](./9000-dong-bo-ton-kho-giua-cac-module-inv-po-so-mfg.md)
-- [x] [Lỗi quy đổi đơn vị tính (UOM) — Pattern lỗi phổ biến khiến báo cáo ERP sai lệch](./30-loi-quy-doi-uom-thuong-gap.md)
+- [x] [Lỗi quy đổi đơn vị tính (UOM) — Pattern lỗi phổ biến khiến báo cáo ERP sai lệch](./9010-loi-quy-doi-uom-thuong-gap.md)
 - [x] [Xử lý âm kho (Negative Inventory)](./9020-xu-ly-am-kho-negative-inventory.md)
 - [x] [Xử lý tồn kho khi đổi kỳ kế toán (Period Close)](./9030-xu-ly-ton-kho-khi-doi-ky-ke-toan-period-close.md)
