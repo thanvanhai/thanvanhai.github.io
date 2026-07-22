@@ -39,7 +39,7 @@ Blog này là nơi mình ghi lại và chia sẻ những kiến thức, kinh ngh
 
 Triển khai và phát triển hệ thống **Oracle ERP** cho tập đoàn, phục vụ vận hành sản xuất và quản trị doanh nghiệp quy mô lớn.
 
-### [Trường Đại học Công nghệ Đồng Nai (DNTU)](https://dntu.edu.vn/)
+### [DNTU - Trường Đại học Công nghệ Đồng Nai](https://dntu.edu.vn/)
 **05/2025 — 01/2026**
 
 Xây dựng hệ thống quản lý nội bộ bằng **PHP/Laravel**, bao gồm:

@@ -3,7 +3,7 @@ id: quan-ly-nhieu-kho-nhieu-dia-diem-multi-warehouse
 title: Nghiệp vụ Quản lý Nhiều kho, Nhiều địa điểm (Multi-Warehouse) — Thiết lập Sites, Kho Ký gửi, Gia công ngoài và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Quản lý Nhiều kho (Multi-Warehouse)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/quan-ly-nhieu-kho
-sidebar_position: 10
+sidebar_position: 3020
 date: 2026-07-31
 tags: [erp, inventory, multi-warehouse, multi-site, consignment, subcontracting, sql-audit, oracle-ebs, epicor]
 ---

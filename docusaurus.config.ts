@@ -15,7 +15,10 @@ const config: Config = {
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
-
+  // 👇 thêm dòng này — báo cho markdown parser hiểu cú pháp ```mermaid
+  markdown: {
+    mermaid: true,
+  },
   // Set the production url of your site here
   url: 'https://thanvanhai.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -97,6 +100,8 @@ const config: Config = {
   ],
 
   plugins: ['./src/plugins/docusaurus-plugin-docs-archive'],
+  // 👇 thêm dòng này — đăng ký theme render mermaid
+  themes: ['@docusaurus/theme-mermaid'],
 
   themeConfig: {
     image: 'img/og-banner-1280x640.png',

@@ -3,7 +3,7 @@ id: xuat-kho-tra-nha-cung-cap-rtv
 title: Nghiệp vụ Xuất kho trả Nhà cung cấp (Return to Vendor - RTV) — Luồng hạch toán, Đối chiếu Debit Memo và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Xuất kho trả NCC (RTV)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/xuat-kho-tra-nha-cung-cap
-sidebar_position: 7
+sidebar_position: 2020
 date: 2026-07-28
 tags: [erp, inventory, purchasing, rtv, debit-memo, costing, sql-audit, oracle-ebs, epicor]
 ---

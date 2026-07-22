@@ -3,7 +3,7 @@ id: chuyen-vi-tri-trong-kho-bin-transfer
 title: Nghiệp vụ Chuyển vị trí trong kho (Bin/Location Transfer) — Vận hành WMS, Quy trình Quét mã vạch (Barcode) và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Chuyển vị trí trong kho (Bin Transfer)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/chuyen-vi-tri-trong-kho
-sidebar_position: 9
+sidebar_position: 3010
 date: 2026-07-30
 tags: [erp, inventory, bin-transfer, locator, wms, barcode, sql-audit, oracle-ebs, epicor]
 ---

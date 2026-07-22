@@ -1,1 +1,8 @@
-﻿{"label": "MongoDB", "position": 1}
+﻿{"label": "MongoDB", "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "MongoDB",
+    "slug": "/database/mongodb",
+    "description": "Tài liệu về cơ sở dữ liệu MongoDB."
+  }
+}

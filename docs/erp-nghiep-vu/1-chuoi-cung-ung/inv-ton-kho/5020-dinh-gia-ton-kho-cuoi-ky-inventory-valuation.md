@@ -3,7 +3,7 @@ id: dinh-gia-ton-kho-cuoi-ky-inventory-valuation
 title: Định giá Tồn kho Cuối kỳ (Inventory Valuation) — Đối chiếu Kho và GL, Trích lập dự phòng (NRV) và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Định giá Tồn kho Cuối kỳ
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/dinh-gia-cuoi-ky
-sidebar_position: 18
+sidebar_position: 5020
 date: 2026-08-07
 tags: [erp, inventory, costing, valuation, period-close, nrv, subledger-reconciliation, sql-audit, oracle-ebs, epicor]
 ---
@@ -174,4 +174,3 @@ ORDER BY days_inactive DESC;
 - [ ] **Tự động quét kiểm tra giao dịch lỗi trước khi Close:** Thiết lập điều kiện chặn (Validation Rule) trên màn hình khóa sổ kỳ kế toán kho (`Period Closing`), chặn không cho phép bấm nút Khóa sổ nếu hệ thống quét thấy vẫn còn giao dịch kho bị lỗi, chưa Post sang GL (Kịch bản 1).
 - [ ] **Lập trình báo cáo định tuổi tồn kho tự động (Inventory Aging Engine):** Xây dựng báo cáo tự động tính toán số ngày không phát sinh giao dịch của vật tư, làm cơ sở tự động gợi ý giá trị trích lập dự phòng giảm giá hàng tồn kho theo tiêu chuẩn kiểm toán (Kịch bản 2).
 - [ ] **Khóa cứng ngày hạch toán sau khi đóng sổ:** Khi kỳ kế toán đã bấm Khóa sổ (`Closed`), lập trình cơ chế khóa cứng Database, chặn đứng mọi hành vi tạo phiếu xuất/nhập lùi ngày giao dịch (Backdated) về kỳ đã đóng đó.
-```

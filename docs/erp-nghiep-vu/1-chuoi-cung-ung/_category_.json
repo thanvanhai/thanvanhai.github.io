@@ -3,6 +3,8 @@
   "position": 1,
   "link": {
     "type": "generated-index",
+    "title": "Chuỗi cung ứng (SCM)",
+    "slug": "/erp-nghiep-vu/1-chuoi-cung-ung",
     "description": "Nghiệp vụ Tồn kho, Mua hàng, Bán hàng trong hệ thống ERP."
   }
 }

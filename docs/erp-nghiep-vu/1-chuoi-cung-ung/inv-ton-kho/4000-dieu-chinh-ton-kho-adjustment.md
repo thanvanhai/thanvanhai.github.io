@@ -3,7 +3,7 @@ id: dieu-chinh-ton-kho-adjustment
 title: Nghiệp vụ Điều chỉnh Tồn kho (Inventory Adjustment) — Cơ chế định giá, Quản lý Reason Code và 3 "Kẽ hở" gian lận tài sản
 sidebar_label: Điều chỉnh Tồn kho (Adjustment)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/dieu-chinh-ton-kho
-sidebar_position: 12
+sidebar_position: 4000
 date: 2026-07-25
 tags: [erp, inventory, adjustment, reason-code, costing, accounting, fraud-control]
 ---

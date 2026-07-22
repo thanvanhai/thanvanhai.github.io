@@ -3,6 +3,8 @@
   "position": 2,
   "link": {
     "type": "generated-index",
+    "title": "Mua hàng (PO)",
+    "slug": "/erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang",
     "description": "Quy trình đặt hàng, duyệt mua, nhận hàng từ nhà cung cấp."
   }
 }

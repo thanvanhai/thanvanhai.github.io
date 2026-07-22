@@ -3,7 +3,7 @@ id: kiem-ke-dinh-ky-cycle-count
 title: Nghiệp vụ Kiểm kê Định kỳ (Cycle Counting) — Phân tích ABC, Đóng băng tồn kho và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Kiểm kê Định kỳ (Cycle Count)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/kiem-ke-dinh-ky
-sidebar_position: 13
+sidebar_position: 4010
 date: 2026-08-02
 tags: [erp, inventory, cycle-count, abc-analysis, freeze-inventory, variance, sql-audit, oracle-ebs, epicor]
 ---

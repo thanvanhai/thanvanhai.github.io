@@ -3,7 +3,7 @@ id: cau-truc-zone-aisle-rack-bin-wms
 title: Cấu trúc Zone - Aisle - Rack - Bin (WMS) — Thiết kế không gian, Chiến lược Putaway và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Cấu trúc Ô kệ WMS
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/cau-truc-o-ke-wms
-sidebar_position: 11
+sidebar_position: 3030
 date: 2026-08-01
 tags: [erp, inventory, wms, zone, rack, bin, locator, putaway, sql-audit, oracle-ebs, epicor]
 ---

@@ -3,7 +3,7 @@ id: xuat-kho-cho-san-xuat-bom
 title: Nghiệp vụ Xuất kho cho Sản xuất (Issue for Work Order) — Quy trình BOM, Hạch toán WIP và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Xuất kho cho Sản xuất
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/xuat-kho-cho-san-xuat
-sidebar_position: 6
+sidebar_position: 2010
 date: 2026-07-27
 tags: [erp, inventory, work-order, bom, wip, accounting, sql-audit, oracle-ebs, epicor]
 ---

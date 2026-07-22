@@ -3,7 +3,7 @@ id: loi-quy-doi-uom-erp
 title: Lỗi quy đổi đơn vị tính (UOM) — Pattern lỗi phổ biến khiến báo cáo ERP sai lệch
 sidebar_label: Lỗi quy đổi đơn vị tính (UOM)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/loi-quy-doi-uom-thuong-gap
-sidebar_position: 31
+sidebar_position: 9010
 date: 2026-07-21
 tags: [erp, inventory, uom, epicor, report, data-integrity]
 ---

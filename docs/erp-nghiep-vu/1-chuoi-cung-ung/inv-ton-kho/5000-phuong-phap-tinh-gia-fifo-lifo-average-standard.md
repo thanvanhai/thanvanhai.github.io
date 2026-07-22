@@ -3,7 +3,7 @@ id: phuong-phap-tinh-gia-fifo-lifo-average-standard
 title: Các phương pháp Tính giá hàng Tồn kho — Standard Cost, Average, FIFO, LIFO và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Phương pháp Tính giá
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/phuong-phap-tinh-gia
-sidebar_position: 16
+sidebar_position: 5000
 date: 2026-08-05
 tags: [erp, inventory, costing, standard-cost, average-cost, fifo, lifo, cost-elements, sql-audit, oracle-ebs, epicor]
 ---

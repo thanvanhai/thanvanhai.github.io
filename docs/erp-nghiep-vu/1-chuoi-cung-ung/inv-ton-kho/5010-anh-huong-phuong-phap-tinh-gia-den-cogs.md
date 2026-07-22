@@ -3,7 +3,7 @@ id: anh-huong-phuong-phap-tinh-gia-den-cogs
 title: Ảnh hưởng của Phương pháp Tính giá đến Giá vốn Hàng bán (COGS) — Biến động biên lợi nhuận, Bài toán phân bổ và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Ảnh hưởng đến Giá vốn (COGS)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/anh-huong-den-cogs
-sidebar_position: 17
+sidebar_position: 5010
 date: 2026-08-06
 tags: [erp, inventory, costing, cogs, profit-and-loss, standard-cost, average-cost, fifo, variance-allocation, sql-audit, oracle-ebs, epicor]
 ---

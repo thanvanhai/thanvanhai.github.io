@@ -3,7 +3,7 @@ id: nhap-kho-tra-hang-khach-rma
 title: Nghiệp vụ Nhập kho Trả hàng từ Khách (Sales Return) — Quy trình RMA, Định giá hàng trả lại và 3 "Cú lừa" kế toán
 sidebar_label: Nhập kho trả hàng từ Khách
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/nhap-kho-tra-hang-khach
-sidebar_position: 4
+sidebar_position: 1020
 date: 2026-07-24
 tags: [erp, inventory, sales-return, rma, costing, credit-memo, accounting]
 ---

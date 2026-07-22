@@ -3,6 +3,8 @@
   "position": 3,
   "link": {
     "type": "generated-index",
+    "title": "Bán hàng (SO/OM)",
+    "slug": "/erp-nghiep-vu/1-chuoi-cung-ung/om-ban-hang",
     "description": "Quy trình đơn hàng bán, xuất kho, giao hàng cho khách."
   }
 }

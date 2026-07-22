@@ -3,6 +3,8 @@
   "position": 1,
   "link": {
     "type": "generated-index",
+    "title": "Tồn kho (INV - Inventory)",
+    "slug": "/erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho",
     "description": "Quản lý tồn kho, nhập xuất, kiểm kê trong ERP."
   }
 }

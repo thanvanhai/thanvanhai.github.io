@@ -3,7 +3,7 @@ id: nhap-kho-tu-mua-hang-po
 title: Nghiệp vụ Nhập kho từ PO (Receipt from PO) — Luồng dữ liệu, Hạch toán và 3 "Bẫy" thực chiến
 sidebar_label: Nhập kho từ PO
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/nhap-kho-tu-po
-sidebar_position: 2
+sidebar_position: 1000
 date: 2026-07-22
 tags: [erp, inventory, purchase-order, po-receipt, accounting, costing]
 ---

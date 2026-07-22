@@ -3,6 +3,8 @@
   "position": 4,
   "link": {
     "type": "generated-index",
+    "title": "MES - Truy xuất nguồn gốc (Traceability)",
+    "slug": "/erp-nghiep-vu/2-quan-ly-san-xuat/mes-truy-xuat-nguon-goc",
     "description": "Truy vết chi tiết từng lô sản xuất, nguyên liệu và thành phẩm."
   }
 }

@@ -3,7 +3,7 @@ id: xu-ly-chenh-lech-kiem-ke-count-variance
 title: Xử lý Chênh lệch Kiểm kê (Count Variance) — Cơ chế Dung sai (Tolerance), Hạch toán hao hụt và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Xử lý Chênh lệch Kiểm kê
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/xu-ly-chenh-lech
-sidebar_position: 15
+sidebar_position: 4030
 date: 2026-08-04
 tags: [erp, inventory, cycle-count, physical-inventory, count-variance, tolerance, costing, sql-audit, oracle-ebs, epicor]
 ---

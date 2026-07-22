@@ -3,7 +3,7 @@ id: kiem-ke-toan-bo-physical-inventory
 title: Nghiệp vụ Kiểm kê Toàn bộ (Physical Inventory) — Quy trình Tag Counting, Đóng băng giao dịch và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Kiểm kê Toàn bộ (Physical Inventory)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/kiem-ke-toan-bo
-sidebar_position: 14
+sidebar_position: 4020
 date: 2026-08-03
 tags: [erp, inventory, physical-inventory, tag-counting, system-lockout, audit, sql-audit, oracle-ebs, epicor]
 ---

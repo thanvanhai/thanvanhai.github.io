@@ -3,6 +3,8 @@
   "position": 1,
   "link": {
     "type": "generated-index",
+    "title": "Kỹ thuật sản xuất (Engineering)",
+    "slug": "/erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat",
     "description": "BOM, Routing và các nghiệp vụ kỹ thuật trước sản xuất."
   }
 }

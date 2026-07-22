@@ -3,7 +3,7 @@ id: nhap-kho-tu-san-xuat-wo
 title: Nghiệp vụ Nhập kho từ Sản xuất (Receipt from Work Order) — WIP, Kế toán giá thành và 3 "Bẫy" thực chiến
 sidebar_label: Nhập kho từ Sản xuất
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/nhap-kho-tu-wo
-sidebar_position: 3
+sidebar_position: 1010
 date: 2026-07-23
 tags: [erp, inventory, work-order, production, costing, wip, accounting]
 ---
