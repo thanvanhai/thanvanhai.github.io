@@ -77,6 +77,10 @@ const config: Config = {
           showReadingTime: true,
           // Tương đương "paginate: 10" bên Jekyll
           postsPerPage: 10,
+          // 👈 thêm dòng này — hiện toàn bộ bài viết ở sidebar "Recent posts"  
+          //blogSidebarCount: 'ALL', 
+          // hoặc: hiện tối đa 10 bài
+          blogSidebarCount: 10,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
@@ -93,8 +97,8 @@ const config: Config = {
           customCss: './src/css/custom.css',
         },
         // Tương đương "google.id" bên Jekyll analytics — điền GA4 measurement ID nếu có
-        googleAnalytics: undefined,
-        // gtag: { trackingID: 'G-XXXXXXX' },
+        //googleAnalytics: undefined,
+        gtag: { trackingID: 'G-G-49J8NPZR3L' },
       } satisfies Preset.Options,
     ],
   ],
