@@ -98,7 +98,7 @@ const config: Config = {
         },
         // Tương đương "google.id" bên Jekyll analytics — điền GA4 measurement ID nếu có
         //googleAnalytics: undefined,
-        gtag: { trackingID: 'G-G-49J8NPZR3L' },
+        gtag: { trackingID: 'G-49J8NPZR3L' },
       } satisfies Preset.Options,
     ],
   ],
