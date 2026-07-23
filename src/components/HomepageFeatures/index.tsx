@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
@@ -17,8 +17,8 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/feature-programming.svg').default,
     description: (
       <>
-        Kinh nghiệm thực chiến với C#, Java, JavaScript, PHP, AI-Robotics
-        và AutoIT từ các dự án thực tế.
+        Kinh nghiệm thực chiến với C# (.NET), Java (Spring Boot),  JavaScript/TypeScript, PHP, Python,
+        AI-Robotics và AutoIT từ các dự án thực tế.
       </>
     ),
     link: '/docs/lap-trinh',
@@ -28,8 +28,8 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/feature-erp.svg').default,
     description: (
       <>
-        Chia sẻ nghiệp vụ, quy trình triển khai và các bài toán thường gặp
-        khi xây dựng hệ thống ERP.
+        Chia sẻ nghiệp vụ, quy trình triển khai và bài toán thực tế trên
+        Oracle EBS, Epicor, SAP và Microsoft Dynamics, Odoo.
       </>
     ),
     link: '/docs/erp-nghiep-vu',
@@ -39,15 +39,15 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/feature-database.svg').default,
     description: (
       <>
-        SQL Server, Stored Procedure, tối ưu truy vấn và các lỗi thường
-        gặp khi làm việc với dữ liệu.
+        SQL Server, Oracle PL/SQL, MongoDB và PostgreSQL — tối ưu truy vấn, indexing
+        và các lỗi thường gặp khi làm việc với dữ liệu.
       </>
     ),
     link: '/docs/database',
   },
 ];
 
-function Feature({title, Svg, description, link}: FeatureItem) {
+function Feature({ title, Svg, description, link }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <Link to={link} className={styles.featureLink}>

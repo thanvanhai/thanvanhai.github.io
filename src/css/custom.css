@@ -78,6 +78,30 @@ footer.footer {
   gap: 0 1.25rem;
 }
 
-.footer__col:nth-child(3) .footer__item {
-  margin: 0 !important;
+/* Ép row thành flex layout thật, không dùng % cột nữa */
+.blog-wrapper .row {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+/* Sidebar trái: cố định width, không co giãn */
+.blog-wrapper aside.col--3 {
+  flex: 0 0 220px;
+  max-width: 220px;
+  width: 220px;
+}
+
+/* Content ở giữa (bài viết): chiếm hết phần còn lại */
+.blog-wrapper .row > .col--9,
+.blog-wrapper .row > article {
+  flex: 1 1 auto;
+  max-width: none !important;
+  width: auto;
+}
+
+/* Nếu có mục lục (TOC) bên phải cũng đang bị col--3 cố định */
+.blog-wrapper .row > .col.col--3:last-child {
+  flex: 0 0 240px;
+  max-width: 240px;
 }
