@@ -25,47 +25,49 @@ Bài viết này phân tích kiến trúc thiết kế ca kíp, cách quản lý
 
 | Thành phần logic | Oracle EBS | Epicor ERP | SAP S/4HANA | Odoo ERP |
 | :--- | :--- | :--- | :--- | :--- |
-| **Lịch nhà máy (Factory Calendar)** | `BOM_WORKDAY_CALENDARS` | `Erp.ProdCal` (Production Calendar) | `TFACS` (Factory Calendar Header) | `resource.calendar` |
-| **Định nghĩa Ca kíp (Shift Master)** | `BOM_SHIFT_TIMES` (lưu giờ Start/End của ca) | `Erp.ProdCalShift` (khung giờ ca kíp) | `TPROG` (Shift Definition) / `TPERID` | `resource.calendar.attendance` (khung giờ chi tiết) |
-| **Giờ nghỉ giữa ca (Shift Breaks)** | Cấu hình trừ trực tiếp vào khoảng thời gian trên `BOM_SHIFT_TIMES` | `Erp.ProdCalShiftBreak` | `TC30` / `TPAUS` (Break Schedules) | Khai báo thành nhiều dòng Attendance trong cùng 1 ca |
+| **Lịch nhà máy (Factory Calendar)** | `BOM_CALENDARS` (header lịch — Code, mô tả, ngày bắt đầu/kết thúc) | `Erp.ProdCal` (Production Calendar — chỉ quản lý ngày làm việc/nghỉ, KHÔNG chứa thông tin ca) | `TFACS` (Factory Calendar Header) | `resource.calendar` |
+| **Định nghĩa Ca kíp (Shift Master)** | `BOM_CALENDAR_SHIFTS` (định nghĩa ca theo Calendar) + `BOM_SHIFT_TIMES` (giờ Start/End) | `Erp.JCShift` (bảng master ca độc lập, KHÔNG nằm dưới `ProdCal*` — lưu `Shift`, `StartTime`, `EndTime`, `LunchStart`/`LunchEnd`, và cả `DiffRate`/`DiffQualifier`/`DiffMethod` cho phụ cấp ca) | `TPROG` (Shift Definition) / `TPERID` — *chưa xác minh độc lập* | `resource.calendar.attendance` (khung giờ chi tiết) |
+| **Giờ nghỉ giữa ca (Shift Breaks)** | Cấu hình trừ trực tiếp vào khoảng thời gian trên `BOM_SHIFT_TIMES` | `Erp.ShiftBrk` (bảng con của `JCShift`, liên kết qua field `Shift` — hỗ trợ nhiều break/ca) | `TC30` / `TPAUS` (Break Schedules) — *chưa xác minh độc lập* | Khai báo thành nhiều dòng Attendance trong cùng 1 ca |
 | **Nguồn nhân lực (Labor Resource)** | `BOM_RESOURCES` (`resource_type = 2` - Person) | `Erp.Resource` (`ResourceType = 'L'` - Labor) | `CRHD` (Work Center, `Category = 0002` - Labor) | `mrp.workcenter` (`resource_type = 'human'`) |
-| **Đơn giá giờ công (Labor Rates)** | `CST_RESOURCE_COSTS` | `Erp.ResourceGroup` / `Erp.EmpBasic` | `CSLA` / `COKL` (Activity Type Rates) | Cấu hình trực tiếp trên Work Center hoặc `hr.contract` |
+| **Đơn giá giờ công (Labor Rates)** | `CST_RESOURCE_COSTS` | `Erp.ResourceGroup` / `Erp.EmpBasic` (đơn giá cơ bản) + `Erp.JCShift` (phụ cấp/hệ số theo ca — `DiffRate`) | `CSLA` / `COKL` (Activity Type Rates) | Cấu hình trực tiếp trên Work Center hoặc `hr.contract` |
 | **Hồ sơ công nhân (Employee Master)** | `PER_ALL_PEOPLE_F` / `PER_ALL_ASSIGNMENTS_F` | `Erp.EmpBasic` (danh mục nhân viên) | `PA0001` (HR Master Data - Personnel Assignment) | `hr.employee` |
 | **Ghi nhận chấm công sản xuất** | `WIP_LABOR_ACTUALS` | `Erp.LaborDtl` (giao dịch báo cáo giờ công MES) | `AFRU` (Order Completion Confirmations) | `mrp.workcenter.productivity` |
 
-> **Ghi chú:** Ba nhóm bảng đầu (Calendar → Shift → Resource) phục vụ khâu **thiết lập (setup)**, quyết định năng lực *lý thuyết* của nhà máy. Nhóm cuối (Employee Master → Labor Actuals) phục vụ khâu **vận hành thực tế**, ghi nhận năng lực *đã tiêu thụ* — đây là mắt xích bắt buộc phải có để đối chiếu Kế hoạch (Plan) với Thực tế (Actual) và tính giá thành nhân công trực tiếp.
+> **Ghi chú kiến trúc quan trọng (Epicor):** Khác với giả định ban đầu, **Ca kíp không phải là con của Production Calendar**. `Erp.JCShift` là "Job Shop production shift master file" độc lập, dùng chung cho toàn nhà máy; còn `Erp.ProdCal`/`Erp.ProdCalDay` chỉ trả lời câu hỏi "ngày này có làm việc hay không", không trả lời "ca nào chạy giờ nào". Hai trục dữ liệu này gán riêng vào Resource/Employee chứ không lồng vào nhau.
+>
+> **Lưu ý cần xác minh thêm:** Chưa tìm được nguồn xác nhận độc lập cho tên bảng SAP `TPROG`/`TPERID` (Shift Master) và `TC30`/`TPAUS` (Shift Breaks), cũng như giá trị `resource_type = 'human'` trên `mrp.workcenter` của Odoo. Nên đối chiếu lại trên hệ thống thật trước khi dùng cho ABAP thực tế.
 
 ---
 
 ## 2. So sánh luồng thiết lập giao diện (UI Flows Comparison)
 
-### a. Hệ thống Oracle EBS (Workday Calendar & BOM Resources)
+### a. Hệ thống Oracle EBS (Workday Calendar & BOM Resources — Bảng: `BOM_CALENDARS` / `BOM_CALENDAR_SHIFTS` / `BOM_SHIFT_TIMES` / `BOM_RESOURCES`)
 Oracle EBS quản lý lịch nhà máy tập trung, sau đó gán các khung giờ ca vào từng Resource:
-1. **Bước 1 (Định nghĩa Lịch & Ca):** Truy cập `BOM > Setup > Workday Calendars`. Tạo mã lịch (ví dụ: `24x7_CAL`), chọn các ngày làm việc trong tuần và ngày nghỉ lễ (Exceptions). Tại nút `Shifts`, định nghĩa chi tiết thời gian:
+1. **Bước 1 (Định nghĩa Lịch & Ca):** Truy cập `BOM > Setup > Workday Calendars`. Tạo mã lịch (field DB: `calendar_code` trên `BOM_CALENDARS`, ví dụ: `24x7_CAL`), chọn các ngày làm việc trong tuần và ngày nghỉ lễ (Exceptions). Tại nút `Shifts`, định nghĩa chi tiết thời gian (field DB: `shift_num`, `from_time`, `to_time` trên `BOM_SHIFT_TIMES`):
    - Ca 1: `06:00` - `14:00`
    - Ca 2: `14:00` - `22:00`
    - Ca 3: `22:00` - `06:00`
-2. **Bước 2 (Định nghĩa Nhân lực):** Vào `BOM > Setup > Resources`, tạo mã nhân công (ví dụ: `OPERATOR_WELDER`), chọn `Type = Person`.
+2. **Bước 2 (Định nghĩa Nhân lực):** Vào `BOM > Setup > Resources`, tạo mã nhân công (field DB: `resource_code`, ví dụ: `OPERATOR_WELDER`), chọn `Type = Person` (field DB: `resource_type`).
 3. **Bước 3 (Gán Ca cho Resource):** Tại màn hình `Department Resources`, gán mã nhân công vào Department và chọn các Ca khả dụng từ Workday Calendar.
 
-### b. Hệ thống Epicor ERP (Production Calendar & Employee Association)
-Epicor tách bạch giữa Lịch sản xuất chuẩn và Danh mục nhân viên thực tế, đồng thời hỗ trợ quản lý chi tiết đến từng khoảng thời gian nghỉ ăn trưa/ăn tối của công nhân:
-1. **Bước 1 (Thiết lập Production Calendar):** Truy cập `Production Management > Job Manager > Setup > Production Calendar`. Tạo mã lịch (ví dụ: `2SHIFT_CAL`).
-2. **Bước 2 (Thêm Ca & Giờ nghỉ):** Trong tab `Shifts`, tạo Ca 1 (`08:00` - `17:00`). Chuyển sang tab `Breaks`, thêm giờ nghỉ trưa từ `12:00` đến `13:00` và các khoảng giải lao để hệ thống tự động trừ giờ.
-3. **Bước 3 (Gán vào Resource/Group):** Gán Production Calendar này vào Resource Group hoặc từng Resource cụ thể.
-4. **Bước 4 (Liên kết Nhân viên):** Vào `Payroll > Payroll Setup > Employee`, trên màn hình khai báo nhân viên (`EmpBasic`), gán mã nhân viên vào đúng `ResourceID` hoặc `ResourceGroupID` thuộc xưởng sản xuất để công nhân có thể quẹt thẻ báo cáo giờ công trên giao diện MES (Work Center Tracker).
+### b. Hệ thống Epicor ERP (Shift Master độc lập & Production Calendar riêng biệt — Bảng: `JCShift` / `ShiftBrk` / `ProdCal` / `EmpBasic`)
+Epicor tách hoàn toàn 2 trục: **Ca kíp** (khung giờ chạy) và **Lịch sản xuất** (ngày làm/nghỉ) — đây là điểm khác biệt lớn nhất so với 3 hệ thống còn lại:
+1. **Bước 1 (Tạo Shift Master):** Vào màn hình khai báo Ca kíp (Shift Maintenance), tạo mã ca (field DB: `Shift` — số ID ca, trên `Erp.JCShift`) và nhập giờ bắt đầu/kết thúc (field DB: `StartTime`, `EndTime`, ví dụ `08:00` - `17:00`), giờ nghỉ trưa (field DB: `LunchStart`, `LunchEnd`). Đồng thời có thể khai báo luôn phụ cấp ca ngay tại đây (field DB: `DiffRate`, `DiffQualifier`, `DiffMethod`) — ví dụ ca đêm phụ cấp thêm 30%.
+2. **Bước 2 (Thêm giờ nghỉ giữa ca):** Trên cùng màn hình hoặc tab con, thêm các dòng giờ nghỉ giải lao (field DB: `BreakNum`, `BreakStart`, `BreakEnd` trên `Erp.ShiftBrk`, liên kết ngược lại `JCShift` qua field `Shift`) — hỗ trợ nhiều break trong cùng 1 ca.
+3. **Bước 3 (Thiết lập Production Calendar riêng):** Song song, vào `Production Management > Job Manager > Setup > Production Calendar` để khai báo ngày nào là ngày làm việc/ngày nghỉ (field DB: `ProdCalID` trên `Erp.ProdCal`, chi tiết từng ngày trên `Erp.ProdCalDay`) — bảng này **không chứa** thông tin giờ ca.
+4. **Bước 4 (Gán cả 2 trục vào Resource & Nhân viên):** Vào `Payroll > Payroll Setup > Employee`, trên màn hình khai báo nhân viên, gán mã nhân viên vào `ResourceID`/`ResourceGrpID` (thuộc xưởng sản xuất, quyết định `ProdCalID` áp dụng) **và** gán `Shift` mặc định (field DB trên `Erp.EmpBasic`) để công nhân quẹt thẻ báo cáo giờ công đúng ca trên giao diện MES (Work Center Tracker / Time Entry).
 
-### c. Hệ thống SAP S/4HANA (Capacity Category & Activity Types)
+### c. Hệ thống SAP S/4HANA (Capacity Category & Activity Types — Bảng: `TFACS` / `CRHD` / `KAKO` / `CSLA`)
 SAP quản lý nhân lực gắn liền với việc phân bổ chi phí kế toán quản trị (CO), sử dụng các T-Code chuyên dụng:
-1. **Bước 1 (Cấu hình Lịch & Ca):** Dùng T-Code `SCAL`/`OP4A` để khai báo Factory Calendar, các ngày nghỉ cố định/di động và các khoảng thời gian Ca/Nghỉ (`Break Schedules`).
-2. **Bước 2 (Tạo Work Center Nhân công):** Dùng T-Code `CR01`, chọn `Category = 0002` (Labor). Trên tab *Capacities*, chọn loại năng lực `002` (Labor) và gán `Shift Sequence`.
-3. **Bước 3 (Gán đơn giá giờ công):** Trên tab *Costing*, gán `Activity Type` đại diện cho giờ công (ví dụ: `LABOR_STD`) để hệ thống tự động tính giá thành.
+1. **Bước 1 (Cấu hình Lịch & Ca):** Dùng T-Code `SCAL`/`OP4A` để khai báo Factory Calendar (field DB liên quan: `TFACS`), các ngày nghỉ cố định/di động và các khoảng thời gian Ca/Nghỉ (`Break Schedules`).
+2. **Bước 2 (Tạo Work Center Nhân công):** Dùng T-Code `CR01`, chọn `Category = 0002` (Labor — field DB: `CRHD.VERWE`). Trên tab *Capacities*, chọn loại năng lực `002` (Labor) và gán `Shift Sequence` (field DB: `KAKO.AZPRO`).
+3. **Bước 3 (Gán đơn giá giờ công):** Trên tab *Costing*, gán `Activity Type` đại diện cho giờ công (field DB liên quan: `CSLA`/`COKL`, ví dụ: `LABOR_STD`) để hệ thống tự động tính giá thành.
 
-### d. Hệ thống Odoo ERP (Working Hours & Resource Attendance)
+### d. Hệ thống Odoo ERP (Working Hours & Resource Attendance — Bảng: `resource.calendar` / `resource.calendar.attendance`)
 Odoo tích hợp quản lý ca kíp sản xuất chung với phân hệ Nhân sự (HR):
-1. **Bước 1 (Định nghĩa Working Hours):** Vào `Settings > Technical > Resource > Working Times` (hoặc trong `Payroll/HR`), tạo lịch làm việc.
-2. **Bước 2 (Khai báo các dòng ca):** Mỗi ca được định nghĩa thành các dòng khoảng thời gian. Nếu có nghỉ trưa, tạo 2 dòng cho cùng một ngày (Sáng: `08:00 - 12:00`, Chiều: `13:00 - 17:00`).
-3. **Bước 3 (Gán vào Work Center/Employee):** Trong `Manufacturing > Configuration > Work Centers`, chọn lịch làm việc tại trường `Working Hours`, hoặc gán trực tiếp vào hồ sơ nhân viên (`hr.employee`).
+1. **Bước 1 (Định nghĩa Working Hours):** Vào `Settings > Technical > Resource > Working Times` (hoặc trong `Payroll/HR`), tạo lịch làm việc (field DB: `resource.calendar.name`).
+2. **Bước 2 (Khai báo các dòng ca):** Mỗi ca được định nghĩa thành các dòng khoảng thời gian (field DB: `dayofweek`, `hour_from`, `hour_to` trên `resource.calendar.attendance`). Nếu có nghỉ trưa, tạo 2 dòng cho cùng một ngày (Sáng: `08:00 - 12:00`, Chiều: `13:00 - 17:00`).
+3. **Bước 3 (Gán vào Work Center/Employee):** Trong `Manufacturing > Configuration > Work Centers`, chọn lịch làm việc tại trường `Working Hours` (field DB: `resource_calendar_id` trên `mrp.workcenter`), hoặc gán trực tiếp vào hồ sơ nhân viên (`hr.employee.resource_calendar_id`).
 
 ---
 
@@ -118,19 +120,20 @@ Tổ Hàn có **5 công nhân** (`N = 5`), làm trong **Ca 1** (08:00 - 17:00, t
 *   **Thách thức:** Nhà máy chạy 3 ca liên tục. Công nhân làm Ca 3 (22:00 - 06:00) được hưởng đơn giá lương cao hơn 30% so với ca ngày. Nếu hệ thống tính chung một đơn giá giờ công tiêu chuẩn, giá thành sản phẩm sản xuất vào ca đêm sẽ bị phản ánh sai lệch so với chi phí thực tế.
 *   **Giải pháp trên các hệ thống:**
     *   **Trong SAP S/4HANA:** Tạo các Activity Types riêng biệt cho ca ngày (`LAB_DAY`) và ca đêm (`LAB_NIGHT`) với đơn giá khác nhau. Khi báo cáo sản lượng qua T-Code `CO11N`, người dùng chọn đúng Activity Type ca đêm để hệ thống tự động ghi nhận chi phí tăng thêm.
-    *   **Trong Epicor ERP:** Sử dụng tính năng **Payroll Class / Shift Differential**. Trên `Resource Group`, cấu hình phụ cấp theo ca. Khi công nhân quẹt thẻ MES vào Ca 3, hệ thống sẽ tự động nhân tỷ lệ phụ cấp (Shift Rate) vào chi phí nhân công trực tiếp (Direct Labor Cost), ghi nhận qua bảng `Erp.LaborDtl` gắn với Job.
+    *   **Trong Epicor ERP:** Phụ cấp ca được khai báo **trực tiếp trên Shift Master**, không phải qua Resource Group. Trên `Erp.JCShift` của Ca 3, nhập `DiffRate` (mức phụ cấp — có thể là % hoặc số tiền cố định tùy `DiffQualifier`) và `DiffMethod` (quy tắc áp dụng: luôn tính, hay chỉ tính khi đây không phải ca mặc định của nhân viên đó). Khi công nhân quẹt thẻ MES vào Ca 3, hệ thống tự động cộng phụ cấp vào chi phí nhân công trực tiếp, ghi nhận qua bảng `Erp.LaborDtl` gắn với Job.
 
 ### Bài toán 2: Quản lý Ca gãy & Giờ nghỉ giữa ca (Break Time Deductions)
 *   **Thách thức:** Nhà máy cho công nhân nghỉ giữa ca 15 phút vào lúc 10:00 và 15:00. Nếu hệ thống ERP không tự động trừ 15 phút này ra khỏi dung lượng ca, thuật toán lập lịch sẽ xếp lệnh sản xuất chạy qua khung giờ nghỉ, dẫn đến trễ tiến độ thực tế trên sàn sản xuất.
 *   **Giải pháp:**
-    *   **Trong Oracle EBS & Epicor:** Cần cấu hình chi tiết bảng **`Break Schedule`** (Lịch nghỉ, `BOM_SHIFT_TIMES`/`Erp.ProdCalShiftBreak`) gắn liền với ca kíp. Khi chạy công cụ lập lịch (Scheduler Engine), hệ thống sẽ tự động tách một Operation thành 2 khoảng thời gian dừng (Split Operation) để "bước qua" khung giờ nghỉ mà không tính năng lực.
+    *   **Trong Oracle EBS:** Cần cấu hình chi tiết bảng **`BOM_SHIFT_TIMES`** gắn liền với ca kíp trên `BOM_CALENDAR_SHIFTS`. Khi chạy công cụ lập lịch (Scheduler Engine), hệ thống sẽ tự động tách một Operation thành 2 khoảng thời gian dừng (Split Operation) để "bước qua" khung giờ nghỉ mà không tính năng lực.
+    *   **Trong Epicor:** Khai báo các dòng break trên `Erp.ShiftBrk` (nhiều break/ca, mỗi break có `BreakStart`/`BreakEnd` riêng) gắn với `Shift` tương ứng trên `JCShift`. Vì đây là thuộc tính của bản thân Ca kíp, mọi Resource dùng chung ca đó đều tự động áp dụng đúng giờ nghỉ mà không cần cấu hình lại theo từng máy/nhân viên.
     *   **Trong SAP:** Sử dụng thuộc tính `Break Schedule` trong T-Code `OP4A`. SAP sẽ tự động ngắt dòng thời gian tính toán của Lệnh sản xuất ngay tại mốc bắt đầu giờ nghỉ.
 
 ### Bài toán 3: Đăng ký Tăng ca (OT) đột xuất mà không sửa Lịch nhà máy chuẩn (Calendar Exceptions)
 *   **Thách thức:** Lịch nhà máy chuẩn chỉ chạy 8 tiếng/ngày. Do tiến độ đơn hàng gấp, Tổ trưởng đăng ký cho công nhân tăng ca thêm 2-3 tiếng vào một ngày cụ thể (kể cả ngày nghỉ chuẩn như Thứ Bảy). Làm thế nào để hệ thống ghi nhận năng lực tăng thêm này mà **không làm thay đổi** lịch làm việc tiêu chuẩn của các tuần sau?
 *   **Giải pháp trên các hệ thống:**
     *   **Trong Oracle EBS:** Sử dụng tính năng **Calendar Exceptions / Shift Exceptions** — khai báo trực tiếp năng lực tăng thêm trên màn hình `Capacity Changes` của Department Resource, hoặc gán bổ sung khung giờ làm việc đặc biệt cho đúng ngày cụ thể mà không phá vỡ cấu trúc mẫu ca kíp (`Workday Pattern`) ban đầu.
-    *   **Trong Epicor ERP:** Vào `Production Calendar > Exception Days`, chọn ngày cụ thể đó và sửa khung giờ của Ca làm việc (ví dụ mở rộng từ `08:00 - 17:00` thành `08:00 - 19:00`), hoặc thêm hẳn một khoảng `Overtime Shift` riêng. Việc sửa đổi trên Exception Days chỉ có hiệu lực duy nhất cho ngày được chọn, hệ thống APS sẽ tự mở rộng năng lực khả dụng riêng cho ngày đó.
+    *   **Trong Epicor ERP:** Vào `Production Calendar > Exception Days`, chọn ngày cụ thể đó và đánh dấu là ngày làm việc bổ sung trên `Erp.ProdCalDay` (vì OT là vấn đề "ngày này có làm hay không", thuộc trục Production Calendar). Nếu cần thêm hẳn 1 ca OT riêng với giờ và phụ cấp khác, tạo thêm 1 bản ghi mới trên `Erp.JCShift` (ví dụ `Shift = 9`, đại diện ca tăng ca) rồi gán tạm thời cho Resource/nhân viên liên quan trong ngày đó.
 
 ---
 
@@ -150,7 +153,7 @@ SELECT
     bst.to_time/3600 AS "End Hour (24h)",
     ((bst.to_time - bst.from_time)/3600) AS "Gross Shift Hours"
 FROM 
-    apps.bom_workday_calendars wbc
+    apps.bom_calendars wbc
 INNER JOIN apps.bom_shift_times bst ON wbc.calendar_code = bst.calendar_code
 INNER JOIN apps.bom_resource_shifts brs ON bst.shift_num = brs.shift_num
 INNER JOIN apps.bom_department_resources bdr ON brs.resource_id = bdr.resource_id AND brs.department_id = bdr.department_id
@@ -175,8 +178,8 @@ SELECT
     times.to_time / 3600 AS "End Hour",
     (times.to_time - times.from_time) / 3600 AS "Total Shift Hours"
 FROM 
-    apps.bom_workday_calendars cal
-INNER JOIN apps.bom_shift_details shift ON cal.calendar_code = shift.calendar_code
+    apps.bom_calendars cal
+INNER JOIN apps.bom_calendar_shifts shift ON cal.calendar_code = shift.calendar_code
 INNER JOIN apps.bom_shift_times times ON shift.calendar_code = times.calendar_code 
                                       AND shift.shift_num = times.shift_num
 ORDER BY 
@@ -184,28 +187,30 @@ ORDER BY
 ```
 
 ### b. Trên hệ thống Epicor ERP (SQL Server)
-Kiểm tra cấu hình chi tiết các ca làm việc và thời gian nghỉ giữa ca (Breaks) gán cho từng Production Calendar:
+Kiểm tra cấu hình chi tiết các ca làm việc (Shift Master) và thời gian nghỉ giữa ca (Breaks) — lưu ý đây là 2 bảng độc lập với Production Calendar:
 
 ```sql
 SELECT 
-    pc.Company,
-    pc.ProdCalID AS [Calendar Code],
-    pc.Description AS [Calendar Name],
-    pcs.ShiftNum AS [Shift Num],
-    pcs.Description AS [Shift Name],
-    -- Chuyển đổi số giây thành định dạng Giờ:Phút
-    RIGHT('0' + CAST(pcs.StartTime / 3600 AS VARCHAR), 2) + ':' + 
-    RIGHT('0' + CAST((pcs.StartTime % 3600) / 60 AS VARCHAR), 2) AS [Start Time],
-    RIGHT('0' + CAST(pcs.EndTime / 3600 AS VARCHAR), 2) + ':' + 
-    RIGHT('0' + CAST((pcs.EndTime % 3600) / 60 AS VARCHAR), 2) AS [End Time],
-    b.BreakName AS [Break Name],
-    (b.BreakDuration / 60) AS [Break Duration (Mins)]
+    js.Company,
+    js.Shift AS [Shift ID],
+    js.Description AS [Shift Description],
+    js.DspStartTime AS [Start Time],
+    js.DspEndTime AS [End Time],
+    js.DspLunchStart AS [Lunch Start],
+    js.DspLunchEnd AS [Lunch End],
+    js.DiffRate AS [Differential Rate],
+    js.DiffQualifier AS [Differential Qualifier], -- ví dụ: % hoặc số tiền cố định
+    b.BreakNum AS [Break Num],
+    b.Description AS [Break Name],
+    b.BreakStart AS [Break Start],
+    b.BreakEnd AS [Break End]
 FROM 
-    Erp.ProdCal pc
-INNER JOIN Erp.ProdCalShift pcs ON pc.Company = pcs.Company AND pc.ProdCalID = pcs.ProdCalID
-LEFT JOIN Erp.ProdCalShiftBreak b ON pcs.Company = b.Company AND pcs.ProdCalID = b.ProdCalID AND pcs.ShiftNum = b.ShiftNum
+    Erp.JCShift js
+LEFT JOIN Erp.ShiftBrk b ON js.Company = b.Company AND js.Shift = b.Shift
+WHERE 
+    js.Company = 'EP01'
 ORDER BY 
-    pc.ProdCalID, pcs.ShiftNum;
+    js.Shift, b.BreakNum;
 ```
 
 ### c. Trên hệ thống SAP S/4HANA (HANA SQL)

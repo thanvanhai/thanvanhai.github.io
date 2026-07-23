@@ -21,47 +21,49 @@ Bài viết này phân tích kiến trúc dữ liệu, thuật toán tính toán
 
 | Thành phần logic | Oracle EBS | Epicor ERP | SAP S/4HANA | Odoo ERP |
 | :--- | :--- | :--- | :--- | :--- |
-| **Số lượng máy/Người song song (Units)** | `BOM_DEPARTMENT_RESOURCES` (Cột `capacity_units`) | Không có cột cố định trên `Erp.ResourceGroup`; năng lực được tính động theo số bản ghi con trong `Erp.Resource` có cùng `ResourceGrpID` | `saphanadb.KAKO` (Cột `ANZAP` - No. of Individual Capacities) | `mrp.workcenter` (Cột `capacity`) |
+| **Số lượng máy/Người song song (Units)** | `BOM_DEPARTMENT_RESOURCES` (Cột `capacity_units`) | Không có cột cố định trên `Erp.ResourceGroup`; năng lực được tính động theo số bản ghi con trong `Erp.Resource` có cùng `ResourceGrpID`. | `saphanadb.KAKO` (Cột `ANZAP` - No. of Individual Capacities) | `mrp.workcenter` (Cột `capacity`) |
 | **Hệ số hiệu suất (Efficiency Rate)** | `BOM_DEPARTMENT_RESOURCES` (Cột `efficiency` dưới dạng số thập phân) | `Erp.ResourceGroup` / `Erp.Resource` (Cột `EfficiencyPercent`) | `saphanadb.KAKO` (Tính gián tiếp thông qua hệ số hiệu suất định mức) | `mrp.workcenter` (Cột `time_efficiency` dưới dạng tỷ lệ %) |
 | **Hệ số khai thác thời gian (Utilization)** | `BOM_DEPARTMENT_RESOURCES` (Cột `utilization` - tỷ lệ khai thác) | Không tách riêng (Nằm chung trong `EfficiencyPercent`) | `saphanadb.KAKO` (Cột `NUTZG` - Capacity Utilization Rate %) | `mrp.workcenter` (Cột `oee_target` - OEE mục tiêu) |
-| **Cờ giới hạn năng lực (Finite Capacity Flag)** | Ngầm định qua cơ chế Constraint-Based Scheduling của APS | `Erp.ResourceGroup` (Cột `FiniteCapacity` - Boolean) | Ngầm định qua Capacity Category + Finite Scheduling trong PP/DS | Ngầm định qua Work Center + module Advanced Planning |
-| **Lịch sử dừng máy (Downtime Logs)** | Tích hợp qua hệ thống EAM / WIP Transactions | `Erp.JobDowntime` (Nhật ký dừng máy kèm Reason Code) hoặc dòng Indirect Labor trong `Erp.LaborDtl` | `saphanadb.AFIH` / `saphanadb.AUFK` (Lịch sử bảo trì và dừng máy PM) | `mrp.workcenter.productivity` (Lưu chi tiết các block dừng máy và mã lỗi OEE) |
+| **Cờ giới hạn năng lực (Finite Capacity Flag)** | Ngầm định qua cơ chế Constraint-Based Scheduling của phân hệ APS. | `Erp.ResourceGroup` (Cột `FiniteCapacity` - Boolean) | Ngầm định qua Capacity Category + Finite Scheduling trong PP/DS. | Ngầm định qua Work Center + module Advanced Planning. |
+| **Lịch sử dừng máy (Downtime Logs)** | Tích hợp qua hệ thống EAM / WIP Transactions | Ghi nhận trực tiếp dưới dạng dòng lao động gián tiếp trong **`Erp.LaborDtl`** (trường `IndirectCode`) liên kết với danh mục lý do dừng máy thuộc bảng **`Erp.Indirect`** | `saphanadb.AFIH` / `saphanadb.AUFK` (Lịch sử bảo trì và dừng máy PM) | `mrp.workcenter.productivity` (Lưu chi tiết các block dừng máy và mã lỗi OEE) |
 
 ---
 
 ## 2. So sánh luồng thiết lập giao diện (UI Flows Comparison)
 
+Do triết lý thiết kế khác nhau, quy trình thao tác cấu hình của người dùng trên màn hình các hệ thống cũng có sự khác biệt rõ rệt:
+
 ### a. Hệ thống Oracle EBS (Cấu hình qua Department Resources — Bảng: `BOM_DEPARTMENT_RESOURCES`)
 Oracle EBS cho phép khai báo chi tiết Hiệu suất (`Efficiency`) và Hệ số sử dụng (`Utilization`) độc lập cho từng cặp Department - Resource:
-1. **Bước 1 (Vào màn hình cấu hình):** Truy cập `BOM > Departments > Departments`, tìm phòng ban sản xuất và chọn nút `Resources`.
+1. **Bước 1 (Vao màn hình cấu hình):** Truy cập `BOM > Departments > Departments`, tìm phòng ban sản xuất và chọn nút `Resources`.
 2. **Bước 2 (Nhập tham số năng lực):** Tại dòng Resource tương ứng, người dùng nhập:
    - `Assigned Units` (field DB: `CAPACITY_UNITS`): Số lượng máy/người chạy song song (ví dụ: `3`).
-   - `Efficiency` (field DB: `EFFICIENCY`): Nhập hệ số hiệu suất (ví dụ: `0.90` tương đương 90%).
-   - `Utilization` (field DB: `UTILIZATION`): Nhập hệ số khai thác thời gian (ví dụ: `0.95` tương đương 95%).
+   - `Efficiency` (field DB: `EFFICIENCY`): Nhập hệ số hiệu suất dưới dạng số thập phân (ví dụ: `0.90` tương đương 90%).
+   - `Utilization` (field DB: `UTILIZATION`): Nhập hệ số khai thác thời gian dưới dạng số thập phân (ví dụ: `0.95` tương đương 95%).
 3. **Bước 3 (Kế hoạch chạy MRP/WIP):** Hệ thống sẽ nhân cả 2 hệ số này để tính ra năng lực khả dụng thực tế.
 
-### b. Hệ thống Epicor ERP (Cấu hình trên Resource Group / Resource — Bảng: `ResourceGroup` / `Resource`)
+### b. Hệ thống Epicor ERP (Cấu hình trên Resource Group / Resource — Bảng: `Erp.ResourceGroup` / `Erp.Resource`)
 Epicor cho phép kế thừa thông số hiệu suất từ cấp Group xuống cấp Resource chi tiết:
-1. **Bước 1 (Thiết lập cấp Group):** Vào `Resource Group Maintenance`, nhập trường `Efficiency %` (field DB: `EfficiencyPercent`, ví dụ: `85.00%`). Trường này sẽ tự động áp dụng cho tất cả các máy con nằm dưới Group.
-2. **Bước 2 (Gán đặc thù cho từng máy):** Nếu có một máy CNC mới hoạt động tốt hơn, người dùng có thể vào `Resource Maintenance` của riêng máy đó để ghi đè trường `Efficiency %` (field DB: `EfficiencyPercent`, cấp Resource) lên mức cao hơn (ví dụ: `95.00%`).
-3. **Bước 3 (Thiết lập Finite Capacity):** Chọn tích checkbox — trên giao diện nhãn hiển thị ngắn gọn là **`Finite`** (field DB: `FiniteCapacity`; nhãn không ghi đầy đủ "Finite Capacity" dù bản chất tính năng là kích hoạt Finite Capacity) — để báo cho công cụ lập lịch APS biết phải giới hạn tải sản xuất khi máy đạt 100% công suất cấu hình.
+1. **Bước 1 (Thiết lập cấp Group):** Vào `Resource Group Maintenance`, nhập các tham số:
+   - `Efficiency` (field DB: `EfficiencyPercent`): Hệ số hiệu suất của cả nhóm (ví dụ: `85.00%`).
+   - `Finite Capacity` (field DB: `FiniteCapacity`): Tích chọn cờ này (Boolean) để báo cho công cụ lập lịch APS biết phải giới hạn tải sản xuất khi máy đạt 100% công suất cấu hình.
+2. **Bước 2 (Gán đặc thù cho từng Resource máy con):** Nếu có một máy hoạt động tốt hơn, người dùng có thể vào `Resource Maintenance` của riêng máy đó để ghi đè trường `Efficiency %` (field DB: `EfficiencyPercent` - ví dụ: sửa thành `95.00%`).
 
-### c. Hệ thống SAP S/4HANA (Cấu hình qua Capacities Tab — Bảng: `KAKO`)
+### c. Hệ thống SAP S/4HANA (Cấu hình trên các Tab — Bảng: `CRHD` / `KAKO` / `CRCA`)
 SAP tách biệt rõ ràng giữa thời gian hoạt động vật lý và tỷ lệ khai thác năng lực thực tế:
 1. **Bước 1 (Thiết lập Capacity Header):** Trong T-Code `CR02` (Sửa Work Center), chuyển sang tab `Capacities`, bấm đúp vào Capacity Category.
 2. **Bước 2 (Nhập tham số định mức):**
    - `No. of indiv. capacities` (field DB: `ANZAP`): Nhập số lượng tài nguyên chạy song song (ví dụ: `2` máy).
-   - `Start time` / `End time` / `Break` (field DB: `BEGTI` / `ENDTI` / `PAUSE`): Nhập giờ bắt đầu, giờ kết thúc và thời gian nghỉ trong ca.
-   - `Capacity utilization` (field DB: `NPEZH`): Nhập tỷ lệ khai thác (ví dụ: `90%`).
-   - `Operating time` (field DB: `NPEST`): **Đây là trường hệ thống tự động tính toán (Calculated field)**, người dùng không nhập trực tiếp. SAP tự tính theo công thức: `Operating time = (End time − Start time − Break) × Capacity utilization / 100`.
+   - `Operating time` (field DB: `NGEHT`): Thời gian hoạt động cơ sở lưu dưới dạng giây (ví dụ: `8` giờ/ngày).
+   - `Capacity utilization` (field DB: `NUTZG`): Nhập tỷ lệ khai thác năng lực thực tế (ví dụ: `90%`). Hệ thống tự động tính toán năng lượng khả dụng dựa trên tỷ lệ này.
 
-### d. Hệ thống Odoo ERP (Cấu hình trên Work Center — Bảng: `mrp.workcenter`)
+### d. Hệ thống Odoo ERP (Cấu hình Tối giản — Bảng: `mrp.workcenter`)
 Odoo đi theo triết lý tối giản thông tin để người dùng vận hành nhanh chóng:
 1. **Bước 1 (Vào form cấu hình):** Truy cập `Manufacturing > Configuration > Work Centers`.
 2. **Bước 2 (Nhập tham số hiệu suất):**
    - `Capacity` (field DB: `capacity`): Số lượng bán thành phẩm có thể xử lý cùng một lúc (ví dụ: máy sấy sơn sấy được `10` sản phẩm/mẻ).
-   - `Time Efficiency` (field DB: `time_efficiency`): Hệ số hiệu suất thời gian (ví dụ: nhập `90` tương đương 90% để kéo dài thời gian thực thi lệnh sản xuất trên kế hoạch tương ứng).
-   - `OEE Target` (field DB: `oee_target`): Thiết lập OEE mục tiêu để hệ thống đo lường và hiển thị biểu đồ phân tích hiệu suất thực tế so với thiết kế.
+   - `Time Efficiency` (field DB: `time_efficiency`): Hệ số hiệu suất thời gian dưới dạng tỷ lệ % (ví dụ: nhập `90` tương đương 90%).
+   - `OEE Target` (field DB: `oee_target`): Thiết lập hiệu suất thiết bị tổng thể mục tiêu dưới dạng % để hệ thống đo lường và hiển thị biểu đồ phân tích thực tế.
 
 ---
 
@@ -87,8 +89,6 @@ Nhà máy cần kiểm tra độ tải của Tổ hàn (`WC_WELD`) trong tuần 
    $$\text{Available Capacity} = 48 \text{ giờ} \times 5 \text{ người} \times 0.85 \times 0.95 = 193.8 \text{ giờ công}$$
 2. Tính Độ tải (Load %):
    $$\text{Capacity Load} = \left( \frac{220 \text{ giờ}}{193.8 \text{ giờ}} \right) \times 100 \approx 113.52\%$$
-
-> **Ý nghĩa thực tế:** Vì độ tải là **113.52%** (> 100%), Tổ hàn đang bị quá tải ảo (Bottleneck) khoảng **26.2 giờ**. Hệ thống APS lập tức đưa ra cảnh báo quá tải cho ngày cụ thể và đề xuất dời bớt đơn hàng sang tuần tiếp theo hoặc lên kế hoạch tăng ca (Overtime).
 
 ---
 
