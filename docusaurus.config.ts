@@ -30,6 +30,11 @@ const config: Config = {
   projectName: 'thanvanhai.github.io', // Tên repo
 
   onBrokenLinks: 'throw',
+  // 👇 SEO: tránh duplicate content & broken anchor không được cảnh báo
+  onBrokenAnchors: 'throw',
+  onBrokenMarkdownLinks: 'throw',
+  // 👇 SEO: cố định 1 kiểu URL (không có dấu / cuối), tránh Google index trùng 2 bản
+  trailingSlash: false,
 
   // Tương đương "timezone: Asia/Ho_Chi_Minh" bên Jekyll — Docusaurus không có
   // field timezone riêng, ngày giờ bài viết sẽ lấy theo front matter từng post.
@@ -61,6 +66,20 @@ const config: Config = {
     },
   ],
 
+  // 👇 SEO: Google Search Console đã được verify qua Google Analytics (gtag bên dưới)
+  // KHÔNG cần headTags verification nữa. Nếu sau này muốn thêm phương thức
+  // xác minh dự phòng (khuyến nghị của Google để tránh mất trạng thái verify),
+  // bỏ comment khối dưới và điền mã HTML tag lấy từ GSC > Cài đặt > Xác minh quyền sở hữu
+  // headTags: [
+  //   {
+  //     tagName: 'meta',
+  //     attributes: {
+  //       name: 'google-site-verification',
+  //       content: 'ĐIỀN_MÃ_TỪ_GOOGLE_SEARCH_CONSOLE_VÀO_ĐÂY',
+  //     },
+  //   },
+  // ],
+
   presets: [
     [
       'classic',
@@ -81,9 +100,17 @@ const config: Config = {
           //blogSidebarCount: 'ALL', 
           // hoặc: hiện tối đa 10 bài
           blogSidebarCount: 10,
+          // 👇 SEO: tiêu đề & mô tả cho trang danh sách blog (/blog)
+          blogTitle: 'Blog của Hải Còi — Kinh nghiệm ERP: Epicor, Oracle EBS, SAP',
+          blogDescription:
+            'Chia sẻ kinh nghiệm triển khai ERP: Epicor, Oracle EBS, SAP, Odoo — nghiệp vụ Tồn kho, Sản xuất, Tài chính kế toán, kèm bộ câu lệnh SQL Audit thực chiến.',
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
+            // 👇 SEO: đảm bảo feed cũng có title/description rõ ràng
+            title: 'Blog của Hải Còi',
+            description: 'Kinh nghiệm triển khai ERP: Epicor, Oracle EBS, SAP',
+            copyright: `Copyright © ${new Date().getFullYear()} Hải Còi`,
           },
           editUrl:
             'https://github.com/thanvanhai/thanvanhai.github.io/tree/main/',
@@ -96,8 +123,17 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        // 👇 SEO: khai báo sitemap tường minh để kiểm soát crawl
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**', '/search/**'],
+          filename: 'sitemap.xml',
+        },
         // Tương đương "google.id" bên Jekyll analytics — điền GA4 measurement ID nếu có
         //googleAnalytics: undefined,
+        // 👇 QUAN TRỌNG: KHÔNG xóa dòng gtag này — đây là điều kiện duy trì
+        // trạng thái "đã xác minh quyền sở hữu" trên Google Search Console
         gtag: { trackingID: 'G-49J8NPZR3L' },
       } satisfies Preset.Options,
     ],
@@ -109,6 +145,26 @@ const config: Config = {
 
   themeConfig: {
     image: 'img/og-banner-1280x640.png',
+    // 👇 SEO: meta description + keywords mặc định toàn site
+    // (sẽ bị field "description" riêng trong từng trang/bài viết ghi đè nếu có)
+    metadata: [
+      {
+        name: 'keywords',
+        content:
+          'erp, epicor, oracle ebs, sap, odoo, mes, quản lý sản xuất, quản lý tồn kho, chuỗi cung ứng, scm',
+      },
+      {
+        name: 'description',
+        content:
+          'Chia sẻ kinh nghiệm triển khai ERP: Epicor, Oracle EBS, SAP — nghiệp vụ Tồn kho, Sản xuất, Tài chính kế toán, kèm bộ câu lệnh SQL Audit thực chiến.',
+      },
+      { name: 'author', content: 'Hải Còi' },
+      // 👇 SEO: Open Graph / social share preview
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Blog của Hải Còi' },
+      // 👇 SEO: Twitter Card (hiển thị đẹp khi share link lên X/Twitter)
+      { name: 'twitter:card', content: 'summary_large_image' },
+    ],
     colorMode: {
       // Tương đương "theme_mode: để trống → theo hệ điều hành" bên Jekyll
       respectPrefersColorScheme: true,
