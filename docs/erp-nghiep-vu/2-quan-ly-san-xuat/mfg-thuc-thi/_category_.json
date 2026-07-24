@@ -1,10 +1,10 @@
 ﻿{
-  "label": "Lệnh sản xuất (Job/Work Order - ERP)",
+  "label": "Thực thi sản xuất (ERP - Transactional)",
   "position": 2,
   "link": {
     "type": "generated-index",
-    "title": "Lệnh sản xuất (Job/Work Order - ERP)",
+    "title": "Lệnh sản xuất (ERP - Transactional: Job/Work Order)",
     "slug": "/erp-nghiep-vu/2-quan-ly-san-xuat/mfg-thuc-thi",
-    "description": "Quản lý Job, Work Order và tiến độ sản xuất ở tầng ERP."
+    "description": "ERP - Transactional: Quản lý Job, Work Order và tiến độ sản xuất ở tầng ERP."
   }
 }

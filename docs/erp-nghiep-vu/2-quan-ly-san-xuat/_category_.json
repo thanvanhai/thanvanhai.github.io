@@ -1,10 +1,10 @@
 ﻿{
-  "label": "Quản lý sản xuất",
+  "label": "Quản lý sản xuất (MFG)",
   "position": 2,
   "link": {
     "type": "generated-index",
-    "title": "Quản lý sản xuất",
+    "title": "Quản lý sản xuất (MFG)",
     "slug": "/erp-nghiep-vu/2-quan-ly-san-xuat",
-    "description": "Nghiệp vụ kỹ thuật, lệnh sản xuất tầng ERP và thực thi sản xuất MES trên xưởng."
+    "description": "Nghiệp vụ Quản lý Sản xuất chia thành 2 tầng: ERP(Kỹ thuật sản xuất - Master Data và Thực thi sản xuất - Transactional) và MES (Giám sát thiết bị - PLC/SCADA và Truy xuất nguồn gốc - Traceability)."
   }
 }

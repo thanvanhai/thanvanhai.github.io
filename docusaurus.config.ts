@@ -183,6 +183,10 @@ const config: Config = {
               label: 'Email',
               href: 'mailto:thanvanhai@example.com',
             },
+            {
+              label: 'Facebook',
+              href: 'https://www.facebook.com/thanvanhai1021988',
+            },
           ],
         },
       ],

@@ -1,0 +1,10 @@
+﻿{
+  "label": "Kế toán Thuế (Tax)",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Kế toán Thuế (Tax)",
+    "slug": "/erp-nghiep-vu/3-tai-chinh-ke-toan/fin-thue",
+    "description": "Nghiệp vụ cấu hình mã thuế, công thức tính thuế đầu vào/đầu ra, tờ khai thuế (VAT, WHT, CIT) và tích hợp hóa đơn điện tử trong ERP."
+  }
+}
