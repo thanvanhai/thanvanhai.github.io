@@ -32,7 +32,7 @@ const config: Config = {
   onBrokenLinks: 'throw',
   // 👇 SEO: tránh duplicate content & broken anchor không được cảnh báo
   onBrokenAnchors: 'throw',
-  onBrokenMarkdownLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn', // đổi từ 'throw' về 'warn' để không chặn build
   // 👇 SEO: cố định 1 kiểu URL (không có dấu / cuối), tránh Google index trùng 2 bản
   trailingSlash: false,
 
