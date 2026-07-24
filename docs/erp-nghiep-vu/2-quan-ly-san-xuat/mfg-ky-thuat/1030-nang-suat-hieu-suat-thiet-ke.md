@@ -1,13 +1,15 @@
 ---
 id: 1030-nang-suat-hieu-suat-thiet-ke
 title: Xác định Năng suất & Hiệu suất thiết kế (Capacity & Efficiency)
-sidebar_label: 1030 - Năng suất & Hiệu suất
+description: Xác định Năng suất & Hiệu suất thiết kế (Capacity & Efficiency)
+sidebar_label: Năng suất & Hiệu suất
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/1030-nang-suat-hieu-suat-thiet-ke
+sidebar_position: 1030
 date: 2026-09-08
 tags: [erp, manufacturing, oracle-ebs, epicor, sap, odoo, capacity, efficiency, oee, sql]
 ---
 
-# Xác định Năng suất & Hiệu suất thiết kế (Capacity & Efficiency)
+# 1030 Xác định Năng suất & Hiệu suất thiết kế (Capacity & Efficiency)
 
 Một sai lầm phổ biến khi lập kế hoạch sản xuất là giả định nhà xưởng hoạt động với 100% năng lực thiết kế. Thực tế, máy móc cần dừng để thay dao, bảo trì; công nhân cần thời gian chuyển giao ca; và tỷ lệ sản phẩm lỗi luôn tồn tại. Nếu không cấu hình chính xác **Hệ số năng suất (Capacity)** và **Hiệu suất (Efficiency)**, hệ thống ERP sẽ tính toán thời gian giao hàng (Lead Time) quá ngắn, dẫn đến trễ hạn đơn hàng hàng loạt.
 
@@ -128,13 +130,11 @@ SELECT
     bdr.utilization AS "Utilization Rate",
     -- Tính toán năng lực thực tế khả dụng cho 1 giờ chạy máy tiêu chuẩn của nhóm
     (bdr.capacity_units * bdr.efficiency * bdr.utilization) AS "Real Capacity per Hour"
-FROM 
-    apps.bom_departments bd
+FROM apps.bom_departments bd
 INNER JOIN apps.bom_department_resources bdr ON bd.department_id = bdr.department_id
 INNER JOIN apps.bom_resources br ON br.resource_id = bdr.resource_id
 INNER JOIN apps.org_organization_definitions ood ON bd.organization_id = ood.organization_id
-WHERE 
-    ood.organization_code = 'V1' -- Lọc theo Org thực tế của bạn
+WHERE ood.organization_code = 'V1' -- Lọc theo Org thực tế của bạn
 ORDER BY 
     bd.department_code, br.resource_code;
 ```
@@ -152,10 +152,8 @@ SELECT
     EfficiencyPercent AS [Efficiency (%)],
     ProdCalID AS [Production Calendar ID],
     JCDept AS [Dept Code]
-FROM 
-    Erp.ResourceGroup
-WHERE 
-    Company = 'EP01'
+FROM Erp.ResourceGroup
+WHERE Company = 'EP01'
 ORDER BY 
     ResourceGrpID;
 ```
@@ -173,12 +171,10 @@ SELECT
     c.NUTZG AS "Capacity Utilization (%)",
     -- Định mức thời gian làm việc chuẩn trong ngày (lưu dưới dạng 1/10000 giây trong database)
     (c.NGEHT / 10000 / 3600) AS "Standard Work Hours/Day"
-FROM 
-    saphanadb.CRHD h
+FROM saphanadb.CRHD h
 INNER JOIN saphanadb.KAKO c ON h.OBJID = c.OBJID
 LEFT OUTER JOIN saphanadb.CRTX t ON h.OBJTY = t.OBJTY AND h.OBJID = t.OBJID AND t.SPRAS = 'E'
-WHERE 
-    h.WERKS = '1000'
+WHERE h.WERKS = '1000'
 ORDER BY 
     h.ARBPL;
 ```
@@ -193,9 +189,7 @@ SELECT
     time_efficiency AS "Time Efficiency (%)",
     oee_target AS "Target OEE (%)",
     active AS "Is Active?"
-FROM 
-    mrp_workcenter
-WHERE 
-    active = true
+FROM mrp_workcenter
+WHERE active = true
 ORDER BY 
     name;

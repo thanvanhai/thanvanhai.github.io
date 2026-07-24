@@ -1,6 +1,7 @@
 ---
 id: thiet-lap-diem-dat-hang-lai-reorder-point-min-max
-title: Thiết lập Điểm đặt hàng lại (Reorder Point) & Hoạch định Min-Max — Công thức tính ROP, Hàng treo PO và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Thiết lập Điểm đặt hàng lại (Reorder Point) & Hoạch định Min-Max
+description: Công thức tính ROP, Hàng treo PO và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Điểm đặt hàng lại (Min-Max)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/diem-dat-hang-lai-min-max
 sidebar_position: 7030
@@ -8,7 +9,9 @@ date: 2026-08-14
 tags: [erp, inventory, reorder-point, min-max, safety-stock, lead-time, sql-audit, oracle-ebs, epicor]
 ---
 
-# Thiết lập Điểm đặt hàng lại (Reorder Point) & Hoạch định Min-Max — Công thức tính ROP, Hàng treo PO và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 7030 Thiết lập Điểm đặt hàng lại (Reorder Point) & Hoạch định Min-Max
+
+> Công thức tính ROP, Hàng treo PO và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Để tránh hiện tượng đứt gãy chuỗi cung ứng vật tư (Stockout) gây dừng máy trong sản xuất hoặc mất cơ hội bán hàng, hệ thống ERP cung cấp các công cụ lập kế hoạch cung ứng tự động mức cơ bản, phổ biến nhất là **Điểm đặt hàng lại (Reorder Point - ROP)** và **Hoạch định Tối thiểu - Tối đa (Min-Max Planning)**.
 

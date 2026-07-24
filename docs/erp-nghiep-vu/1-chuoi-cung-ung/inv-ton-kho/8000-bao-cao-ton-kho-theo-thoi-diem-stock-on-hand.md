@@ -1,6 +1,7 @@
 ---
 id: bao-cao-ton-kho-theo-thoi-diem-stock-on-hand
-title: Báo cáo Tồn kho theo Thời điểm (Stock on Hand) — Kiến trúc truy vấn dữ liệu lớn, Bẫy hiệu năng và Bộ code SQL mẫu (Epicor & Oracle EBS)
+title: Báo cáo Tồn kho theo Thời điểm (Stock on Hand)
+description: Kiến trúc truy vấn dữ liệu lớn, Bẫy hiệu năng và Bộ code SQL mẫu (Epicor & Oracle EBS)
 sidebar_label: Báo cáo Tồn kho theo Thời điểm
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/bao-cao-stock-on-hand
 sidebar_position: 8000
@@ -8,7 +9,9 @@ date: 2026-08-15
 tags: [erp, inventory, report, analytics, stock-on-hand, performance-tuning, sql-query, oracle-ebs, epicor]
 ---
 
-# Báo cáo Tồn kho theo Thời điểm (Stock on Hand) — Kiến trúc truy vấn dữ liệu lớn, Bẫy hiệu năng và Bộ code SQL mẫu (Epicor & Oracle EBS)
+# 8000 Báo cáo Tồn kho theo Thời điểm (Stock on Hand)
+
+> Kiến trúc truy vấn dữ liệu lớn, Bẫy hiệu năng và Bộ code SQL mẫu (Epicor & Oracle EBS)
 
 Báo cáo **Tồn kho theo thời điểm (Stock on Hand / Inventory Balance Report)** là báo cáo có tần suất sử dụng lớn nhất trong phân hệ Kho. Báo cáo này trả lời cho câu hỏi cốt lõi của doanh nghiệp tại thời điểm hiện tại: *Trong kho đang có chính xác bao nhiêu hàng hóa, nằm ở những vị trí ô kệ nào, và tổng giá trị quy đổi ra tiền là bao nhiêu?*
 

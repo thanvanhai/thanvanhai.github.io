@@ -1,6 +1,7 @@
 ---
 id: quan-ly-theo-so-serial-serial-control
-title: Nghiệp vụ Quản lý theo số Serial (Serial Control) — Định danh thiết bị, Bảo hành RMA và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Nghiệp vụ Quản lý theo số Serial (Serial Control) 
+description: Định danh thiết bị, Bảo hành RMA và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Quản lý theo số Serial (Serial Control)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/quan-ly-theo-so-serial
 sidebar_position: 6010
@@ -8,7 +9,9 @@ date: 2026-08-09
 tags: [erp, inventory, serial-control, serial-status, warranty, rma, database, sql-audit, oracle-ebs, epicor]
 ---
 
-# Nghiệp vụ Quản lý theo số Serial (Serial Control) — Định danh thiết bị, Bảo hành RMA và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 6010 Nghiệp vụ Quản lý theo số Serial (Serial Control) 
+
+> Định danh thiết bị, Bảo hành RMA và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Nếu quản lý theo lô (Lot Control) dùng để theo dõi một nhóm sản phẩm có chung ngày sản xuất, thì **Quản lý theo số Serial (Serial Control)** là cấp độ kiểm soát chặt chẽ nhất của kho. Ở cấp độ này, mỗi một sản phẩm duy nhất sẽ được gán một "chứng minh nhân dân" riêng biệt là một chuỗi mã số Serial duy nhất. Số lượng tồn kho hệ thống của một số Serial luôn luôn bằng **1**.
 

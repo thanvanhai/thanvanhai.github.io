@@ -1,6 +1,7 @@
 ---
 id: quan-ly-theo-lo-lot-control
-title: Nghiệp vụ Quản lý theo Lô (Lot Control) — Truy xuất nguồn gốc, Quy trình FEFO và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Nghiệp vụ Quản lý theo Lô (Lot Control) 
+description: Truy xuất nguồn gốc, Quy trình FEFO và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Quản lý theo Lô (Lot Control)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/quan-ly-theo-lo
 sidebar_position: 6000
@@ -8,7 +9,9 @@ date: 2026-08-08
 tags: [erp, inventory, lot-control, fefo, traceability, quarantine, expiry-date, sql-audit, oracle-ebs, epicor]
 ---
 
-# Nghiệp vụ Quản lý theo Lô (Lot Control) — Truy xuất nguồn gốc, Quy trình FEFO và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 6000 Nghiệp vụ Quản lý theo Lô (Lot Control) 
+
+> Truy xuất nguồn gốc, Quy trình FEFO và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Trong các ngành công nghiệp đặc thù như Dược phẩm, Thực phẩm & Đồ uống (F&B), Hóa chất, và Chế tạo linh kiện điện tử, việc quản lý hàng hóa theo số lượng đơn thuần là hoàn toàn chưa đủ. Các ngành này bắt buộc phải áp dụng phân hệ **Quản lý theo Lô (Lot/Batch Control)** để theo dõi chặt chẽ từng nhóm sản phẩm có cùng đặc tính sản xuất và thời hạn sử dụng.
 

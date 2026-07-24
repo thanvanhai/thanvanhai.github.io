@@ -1,6 +1,7 @@
 ---
 id: chien-luoc-xuat-kho-fefo-first-expired-first-out
-title: Chiến lược Xuất kho FEFO (First Expired, First Out) — Tối ưu hóa hạn dùng, Cảnh báo cận hạn và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Chiến lược Xuất kho FEFO (First Expired, First Out) 
+description: Tối ưu hóa hạn dùng, Cảnh báo cận hạn và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Chiến lược FEFO
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/fefo
 sidebar_position: 6020
@@ -8,7 +9,9 @@ date: 2026-08-10
 tags: [erp, inventory, fefo, fifo, lot-control, expiry-date, wms, sql-audit, oracle-ebs, epicor]
 ---
 
-# Chiến lược Xuất kho FEFO (First Expired, First Out) — Tối ưu hóa hạn dùng, Cảnh báo cận hạn và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 6020 Chiến lược Xuất kho FEFO (First Expired, First Out)
+
+> Tối ưu hóa hạn dùng, Cảnh báo cận hạn và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Đối với các mặt hàng có thời hạn sử dụng (Shelf Life) như dược phẩm, sữa, thực phẩm đóng gói, hóa chất hay mỹ phẩm, việc áp dụng phương pháp xuất kho Nhập trước - Xuất trước (FIFO) là chưa đủ an toàn. Trong thực tế chuỗi cung ứng, một lô hàng nhập kho sau hoàn toàn có thể có ngày hết hạn sớm hơn lô hàng nhập kho trước (do nhà cung cấp giao hàng trễ, hoặc lô hàng nhập sau có hạn dùng ngắn hơn).
 

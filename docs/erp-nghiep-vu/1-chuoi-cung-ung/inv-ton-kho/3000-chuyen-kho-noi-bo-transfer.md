@@ -1,6 +1,7 @@
 ---
 id: chuyen-kho-noi-bo-transfer
-title: Nghiệp vụ Chuyển kho Nội bộ (Inter-warehouse Transfer) — Cơ chế In-transit, Hạch toán 2 bước và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Nghiệp vụ Chuyển kho Nội bộ (Inter-warehouse Transfer) 
+description: Cơ chế In-transit, Hạch toán 2 bước và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Chuyển kho Nội bộ
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/chuyen-kho-noi-bo
 sidebar_position: 3000
@@ -8,7 +9,9 @@ date: 2026-07-29
 tags: [erp, inventory, transfer-order, in-transit, inter-org, sql-audit, oracle-ebs, epicor]
 ---
 
-# Nghiệp vụ Chuyển kho Nội bộ (Inter-warehouse Transfer) — Cơ chế In-transit, Hạch toán 2 bước và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 3000 Nghiệp vụ Chuyển kho Nội bộ (Inter-warehouse Transfer) 
+
+> Cơ chế In-transit, Hạch toán 2 bước và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Trong các doanh nghiệp có quy mô lớn với nhiều nhà máy, chi nhánh hoặc kho bãi vệ tinh, việc điều chuyển hàng hóa qua lại là hoạt động diễn ra hàng ngày. Nghiệp vụ này trên hệ thống ERP được quản lý bằng phân hệ **Chuyển kho nội bộ (Inter-warehouse / Inter-org / Plant-to-Plant Transfer)**.
 

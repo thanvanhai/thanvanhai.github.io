@@ -1,6 +1,7 @@
 ---
 id: dinh-gia-ton-kho-cuoi-ky-inventory-valuation
-title: Định giá Tồn kho Cuối kỳ (Inventory Valuation) — Đối chiếu Kho và GL, Trích lập dự phòng (NRV) và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Định giá Tồn kho Cuối kỳ (Inventory Valuation) 
+description: Đối chiếu Kho và GL, Trích lập dự phòng (NRV) và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Định giá Tồn kho Cuối kỳ
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/dinh-gia-cuoi-ky
 sidebar_position: 5020
@@ -8,7 +9,9 @@ date: 2026-08-07
 tags: [erp, inventory, costing, valuation, period-close, nrv, subledger-reconciliation, sql-audit, oracle-ebs, epicor]
 ---
 
-# Định giá Tồn kho Cuối kỳ (Inventory Valuation) — Đối chiếu Kho và GL, Trích lập dự phòng (NRV) và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 5020 Định giá Tồn kho Cuối kỳ (Inventory Valuation) 
+
+> Đối chiếu Kho và GL, Trích lập dự phòng (NRV) và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Khi một kỳ kế toán tháng hoặc năm tài chính kết thúc, hoạt động quan trọng nhất của bộ phận quản lý kho và kế toán là **Định giá tồn kho cuối kỳ (Inventory Valuation / Period End Reconciliation)**. Đây là thời điểm doanh nghiệp phải chốt số liệu, khóa sổ kho (Period Close) để xuất ra con số tổng giá trị tài sản hàng tồn kho chính thức.
 

@@ -1,16 +1,16 @@
 ---
 id: tong-quan-thuc-thi-san-xuat-mfg
-title: Tổng quan Thực thi Sản xuất (MFG-Execution)
-sidebar_label: Tổng quan Thực thi (MFG)
+title: Tổng quan Thực thi Sản xuất (ERP - Transactional)
+sidebar_label: Tổng quan Thực thi (ERP - Transactional)
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-thuc-thi/tong-quan
 sidebar_position: 1
-date: 2026-07-24
+date: 2026-07-21
 tags: [erp, manufacturing, wip, work-order, tong-quan, roadmap]
 ---
 
-# Tổng quan Thực thi Sản xuất (MFG-Execution)
+# Tổng quan Thực thi Sản xuất (ERP - Transactional)
 
-Trang này tổng hợp lộ trình các bài viết về nghiệp vụ **Thực thi sản xuất (Shop Floor Control / Work in Process - WIP)** trên sàn nhà xưởng, thuộc phạm vi **ERP - dữ liệu giao dịch (Transactional Data)**. Phân hệ này tiêu thụ dữ liệu cấu trúc kỹ thuật (BOM/Routing) từ phân hệ `mfg-ky-thuat` để điều phối, ghi nhận thực tế và kiểm soát chi phí dở dang.
+Trang này tổng hợp lộ trình các bài viết về nghiệp vụ **Thực thi sản xuất (Shop Floor Control / Work in Process - WIP)** trên sàn nhà xưởng, thuộc phạm vi **ERP - dữ liệu giao dịch (Transactional Data)**. Phân hệ này tiêu thụ dữ liệu cấu trúc kỹ thuật (BOM/Routing) để điều phối, ghi nhận thực tế và kiểm soát chi phí dở dang.
 Các mục dưới đây sẽ được cập nhật liên kết dần sau khi bài viết tương ứng được hoàn thành.
 
 ## 1. Phát hành & Điều phối lệnh sản xuất (Order Release & Dispatching)

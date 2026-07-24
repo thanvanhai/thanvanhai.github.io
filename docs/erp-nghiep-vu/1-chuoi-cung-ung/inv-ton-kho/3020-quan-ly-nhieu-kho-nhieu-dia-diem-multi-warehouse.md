@@ -1,6 +1,7 @@
 ---
 id: quan-ly-nhieu-kho-nhieu-dia-diem-multi-warehouse
-title: Nghiệp vụ Quản lý Nhiều kho, Nhiều địa điểm (Multi-Warehouse) — Thiết lập Sites, Kho Ký gửi, Gia công ngoài và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Nghiệp vụ Quản lý Nhiều kho, Nhiều địa điểm (Multi-Warehouse)
+description: Thiết lập Sites, Kho Ký gửi, Gia công ngoài và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Quản lý Nhiều kho (Multi-Warehouse)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/quan-ly-nhieu-kho
 sidebar_position: 3020
@@ -8,7 +9,9 @@ date: 2026-07-31
 tags: [erp, inventory, multi-warehouse, multi-site, consignment, subcontracting, sql-audit, oracle-ebs, epicor]
 ---
 
-# Nghiệp vụ Quản lý Nhiều kho, Nhiều địa điểm (Multi-Warehouse) — Thiết lập Sites, Kho Ký gửi, Gia công ngoài và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 3020 Nghiệp vụ Quản lý Nhiều kho, Nhiều địa điểm (Multi-Warehouse) 
+
+> Thiết lập Sites, Kho Ký gửi, Gia công ngoài và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Khi doanh nghiệp phát triển đến một quy mô nhất định, họ không còn quản lý hàng hóa tập trung tại một nhà kho duy nhất. Hệ thống ERP bắt buộc phải mở rộng để quản lý **Nhiều kho, Nhiều địa điểm (Multi-Warehouse / Multi-Site / Multi-Organization)** bao gồm: Kho tổng, các kho chi nhánh, kho ký gửi tại đại lý, hay thậm chí là kho nguyên vật liệu đang gửi tại xưởng gia công ngoài của đối tác.
 

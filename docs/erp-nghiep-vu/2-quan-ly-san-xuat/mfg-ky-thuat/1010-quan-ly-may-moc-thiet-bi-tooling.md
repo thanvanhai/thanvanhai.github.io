@@ -1,13 +1,15 @@
 ---
 id: 1010-quan-ly-may-moc-thiet-bi-tooling
 title: Quản lý Máy móc, Thiết bị & Khuôn gá (Machine & Tooling)
-sidebar_label: 1010 - Quản lý Tooling & Khuôn gá
+description: Quản lý Máy móc, Thiết bị & Khuôn gá (Machine & Tooling)
+sidebar_label: Quản lý Tooling & Khuôn gá
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/1010-quan-ly-may-moc-thiet-bi-tooling
+sidebar_position: 1010
 date: 2026-09-03
 tags: [erp, manufacturing, oracle-ebs, epicor, sap, odoo, tooling, prt, sql]
 ---
 
-# Quản lý Máy móc, Thiết bị & Khuôn gá (Machine & Tooling)
+# 1010 Quản lý Máy móc, Thiết bị & Khuôn gá (Machine & Tooling)
 
 Trong các ngành sản xuất như ép nhựa, dập kim loại, đúc áp lực hay cơ khí chính xác, năng lực sản xuất không chỉ phụ thuộc vào máy chính (Machine) mà còn bị giới hạn bởi các công cụ phụ trợ đi kèm như khuôn mẫu (Molds), đồ gá (Jigs), trục dao hay các cối dập (Dies). Đối tượng này được gọi chung là **Công cụ & Thiết bị phụ trợ (Tooling)** hay **Công cụ lực sản xuất (PRT - Production Resources & Tools)**.
 

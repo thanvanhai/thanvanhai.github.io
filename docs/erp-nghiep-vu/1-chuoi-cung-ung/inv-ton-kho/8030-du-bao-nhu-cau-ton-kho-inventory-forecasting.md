@@ -1,6 +1,7 @@
 ---
 id: du-bao-nhu-cau-ton-kho-inventory-forecasting
-title: Dự báo Nhu cầu Tồn kho (Inventory Forecasting) — Thuật toán dự báo, Tính toán Safety Stock và Bộ code SQL mẫu (Epicor & Oracle EBS)
+title: Dự báo Nhu cầu Tồn kho (Inventory Forecasting)
+description: Thuật toán dự báo, Tính toán Safety Stock và Bộ code SQL mẫu (Epicor & Oracle EBS)
 sidebar_label: Dự báo Nhu cầu Tồn kho
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/du-bao-nhu-cau-ton-kho
 sidebar_position: 8030
@@ -8,7 +9,9 @@ date: 2026-08-18
 tags: [erp, inventory, report, forecasting, safety-stock, reorder-point, demand-volatility, sql-query, oracle-ebs, epicor]
 ---
 
-# Dự báo Nhu cầu Tồn kho (Inventory Forecasting) — Thuật toán dự báo, Tính toán Safety Stock và Bộ code SQL mẫu (Epicor & Oracle EBS)
+# 8030 Dự báo Nhu cầu Tồn kho (Inventory Forecasting)
+
+> Thuật toán dự báo, Tính toán Safety Stock và Bộ code SQL mẫu (Epicor & Oracle EBS)
 
 Trong khi các báo cáo trước đó (Stock on Hand, Nhập-Xuất-Tồn, Chậm luân chuyển) tập trung giải quyết câu hỏi về số liệu quá khứ và hiện tại, **Báo cáo Dự báo nhu cầu tồn kho (Inventory Forecasting / Demand Forecasting)** đưa hệ thống dịch chuyển sang phân tích dự đoán (Predictive Analytics). 
 

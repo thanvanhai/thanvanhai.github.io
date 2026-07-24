@@ -4,7 +4,7 @@ title: Tổng quan Kế toán Giá thành (Product Costing)
 sidebar_label: Tổng quan Giá thành (CO-PC)
 slug: /erp-nghiep-vu/3-tai-chinh-ke-toan/fin-gia-thanh/tong-quan
 sidebar_position: 1
-date: 2026-07-24
+date: 2026-07-21
 tags: [erp, finance, controlling, costing, product-costing, standard-cost, actual-cost, variance, wip, by-product, subcontracting, landed-cost, tong-quan, roadmap]
 ---
 

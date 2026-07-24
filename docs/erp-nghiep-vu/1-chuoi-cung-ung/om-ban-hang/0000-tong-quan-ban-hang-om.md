@@ -1,10 +1,10 @@
 ---
 id: tong-quan-quan-ly-ban-hang-om
-title: Tổng quan Quản lý Đơn hàng (OM) - Bản mở rộng
+title: Tổng quan Quản lý Đơn hàng (OM)
 sidebar_label: Tổng quan Bán hàng (OM)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/om-ban-hang/tong-quan
 sidebar_position: 1
-date: 2026-07-24
+date: 2026-07-21
 tags: [erp, sales, om, so, tong-quan, roadmap, oracle-ebs, sap, epicor, odoo]
 ---
 

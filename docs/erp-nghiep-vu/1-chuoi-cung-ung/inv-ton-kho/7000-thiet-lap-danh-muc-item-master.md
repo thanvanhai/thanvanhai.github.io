@@ -1,6 +1,7 @@
 ---
 id: thiet-lap-danh-muc-item-master
-title: Thiết lập Danh mục Hàng hóa (Item Master) — Triết lý đặt mã, Ràng buộc Đơn vị tính gốc và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Thiết lập Danh mục Hàng hóa (Item Master)
+description: Triết lý đặt mã, Ràng buộc Đơn vị tính gốc và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Danh mục Hàng hóa (Item Master)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/item-master
 sidebar_position: 7000
@@ -8,7 +9,9 @@ date: 2026-08-11
 tags: [erp, inventory, item-master, primary-uom, naming-convention, database, sql-audit, oracle-ebs, epicor]
 ---
 
-# Thiết lập Danh mục Hàng hóa (Item Master) — Triết lý đặt mã, Ràng buộc Đơn vị tính gốc và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 7000 Thiết lập Danh mục Hàng hóa (Item Master) 
+
+> Triết lý đặt mã, Ràng buộc Đơn vị tính gốc và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Danh mục Hàng hóa (**Item Master** hoặc **Part Master**) là "bộ mã di truyền - DNA" của mọi hệ thống ERP. Tất cả các phân hệ từ Thu mua (PO), Bán hàng (SO), Sản xuất (MFG) cho đến Kế toán (FI) đều phải tham chiếu trực tiếp đến mã hàng hóa được định nghĩa tại đây.
 

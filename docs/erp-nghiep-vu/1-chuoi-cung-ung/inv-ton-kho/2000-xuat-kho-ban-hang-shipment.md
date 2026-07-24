@@ -1,6 +1,7 @@
 ---
 id: xuat-kho-ban-hang-shipment
-title: Nghiệp vụ Xuất kho Bán hàng (Sales Shipment) — Luồng hạch toán giá vốn, Cơ chế Giữ hàng (Allocation) và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Nghiệp vụ Xuất kho Bán hàng (Sales Shipment)
+description: Luồng hạch toán giá vốn, Cơ chế Giữ hàng (Allocation) và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Xuất kho Bán hàng
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/xuat-kho-ban-hang
 sidebar_position: 2000
@@ -8,7 +9,9 @@ date: 2026-07-26
 tags: [erp, inventory, sales-order, shipment, allocation, cogs, order-to-cash, sql-audit, oracle-ebs, epicor]
 ---
 
-# Nghiệp vụ Xuất kho Bán hàng (Sales Shipment) — Luồng hạch toán giá vốn, Cơ chế Giữ hàng (Allocation) và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 2000 Nghiệp vụ Xuất kho Bán hàng (Sales Shipment)
+
+> Luồng hạch toán giá vốn, Cơ chế Giữ hàng (Allocation) và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Xuất kho bán hàng (thường gọi là **Sales Shipment** hoặc **Outbound Delivery**) là nghiệp vụ cốt lõi trong chu trình **Order-to-Cash (Bán hàng thu tiền)** của doanh nghiệp. Đây là thời điểm hàng hóa chính thức rời khỏi ranh giới nhà máy để chuyển quyền sở hữu sang cho khách hàng.
 

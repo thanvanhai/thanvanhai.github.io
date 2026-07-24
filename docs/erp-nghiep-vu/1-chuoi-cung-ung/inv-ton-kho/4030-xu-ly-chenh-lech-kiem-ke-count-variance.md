@@ -1,6 +1,7 @@
 ---
 id: xu-ly-chenh-lech-kiem-ke-count-variance
-title: Xử lý Chênh lệch Kiểm kê (Count Variance) — Cơ chế Dung sai (Tolerance), Hạch toán hao hụt và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Xử lý Chênh lệch Kiểm kê (Count Variance) 
+description: Cơ chế Dung sai (Tolerance), Hạch toán hao hụt và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Xử lý Chênh lệch Kiểm kê
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/xu-ly-chenh-lech
 sidebar_position: 4030
@@ -8,7 +9,9 @@ date: 2026-08-04
 tags: [erp, inventory, cycle-count, physical-inventory, count-variance, tolerance, costing, sql-audit, oracle-ebs, epicor]
 ---
 
-# Xử lý Chênh lệch Kiểm kê (Count Variance) — Cơ chế Dung sai (Tolerance), Hạch toán hao hụt và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 4030 Xử lý Chênh lệch Kiểm kê (Count Variance)
+
+> Cơ chế Dung sai (Tolerance), Hạch toán hao hụt và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Sau khi hoàn thành việc đếm số liệu thực tế ngoài kho (trong cả đợt kiểm kê định kỳ lẫn kiểm kê toàn bộ) và nhập số liệu lên ERP, hệ thống sẽ tính toán ra con số chênh lệch (Variance). Nghiệp vụ **Xử lý chênh lệch kiểm kê (Count Variance Posting / Post Adjustments)** là bước cuối cùng duyệt để cập nhật số dư hệ thống về đúng thực tế và hạch toán tài chính.
 

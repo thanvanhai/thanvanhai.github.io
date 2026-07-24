@@ -4,7 +4,7 @@ title: Tổng quan Quản lý Mua hàng (PO)
 sidebar_label: Tổng quan Mua hàng (PO)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/tong-quan
 sidebar_position: 1
-date: 2026-07-24
+date: 2026-07-21
 tags: [erp, procurement, purchasing, po, pr, rfq, tong-quan, roadmap, oracle-ebs, sap, epicor, odoo]
 ---
 

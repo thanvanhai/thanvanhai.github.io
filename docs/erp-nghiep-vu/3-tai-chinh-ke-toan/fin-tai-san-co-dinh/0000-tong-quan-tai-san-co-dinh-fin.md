@@ -4,7 +4,7 @@ title: Tổng quan Quản lý Tài sản cố định (Fixed Assets)
 sidebar_label: Tổng quan Tài sản (FA)
 slug: /erp-nghiep-vu/3-tai-chinh-ke-toan/fin-tai-san-co-dinh/tong-quan
 sidebar_position: 1
-date: 2026-07-24
+date: 2026-07-21
 tags: [erp, finance, accounting, fixed-assets, fa, depreciation, cip, capitalization, lease-accounting, intangible-assets, tong-quan, roadmap]
 ---
 

@@ -1,6 +1,7 @@
 ---
 id: dieu-chinh-ton-kho-adjustment
-title: Nghiệp vụ Điều chỉnh Tồn kho (Inventory Adjustment) — Cơ chế định giá, Quản lý Reason Code và 3 "Kẽ hở" gian lận tài sản
+title: Nghiệp vụ Điều chỉnh Tồn kho (Inventory Adjustment) 
+description: Cơ chế định giá, Quản lý Reason Code và 3 "Kẽ hở" gian lận tài sản
 sidebar_label: Điều chỉnh Tồn kho (Adjustment)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/dieu-chinh-ton-kho
 sidebar_position: 4000
@@ -8,7 +9,9 @@ date: 2026-07-25
 tags: [erp, inventory, adjustment, reason-code, costing, accounting, fraud-control]
 ---
 
-# Nghiệp vụ Điều chỉnh Tồn kho (Inventory Adjustment) — Cơ chế định giá, Quản lý Reason Code và 3 "Kẽ hở" gian lận tài sản
+# 4000 Nghiệp vụ Điều chỉnh Tồn kho (Inventory Adjustment)
+
+> Cơ chế định giá, Quản lý Reason Code và 3 "Kẽ hở" gian lận tài sản
 
 Trong vận hành kho thực tế, việc chênh lệch số liệu giữa hệ thống ERP và thực tế là điều khó tránh khỏi (do cân đo sai lệch, hao hụt tự nhiên, hoặc lỗi nhập liệu trước đó). Để đồng bộ lại số liệu, thủ kho và kế toán sẽ sử dụng nghiệp vụ **Điều chỉnh tồn kho (Inventory Adjustment)**.
 

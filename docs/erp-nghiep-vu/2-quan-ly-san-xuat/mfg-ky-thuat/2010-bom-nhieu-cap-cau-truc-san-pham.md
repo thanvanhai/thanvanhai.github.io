@@ -1,13 +1,19 @@
 ---
 id: 2010-bom-nhieu-cap-cau-truc-san-pham
-title: Cấu trúc sản phẩm & BOM nhiều cấp (Multi-level BOM)
-sidebar_label: 2010 - BOM nhiều cấp & Cấu trúc cây
+title: Cấu trúc sản phẩm đa tầng và cơ chế nổ bom nhiều cấp (Multi-level BOM & Explosion)
+description: Cấu trúc sản phẩm đa tầng và cơ chế nổ bom nhiều cấp (Multi-level BOM & Explosion)
+sidebar_label: Cấu trúc đa tầng & Nổ BOM
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/2010-bom-nhieu-cap-cau-truc-san-pham
+sidebar_position: 2010
 date: 2026-09-15
 tags: [erp, manufacturing, oracle-ebs, epicor, sap, odoo, multi-level-bom, low-level-code, sql]
 ---
 
-# Cấu trúc sản phẩm & BOM nhiều cấp (Multi-level BOM)
+# 2010 Cấu trúc sản phẩm đa tầng và cơ chế nổ bom nhiều cấp (Multi-level BOM & Explosion)
+
+> **Lưu ý ranh giới nghiệp vụ:** Bài viết này giải quyết cấu trúc **BOM nhiều cấp tĩnh (Static Nested BOM)** - tức là cấu trúc phân cấp cố định giữa thành phẩm và các cụm bán thành phẩm trung gian, đòi hỏi tính toán Mã cấp thấp nhất (Low-Level Code) khi phân rã MRP [2]. Đối với cấu trúc BOM động lựa chọn linh kiện theo thuộc tính tùy biến của đơn bán hàng (Configure-to-Order), vui lòng tham khảo bài viết **[2060 - Thiết lập BOM cấu hình cho mô hình Sản xuất theo đơn đặt hàng (Configurable BOM / ATO - CTO)](./2060-thiet-lap-super-bom.md)** [2].
+
+---
 
 Rất hiếm sản phẩm nào được tạo thành từ một danh sách vật tư phẳng một cấp duy nhất. Thông thường, một chiếc xe máy được lắp ráp từ khung xe, động cơ và bánh xe (Bán thành phẩm - Sub-assemblies). Động cơ lại được lắp ráp từ piston, xi lanh và xéc măng (Cụm linh kiện). 
 
@@ -46,7 +52,7 @@ Epicor cung cấp giao diện trực quan cho phép kỹ sư xây dựng toàn b
 ### c. Hệ thống SAP S/4HANA (Truy xuất qua hệ thống T-Code CS11/CS12/CS13)
 SAP quản lý phân rã cấu trúc cây theo nhiều mục đích phân tích khác nhau:
 1. **Thiết lập:** Tương tự Oracle EBS, người dùng tạo các BOM một cấp độc lập qua T-Code `CS01`.
-2. **Phân rã đa dạng:** Để kiểm tra cấu trúc nhiều cấp, SAP cung cấp 3 mã giao dịch đặc thù:
+2. **Phân rã đa dạng:** Để kiểm tra cấu trúc nhiều cấp, SAP cung cung cấp 3 mã giao dịch đặc thù:
    - `CS11` (BOM Explode: Indented): Hiển thị cấu trúc cây thụt lề theo từng cấp rõ ràng.
    - `CS12` (BOM Explode: Multi-level): Phân rã phẳng toàn bộ các cấp dưới dạng bảng danh sách tổng hợp.
    - `CS13` (Summarized BOM): Tổng hợp cộng dồn tổng nhu cầu của từng loại linh kiện trên tất cả các cấp (phục vụ mua sắm vật tư nhanh).

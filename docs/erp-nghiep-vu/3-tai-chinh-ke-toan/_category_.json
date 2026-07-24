@@ -1,9 +1,9 @@
 ﻿{
-  "label": "Tài chính kế toán (Finance)",
+  "label": "Tài chính kế toán (FIN)",
   "position": 3,
   "link": {
     "type": "generated-index",
-    "title": "Tài chính kế toán (Finance)",
+    "title": "Tài chính kế toán (FIN)",
     "slug": "/erp-nghiep-vu/3-tai-chinh-ke-toan",
     "description": "Nghiệp vụ Công nợ (AR/AP), Tài sản cố định (FA), Kế toán Thuế (Tax), Giá thành (CO) và Sổ cái (GL) trong hệ thống ERP."
   }

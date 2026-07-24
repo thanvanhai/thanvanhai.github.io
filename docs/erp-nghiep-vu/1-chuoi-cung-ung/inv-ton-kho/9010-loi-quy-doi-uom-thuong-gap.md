@@ -1,14 +1,17 @@
 ---
 id: loi-quy-doi-uom-erp
-title: Lỗi quy đổi đơn vị tính (UOM) — Pattern lỗi phổ biến khiến báo cáo ERP sai lệch
+title: Lỗi quy đổi đơn vị tính (UOM) 
+description: Pattern lỗi phổ biến khiến báo cáo ERP sai lệch
 sidebar_label: Lỗi quy đổi đơn vị tính (UOM)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/loi-quy-doi-uom-thuong-gap
 sidebar_position: 9010
-date: 2026-07-21
+date: 2026-08-20
 tags: [erp, inventory, uom, epicor, report, data-integrity]
 ---
 
-# Lỗi quy đổi đơn vị tính (UOM) — "Sát thủ thầm lặng" làm lệch tồn kho và giá thành ERP
+# 9010 Lỗi quy đổi đơn vị tính (UOM) 
+
+> "Sát thủ thầm lặng" làm lệch tồn kho và giá thành ERP
 
 ## Vì sao lỗi này đáng nói
 

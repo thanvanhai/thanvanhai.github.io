@@ -1,6 +1,7 @@
 ---
 id: nhap-kho-tu-mua-hang-po
-title: Nghiệp vụ Nhập kho từ PO (Receipt from PO) — Luồng dữ liệu, Hạch toán và 3 "Bẫy" thực chiến
+title: Nhập kho từ PO (Receipt from PO) — Luồng dữ liệu và Hạch toán
+description: Luồng dữ liệu hệ thống, hạch toán kế toán tự động (SLA) và 3 "bẫy" thực chiến thường gặp khi nhập kho từ mua hàng trên Epicor & Oracle EBS.
 sidebar_label: Nhập kho từ PO
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/nhap-kho-tu-po
 sidebar_position: 1000
@@ -8,7 +9,9 @@ date: 2026-07-22
 tags: [erp, inventory, purchase-order, po-receipt, accounting, costing]
 ---
 
-# Nghiệp vụ Nhập kho từ PO (Receipt from PO) — Luồng dữ liệu, Hạch toán và 3 "Bẫy" thực chiến
+# 1000 Nhập kho từ PO (Receipt from PO) 
+
+> Luồng dữ liệu, Hạch toán và 3 "Bẫy" thực chiến
 
 Trong chuỗi cung ứng của doanh nghiệp, **Nhập kho từ mua hàng (Receipt from Purchase Order / PO Receipt)** là điểm chạm đầu tiên đưa vật tư bên ngoài vào hệ thống ERP.
 

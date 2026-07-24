@@ -1,14 +1,18 @@
 ---
 id: 2020-quan-ly-hao-hut-vat-tu
 title: Quản lý tỷ lệ hao hụt vật tư trong BOM (Scrap & Loss Factor)
-sidebar_label: 2020 - Hao hụt vật tư trong BOM
+description: Quản lý tỷ lệ hao hụt vật tư trong BOM (Scrap & Loss Factor)
+sidebar_label: Hao hụt vật tư trong BOM
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/2020-quan-ly-hao-hut-vat-tu
 date: 2026-09-18
 tags: [erp, manufacturing, oracle-ebs, epicor, sap, odoo, scrap, loss, yield, sql]
 ---
 
-# Quản lý tỷ lệ hao hụt vật tư trong BOM (Scrap & Loss Factor)
+# 2020 Quản lý tỷ lệ hao hụt vật tư trong BOM (Scrap & Loss Factor)
 
+> **Lưu ý ranh giới nghiệp vụ:** Bài viết này tập trung vào khái niệm **Kỹ thuật & Thiết lập định mức kế hoạch (Planned Scrap/Yield/Loss)** trên BOM [1]. Đối với quy trình ghi nhận thực tế dở dang, kiểm soát và báo cáo hao hụt thực tế tại sàn sản xuất, vui lòng tham khảo bài viết **`[2020 - Quản lý tồn kho dở dang tại sàn sản xuất và kiểm soát hao hụt (Floor Stock & Scrap Loss Tracking)]`** *(Liên kết sẽ được cập nhật sau khi hoàn thành phân hệ Thực thi sản xuất)*.
+
+---
 Trong thực tế sản xuất, nguyên vật liệu hầu như không bao giờ được tiêu hao trọn vẹn 100%. Luôn luôn tồn tại các khoảng hao hụt vật lý: hao hụt do vải vụn, phôi thép thừa thừa đầu thừa đuôi (Scrap), hao hụt do co ngót, bay hơi (Shrinkage/Loss), hoặc hao hụt khi bắt đầu set-up căn chỉnh khuôn máy (Setup Scrap). 
 
 Nếu hệ thống ERP không tính toán các hệ số này vào MRP, nhà xưởng sẽ liên tục rơi vào trạng thái thiếu hụt vật tư khi chạy máy thực tế. Ngược lại, nếu thiết lập hệ số quá cao, lượng tồn kho an toàn ảo sẽ tăng vọt gây đọng vốn. Bài viết này phân tích sâu kiến trúc dữ liệu, thuật toán tính toán và cách quản lý hao hụt vật tư trên **Oracle EBS, Epicor, SAP S/4HANA và Odoo**.

@@ -1,6 +1,7 @@
 ---
 id: nhap-kho-tu-san-xuat-wo
-title: Nghiệp vụ Nhập kho từ Sản xuất (Receipt from Work Order) — WIP, Kế toán giá thành và 3 "Bẫy" thực chiến
+title: Nghiệp vụ Nhập kho từ Sản xuất (Receipt from Work Order)
+description: Luồng dữ liệu hệ thống, WIP, Kế toán giá thành và 3 "Bẫy" thực chiến thường gặp khi nhập kho từ mua hàng trên Epicor & Oracle EBS.
 sidebar_label: Nhập kho từ Sản xuất
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/nhap-kho-tu-wo
 sidebar_position: 1010
@@ -8,7 +9,9 @@ date: 2026-07-23
 tags: [erp, inventory, work-order, production, costing, wip, accounting]
 ---
 
-# Nghiệp vụ Nhập kho từ Sản xuất (Receipt from Work Order) — WIP, Kế toán giá thành và 3 "Bẫy" thực chiến
+# 1010 Nghiệp vụ Nhập kho từ Sản xuất (Receipt from Work Order)
+
+> Luồng dữ liệu hệ thống, WIP, Kế toán giá thành và 3 "Bẫy" thực chiến thực chiến thường gặp khi nhập kho từ mua hàng trên Epicor & Oracle EBS.
 
 Nếu như nhập kho từ PO là việc mang vật tư từ ngoài vào doanh nghiệp, thì **Nhập kho từ sản xuất (Receipt from Work Order / Goods Receipt from Production)** là việc ghi nhận kết quả lao động nội bộ: Chuyển đổi nguyên vật liệu thô thành Bán thành phẩm (SFG) hoặc Thành phẩm (FG) để nhập vào kho.
 

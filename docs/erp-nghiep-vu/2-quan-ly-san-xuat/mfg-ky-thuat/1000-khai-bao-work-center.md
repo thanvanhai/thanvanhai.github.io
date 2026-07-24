@@ -1,13 +1,15 @@
 ---
 id: 1000-khai-bao-work-center
 title: Khai báo Trung tâm công việc (Work Center Setup) - Kiến trúc đa hệ thống
-sidebar_label: 1000 - Khai báo Work Center
+description: Khai báo Trung tâm công việc (Work Center Setup) - Kiến trúc đa hệ thống
+sidebar_label: Khai báo Work Center
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/1000-khai-bao-work-center
+sidebar_position: 1000
 date: 2026-09-01
 tags: [erp, manufacturing, oracle-ebs, epicor, sap, odoo, master-data, sql]
 ---
 
-# Khai báo Trung tâm công việc (Work Center Setup)
+# 1000 Khai báo Trung tâm công việc (Work Center Setup)
 
 Trong quản lý sản xuất, việc số hóa năng lực của nhà xưởng vật lý vào hệ thống ERP/MES là bước đầu tiên để vận hành. Đối tượng đại diện cho năng lực này thường được gọi là **Trung tâm công việc (Work Center)**. 
 

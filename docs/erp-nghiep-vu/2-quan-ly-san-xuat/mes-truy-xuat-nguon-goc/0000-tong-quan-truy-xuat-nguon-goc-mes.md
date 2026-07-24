@@ -4,7 +4,7 @@ title: Tổng quan Truy xuất Nguồn gốc (Traceability)
 sidebar_label: Tổng quan Truy vết (MES-TRC)
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mes-truy-xuat-nguon-goc/tong-quan
 sidebar_position: 1
-date: 2026-07-24
+date: 2026-07-21
 tags: [erp, mes, traceability, genealogy, barcode, rfid, recall, ebr, dhr, gs1, serialization, tong-quan, roadmap]
 ---
 

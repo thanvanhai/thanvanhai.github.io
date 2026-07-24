@@ -4,7 +4,7 @@ title: Tổng quan Kế toán Sổ cái (General Ledger)
 sidebar_label: Tổng quan Sổ cái (GL)
 slug: /erp-nghiep-vu/3-tai-chinh-ke-toan/fin-so-cai/tong-quan
 sidebar_position: 1
-date: 2026-07-24
+date: 2026-07-21
 tags: [erp, finance, accounting, general-ledger, gl, chart-of-accounts, consolidation, financial-statements, closing, budgetary-control, audit-trail, tong-quan, roadmap]
 ---
 

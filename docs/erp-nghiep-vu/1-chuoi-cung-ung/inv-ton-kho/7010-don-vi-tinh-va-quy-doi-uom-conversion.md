@@ -1,6 +1,7 @@
 ---
 id: don-vi-tinh-va-quy-doi-uom-conversion
-title: Đơn vị tính và Quy đổi (UOM Conversion) — Quy đổi chéo nhóm, Lỗi làm tròn số lẻ và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Đơn vị tính và Quy đổi (UOM Conversion)
+description: Quy đổi chéo nhóm, Lỗi làm tròn số lẻ và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Quy đổi Đơn vị tính (UOM)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/uom-conversion
 sidebar_position: 7010
@@ -8,7 +9,9 @@ date: 2026-08-12
 tags: [erp, inventory, uom, conversion, uom-class, rounding-error, sql-audit, oracle-ebs, epicor]
 ---
 
-# Đơn vị tính và Quy đổi (UOM Conversion) — Quy đổi chéo nhóm, Lỗi làm tròn số lẻ và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 7010 Đơn vị tính và Quy đổi (UOM Conversion) 
+
+> Quy đổi chéo nhóm, Lỗi làm tròn số lẻ và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Trong hệ thống ERP, việc quản lý hàng hóa với nhiều đơn vị tính (UOM) khác nhau là nhu cầu bắt buộc của mọi doanh nghiệp. Phòng mua hàng muốn đặt mua thép theo **Tấn** (để có giá sỉ tốt), thủ kho muốn quản lý tồn kho theo **Cây** (để dễ xếp lên giá kệ), và phân xưởng muốn xuất sản xuất theo **Mét** (để cắt theo bản vẽ).
 

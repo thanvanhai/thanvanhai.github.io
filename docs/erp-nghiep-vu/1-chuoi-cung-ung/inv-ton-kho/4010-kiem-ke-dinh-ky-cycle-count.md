@@ -1,6 +1,7 @@
 ---
 id: kiem-ke-dinh-ky-cycle-count
-title: Nghiệp vụ Kiểm kê Định kỳ (Cycle Counting) — Phân tích ABC, Đóng băng tồn kho và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Nghiệp vụ Kiểm kê Định kỳ (Cycle Counting) 
+description: Phân tích ABC, Đóng băng tồn kho và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Kiểm kê Định kỳ (Cycle Count)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/kiem-ke-dinh-ky
 sidebar_position: 4010
@@ -8,7 +9,9 @@ date: 2026-08-02
 tags: [erp, inventory, cycle-count, abc-analysis, freeze-inventory, variance, sql-audit, oracle-ebs, epicor]
 ---
 
-# Nghiệp vụ Kiểm kê Định kỳ (Cycle Counting) — Phân tích ABC, Đóng băng tồn kho và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 4010 Nghiệp vụ Kiểm kê Định kỳ (Cycle Counting)
+
+> Phân tích ABC, Đóng băng tồn kho và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Trong quản trị kho hiện đại, việc dừng hoạt động toàn bộ nhà máy trong 2 - 3 ngày để làm kiểm kê tổng thể (Physical Inventory) cuối năm là cực kỳ tốn kém và gián đoạn kinh doanh. Để thay thế, các doanh nghiệp áp dụng phương pháp **Kiểm kê định kỳ cuốn chiếu (Cycle Counting)** — chia nhỏ danh mục hàng hóa để kiểm kê liên tục hàng ngày, hàng tuần.
 

@@ -4,7 +4,7 @@ title: "Cái Bẫy \"Current Cost\": Vì Sao Báo Cáo Giá Thành Của Bạn C
 sidebar_label: "Cái Bẫy \"Current Cost\""
 slug: /erp-nghiep-vu/3-tai-chinh-ke-toan/cai-bay-current-cost-gia-thanh
 sidebar_position: 1
-date: 2026-07-17
+date: 2026-10-17
 tags: [erp, oracle, sql, manufacturing, costing, reporting]
 ---
 

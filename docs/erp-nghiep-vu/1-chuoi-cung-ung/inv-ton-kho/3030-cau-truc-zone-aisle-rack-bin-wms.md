@@ -1,6 +1,7 @@
 ---
 id: cau-truc-zone-aisle-rack-bin-wms
-title: Cấu trúc Zone - Aisle - Rack - Bin (WMS) — Thiết kế không gian, Chiến lược Putaway và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Cấu trúc Zone - Aisle - Rack - Bin (WMS) 
+description: Thiết kế không gian, Chiến lược Putaway và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Cấu trúc Ô kệ WMS
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/cau-truc-o-ke-wms
 sidebar_position: 3030
@@ -8,7 +9,9 @@ date: 2026-08-01
 tags: [erp, inventory, wms, zone, rack, bin, locator, putaway, sql-audit, oracle-ebs, epicor]
 ---
 
-# Cấu trúc Zone - Aisle - Rack - Bin (WMS) — Thiết kế không gian, Chiến lược Putaway và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 3030 Cấu trúc Zone - Aisle - Rack - Bin (WMS) 
+
+> Thiết kế không gian, Chiến lược Putaway và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Để vận hành một kho hàng có quy mô lớn với hàng chục ngàn mã hàng, hệ thống ERP không thể quản lý tồn kho chung chung ở mức "Nhà kho". Hệ thống bắt buộc phải số hóa toàn bộ không gian vật lý của kho thành một hệ tọa độ 4D chuẩn WMS: **Zone (Khu vực) - Aisle (Dãy) - Rack (Kệ) - Bin/Locator (Ô/Vị trí chi tiết)**.
 

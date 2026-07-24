@@ -1,6 +1,7 @@
 ---
 id: xuat-kho-cho-san-xuat-bom
-title: Nghiệp vụ Xuất kho cho Sản xuất (Issue for Work Order) — Quy trình BOM, Hạch toán WIP và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Nghiệp vụ Xuất kho cho Sản xuất (Issue for Work Order) 
+description: Quy trình BOM, Hạch toán WIP và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Xuất kho cho Sản xuất
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/xuat-kho-cho-san-xuat
 sidebar_position: 2010
@@ -8,7 +9,9 @@ date: 2026-07-27
 tags: [erp, inventory, work-order, bom, wip, accounting, sql-audit, oracle-ebs, epicor]
 ---
 
-# Nghiệp vụ Xuất kho cho Sản xuất (Issue for Work Order) — Quy trình BOM, Hạch toán WIP và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 2010 Nghiệp vụ Xuất kho cho Sản xuất (Issue for Work Order) 
+
+> Quy trình BOM, Hạch toán WIP và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Trong các nhà máy sản xuất, nghiệp vụ **Xuất kho cho sản xuất (Issue for Work Order / Material Issue)** là cầu nối đưa nguyên vật liệu (Raw Materials - RM) từ kho lưu trữ vào dây chuyền để bắt đầu chế biến. 
 

@@ -1,13 +1,15 @@
 ---
 id: 1020-khai-bao-ca-kip-nhan-luc
 title: Khai báo Ca kíp & Nguồn nhân lực sản xuất (Labor & Shifts)
-sidebar_label: 1020 - Ca kíp & Nguồn nhân lực
+description: Khai báo Ca kíp & Nguồn nhân lực sản xuất (Labor & Shifts)
+sidebar_label: Ca kíp & Nguồn nhân lực
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/1020-khai-bao-ca-kip-nhan-luc
+sidebar_position: 1020
 date: 2026-09-05
 tags: [erp, manufacturing, oracle-ebs, epicor, sap, odoo, labor, shift, calendar, sql]
 ---
 
-# Khai báo Ca kíp & Nguồn nhân lực sản xuất (Labor & Shifts)
+# 1020 Khai báo Ca kíp & Nguồn nhân lực sản xuất (Labor & Shifts)
 
 Trong quản lý sản xuất, nếu máy móc đại diện cho năng lực phần cứng thì **Nguồn nhân lực (Labor)** và **Ca kíp (Shifts)** chính là yếu tố điều tiết thời gian thực thi của nhà máy. Khác với máy móc có thể chạy 24/7, nguồn nhân lực còn bị ràng buộc bởi luật lao động (giờ làm việc tối đa, giờ nghỉ ăn ca), trình độ tay nghề (Skills/Kỹ năng), và chi phí tăng ca (Overtime Rates).
 
@@ -171,7 +173,7 @@ ORDER BY
 ```sql
 SELECT 
     cal.calendar_code AS "Calendar Code",
-    cal.calendar_description AS "Calendar Name",
+    cal.description AS "Calendar Name",
     shift.shift_num AS "Shift No",
     shift.description AS "Shift Name",
     times.from_time / 3600 AS "Start Hour", -- Quy đổi từ Giây sang Giờ

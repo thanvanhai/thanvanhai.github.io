@@ -1,13 +1,15 @@
 ---
 id: 3010-dinh-nghia-cong-doan-chuan
 title: Định nghĩa các Công đoạn sản xuất chuẩn (Standard Operations)
-sidebar_label: 3010 - Công đoạn sản xuất chuẩn
+description: Định nghĩa các Công đoạn sản xuất chuẩn (Standard Operations)
+sidebar_label: Công đoạn sản xuất chuẩn
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/3010-dinh-nghia-cong-doan-chuan
+sidebar_position: 3010
 date: 2026-10-02
 tags: [erp, manufacturing, oracle-ebs, epicor, sap, odoo, standard-operations, routing, sql]
 ---
 
-# Định nghĩa các Công đoạn sản xuất chuẩn (Standard Operations)
+# 3010 Định nghĩa các Công đoạn sản xuất chuẩn (Standard Operations)
 
 Khi nhà máy sản xuất hàng ngàn mã hàng khác nhau, việc thiết lập thủ công Quy trình công nghệ (Routing) cho từng sản phẩm là một gánh nặng hành chính khổng lồ và tiềm ẩn rủi ro sai lệch dữ liệu. Để giải quyết bài toán này, các hệ thống ERP cung cấp tính năng **Công đoạn sản xuất chuẩn (Standard Operations / Reference Operations)**. 
 
@@ -24,8 +26,8 @@ Bài viết này phân tích sâu kiến trúc dữ liệu thư viện công đo
 | Thành phần logic | Oracle EBS | Epicor ERP | SAP S/4HANA | Odoo ERP |
 | :--- | :--- | :--- | :--- | :--- |
 | **Bản chất kiến trúc** | Định nghĩa danh mục công đoạn chuẩn (`Standard Operations`) độc lập theo từng Chi nhánh (Organization). | Quản lý qua danh mục **Operation Code** toàn cục, bắt buộc mọi công đoạn trên MoM phải liên kết về mã này. | Hỗ trợ 2 cấp độ: **Standard Text Key** (Công đoạn đơn lẻ) và **Reference Operation Set** (Nhóm công đoạn mẫu nhiều cấp). | Không có bảng danh mục công đoạn mẫu riêng biệt (Quản lý gián tiếp qua Work Center hoặc copy cấu hình). |
-| **Bảng định nghĩa mẫu (Master Header)** | **`BOM_STANDARD_OPERATIONS`** (Lưu thông tin mã công đoạn chuẩn và Department mặc định). | **`Erp.Op`** (Bảng danh mục các Operation gốc của hệ thống). | **`T435T`** (Mã văn bản chuẩn) hoặc **`saphanadb.PLKO`** (Với loại Task List `PLNTY = S` - Reference Operation Set). | Sử dụng trực tiếp bảng **`mrp.routing.workcenter`** để lưu trữ các mẫu công đoạn chạy máy. |
-| **Bảng tài nguyên gán kèm (Resources)** | `BOM_STD_OP_RESOURCES` (Gán sẵn các máy móc/nhân công mặc định cho công đoạn chuẩn). | `Erp.Op` (Trường `ResourceGrpID` lưu nhóm máy mặc định của công đoạn). | `saphanadb.PLPO` (Định nghĩa sẵn danh sách Work Center và định mức thời gian trong nhóm mẫu). | Gán trực tiếp thiết bị bảo trì hoặc cấu hình mặc định trên Work Center. |
+| **Bảng định nghĩa mẫu (Master Header)** | **`BOM_STANDARD_OPERATIONS`** (Lưu thông tin mã công đoạn chuẩn và Department mặc định). | **`Erp.OpMaster`** (Bảng danh mục các Operation gốc của hệ thống, kèm bảng chi tiết `Erp.OpMasDtl`). | **`T435T`** (Mã văn bản chuẩn) hoặc **`saphanadb.PLKO`** (Với loại Task List `PLNTY = S` - Reference Operation Set). | Sử dụng trực tiếp bảng **`mrp.routing.workcenter`** để lưu trữ các mẫu công đoạn chạy máy. |
+| **Bảng tài nguyên gán kèm (Resources)** | `BOM_STD_OP_RESOURCES` (Gán sẵn các máy móc/nhân công mặc định cho công đoạn chuẩn). | `Erp.OpMaster` (Trường `ResourceGrpID` lưu nhóm máy mặc định của công đoạn). | `saphanadb.PLPO` (Định nghĩa sẵn danh sách Work Center và định mức thời gian trong nhóm mẫu). | Gán trực tiếp thiết bị bảo trì hoặc cấu hình mặc định trên Work Center. |
 
 ---
 
@@ -86,8 +88,8 @@ CƠ CHẾ REFERENCE (Liên kết động):
 ### Bài toán 2: Đồng bộ hóa đơn giá nhân công khi tính giá thành sản phẩm
 *   **Thách thức:** Khi lương cơ bản của công nhân tổ may tăng lên, kéo theo đơn giá giờ công định mức của công đoạn may (`OP_SEWING`) tăng từ 50.000 VNĐ lên 60.000 VNĐ/giờ. Làm sao để kế toán giá thành cập nhật đơn giá mới này cho toàn bộ cấu trúc sản phẩm của nhà máy?
 *   **Giải pháp thực tế:**
-    - Trong **Epicor ERP**, cấu hình đơn giá lao động (`Labor Rate`) gắn trực tiếp trên mã Operation gốc `SEW` trong danh mục `Erp.Op`. 
-    - Khi chạy tiến trình tính toán và cập nhật giá thành định mức cuối kỳ (Standard Cost Rollup), hệ thống Epicor sẽ quét trực tiếp đơn giá mới từ danh mục `Erp.Op` để áp vào công đoạn sản xuất của tất cả các sản phẩm, đảm bảo giá thành kế hoạch của sản phẩm luôn phản ánh chính xác biến động chi phí nhân sự.
+    - Trong **Epicor ERP**, cấu hình đơn giá lao động (`Labor Rate`) gắn trực tiếp trên mã Operation gốc `SEW` trong danh mục `Erp.OpMaster`.
+    - Khi chạy tiến trình tính toán và cập nhật giá thành định mức cuối kỳ (Standard Cost Rollup), hệ thống Epicor sẽ quét trực tiếp đơn giá mới từ danh mục `Erp.OpMaster` để áp vào công đoạn sản xuất của tất cả các sản phẩm, đảm bảo giá thành kế hoạch của sản phẩm luôn phản ánh chính xác biến động chi phí nhân sự.
 
 ---
 
@@ -121,7 +123,7 @@ ORDER BY
 ```
 
 ### b. Trên hệ thống Epicor ERP (SQL Server)
-Truy vấn danh sách danh mục Operation Code gốc (`Erp.Op`) của Epicor để kiểm tra nhóm máy thực thi và phương pháp tính năng suất mặc định:
+Truy vấn danh sách danh mục Operation Code gốc (`Erp.OpMaster`) của Epicor để kiểm tra nhóm máy thực thi và phương pháp tính năng suất mặc định:
 
 ```sql
 SELECT 
@@ -135,13 +137,15 @@ SELECT
     AutoReceive AS [Auto Receive on MES?],
     Active AS [Is Active?]
 FROM 
-    Erp.Op
+    Erp.OpMaster
 WHERE 
     Company = 'EP01'
     AND Active = 1
 ORDER BY 
     OpCode;
 ```
+
+> **Lưu ý:** Tên các trường (`SchedRelation`, `DailyProdQty`, `AutoReceive`...) có thể khác nhau tùy phiên bản Epicor cụ thể (10.0/10.1/10.2/Kinetic). Nên đối chiếu lại qua Epicor Data Dictionary (BAQ Designer hoặc Application Studio) trước khi dùng trong production.
 
 ### c. Trên hệ thống SAP S/4HANA (HANA SQL)
 Truy vấn danh sách các công đoạn chuẩn thuộc nhóm quy trình mẫu Reference Operation Set (Task List Type `PLNTY = S`) trong SAP S/4HANA:

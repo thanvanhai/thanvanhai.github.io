@@ -1,6 +1,7 @@
 ---
 id: nhom-hang-hoa-danh-muc-vat-tu-item-category
-title: Nhóm Hàng hóa và Danh mục Vật tư (Item Category) — Cơ chế hạch toán SLA, Phân cấp tài sản và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Nhóm Hàng hóa và Danh mục Vật tư (Item Category)
+description: Cơ chế hạch toán SLA, Phân cấp tài sản và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Nhóm Hàng hóa (Item Category)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/nhom-hang-hoa-item-category
 sidebar_position: 7020
@@ -8,7 +9,9 @@ date: 2026-08-13
 tags: [erp, inventory, item-category, part-class, product-group, sla, sql-audit, oracle-ebs, epicor]
 ---
 
-# Nhóm Hàng hóa và Danh mục Vật tư (Item Category) — Cơ chế hạch toán SLA, Phân cấp tài sản và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 7020 Nhóm Hàng hóa và Danh mục Vật tư (Item Category)
+
+> Cơ chế hạch toán SLA, Phân cấp tài sản và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Khi số lượng mã hàng hóa trong hệ thống ERP phình to lên hàng chục ngàn mã, kế toán không thể cấu hình tài khoản định khoản riêng biệt cho từng mã hàng cụ thể. Để giải quyết bài toán này, ERP sử dụng phân hệ **Nhóm hàng hóa / Danh mục vật tư (Item Category / Part Class / Product Group)** làm bộ lọc trung gian để phân loại tài sản và cấu hình hạch toán tự động.
 

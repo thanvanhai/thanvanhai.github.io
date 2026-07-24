@@ -4,7 +4,7 @@ title: Tổng quan Giám sát Thiết bị (PLC/SCADA)
 sidebar_label: Tổng quan Giám sát (MES-EQM)
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mes-giam-sat-thiet-bi/tong-quan
 sidebar_position: 1
-date: 2026-07-24
+date: 2026-07-21
 tags: [erp, mes, scada, plc, iot, oee, opc-ua, historian, isa-95, monitoring, tong-quan, roadmap]
 ---
 

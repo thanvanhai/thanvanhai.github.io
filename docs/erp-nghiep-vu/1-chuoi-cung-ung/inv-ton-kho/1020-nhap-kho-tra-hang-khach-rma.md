@@ -1,6 +1,7 @@
 ---
 id: nhap-kho-tra-hang-khach-rma
-title: Nghiệp vụ Nhập kho Trả hàng từ Khách (Sales Return) — Quy trình RMA, Định giá hàng trả lại và 3 "Cú lừa" kế toán
+title: Nghiệp vụ Nhập kho Trả hàng từ Khách (Sales Return)
+description:  Quy trình RMA, Định giá hàng trả lại và 3 "Cú lừa" kế toán
 sidebar_label: Nhập kho trả hàng từ Khách
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/nhap-kho-tra-hang-khach
 sidebar_position: 1020
@@ -8,7 +9,9 @@ date: 2026-07-24
 tags: [erp, inventory, sales-return, rma, costing, credit-memo, accounting]
 ---
 
-# Nghiệp vụ Nhập kho Trả hàng từ Khách (Sales Return) — Quy trình RMA, Định giá hàng trả lại và 3 "Cú lừa" kế toán
+# 1020 Nghiệp vụ Nhập kho Trả hàng từ Khách (Sales Return) 
+
+> Quy trình RMA, Định giá hàng trả lại và 3 "Cú lừa" kế toán
 
 Trong hoạt động kinh doanh, việc khách hàng trả lại hàng (do lỗi sản xuất, sai quy cách, hoặc không đạt thỏa thuận) là điều không thể tránh khỏi. Trên hệ thống ERP, nghiệp vụ này thường được quản lý thông qua quy trình **RMA (Return Material Authorization - Xác nhận trả lại hàng)**.
 

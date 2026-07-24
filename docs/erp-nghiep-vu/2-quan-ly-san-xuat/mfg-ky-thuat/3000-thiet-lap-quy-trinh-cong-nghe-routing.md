@@ -1,13 +1,15 @@
 ---
 id: 3000-thiet-lap-quy-trinh-cong-nghe-routing
 title: Thiết lập Quy trình công nghệ tổng thể (Routing Setup)
-sidebar_label: 3000 - Quy trình công nghệ (Routing)
+description: Thiết lập Quy trình công nghệ tổng thể (Routing Setup)
+sidebar_label: Quy trình công nghệ (Routing)
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/3000-thiet-lap-quy-trinh-cong-nghe-routing
+sidebar_position: 3000
 date: 2026-09-28
 tags: [erp, manufacturing, oracle-ebs, epicor, sap, odoo, routing, operations, scheduling, sql]
 ---
 
-# Thiết lập Quy trình công nghệ tổng thể (Routing Setup)
+# 3000 Thiết lập Quy trình công nghệ tổng thể (Routing Setup)
 
 Quy trình công nghệ (Routing) định nghĩa chuỗi tuần tự các bước công đoạn (Operations) cần thiết để chế tạo ra một sản phẩm hoàn chỉnh. Mỗi bước công đoạn trong Routing xác định rõ: nội dung công việc cần làm, máy móc/trung tâm công việc thực hiện (`Work Center`), định mức thời gian chạy máy (`Run Time`) và thời gian chuẩn bị (`Setup Time`). Thiết lập Routing chính xác là nền tảng để hệ thống ERP lập lịch sản xuất chi tiết (WIP Scheduling) và phân bổ chi phí nhân công, khấu hao máy vào giá thành sản phẩm.
 

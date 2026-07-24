@@ -1,13 +1,15 @@
 ---
 id: 2040-ung-dung-bom-ao-phantom-bom
 title: Ứng dụng BOM ảo (Phantom BOM) trong sản xuất lắp ráp
-sidebar_label: 2040 - BOM ảo (Phantom BOM)
+description: Ứng dụng BOM ảo (Phantom BOM) trong sản xuất lắp ráp
+sidebar_label: BOM ảo (Phantom BOM)
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/2040-ung-dung-bom-ao-phantom-bom
+sidebar_position: 2040
 date: 2026-09-24
 tags: [erp, manufacturing, oracle-ebs, epicor, sap, odoo, phantom-bom, blow-through, sql]
 ---
 
-# Ứng dụng BOM ảo (Phantom BOM) trong sản xuất lắp ráp
+# 2040 Ứng dụng BOM ảo (Phantom BOM) trong sản xuất lắp ráp
 
 Trong môi trường thiết kế kỹ thuật, kỹ sư R&D luôn muốn cấu trúc sản phẩm được chia thành các cụm module lắp ráp (Sub-assemblies) riêng biệt để dễ quản lý bản vẽ và phiên bản thiết kế. Tuy nhiên, trên sàn sản xuất, các cụm trung gian này không hề được sản xuất trước để nhập kho lưu trữ. Công nhân tại trạm lắp ráp sẽ lấy trực tiếp linh kiện lẻ để lắp thẳng vào khung máy chính.
 

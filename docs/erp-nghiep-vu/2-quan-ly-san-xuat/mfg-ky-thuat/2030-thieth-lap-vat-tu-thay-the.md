@@ -1,13 +1,19 @@
 ---
 id: 2030-thieth-lap-vat-tu-thay-the
 title: Thiết lập Vật tư thay thế (Substitute / Alternative Material)
-sidebar_label: 2030 - Vật tư thay thế trong BOM
+description: Thiết lập Vật tư thay thế (Substitute / Alternative Material)
+sidebar_label: Vật tư thay thế trong BOM
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/2030-thiet-lap-vat-tu-thay-the
+sidebar_position: 2030
 date: 2026-09-21
 tags: [erp, manufacturing, oracle-ebs, epicor, sap, odoo, substitute, alternative, mrp, sql]
 ---
 
-# Thiết lập Vật tư thay thế (Substitute / Alternative Material)
+# 2030 Thiết lập Vật tư thay thế (Substitute / Alternative Material)
+
+> **Lưu ý ranh giới nghiệp vụ:** Bài viết này tập trung vào khái niệm **Kỹ thuật & Thiết lập các quy tắc thay thế định mức kế hoạch (Alternative/Substitute Master Data Rules)** trên BOM và Item Master phục vụ cho MRP [3]. Đối với quy trình hoán đổi thực tế tại thời điểm cấp phát/tiêu thụ nguyên vật liệu khi xưởng bị thiếu hàng, vui lòng tham khảo bài viết **`[2040 - Thay thế vật tư tại thời điểm tiêu thụ khi thiếu hàng (Component Substitution at Consumption)]`** *(Liên kết sẽ được cập nhật sau khi hoàn thành phân hệ Thực thi sản xuất)*.
+
+---
 
 Đứt gãy chuỗi cung ứng hoặc chậm trễ giao hàng từ nhà cung cấp là những rủi ro thường trực trên sàn sản xuất. Để đảm bảo dây chuyền hoạt động liên tục, kỹ sư thiết kế thường định nghĩa sẵn các **Vật tư thay thế (Substitute / Alternative Materials)** cho sản phẩm. 
 

@@ -1,6 +1,7 @@
 ---
 id: bao-cao-nhap-xuat-ton-inventory-movement-ledger
-title: Báo cáo Nhập - Xuất - Tồn (Inventory Ledger) — Thuật toán tính Tồn đầu kỳ, Tối ưu hóa hiệu năng và Bộ code SQL mẫu (Epicor & Oracle EBS)
+title: Báo cáo Nhập - Xuất - Tồn (Inventory Ledger)
+description: Thuật toán tính Tồn đầu kỳ, Tối ưu hóa hiệu năng và Bộ code SQL mẫu (Epicor & Oracle EBS)
 sidebar_label: Báo cáo Nhập - Xuất - Tồn
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/bao-cao-nhap-xuat-ton
 sidebar_position: 8010
@@ -8,7 +9,9 @@ date: 2026-08-16
 tags: [erp, inventory, report, stock-ledger, opening-balance, performance-tuning, sql-query, oracle-ebs, epicor]
 ---
 
-# Báo cáo Nhập - Xuất - Tồn (Inventory Ledger) — Thuật toán tính Tồn đầu kỳ, Tối ưu hóa hiệu năng và Bộ code SQL mẫu (Epicor & Oracle EBS)
+# 8010 Báo cáo Nhập - Xuất - Tồn (Inventory Ledger)
+
+> Thuật toán tính Tồn đầu kỳ, Tối ưu hóa hiệu năng và Bộ code SQL mẫu (Epicor & Oracle EBS)
 
 Báo cáo **Nhập - Xuất - Tồn (Inventory Movement Ledger / Stock Card)** hay còn gọi là *Sổ chi tiết vật tư*, là báo cáo pháp lý bắt buộc và quan trọng nhất của kế toán kho. Báo cáo này cung cấp cái nhìn toàn cảnh về sự biến động của dòng chảy vật tư trong một khoảng thời gian (Từ ngày $\rightarrow$ Đến ngày):
 $$\text{Tồn cuối kỳ} = \text{Tồn đầu kỳ} + \text{Tổng Nhập trong kỳ} - \text{Tổng Xuất trong kỳ}$$

@@ -1,14 +1,17 @@
 ---
 id: xu-ly-ton-kho-khi-doi-ky-ke-toan-period-close
-title: Xử lý Tồn kho khi Đổi kỳ kế toán (Period Close) — Cơ chế khóa kỳ, Giao dịch bị nghẽn và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Xử lý Tồn kho khi Đổi kỳ kế toán (Period Close)
+description: Cơ chế khóa kỳ, các giao dịch dễ bị nghẽn khi đóng kỳ, và bộ câu lệnh SQL audit để soát lỗi trên Epicor & Oracle EBS.
 sidebar_label: Khóa sổ kỳ kế toán (Period Close)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/khoa-so-ky-ke-toan
 sidebar_position: 9030
-date: 2026-08-21
+date: 2026-08-22
 tags: [erp, inventory, period-close, month-end, cost-processor, sla, posting-engine, sql-audit, oracle-ebs, epicor]
 ---
 
-# Xử lý Tồn kho khi Đổi kỳ kế toán (Period Close) — Cơ chế khóa kỳ, Giao dịch bị nghẽn và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 9030 Xử lý Tồn kho khi Đổi kỳ kế toán (Period Close) 
+
+> Cơ chế khóa kỳ, Giao dịch bị nghẽn và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Quy trình **Khóa sổ kho kỳ kế toán (Period Close / Month-End Closing)** là điểm chạm cuối cùng và quan trọng nhất kết nối dòng chảy Logistics của phân hệ Tồn kho (INV) với luồng hạch toán tài chính của phân hệ Sổ cái (GL). Mục tiêu của quy trình này là đóng băng toàn bộ các giao dịch phát sinh trong kỳ cũ để kế toán trưởng xuất ra báo cáo tài chính chính xác và hợp pháp gửi cho các cơ quan chức năng.
 

@@ -1,6 +1,7 @@
 ---
 id: dong-bo-ton-kho-giua-cac-module-inv-po-so-mfg
-title: Đồng bộ Tồn kho giữa các Module (INV ↔ PO ↔ SO ↔ MFG) — Điểm chạm dữ liệu, Bẫy đứt gãy hệ thống và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Đồng bộ Tồn kho giữa các Module (INV ↔ PO ↔ SO ↔ MFG) 
+description: Điểm chạm dữ liệu, Bẫy đứt gãy hệ thống và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Đồng bộ liên Module (INV-PO-SO-MFG)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/dong-bo-lien-module
 sidebar_position: 9000
@@ -8,7 +9,9 @@ date: 2026-08-19
 tags: [erp, inventory, integration, sales-order, purchase-order, production-order, subledger, sql-audit, oracle-ebs, epicor]
 ---
 
-# Đồng bộ Tồn kho giữa các Module (INV ↔ PO ↔ SO ↔ MFG) — Điểm chạm dữ liệu, Bẫy đứt gãy hệ thống và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 9000 Đồng bộ Tồn kho giữa các Module (INV ↔ PO ↔ SO ↔ MFG)
+
+> Điểm chạm dữ liệu, Bẫy đứt gãy hệ thống và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Một hệ thống ERP không phải là tập hợp các phần mềm rời rạc. Sức mạnh lớn nhất của ERP nằm ở tính **Tích hợp thời gian thực (Real-time Integration)**. Một giao dịch phát sinh ở phân hệ này sẽ lập tức kích hoạt sự thay đổi trạng thái và số liệu ở phân hệ khác. Trong đó, phân hệ **Tồn kho (INV)** đóng vai trò là "trái tim" trao đổi dữ liệu với Mua hàng (PO), Bán hàng (SO) và Sản xuất (MFG).
 

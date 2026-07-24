@@ -1,14 +1,17 @@
 ---
 id: xu-ly-am-kho-negative-inventory
-title: Xử lý Âm kho (Negative Inventory) — Thảm họa nổ giá bình quân, Cơ chế khóa âm kho và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Xử lý Âm kho (Negative Inventory) 
+description: Thảm họa nổ giá bình quân, Cơ chế khóa âm kho và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Xử lý Âm kho (Negative Inventory)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/xu-ly-am-kho
 sidebar_position: 9020
-date: 2026-08-20
+date: 2026-08-21
 tags: [erp, inventory, negative-inventory, costing, average-cost, backflushing, subledger-reconciliation, sql-audit, oracle-ebs, epicor]
 ---
 
-# Xử lý Âm kho (Negative Inventory) — Thảm họa nổ giá bình quân, Cơ chế khóa âm kho và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 9020 Xử lý Âm kho (Negative Inventory)
+
+> Thảm họa nổ giá bình quân, Cơ chế khóa âm kho và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Trong vận hành thực tế tại các nhà máy, **Âm tồn kho hệ thống (Negative Inventory)** thường phát sinh do độ trễ thời gian (Time Lag) giữa dòng dịch chuyển vật lý và dòng dữ liệu trên phần mềm (ví dụ: hàng thực tế đã được xếp lên xe xuất đi giao cho khách, nhưng phiếu nhập kho mua hàng PO của lô hàng đó vẫn đang chờ phòng mua hàng duyệt trên máy).
 

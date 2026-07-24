@@ -4,7 +4,7 @@ title: Tổng quan Kế toán Thuế (Taxation)
 sidebar_label: Tổng quan Thuế (Tax)
 slug: /erp-nghiep-vu/3-tai-chinh-ke-toan/fin-thue/tong-quan
 sidebar_position: 1
-date: 2026-07-24
+date: 2026-07-21
 tags: [erp, finance, accounting, tax, vat, wht, cit, sct, import-export-duty, transfer-pricing, e-invoice, tong-quan, roadmap]
 ---
 

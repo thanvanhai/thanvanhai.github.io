@@ -1,6 +1,7 @@
 ---
 id: kiem-ke-toan-bo-physical-inventory
-title: Nghiệp vụ Kiểm kê Toàn bộ (Physical Inventory) — Quy trình Tag Counting, Đóng băng giao dịch và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Nghiệp vụ Kiểm kê Toàn bộ (Physical Inventory) 
+description: Quy trình Tag Counting, Đóng băng giao dịch và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Kiểm kê Toàn bộ (Physical Inventory)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/kiem-ke-toan-bo
 sidebar_position: 4020
@@ -8,7 +9,9 @@ date: 2026-08-03
 tags: [erp, inventory, physical-inventory, tag-counting, system-lockout, audit, sql-audit, oracle-ebs, epicor]
 ---
 
-# Nghiệp vụ Kiểm kê Toàn bộ (Physical Inventory) — Quy trình Tag Counting, Đóng băng giao dịch và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 4020 Nghiệp vụ Kiểm kê Toàn bộ (Physical Inventory)
+
+> Quy trình Tag Counting, Đóng băng giao dịch và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Khác với kiểm kê định kỳ cuốn chiếu (Cycle Counting), **Kiểm kê toàn bộ (Physical Inventory)** là sự kiện lớn thường diễn ra 1 hoặc 2 lần trong năm (vào giữa năm hoặc cuối năm tài chính). Để thực hiện nghiệp vụ này, doanh nghiệp bắt buộc phải dừng toàn bộ hoạt động xuất - nhập - sản xuất của nhà máy trong vòng 2 - 3 ngày để đếm chính xác từng sản phẩm đang có trong kho.
 

@@ -5,6 +5,6 @@
     "type": "generated-index",
     "title": "Chuỗi cung ứng (SCM)",
     "slug": "/erp-nghiep-vu/1-chuoi-cung-ung",
-    "description": "Nghiệp vụ Tồn kho, Mua hàng, Bán hàng trong hệ thống ERP."
+    "description": "Nghiệp vụ Tồn kho (INV), Mua hàng (PO) và Bán hàng (OM) trong chuỗi cung ứng doanh nghiệp — từ nhập kho, xuất kho đến xử lý đơn hàng."
   }
 }

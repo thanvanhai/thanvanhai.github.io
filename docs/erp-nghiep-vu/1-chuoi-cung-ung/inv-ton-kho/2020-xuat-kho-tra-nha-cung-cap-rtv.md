@@ -1,6 +1,7 @@
 ---
 id: xuat-kho-tra-nha-cung-cap-rtv
-title: Nghiệp vụ Xuất kho trả Nhà cung cấp (Return to Vendor - RTV) — Luồng hạch toán, Đối chiếu Debit Memo và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Nghiệp vụ Xuất kho trả Nhà cung cấp (Return to Vendor - RTV) 
+description: Luồng hạch toán, Đối chiếu Debit Memo và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Xuất kho trả NCC (RTV)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/xuat-kho-tra-nha-cung-cap
 sidebar_position: 2020
@@ -8,7 +9,9 @@ date: 2026-07-28
 tags: [erp, inventory, purchasing, rtv, debit-memo, costing, sql-audit, oracle-ebs, epicor]
 ---
 
-# Nghiệp vụ Xuất kho trả Nhà cung cấp (Return to Vendor - RTV) — Luồng hạch toán, Đối chiếu Debit Memo và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 2020 Nghiệp vụ Xuất kho trả Nhà cung cấp (Return to Vendor - RTV) 
+
+> Luồng hạch toán, Đối chiếu Debit Memo và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Trong vận hành chuỗi cung ứng, không phải lúc nào nguyên vật liệu mua về cũng đạt chất lượng 100%. Khi phát hiện hàng lỗi (qua QC đầu vào hoặc phát sinh lỗi trong quá trình sản xuất), doanh nghiệp sẽ thực hiện nghiệp vụ **Xuất kho trả lại nhà cung cấp (Return to Vendor - RTV / Purchase Return)**.
 

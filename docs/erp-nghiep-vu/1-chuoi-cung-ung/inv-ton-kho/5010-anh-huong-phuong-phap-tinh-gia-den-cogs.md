@@ -1,6 +1,7 @@
 ---
 id: anh-huong-phuong-phap-tinh-gia-den-cogs
-title: Ảnh hưởng của Phương pháp Tính giá đến Giá vốn Hàng bán (COGS) — Biến động biên lợi nhuận, Bài toán phân bổ và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+title: Ảnh hưởng của Phương pháp Tính giá đến Giá vốn Hàng bán (COGS)
+description: Biến động biên lợi nhuận, Bài toán phân bổ và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 sidebar_label: Ảnh hưởng đến Giá vốn (COGS)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/anh-huong-den-cogs
 sidebar_position: 5010
@@ -8,7 +9,9 @@ date: 2026-08-06
 tags: [erp, inventory, costing, cogs, profit-and-loss, standard-cost, average-cost, fifo, variance-allocation, sql-audit, oracle-ebs, epicor]
 ---
 
-# Ảnh hưởng của Phương pháp Tính giá đến Giá vốn Hàng bán (COGS) — Biến động biên lợi nhuận, Bài toán phân bổ và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
+# 5010 Ảnh hưởng của Phương pháp Tính giá đến Giá vốn Hàng bán (COGS) 
+
+> Biến động biên lợi nhuận, Bài toán phân bổ và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
 Trong cấu trúc Báo cáo kết quả hoạt động kinh doanh (P&L) của doanh nghiệp sản xuất và thương mại, **Giá vốn hàng bán (COGS - Cost of Goods Sold)** luôn là khoản chi phí chiếm tỷ trọng lớn nhất. Công thức tính Lợi nhuận gộp của doanh nghiệp được xác định bởi:
 $$\text{Lợi nhuận gộp (Gross Profit)} = \text{Doanh thu thuần (Revenue)} - \text{Giá vốn hàng bán (COGS)}$$

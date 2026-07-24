@@ -4,7 +4,7 @@ title: Tổng quan Quản lý Công nợ (AP/AR)
 sidebar_label: Tổng quan Công nợ (AP/AR)
 slug: /erp-nghiep-vu/3-tai-chinh-ke-toan/fin-cong-no/tong-quan
 sidebar_position: 1
-date: 2026-07-24
+date: 2026-07-21
 tags: [erp, finance, accounting, ap, ar, netting, dunning, aging, gr-ir, notes-receivable, tong-quan, roadmap]
 ---
 

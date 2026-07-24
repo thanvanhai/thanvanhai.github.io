@@ -78,6 +78,8 @@ footer.footer {
   gap: 0 1.25rem;
 }
 
+/* ==== Layout trang Blog: Sidebar trái + Content + TOC phải ==== */
+
 /* Ép row thành flex layout thật, không dùng % cột nữa */
 .blog-wrapper .row {
   display: flex;
@@ -85,11 +87,13 @@ footer.footer {
   width: 100%;
 }
 
-/* Sidebar trái: cố định width, không co giãn */
+/* Sidebar trái: mặc định 220px, có transition mượt khi ẩn/hiện */
 .blog-wrapper aside.col--3 {
   flex: 0 0 220px;
   max-width: 220px;
   width: 220px;
+  overflow: visible; /* Không cắt nút toggle khi co nhỏ */
+  transition: flex-basis 0.2s ease, max-width 0.2s ease;
 }
 
 /* Content ở giữa (bài viết): chiếm hết phần còn lại */
@@ -104,4 +108,69 @@ footer.footer {
 .blog-wrapper .row > .col.col--3:last-child {
   flex: 0 0 240px;
   max-width: 240px;
+}
+
+/* ==== Toggle ẩn/hiện Recent posts ==== */
+/* Sidebar trái: mặc định 220px */
+.blog-wrapper aside.col--3 {
+  flex: 0 0 220px;
+  max-width: 220px;
+  width: 220px;
+  overflow: visible;
+  transition: flex-basis 0.2s ease, max-width 0.2s ease;
+}
+
+/* Content ở giữa: đúng theo DOM thật là main.col--7, không phải article/col--9 */
+.blog-wrapper .row > main.col--7 {
+  flex: 1 1 auto;
+  max-width: none !important;
+  width: auto;
+}
+
+/* Nếu có mục lục (TOC) bên phải cũng đang bị col--3 cố định */
+.blog-wrapper .row > .col.col--3:last-child {
+  flex: 0 0 240px;
+  max-width: 240px;
+}
+
+/* ==== Toggle ẩn/hiện Recent posts ==== */
+.customSidebarWrapper {
+  position: relative;
+  height: 100%;
+  overflow: visible;
+}
+
+.customSidebarToggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--ifm-color-emphasis-200);
+  border: none;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 12px;
+  z-index: 10;
+}
+
+.customSidebarToggle:hover {
+  background: var(--ifm-color-emphasis-300);
+}
+
+.customSidebarHidden {
+  display: none;
+}
+
+/* Khi <body> có class "sidebar-hidden": co aside về sát 0,
+   và nới main.col--7 (content) ra chiếm phần dư */
+body.sidebar-hidden .blog-wrapper aside.col--3 {
+  flex: 0 0 24px;
+  max-width: 24px;
+  width: 24px;
+}
+
+body.sidebar-hidden .blog-wrapper .row > main.col--7 {
+  flex: 1 1 auto !important;
+  max-width: none !important;
 }

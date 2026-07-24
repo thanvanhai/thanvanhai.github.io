@@ -1,13 +1,15 @@
 ---
 id: 2000-thiet-lap-bom-tieu-chuan
-title: Thiết lập BOM tiêu chuẩn (Standard BOM Setup) - Tích hợp Công đoạn & Máy móc
-sidebar_label: 2000 - Thiết lập BOM tiêu chuẩn
+title: Thiết lập BOM tiêu chuẩn (Standard BOM Setup)
+description: Thiết lập BOM tiêu chuẩn (Standard BOM Setup) - Tích hợp Công đoạn & Máy móc
+sidebar_label: Thiết lập BOM tiêu chuẩn
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/2000-thiet-lap-bom-tieu-chuan
+sidebar_position: 2000
 date: 2026-09-12
 tags: [erp, manufacturing, oracle-ebs, epicor, sap, odoo, bom, master-data, sql]
 ---
 
-# Thiết lập BOM tiêu chuẩn (Standard BOM Setup)
+# 2000 Thiết lập BOM tiêu chuẩn (Standard BOM Setup)
 
 Định mức nguyên vật liệu (BOM - Bill of Materials) là danh sách chi tiết cấu thành sản phẩm, xác định rõ cần bao nhiêu linh kiện, nguyên vật liệu (UOM, số lượng) để sản xuất ra một đơn vị thành phẩm. Nếu ví quy trình công nghệ (Routing) là "công thức chế biến" thì BOM chính là "danh sách nguyên liệu". Thiết kế cấu trúc BOM sai lệch sẽ lập tức làm tê liệt hệ thống tính toán nhu cầu vật tư (MRP) và gây sai sót nghiêm trọng trong hạch toán giá thành.
 

@@ -1,6 +1,7 @@
 ---
 id: bao-cao-ton-kho-cham-luan-chuyen-slow-moving-dead-stock
-title: Báo cáo Tồn kho Chậm luân chuyển (Slow-moving / Dead Stock) — Thuật toán tính Tuổi kho, Tối ưu hóa hiệu năng và Bộ code SQL mẫu (Epicor & Oracle EBS)
+title: Báo cáo Tồn kho Chậm luân chuyển (Slow-moving / Dead Stock) 
+description: Thuật toán tính Tuổi kho, Tối ưu hóa hiệu năng và Bộ code SQL mẫu (Epicor & Oracle EBS)
 sidebar_label: Báo cáo Tồn kho Chậm luân chuyển
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/bao-cao-ton-kho-cham-luan-chuyen
 sidebar_position: 8020
@@ -8,7 +9,9 @@ date: 2026-08-17
 tags: [erp, inventory, report, slow-moving, dead-stock, inventory-aging, performance-tuning, sql-query, oracle-ebs, epicor]
 ---
 
-# Báo cáo Tồn kho Chậm luân chuyển (Slow-moving / Dead Stock) — Thuật toán tính Tuổi kho, Tối ưu hóa hiệu năng và Bộ code SQL mẫu (Epicor & Oracle EBS)
+# 8020 Báo cáo Tồn kho Chậm luân chuyển (Slow-moving / Dead Stock)
+
+> Thuật toán tính Tuổi kho, Tối ưu hóa hiệu năng và Bộ code SQL mẫu (Epicor & Oracle EBS)
 
 Báo cáo **Tồn kho chậm luân chuyển (Slow-moving / Dead Stock Report)** hay còn gọi là *Báo cáo tuổi hàng tồn kho*, là công cụ đặc lực giúp Giám đốc tài chính (CFO) và Trưởng phòng Logistics giải phóng dòng tiền đang bị "chôn chân" trong kho. Báo cáo này giúp xác định chính xác các mặt hàng đã lâu không phát sinh giao dịch, hàng bị lỗi mốt hoặc phế liệu để kịp thời thanh lý hoặc trích lập dự phòng giảm giá hàng tồn kho.
 
