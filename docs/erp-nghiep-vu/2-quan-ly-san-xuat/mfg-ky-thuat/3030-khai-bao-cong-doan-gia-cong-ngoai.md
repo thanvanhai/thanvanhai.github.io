@@ -68,23 +68,16 @@ Odoo quản lý gia công ngoài ở cấp độ cấu trúc BoM cha thay vì t�
 
 Khi Lệnh sản xuất đi đến công đoạn Gia công ngoài, hệ thống ERP sẽ tự động đồng bộ thời gian và số lượng sang phân hệ **Thu mua (PO)** theo thuật toán khép kín:
 
-```text
-       [ LỆNH SẢN XUẤT (WIP) ]
-                  │
-                  ▼ (Sản lượng đạt Op 20 chuyển sang Op 30)
-       [ OP 30: GIA CÔNG NGOÀI ]
-                  │
-                  ▼ (Hệ thống tự động kích hoạt thuật toán)
-       [ PURCHASE REQUISITION ] ──► Tự động lấy Vendor & Price từ Info Record/PartOpr
-                  │
-                  ▼ (Phê duyệt yêu cầu mua hàng)
-       [ PURCHASE ORDER (PO) ]  ──► PO dịch vụ gia công gửi cho đối tác
-                  │
-                  ▼ (Xuất kho nguyên vật liệu giao cho đối tác)
-       [ SHIPMENT TO VENDOR ]   ──► Chuyển bán thành phẩm sang kho ảo nhà thầu phụ
-                  │
-                  ▼ (Đối tác giao trả hàng đã xi mạ về nhà máy)
-       [ WIP PO RECEIPT ]       ──► Tự động ghi nhận hoàn thành Op 30 & Trừ kho nguyên liệu
+```mermaid
+flowchart TD
+    A[Lệnh sản xuất - WIP]
+    A -->|Sản lượng đạt Op 20 chuyển sang Op 30| B[Op 30: Gia công ngoài]
+    B -->|Hệ thống tự động kích hoạt thuật toán| C[Purchase Requisition]
+    C -.->|Tự động lấy Vendor và Price từ Info Record/PartOpr| C
+    C -->|Phê duyệt yêu cầu mua hàng| D[Purchase Order - PO]
+    D -->|PO dịch vụ gia công gửi cho đối tác| E[Shipment to Vendor]
+    E -->|Xuất kho nguyên vật liệu giao cho đối tác<br/>Chuyển bán thành phẩm sang kho ảo nhà thầu phụ| F[WIP PO Receipt]
+    F -->|Đối tác giao trả hàng đã xi mạ về nhà máy<br/>Tự động ghi nhận hoàn thành Op 30 và trừ kho nguyên liệu| A
 ```
 
 > **Ý nghĩa thực tế:** Thuật toán WIP-to-PO đảm bảo thời gian chạy máy của xưởng sản xuất khớp 100% với tiến độ giao hàng của đối tác mua ngoài. Khi đối tác chậm giao hàng, hệ thống APS sẽ tự động cập nhật thời gian trễ của PO trực tiếp lên lịch trình hoàn thành của Lệnh sản xuất.

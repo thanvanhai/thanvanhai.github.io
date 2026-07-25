@@ -61,14 +61,26 @@ Một câu hỏi kiến trúc cực kỳ quan trọng khi triển khai ERP là: 
 
 Các hệ thống ERP lớn giải quyết bài toán này bằng hai cơ chế hành vi khác biệt:
 
-```text
-CƠ CHẾ COPY (Bản sao tĩnh):
-[ Danh mục mẫu: WELD ] ──(Copy lúc tạo Routing)──► [ Routing SP A: WELD (Tĩnh) ]
-   * Nếu sửa Danh mục mẫu WELD -> Routing SP A KHÔNG thay đổi.
+```mermaid
+flowchart LR
+    subgraph COPY["Cơ chế COPY (Bản sao tĩnh)"]
+        direction LR
+        M1[Danh mục mẫu: WELD] -->|Copy lúc tạo Routing| R1[Routing SP A: WELD - Tĩnh]
+    end
 
-CƠ CHẾ REFERENCE (Liên kết động):
-[ Danh mục mẫu: WELD ] ◄──────(Liên kết động)─────── [ Routing SP A: WELD (Động) ]
-   * Nếu sửa Danh mục mẫu WELD -> Routing SP A TỰ ĐỘNG cập nhật theo.
+    subgraph REF["Cơ chế REFERENCE (Liên kết động)"]
+        direction LR
+        M2[Danh mục mẫu: WELD] <-->|Liên kết động| R2[Routing SP A: WELD - Động]
+    end
+
+    N1["Nếu sửa Danh mục mẫu WELD<br/>→ Routing SP A KHÔNG thay đổi"]
+    N2["Nếu sửa Danh mục mẫu WELD<br/>→ Routing SP A TỰ ĐỘNG cập nhật"]
+
+    R1 -.-> N1
+    R2 -.-> N2
+
+    style N1 fill:#f5f5f5,stroke:#999,color:#666
+    style N2 fill:#e6f4ea,stroke:#34a853,color:#1a1a1a
 ```
 
 - **Hành vi Copy (Bản sao tĩnh):** Khi người dùng gọi công đoạn chuẩn vào Routing, hệ thống chỉ lấy thông tin tại thời điểm đó để nhân bản vào Routing của sản phẩm. Sau khi lưu, dòng công đoạn trên Routing trở thành một thực thể độc lập. Việc sửa đổi công đoạn mẫu trong tương lai sẽ **không ảnh hưởng** đến các sản phẩm cũ. (Đây là hành vi mặc định của Epicor và Odoo).

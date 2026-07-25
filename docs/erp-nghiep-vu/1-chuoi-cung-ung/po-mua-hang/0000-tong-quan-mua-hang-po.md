@@ -14,12 +14,12 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 
 ## 1. Thiết lập tổ chức mua sắm (Procurement Organization Setup)
 
-- [ ] [1000 Thiết lập cơ cấu tổ chức mua sắm đa công ty, đa chi nhánh (Purchasing Org / Purchasing Group Setup)]()
-- [ ] [1010 Thiết lập và phân loại chứng từ mua hàng (Purchase Document Type Configuration - PR, RFQ, PO, Contract)]()
+- [x] [1000 Thiết lập cơ cấu tổ chức mua sắm đa công ty, đa chi nhánh (Purchasing Org / Purchasing Group Setup)](./1000-thiet-lap-co-cau-to-chuc-mua-sam.md)
+- [x] [1010 Thiết lập và phân loại chứng từ mua hàng (Purchase Document Type Configuration - PR, RFQ, PO, Contract)](./1010-thiet-lap-va-phan-loai-chung-tu-mua-hang.md)
 
 ## 2. Thiết lập danh mục & Chính sách mua sắm (Master Data & Sourcing Policy)
 
-- [ ] [2000 Quản lý hồ sơ nhà cung cấp và vòng đời đối tác (Supplier Master & Supplier Lifecycle Management)]()
+- [x] [2000 Quản lý hồ sơ nhà cung cấp và vòng đời đối tác (Supplier Master & Supplier Lifecycle Management)](./2000-quan-ly-ho-so-nha-cung-cap.md)
 - [ ] [2010 Thiết lập bảng giá nhà cung cấp và thỏa thuận mua hàng dài hạn (Purchasing Info Record / Blanket PO / Contract)]()
 - [ ] [2020 Quy tắc xác định nguồn cung tự động và phân bổ tỷ lệ mua sắm (Sourcing Rules & Quota Arrangement)]()
 - [ ] [2030 Thiết lập quy tắc tính thuế đầu vào theo nhà cung cấp/vật tư (Input Tax Determination Rules)]()

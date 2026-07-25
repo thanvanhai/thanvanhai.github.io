@@ -74,25 +74,14 @@ Tương tự Epicor, Odoo không quản lý độc lập hai đầu dữ liệu 
 
 Khi bộ tính toán MRP hoạt động hoặc khi nhân viên tạo Lệnh sản xuất (Work Order/Discrete Job), hệ thống sẽ tự động quét danh mục phiên bản để bốc đúng công thức sản xuất theo thuật toán 3 lớp điều kiện:
 
-```text
-               [ PHÁT SINH NHU CẦU SẢN XUẤT ] (Sản lượng: Q, Ngày chạy: D)
-                               │
-                               ▼
-            [ Lớp 1: Kiểm tra Ngày hiệu lực (Validity Dates) ]
-              - Lọc các phiên bản có: Valid From <= D <= Valid To
-                               │
-                               ▼
-            [ Lớp 2: Kiểm tra Quy mô lô hàng (Lot Size Range) ]
-              - Lọc các phiên bản có: Min Lot Size <= Q <= Max Lot Size
-                               │
-                               ▼
-            [ Lớp 3: Kiểm tra Trạng thái kích hoạt (Active Status) ]
-              - Chỉ lấy phiên bản được đánh dấu Active/Approved = True
-                               │
-                               ▼
-                  [ ÁP DỤNG PHIÊN BẢN PHÙ HỢP ]
+```mermaid
+flowchart TD
+    A["Phát sinh nhu cầu sản xuất<br/>Sản lượng: Q, Ngày chạy: D"]
+    A --> B["Lớp 1: Kiểm tra Ngày hiệu lực - Validity Dates<br/>Lọc phiên bản có Valid From ≤ D ≤ Valid To"]
+    B --> C["Lớp 2: Kiểm tra Quy mô lô hàng - Lot Size Range<br/>Lọc phiên bản có Min Lot Size ≤ Q ≤ Max Lot Size"]
+    C --> D["Lớp 3: Kiểm tra Trạng thái kích hoạt - Active Status<br/>Chỉ lấy phiên bản Active/Approved = True"]
+    D --> E[Áp dụng phiên bản phù hợp]
 ```
-
 ---
 
 ## 4. Giải quyết các bài toán sản xuất thực tế liên quan đến Phiên bản sản xuất

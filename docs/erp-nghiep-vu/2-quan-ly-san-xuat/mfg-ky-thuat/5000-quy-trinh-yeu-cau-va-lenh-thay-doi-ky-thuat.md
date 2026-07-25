@@ -74,25 +74,31 @@ Odoo quản lý quy trình thay đổi trực quan bằng bảng Kanban kéo th�
 
 Quy trình vận hành của một Lệnh thay đổi kỹ thuật (ECO) đi qua chuỗi phê duyệt liên phòng ban khép kín để đảm bảo kiểm soát rủi ro:
 
-```text
-       [ 1. PHÁT SINH ECR (YÊU CẦU THAY ĐỔI) ] ──► (QC báo lỗi chốt cửa nhựa bị gãy)
-                          │
-                          ▼
-       [ 2. R&D KHỞI TẠO ECO & SỬA BOM NHÁP ]  ──► (Thiết kế chốt sắt thay cho chốt nhựa)
-                          │
-                          ▼
-       [ 3. PHÂN TÍCH TÁC ĐỘNG (IMPACT ANALYSIS) ]──► (MRP quét dọn kho chốt nhựa cũ)
-                          │
-                          ▼
-       [ 4. LUỒNG PHÊ DUYỆT (APPROVAL WORKFLOW) ]
-         - QA duyệt (Đạt chuẩn chất lượng)
-         - Kế toán duyệt (Đơn giá chốt sắt phù hợp)
-         - Xưởng trưởng duyệt (Công cụ máy gá lắp đáp ứng)
-                          │
-                          ▼
-       [ 5. BAN HÀNH & KÍCH HOẠT NGÀY HIỆU LỰC ] ──► (Tự động cập nhật BOM sản xuất thật)
-```
+```mermaid
+flowchart TD
+    A["1. PHÁT SINH ECR<br/>(Yêu cầu thay đổi)"]
+    A -.-> A1["QC báo lỗi chốt cửa nhựa bị gãy"]
 
+    B["2. R&D KHỞI TẠO ECO<br/>& SỬA BOM NHÁP"]
+    B -.-> B1["Thiết kế chốt sắt<br/>thay cho chốt nhựa"]
+
+    C["3. PHÂN TÍCH TÁC ĐỘNG<br/>(Impact Analysis)"]
+    C -.-> C1["MRP quét dọn<br/>kho chốt nhựa cũ"]
+
+    D["<b>4. LUỒNG PHÊ DUYỆT (Approval Workflow)</b><br/>- QA duyệt (Đạt chuẩn chất lượng)<br/>- Kế toán duyệt (Đơn giá chốt sắt phù hợp)<br/>- Xưởng trưởng duyệt (Công cụ máy gá lắp đáp ứng)"]
+
+    E["5. BAN HÀNH & KÍCH HOẠT<br/>NGÀY HIỆU LỰC"]
+    E -.-> E1["Tự động cập nhật<br/>BOM sản xuất thật"]
+
+    A --> B --> C --> D --> E
+
+    style A1 fill:#f8f9fa,stroke:#adb5bd,stroke-dasharray: 3 3
+    style B1 fill:#f8f9fa,stroke:#adb5bd,stroke-dasharray: 3 3
+    style C1 fill:#f8f9fa,stroke:#adb5bd,stroke-dasharray: 3 3
+    style E1 fill:#f8f9fa,stroke:#adb5bd,stroke-dasharray: 3 3
+    style D fill:#fff3cd,stroke:#e0a800,stroke-width:2px
+    style E fill:#d4edda,stroke:#28a745,stroke-width:2px
+```
 ---
 
 ## 4. Giải quyết các bài toán sản xuất thực tế liên quan đến ECO

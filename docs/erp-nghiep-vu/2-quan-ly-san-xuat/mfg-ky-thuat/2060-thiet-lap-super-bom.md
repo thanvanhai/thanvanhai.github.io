@@ -69,26 +69,25 @@ Odoo tối giản hóa bằng cách sử dụng trực tiếp các giá trị th
 
 Khi nhân viên tạo một Đơn bán hàng (Sales Order) cho sản phẩm cấu hình, hệ thống sẽ thực hiện thuật toán **Phân rã Động (Dynamic Explosion)** để sinh ra một BOM sản xuất tùy biến (WIP BOM) duy nhất cho riêng đơn hàng đó.
 
-```text
-MÔ HÌNH PHÂN RÃ SUPER BOM:
-                        [ LAPTOP SUPER BOM ]
-                                 │
-           ┌─────────────────────┼─────────────────────┐
-     [ MÀN HÌNH 15" ]      [ MÀN HÌNH 17" ]      [ CHÍP INTEL I7 ]
-           ▲                     ▲                     ▲
-     (Điều kiện 15")       (Điều kiện 17")       (Điều kiện I7)
-           │                     │                     │
-           └────────────── đối chiếu ──────────────────┘
-                                 │
-                       (LỰA CHỌN TRÊN SO)
-                  - Kích thước màn hình: 17 inch
-                  - Loại vi xử lý: Intel i7
-                                 │
-                                 ▼ (APS Engine rã đông)
-                  [ LỆNH SẢN XUẤT CHO SO 100 ]
-                     - 1 x Màn hình 17"
-                     - 1 x Chíp Intel i7
-                     - (Màn hình 15" bị loại bỏ tự động)
+```mermaid
+flowchart TD
+    SBOM[Laptop Super BOM]
+
+    SBOM --> OPT1["Màn hình 15&quot;<br/>(Điều kiện: chọn 15&quot;)"]
+    SBOM --> OPT2["Màn hình 17&quot;<br/>(Điều kiện: chọn 17&quot;)"]
+    SBOM --> OPT3["Chip Intel i7<br/>(Điều kiện: chọn i7)"]
+
+    OPT1 -.-> COND{"Đối chiếu lựa chọn trên SO<br/>Kích thước: 17 inch<br/>Vi xử lý: Intel i7"}
+    OPT2 -.-> COND
+    OPT3 -.-> COND
+
+    COND -->|"APS Engine rã đông"| WO["Lệnh sản xuất cho SO 100"]
+
+    WO --> R1["1 x Màn hình 17&quot;"]
+    WO --> R2["1 x Chip Intel i7"]
+    WO -.->|loại bỏ tự động| X["Màn hình 15&quot; (không dùng)"]
+
+    style X fill:#f5f5f5,stroke:#999,stroke-dasharray: 5 5,color:#999
 ```
 
 ---

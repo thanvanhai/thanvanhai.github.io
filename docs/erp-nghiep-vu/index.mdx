@@ -1,0 +1,46 @@
+---
+title: ERP Nghiệp vụ
+description: "Kiến thức và kinh nghiệm triển khai nghiệp vụ ERP: Chuỗi cung ứng (SCM), Sản xuất (MFG), Tài chính kế toán (FIN)."
+---
+
+import DocCardList from '@theme/DocCardList';
+
+# ERP Nghiệp vụ
+
+Tài liệu này tổng hợp kiến thức và kinh nghiệm triển khai thực tế các nghiệp vụ ERP, tổ chức theo 3 phân hệ chính. Cách chia này tương ứng với chuẩn phân loại module của các hệ thống ERP lớn trên thị trường, giúp bạn dễ dàng đối chiếu khi làm việc với SAP, Oracle EBS hay Epicor.
+
+## Tương quan phân hệ với các ERP phổ biến
+
+| Phân hệ trong tài liệu | SAP | Oracle EBS | Epicor |
+|---|---|---|---|
+| **Chuỗi cung ứng (SCM)** | MM (Materials Management) | SCM (Supply Chain Management) | Supply Chain Management |
+| **Quản lý sản xuất (MFG)** | PP (Production Planning) | Manufacturing | Production Management |
+| **Tài chính kế toán (FIN)** | FI-CO (Financial Accounting / Controlling) | Financials | Finance |
+
+## Sơ đồ 3 phân hệ
+
+```mermaid
+flowchart LR
+    A[ERP Nghiệp vụ] --> B[Chuỗi cung ứng - SCM]
+    A --> C[Quản lý sản xuất - MFG]
+    A --> D[Tài chính kế toán - FIN]
+
+    B --> B1[Tồn kho - INV]
+    B --> B2[Bán hàng - OM/SO]
+    B --> B3[Mua hàng - PO]
+
+    C --> C1[Kỹ thuật Sản xuất - ERP Master Data<br/>BOM/Routing]
+    C --> C2[Thực thi Sản xuất - ERP Transactional<br/>WIP/Work Order]
+    C --> C3[Giám sát Thiết bị - MES-EQM<br/>PLC/SCADA/OEE]
+    C --> C4[Truy xuất Nguồn gốc - MES-TRC<br/>Traceability/Genealogy]
+
+    D --> D1[Công nợ - AP/AR]
+    D --> D2[Giá thành - COST]
+    D --> D3[Sổ cái - GL]
+    D --> D4[Tài sản cố định - FA]
+    D --> D5[Thuế - TAX]
+```
+
+## Danh mục tài liệu
+
+<DocCardList />

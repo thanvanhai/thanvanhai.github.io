@@ -1,15 +1,17 @@
 ---
 id: 2010-bom-nhieu-cap-cau-truc-san-pham
-title: Cấu trúc sản phẩm đa tầng và cơ chế nổ bom nhiều cấp (Multi-level BOM & Explosion)
+title: Cấu trúc BOM đa tầng tĩnh & Nổ BOM nhiều cấp (Static Multi-level BOM)
 description: Cấu trúc sản phẩm đa tầng và cơ chế nổ bom nhiều cấp (Multi-level BOM & Explosion)
 sidebar_label: Cấu trúc đa tầng & Nổ BOM
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/2010-bom-nhieu-cap-cau-truc-san-pham
 sidebar_position: 2010
 date: 2026-09-15
+last_update:
+  date: 2026-09-15
 tags: [erp, manufacturing, oracle-ebs, epicor, sap, odoo, multi-level-bom, low-level-code, sql]
 ---
 
-# 2010 Cấu trúc sản phẩm đa tầng và cơ chế nổ bom nhiều cấp (Multi-level BOM & Explosion)
+# 2010 Cấu trúc đa tầng tĩnh & Nổ BOM (Static Multi-level BOM & Explosion)
 
 > **Lưu ý ranh giới nghiệp vụ:** Bài viết này giải quyết cấu trúc **BOM nhiều cấp tĩnh (Static Nested BOM)** - tức là cấu trúc phân cấp cố định giữa thành phẩm và các cụm bán thành phẩm trung gian, đòi hỏi tính toán Mã cấp thấp nhất (Low-Level Code) khi phân rã MRP [2]. Đối với cấu trúc BOM động lựa chọn linh kiện theo thuộc tính tùy biến của đơn bán hàng (Configure-to-Order), vui lòng tham khảo bài viết **[2060 - Thiết lập BOM cấu hình cho mô hình Sản xuất theo đơn đặt hàng (Configurable BOM / ATO - CTO)](./2060-thiet-lap-super-bom.md)** [2].
 
@@ -73,19 +75,23 @@ Khi hệ thống chạy MRP để tính toán nhu cầu mua hàng và sản xu�
     - Các bán thành phẩm trực tiếp có `LLC = 1`.
     - Nếu một con ốc vít được dùng trực tiếp ở cấp thành phẩm (`LLC = 1`) và đồng thời dùng trong một cụm động cơ con ở cấp sâu hơn (`LLC = 3`), thì LLC chung của con ốc đó trong toàn hệ thống bắt buộc phải được gán là **`3`**.
 
-```text
-Cấu trúc sản phẩm và gán chỉ số LLC:
+```mermaid
+flowchart TD
+    A["XE MÁY<br/>(LLC = 0)"]
+    B["KHUNG XE<br/>(LLC = 1)"]
+    C["ĐỘNG CƠ<br/>(LLC = 1)"]
+    D["SẮT TẤM<br/>(LLC = 2)"]
+    E["PISTON<br/>(LLC = 2)"]
+    F["ỐC VÍT<br/>(LLC = 3)"]
 
-Cấp 0 (Thành phẩm):          [ XE MÁY ] (LLC = 0)
-                               │
-                ┌──────────────┴──────────────┐
-Cấp 1:      [ KHUNG XE ] (LLC = 1)      [ ĐỘNG CƠ ] (LLC = 1)
-                │                             │
-Cấp 2:      [ SẮT TẤM ] (LLC = 2)       [ PISTON ] (LLC = 2)
-                                              │
-Cấp 3:                                  [ ỐC VÍT ] (LLC = 3) <─── Lúc này ỐC VÍT có LLC = 3
-                                                                  mặc dù có thể được dùng
-                                                                  trực tiếp ở Cấp 1.
+    A --> B
+    A --> C
+    B --> D
+    C --> E
+    E --> F
+    B -.->|"cũng dùng trực tiếp<br/>nhưng LLC vẫn lấy = 3"| F
+
+    style F fill:#fff3cd,stroke:#e0a800,stroke-width:2px
 ```
 
 ### Nguyên lý hoạt động của công cụ MRP:

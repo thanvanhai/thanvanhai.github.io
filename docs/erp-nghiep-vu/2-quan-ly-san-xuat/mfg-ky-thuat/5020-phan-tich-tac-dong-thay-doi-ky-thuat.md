@@ -25,15 +25,19 @@ Nếu phê duyệt ECO mà không chạy **Phân tích tác động (Impact Anal
 
 Để thực hiện phân tích tác động toàn diện, hệ thống ERP phải quét dữ liệu theo hai chiều: **Chiều dọc (Cấu trúc kỹ thuật - BOM/Routing)** và **Chiều ngang (Vận hành thực tế - Stock/WIP/PO)**:
 
-```text
-                                [ LINH KIỆN CŨ A ]
-                                        │
-           ┌────────────────────────────┴────────────────────────────┐
-           ▼ (Chiều dọc: Structural Impact)                          ▼ (Chiều ngang: Operational Impact)
-   [ TRUY VẤN WHERE-USED ]                                   [ TRUY VẤN VẬN HÀNH THỰC TẾ ]
-   - Tìm mọi sản phẩm cha chứa A                             - Kiểm tra tồn kho tĩnh thực tế (On-hand)
-   - Tìm các công đoạn Routing dùng A                        - Kiểm tra nguyên liệu dở dang tại sàn (WIP)
-   - Tìm các công thức PV/Recipe chứa A                      - Kiểm tra các Đơn mua hàng đang treo (Open POs)
+```mermaid
+flowchart TD
+    A[LINH KIỆN CŨ A]
+
+    B["<b>TRUY VẤN WHERE-USED</b><br/>(Chiều dọc: Structural Impact)<br/>- Tìm mọi sản phẩm cha chứa A<br/>- Tìm các công đoạn Routing dùng A<br/>- Tìm các công thức PV/Recipe chứa A"]
+
+    C["<b>TRUY VẤN VẬN HÀNH THỰC TẾ</b><br/>(Chiều ngang: Operational Impact)<br/>- Kiểm tra tồn kho tĩnh thực tế (On-hand)<br/>- Kiểm tra nguyên liệu dở dang tại sàn (WIP)<br/>- Kiểm tra các Đơn mua hàng đang treo (Open POs)"]
+
+    A --> B
+    A --> C
+
+    style B fill:#e7f0ff,stroke:#3366cc,stroke-width:1px
+    style C fill:#fff3cd,stroke:#e0a800,stroke-width:1px
 ```
 
 | Thành phần logic | Oracle EBS | Epicor ERP | SAP S/4HANA | Odoo ERP |

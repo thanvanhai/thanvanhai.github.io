@@ -62,16 +62,25 @@ Odoo tối giản hóa bằng cách gộp khái niệm Phantom BOM và Bộ linh
 
 Khi bộ phận kế hoạch tạo Lệnh sản xuất cho sản phẩm cha, hệ thống ERP sẽ tự động kích hoạt thuật toán **Phân rã xuyên cấp (Blow-through / Flattening)** đối với các cụm được đánh dấu là Phantom.
 
-```text
-CẤU TRÚC THIẾT KẾ (R&D View)               CẤU TRÚC THỰC THI SẢN XUẤT (Shop Floor View)
-       [ XE MÁY ]                                         [ XE MÁY ]
-           │                                                  │
- ┌─────────┴─────────┐                                ┌───────┼───────┐
-[ KHUNG ]    [ CỤM BÁNH XE ] (PHANTOM)             [ KHUNG ]  │    [ LỐP XE ]
-                 │                                            │
-         ┌───────┴───────┐                                    ├────[ NAN HOA ]
-     [ LỐP XE ]      [ NAN HOA ]                              │
-                                                              └────[ VÀNH XE ]
+```mermaid
+flowchart TD
+    subgraph RD["CẤU TRÚC THIẾT KẾ (R&D View)"]
+        direction TB
+        A1[XE MÁY] --> B1[KHUNG]
+        A1 --> C1["CỤM BÁNH XE<br/>(PHANTOM)"]
+        C1 --> D1[LỐP XE]
+        C1 --> E1[NAN HOA]
+    end
+
+    subgraph SF["CẤU TRÚC THỰC THI SẢN XUẤT (Shop Floor View)"]
+        direction TB
+        A2[XE MÁY] --> B2[KHUNG]
+        A2 --> D2[LỐP XE]
+        A2 --> E2[NAN HOA]
+        A2 --> F2[VÀNH XE]
+    end
+
+    style C1 fill:#fff3cd,stroke:#e0a800,stroke-width:2px,stroke-dasharray: 5 5
 ```
 
 ### Thuật toán phân rã đệ quy:

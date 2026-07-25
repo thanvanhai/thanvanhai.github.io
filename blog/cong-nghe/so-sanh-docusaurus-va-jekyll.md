@@ -2,7 +2,7 @@
 slug: so-sanh-docusaurus-va-jekyll
 title: "So sánh Docusaurus và Jekyll: Đâu là lựa chọn phù hợp cho Blog của bạn?"
 authors: [haicoi]
-tags: [tin-tuc]
+tags: [tin-tuc, jekyll, docusaurus, github, ssg]
 date: 2026-07-21
 ---
 

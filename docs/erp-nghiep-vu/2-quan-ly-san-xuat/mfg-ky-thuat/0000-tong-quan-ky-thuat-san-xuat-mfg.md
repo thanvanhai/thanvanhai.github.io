@@ -58,15 +58,15 @@ Các mục dưới đây sẽ được cập nhật liên kết dần sau khi b�
 
 ## 6. Thiết lập nâng cao & Đồng sản phẩm
 
-- [ ] 6000 - Quản lý Đồng sản phẩm (Co-product) và Phụ phẩm thu hồi (By-product)
-- [ ] 6010 - Liên kết BOM/Routing với bài toán Tính giá thành định mức (Standard Cost Rollup)
-- [ ] 6020 - Mối quan hệ đồng bộ thông tin giữa Item Master (INV) và BOM/Routing (MFG)
+- [x] [6000 - Quản lý Đồng sản phẩm (Co-product) và Phụ phẩm thu hồi (By-product)](./6000-quan-ly-dong-san-pham-va-phu-pham.md)
+- [x] [6010 - Liên kết BOM/Routing với bài toán Tính giá thành định mức (Standard Cost Rollup)](./6010-lien-ket-bom-routing-gia-thanh-dinh-muc.md)
+- [x] [6020 - Mối quan hệ đồng bộ thông tin giữa Item Master (INV) và BOM/Routing (MFG)](./6020-dong-bo-item-master-inv-mfg.md)
 
 ## 7. Báo cáo & Xử lý sự cố kỹ thuật (Analytics & Troubleshooting)
 
-- [ ] 7000 - Báo cáo Where-used và so sánh phiên bản BOM/Routing (Where-used Report & Version Comparison)
-- [ ] 7010 - Công cụ thay đổi hàng loạt BOM/Routing (Mass Change / Mass Maintenance)
-- [ ] 7020 - Xử lý lỗi BOM vòng lặp và lệch đơn vị tính giữa BOM và Item Master (Circular BOM & UOM Mismatch Troubleshooting)
+- [x] [7000 - Báo cáo Where-used và so sánh phiên bản BOM/Routing (Where-used Report & Version Comparison)](./7000-bao-cao-where-used-so-sanh-bom-routing.md)
+- [x] [7010 - Công cụ thay đổi hàng loạt BOM/Routing (Mass Change / Mass Maintenance)](./7010-cong-cu-thay-doi-hang-loat-bom-routing.md)
+- [x] [7020 - Xử lý lỗi BOM vòng lặp và lệch đơn vị tính giữa BOM và Item Master (Circular BOM & UOM Mismatch Troubleshooting)](./7020-xu-ly-loi-bom-vong-lap-va-lech-uom.md)
 
 ---
 

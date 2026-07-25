@@ -110,6 +110,33 @@ footer.footer {
   max-width: 240px;
 }
 
+/* ==== Mobile: ẩn TOC bên phải & sidebar trái trên blog, tránh content bị hẹp ==== */
+@media (max-width: 996px) {
+  /* Ẩn TOC bên phải (chỉ blog, không ảnh hưởng docs) */
+  .blog-wrapper .row > .col.col--3:last-child {
+    display: none !important;
+  }
+
+  /* Ẩn sidebar Recent posts bên trái */
+  .blog-wrapper aside.col--3 {
+    display: none !important;
+  }
+
+  /* Content chiếm toàn bộ chiều rộng */
+  .blog-wrapper .row > main.col--7,
+  .blog-wrapper .row > .col--9,
+  .blog-wrapper .row > article {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Cho phép flex-wrap trên mobile để tránh tràn */
+  .blog-wrapper .row {
+    flex-wrap: wrap !important;
+  }
+}
+
 /* ==== Toggle ẩn/hiện Recent posts ==== */
 /* Sidebar trái: mặc định 220px */
 .blog-wrapper aside.col--3 {

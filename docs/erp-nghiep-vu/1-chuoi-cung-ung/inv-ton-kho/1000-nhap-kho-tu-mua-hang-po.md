@@ -1,6 +1,6 @@
 ---
 id: nhap-kho-tu-mua-hang-po
-title: Nhập kho từ PO (Receipt from PO) — Luồng dữ liệu và Hạch toán
+title: Nhập kho từ PO (Receipt from PO)
 description: Luồng dữ liệu hệ thống, hạch toán kế toán tự động (SLA) và 3 "bẫy" thực chiến thường gặp khi nhập kho từ mua hàng trên Epicor & Oracle EBS.
 sidebar_label: Nhập kho từ PO
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/nhap-kho-tu-po

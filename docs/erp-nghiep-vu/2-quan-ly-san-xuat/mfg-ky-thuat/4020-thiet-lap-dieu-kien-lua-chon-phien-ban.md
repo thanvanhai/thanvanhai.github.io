@@ -68,31 +68,25 @@ Odoo quản lý thứ tự bốc công thức đơn giản thông qua việc đ�
 
 Khi hệ thống MRP chạy, thuật toán quyết định lựa chọn phiên bản sản xuất (Production Version) sẽ được thực hiện thông qua một ma trận kiểm tra thác nước (Cascading Check):
 
-```text
-               [ PHÁT SINH LỆNH SẢN XUẤT ] (Sản lượng: Q, Ngày chạy: D)
-                               │
-                               ▼
-               [ BƯỚC 1: TRẠNG THÁI HIỆU LỰC ]
-            - Lọc bỏ các phiên bản có Approved = False
-            - Lọc bỏ các phiên bản đang bị Locked (Khoá)
-                               │
-                               ▼
-               [ BƯỚC 2: KHUNG THỜI GIAN HIỆU LỰC ]
-            - Lọc bỏ các phiên bản có Valid From > D hoặc Valid To < D
-                               │
-                               ▼
-               [ BƯỚC 3: DẢI SẢN LƯỢNG LÔ ]
-            - Lọc bỏ các phiên bản có Min Lot Size > Q hoặc Max Lot Size < Q
-                               │
-                               ▼
-               [ BƯỚC 4: THỨ TỰ ƯU TIÊN (PREFERENCE / SEQUENCE) ]
-            - Nếu còn lại > 1 phiên bản thỏa mãn:
-              Bốc phiên bản có chỉ số Preference / Sequence nhỏ nhất
-                               │
-                               ▼
-            [ ÁP DỤNG PHIÊN BẢN SẢN XUẤT PHÙ HỢP NHẤT ]
-```
+```mermaid
+flowchart TD
+    A["PHÁT SINH LỆNH SẢN XUẤT<br/>(Sản lượng: Q, Ngày chạy: D)"]
 
+    B["<b>BƯỚC 1: TRẠNG THÁI HIỆU LỰC</b><br/>- Lọc bỏ phiên bản có Approved = False<br/>- Lọc bỏ phiên bản đang bị Locked (Khoá)"]
+
+    C["<b>BƯỚC 2: KHUNG THỜI GIAN HIỆU LỰC</b><br/>- Lọc bỏ phiên bản có Valid From > D<br/>hoặc Valid To < D"]
+
+    D["<b>BƯỚC 3: DẢI SẢN LƯỢNG LÔ</b><br/>- Lọc bỏ phiên bản có Min Lot Size > Q<br/>hoặc Max Lot Size < Q"]
+
+    E["<b>BƯỚC 4: THỨ TỰ ƯU TIÊN (PREFERENCE / SEQUENCE)</b><br/>- Nếu còn > 1 phiên bản thỏa mãn:<br/>Bốc phiên bản có Preference / Sequence nhỏ nhất"]
+
+    F[ÁP DỤNG PHIÊN BẢN SẢN XUẤT PHÙ HỢP NHẤT]
+
+    A --> B --> C --> D --> E --> F
+
+    style A fill:#e7f0ff,stroke:#3366cc,stroke-width:1px
+    style F fill:#d4edda,stroke:#28a745,stroke-width:2px
+```
 ---
 
 ## 4. Giải quyết các bài toán sản xuất thực tế liên quan đến Lựa chọn phiên bản

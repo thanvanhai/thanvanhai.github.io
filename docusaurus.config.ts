@@ -91,6 +91,8 @@ const config: Config = {
             'https://github.com/thanvanhai/thanvanhai.github.io/tree/main/',
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
         },
         blog: {
           showReadingTime: true,

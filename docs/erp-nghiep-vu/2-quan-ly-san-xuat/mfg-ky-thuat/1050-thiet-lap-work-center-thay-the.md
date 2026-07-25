@@ -72,27 +72,19 @@ Odoo quản lý thay thế trực tiếp ngay trên danh mục thiết bị củ
 Khi động cơ lập lịch nâng cao (APS Engine) chạy, hệ thống sẽ tự động tính toán thời gian trễ của lệnh sản xuất để quyết định có hoán đổi sang máy dự phòng hay không.
 
 ### Lưu đồ logic của APS Scheduler:
-```text
-        [ Bắt đầu lập lịch Lệnh sản xuất ]
-                       │
-                       ▼
-         [ Kiểm tra Máy chính RẢNH? ] ───(YES)───► [ Xếp lịch lên Máy chính ]
-                       │ (NO)
-                       ▼
-      [ Máy chính bị trễ hạn giao hàng? ] ───(NO)───► [ Xếp hàng đợi Máy chính ]
-                       │ (YES)
-                       ▼
-      [ Kiểm tra Máy phụ có khả dụng? ] ───(NO)───► [ Giữ nguyên kế hoạch & Cảnh báo ]
-                       │ (YES)
-                       ▼
-     [ Tính tổng thời gian trên Máy phụ: ]
-   Duration_alt = Setup_alt + (Qty * Run_alt)
-                       │
-                       ▼
-   [ Duration_alt < Thời gian trễ trên Máy chính? ] ──(NO)─► [ Giữ nguyên Máy chính ]
-                       │ (YES)
-                       ▼
-   [ Hoán đổi sang Máy phụ & Cập nhật hạch toán ]
+
+```mermaid
+flowchart TD
+    A[Bắt đầu lập lịch Lệnh sản xuất] --> B{Kiểm tra Máy chính RẢNH?}
+    B -->|YES| C[Xếp lịch lên Máy chính]
+    B -->|NO| D{Máy chính bị trễ hạn giao hàng?}
+    D -->|NO| E[Xếp hàng đợi Máy chính]
+    D -->|YES| F{Kiểm tra Máy phụ có khả dụng?}
+    F -->|NO| G[Giữ nguyên kế hoạch & Cảnh báo]
+    F -->|YES| H["Tính tổng thời gian trên Máy phụ:<br/>Duration_alt = Setup_alt + (Qty × Run_alt)"]
+    H --> I{Duration_alt < Thời gian trễ trên Máy chính?}
+    I -->|NO| J[Giữ nguyên Máy chính]
+    I -->|YES| K[Hoán đổi sang Máy phụ & Cập nhật hạch toán]
 ```
 
 > **Ý nghĩa thực tế:** Việc chuyển đổi sang máy dự phòng không phải lúc nào cũng mang lại hiệu quả tốt hơn. Máy dự phòng thường có hiệu suất thấp hơn và tốn nhiều thời gian setup hơn. Thuật toán APS thông minh chỉ thực hiện hoán đổi khi tổng thời gian thực hiện trên máy phụ (bao gồm cả hao hụt hiệu suất) ngắn hơn thời gian chờ đợi máy chính được giải phóng.

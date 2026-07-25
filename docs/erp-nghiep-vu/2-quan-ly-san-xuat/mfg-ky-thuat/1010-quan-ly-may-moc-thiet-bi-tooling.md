@@ -71,14 +71,39 @@ Khi hệ thống tiến hành lập lịch (Scheduling), bài toán phức tạp
 2. Bộ lập lịch (ví dụ: ASCP của Oracle hoặc Global Scheduling của Epicor) sẽ kiểm tra lịch hoạt động khả dụng (Calendar) của cả hai tài nguyên.
 3. Khoảng thời gian thực thi lệnh sản xuất chỉ được xếp vào **vùng giao thoa (Intersection)** khi cả hai tài nguyên cùng rảnh.
 
-```text
-Trục thời gian làm việc (Thứ Hai):
-Máy Ép Nhựa 01 (R_machine): ──────────────────[ RẢNH ]──────────────────► (Có thể chạy)
-Khuôn Ép Nhựa A (R_tool):    ───[ BẬN ở Job 10 ]───▲───[ RẢNH ]──────────► (Job 10 đang dùng)
-                                                   │
-Thời điểm xếp Job 11 thực tế:                       └───[ Xếp lịch tại đây ]
-```
 
+```mermaid
+%%{init: {
+  "theme": "base",
+  "gantt": {
+    "barHeight": 36,
+    "barGap": 8,
+    "topPadding": 60,
+    "leftPadding": 200,
+    "gridLineStartPadding": 35,
+    "fontSize": 16,
+    "sectionFontSize": 16,
+    "numberSectionStyles": 3
+  },
+  "themeVariables": {
+    "fontSize": "18px"
+  }
+} }%%
+gantt
+    dateFormat  HH:mm
+    axisFormat  %H:%M
+    title       Trục thời gian làm việc (Thứ Hai)
+
+    section Máy Ép Nhựa 01 (R_machine)
+    Rảnh - Có thể chạy               :active, machine1, 08:00, 12:00
+
+    section Khuôn Ép Nhựa A (R_tool)
+    Bận - Job 10 đang dùng            :crit, tool1, 08:00, 09:30
+    Rảnh                              :active, tool2, 09:30, 12:00
+
+    section Job 11
+    Xếp lịch tại đây (điểm giao thoa) :milestone, m1, 09:30, 0d
+```
 ---
 
 ## 4. Giải quyết các bài toán sản xuất thực tế liên quan đến Tooling
