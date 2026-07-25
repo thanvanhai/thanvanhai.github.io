@@ -102,8 +102,8 @@ Sơ đồ trên mô tả **3 luồng Logistics vật lý** và **1 luồng hạc
 
 - [x] [3000 Chuyển kho nội bộ (Inter-warehouse Transfer)](./3000-chuyen-kho-noi-bo-transfer.md)
 - [x] [3010 Chuyển vị trí trong kho (Bin/Location Transfer)](./3010-chuyen-vi-tri-trong-kho-bin-transfer.md)
-- [x] [3030 Quản lý nhiều kho, nhiều địa điểm (Multi-warehouse)](./3020-quan-ly-nhieu-kho-nhieu-dia-diem-multi-warehouse.md)
-- [x] [3040 Cấu trúc Zone - Aisle - Rack - Bin (WMS)](./3030-cau-truc-zone-aisle-rack-bin-wms.md)
+- [x] [3020 Quản lý nhiều kho, nhiều địa điểm (Multi-warehouse)](./3020-quan-ly-nhieu-kho-nhieu-dia-diem-multi-warehouse.md)
+- [x] [3030 Cấu trúc Zone - Aisle - Rack - Bin (WMS)](./3030-cau-truc-zone-aisle-rack-bin-wms.md)
 
 ## 4. Kiểm kê & đối soát
 

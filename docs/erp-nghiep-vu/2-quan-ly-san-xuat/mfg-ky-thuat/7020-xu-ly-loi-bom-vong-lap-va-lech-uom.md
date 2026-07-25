@@ -1,6 +1,6 @@
 ---
 id: 7020-xu-ly-loi-bom-vong-lap-va-lech-uom
-title: Xử lý lỗi BOM vòng lặp và lệch đơn vị tính giữa BOM và Item Master (Circular BOM & UOM Mismatch Troubleshooting)
+title: Xử lý lỗi BOM vòng lặp & lệch đơn vị tính (Circular BOM & UOM Mismatch)
 description: Hướng dẫn định vị và khắc phục hai sự cố kỹ thuật dữ liệu gốc nghiêm trọng nhất của hệ thống sản xuất gồm đệ quy vòng lặp BOM và lệch nhóm danh mục đơn vị tính (UOM).
 sidebar_label: Sự cố BOM vòng lặp & Lệch UOM
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/7020-xu-ly-loi-bom-vong-lap-va-lech-uom

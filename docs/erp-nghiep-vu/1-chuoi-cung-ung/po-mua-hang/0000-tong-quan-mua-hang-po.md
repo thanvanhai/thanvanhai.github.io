@@ -20,17 +20,17 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 ## 2. Thiết lập danh mục & Chính sách mua sắm (Master Data & Sourcing Policy)
 
 - [x] [2000 Quản lý hồ sơ nhà cung cấp và vòng đời đối tác (Supplier Master & Supplier Lifecycle Management)](./2000-quan-ly-ho-so-nha-cung-cap.md)
-- [ ] [2010 Thiết lập bảng giá nhà cung cấp và thỏa thuận mua hàng dài hạn (Purchasing Info Record / Blanket PO / Contract)]()
-- [ ] [2020 Quy tắc xác định nguồn cung tự động và phân bổ tỷ lệ mua sắm (Sourcing Rules & Quota Arrangement)]()
-- [ ] [2030 Thiết lập quy tắc tính thuế đầu vào theo nhà cung cấp/vật tư (Input Tax Determination Rules)]()
-- [ ] [2040 Quản lý gia hạn, sửa đổi và hết hiệu lực hợp đồng/thỏa thuận khung (Contract Lifecycle Management - Renewal & Amendment)]()
+- [x] [2010 Thiết lập bảng giá nhà cung cấp và thỏa thuận mua hàng dài hạn (Purchasing Info Record / Blanket PO / Contract)](./2010-thiet-lap-bang-gia-nha-cung-cap-va-thoa-thuan-mua-hang.md)
+- [x] [2020 Quy tắc xác định nguồn cung tự động và phân bổ tỷ lệ mua sắm (Sourcing Rules & Quota Arrangement)](./2020-quy-tac-xac-dinh-nguon-cung-tu-dong.md)
+- [x] [2030 Thiết lập quy tắc tính thuế đầu vào theo nhà cung cấp/vật tư (Input Tax Determination Rules)](./2030-thiet-lap-quy-tac-tinh-thue-dau-vao.md)
+- [x] [2040 Quản lý gia hạn, sửa đổi và hết hiệu lực hợp đồng/thỏa thuận khung (Contract Lifecycle Management - Renewal & Amendment)](./2040-quan-ly-hop-dong-va-thoa-thuan-khung.md)
 
 ## 3. Yêu cầu mua sắm & Lựa chọn nhà cung cấp (Requisition & Strategic Sourcing)
 
-- [ ] [3000 Nghiệp vụ Yêu cầu mua hàng và quy trình gom nhu cầu mua sắm (Purchase Requisition - PR & PR Consolidation)]()
-- [ ] [3010 Thiết lập luồng phê duyệt PR theo phòng ban, trung tâm chi phí và dự án (PR Approval Workflow)]()
-- [ ] [3020 Quy trình mời thầu, yêu cầu báo giá và phân tích so sánh bảng chào giá (RFQ & Bid Analysis)]()
-- [ ] [3030 Mua sắm tự phục vụ qua danh mục điện tử và Punch-out cho chi tiêu Indirect/MRO (Self-service Procurement / e-Catalog & Punch-out)]()
+- [x] [3000 Nghiệp vụ Yêu cầu mua hàng và quy trình gom nhu cầu mua sắm (Purchase Requisition - PR & PR Consolidation)](./3000-nghiep-vu-yeu-cau-mua-hang-va-quy-trinh-gom-nhu-cau.md)
+- [x] [3010 Thiết lập luồng phê duyệt PR theo phòng ban, trung tâm chi phí và dự án (PR Approval Workflow)](./3010-thiet-lap-luong-phe-duyet-pr.md)
+- [x] [3020 Quy trình mời thầu, yêu cầu báo giá và phân tích so sánh bảng chào giá (RFQ & Bid Analysis)](./3020-quy-trinh-moi-thau-yeu-cau-bao-gia-va-so-sanh.md)
+- [x] [3030 Mua sắm tự phục vụ qua danh mục điện tử và Punch-out cho chi tiêu Indirect/MRO (Self-service Procurement / e-Catalog & Punch-out)](./3030-mua-sam-tu-phuc-vu-qua-danh-muc-dien-tu-va-punch-out.md)
 
 ## 4. Quản lý Đơn mua hàng & Phê duyệt (Purchase Order Entry & Approval)
 
@@ -51,6 +51,7 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 - [ ] [6010 Nghiệp vụ mua hàng ký gửi nhà cung cấp và quản lý tồn kho VMI (Consignment PO & Vendor Managed Inventory)]()
 - [ ] [6020 Quản lý đơn mua hàng nội bộ giữa các pháp nhân trong tập đoàn (Intercompany Purchase Order)]()
 - [ ] [6030 Mua sắm dịch vụ phi vật chất và tài sản cố định (Service PO & Fixed Asset Procurement)]()
+- [ ] [6040 Mua hàng giao thẳng đến khách hàng không qua kho (Drop-ship / Third-Party Order liên kết với Sales Order)]()
 
 ## 7. Đối soát hóa đơn & Thanh toán (Invoice Verification & AP Integration)
 

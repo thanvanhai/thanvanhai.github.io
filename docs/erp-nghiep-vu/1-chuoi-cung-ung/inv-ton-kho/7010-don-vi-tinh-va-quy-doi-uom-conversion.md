@@ -130,6 +130,9 @@ WHERE uom1.UOMClassID <> uom2.UOMClassID            -- Phát sinh giao dịch ch
 ```
 
 #### 💻 Code SQL dành cho Oracle EBS R12:
+
+> **Lưu ý kỹ thuật:** Trong kiến trúc Oracle EBS, thiết lập quy đổi chéo nhóm UOM (Inter-class UOM Conversion) có thể được cấu hình ở 2 phạm vi: **Toàn cục (Global)** — áp dụng cho tất cả các kho, hoặc **Đặc thù theo từng Item (Item-specific)**. Tuy nhiên, dữ liệu này không quản lý theo mã kho (`organization_id`), mà quản lý theo trạng thái vô hiệu hóa (`disable_date`) hoặc ngày hiệu lực.
+
 ```sql
 SELECT DISTINCT
     mmt.inventory_item_id,
@@ -151,10 +154,26 @@ WHERE u1.uom_class <> u2.uom_class                  -- Giao dịch phát sinh ch
       SELECT 1 
       FROM mtl_uom_class_conversions mucc 
       WHERE mucc.inventory_item_id = mmt.inventory_item_id
-        AND mucc.to_uom_code = mmt.transaction_uom
-        AND mucc.organization_id = mmt.organization_id
+        -- Bao quát cả 2 chiều quy đổi: from_uom_code (nhóm gốc) và to_uom_code (nhóm đích)
+        AND (mucc.to_uom_code = mmt.transaction_uom OR mucc.from_uom_code = mmt.transaction_uom)
+        -- Chỉ tính các cấu hình còn hiệu lực (chưa bị disable hoặc chưa hết hạn)
+        AND NVL(mucc.disable_date, SYSDATE + 1) > SYSDATE
   );
 ```
+
+---
+
+## 4. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các bài viết khác
+
+Chủ đề Quy đổi UOM xuất hiện ở 3 bài viết khác nhau trong series — mỗi bài giữ một góc nhìn riêng biệt, không trùng lặp nội dung:
+
+| Bài viết | Phạm vi | Góc nhìn |
+| :--- | :--- | :--- |
+| **`7010` (bài này)** | Cấu hình **thiết lập** quy đổi UOM: 2 cấp độ (Standard/Item-specific), cơ chế làm tròn, SQL audit phát hiện *thiếu cấu hình* hoặc *rác dữ liệu* do làm tròn | Setup/Configuration — dành cho người dựng hệ thống |
+| **[`9010` Lỗi quy đổi đơn vị tính (UOM) — Pattern lỗi phổ biến khiến báo cáo ERP sai lệch](./9010-loi-quy-doi-uom-thuong-gap.md)** | Tổng hợp **các dạng triệu chứng** thường gặp trên báo cáo tồn kho (không chỉ do thiếu cấu hình, mà còn do thao tác sai, đổi UOM giữa chừng khi đã có giao dịch, hoặc lỗi tích hợp giữa các module) | Troubleshooting — dành cho người xử lý sự cố khi báo cáo đã sai |
+| **[`9000` Xử lý lỗi lệch đơn vị tính mua hàng và đơn vị tính lưu kho (Purchase UOM vs Base UOM Conversion)]()** — *thuộc phân hệ Mua hàng (PO/SCM)* | Lệch giữa **Đơn vị đặt hàng với nhà cung cấp** (Purchase UOM, ví dụ đặt mua theo Thùng) và **Đơn vị lưu kho** (Base/Stocking UOM) tại đúng thời điểm PO Receipt | Điểm giao thoa PO↔INV — dành cho Buyer và người nhận hàng |
+
+> **Tóm lại:** Bài `7010` trả lời câu hỏi *"Hệ thống quy đổi UOM như thế nào và cấu hình ra sao cho đúng?"*. Bài `9010` trả lời *"Báo cáo đang sai, nguyên nhân do đâu trong số các pattern lỗi UOM đã biết?"*. Bài `9000` bên PO trả lời riêng câu hỏi *"Tại sao số lượng trên PO không khớp với số lượng nhận vào kho?"*.
 
 ---
 

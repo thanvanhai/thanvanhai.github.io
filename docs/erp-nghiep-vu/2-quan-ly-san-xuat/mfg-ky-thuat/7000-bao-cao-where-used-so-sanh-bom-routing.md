@@ -1,6 +1,6 @@
 ---
 id: 7000-bao-cao-where-used-so-sanh-bom-routing
-title: Báo cáo Where-used và so sánh phiên bản BOM/Routing (Where-used Report & Version Comparison)
+title: Báo cáo Where-used & So sánh phiên bản BOM/Routing
 description: Thiết lập và sử dụng các công cụ phân tích kỹ thuật hệ thống sản xuất bao gồm phân rã ngược Where-Used và đối chiếu chênh lệch giữa hai phiên bản BOM/Routing.
 sidebar_label: Where-used & So sánh BOM/Routing
 slug: /erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/7000-bao-cao-where-used-so-sanh-bom-routing
