@@ -12,22 +12,44 @@ Nghiệp vụ Quản lý Sản xuất trong tài liệu này chia thành 2 tần
 - **Tầng ERP (Master Data & Transactional)**: dữ liệu nền và nghiệp vụ phát sinh trong hệ thống hoạch định — Kỹ thuật sản xuất (BOM, Routing) và Thực thi sản xuất (Work Order, WIP).
 - **Tầng MES (thời gian thực)**: hệ thống điều hành sản xuất tại xưởng — Giám sát thiết bị (PLC/SCADA/OEE) và Truy xuất nguồn gốc (Traceability/Genealogy).
 
-## Sơ đồ 2 tầng
+Tầng ERP tiêu thụ nguyên vật liệu từ Chuỗi cung ứng (SCM), giao tiếp hai chiều với Tầng MES để đẩy lệnh sản xuất xuống xưởng và nhận lại dữ liệu thực thi, sau đó trả kết quả là thành phẩm cùng dữ liệu giá thành cho Tài chính kế toán (FIN).
+
+## Tương quan phân hệ con với các ERP phổ biến
+
+| Tầng | Phân hệ con trong tài liệu | SAP | Oracle EBS | Epicor |
+|---|---|---|---|---|
+| ERP | **Kỹ thuật Sản xuất** *(BOM/Routing - Master Data)* | PP (Production Planning) - Bills of Material, Routing | Bills of Material (BOM), Engineering | Engineering (Part, BOM, Method of Manufacturing) |
+| ERP | **Thực thi Sản xuất** *(WIP/Work Order - Transactional)* | PP-SFC (Shop Floor Control) | Work in Process (WIP) | Production Management (Job Management) |
+| MES | **Giám sát Thiết bị** *(MES-EQM - PLC/SCADA/OEE)* | SAP ME / MII (Manufacturing Integration & Intelligence) | Oracle MES for Discrete Manufacturing | Epicor MES / Advanced MES |
+| MES | **Truy xuất Nguồn gốc** *(MES-TRC - Traceability/Genealogy)* | Batch Management + QM (Quality Management) | Genealogy (WIP/Lot & Serial) | Epicor Traceability (Lot/Serial Genealogy) |
+
+## Sơ đồ 2 tầng & luồng dữ liệu
 
 ```mermaid
 flowchart TB
-    A[Quản lý sản xuất - MFG]
+    subgraph ERPTIER[Tầng ERP - Master Data & Transactional]
+        B1[Kỹ thuật Sản xuất<br/>BOM/Routing]
+        B2[Thực thi Sản xuất<br/>WIP/Work Order]
+    end
 
-    A --> B[Tầng ERP]
-    A --> C[Tầng MES]
+    subgraph MESTIER[Tầng MES - Thời gian thực]
+        C1[Giám sát Thiết bị<br/>MES-EQM - PLC/SCADA/OEE]
+        C2[Truy xuất Nguồn gốc<br/>MES-TRC - Traceability/Genealogy]
+    end
 
-    B --> B1[Kỹ thuật Sản xuất - ERP Master Data<br/>BOM/Routing]
-    B --> B2[Thực thi Sản xuất - ERP Transactional<br/>WIP/Work Order]
-
-    C --> C1[Giám sát Thiết bị - MES-EQM<br/>PLC/SCADA/OEE]
-    C --> C2[Truy xuất Nguồn gốc - MES-TRC<br/>Traceability/Genealogy]
+    INV[Tồn kho - INV] -->|Xuất kho NVL theo BOM| B2
+    B1 -->|Định nghĩa cấu trúc sản phẩm| B2
+    B2 -->|Đẩy lệnh sản xuất xuống xưởng| C1
+    B2 -->|Ghi nhận lô/mẻ sản xuất| C2
+    C1 -->|Phản hồi sản lượng, OEE thực tế| B2
+    B2 -->|Nhập kho thành phẩm| INV
+    B2 -->|Hạch toán giá thành| COST[Tài chính - COST/GL]
 ```
 
 ## Danh mục tài liệu
 
 <DocCardList />
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>

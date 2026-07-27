@@ -385,4 +385,7 @@ Github module Camera: [https://github.com/thanvanhai/SmartCamera.WebApiDemo](htt
 
 ---
 
-<div align="center"><strong>Chúc các bạn thành công và vui vẻ!</strong></div>
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>

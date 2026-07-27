@@ -302,8 +302,7 @@ Gợi ý một sơ đồ kiến trúc cho hệ thống camera thông minh:
 - Nếu hệ thống **chỉ là camera AI đứng yên** và không có ý định tích hợp thêm robot/drone/cảm biến → **không dùng ROS 2** sẽ nhẹ hơn và tối ưu hiệu năng.
 - Nếu hệ thống **hướng tới mở rộng** (thêm nhiều loại thiết bị, phân tán nhiều server, tích hợp IoT/robot) → **nên dùng ROS 2** ngay từ đầu để đỡ mất công viết lại kiến trúc.
 
-<div style={{textAlign: 'center'}}>
 
-**Chúc các bạn thành công và vui vẻ!**
-
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
 </div>

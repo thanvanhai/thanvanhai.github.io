@@ -228,4 +228,6 @@ ros2 topic echo /processor/detections
 
 Link source github: [https://github.com/thanvanhai/smart_camera_ws](https://github.com/thanvanhai/smart_camera_ws)
 
-<div align="center"><strong>Chúc các bạn thành công và vui vẻ!</strong></div>
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>

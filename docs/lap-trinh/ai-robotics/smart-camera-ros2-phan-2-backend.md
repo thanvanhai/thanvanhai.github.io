@@ -208,4 +208,7 @@ Github: [https://github.com/thanvanhai/smart_camera_backend](https://github.com/
 
 ---
 
-<div align="center"><strong>Chúc các bạn thành công và vui vẻ!</strong></div>
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>

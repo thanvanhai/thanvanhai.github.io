@@ -381,8 +381,7 @@ rqt_image_view /smart_camera/result
 
 Link source GitHub: [https://github.com/thanvanhai/smart_camera_demo](https://github.com/thanvanhai/smart_camera_demo)
 
-<div style={{textAlign: 'center'}}>
 
-**Chúc các bạn thành công và vui vẻ!**
-
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
 </div>

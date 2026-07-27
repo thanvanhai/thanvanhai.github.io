@@ -1,9 +1,7 @@
 ---
 id: tai-lieu-tham-khao
 title: Tài liệu tham khảo (Vendor Reference Documents)
-sidebar_label: Hướng dẫn & Tra cứu
-slug: /tai-lieu-tham-khao/tong-quan
-sidebar_position: 1
+slug: /tai-lieu-tham-khao
 date: 2026-07-23
 tags: [erp, reference, epicor, oracle-ebs, sap, odoo, microsoft-dynamics, schema, chm]
 ---
@@ -171,5 +169,8 @@ File Excel liệt kê tên bảng, nhóm bảng (Table Group), loại bảng, c�
 #### ⚠️ Lưu ý về phạm vi áp dụng
 
 File này chỉ liệt kê **tên bảng** (không có chi tiết từng field/cột), và chỉ đúng cho **Dynamics AX 2012** — kiến trúc bảng của D365 F&O (bản cloud hiện tại) đã thay đổi khá nhiều so với AX 2012 nên không thể dùng file này để tra cứu 100% chính xác cho bản mới. Cộng đồng Dynamics cũng xác nhận Microsoft hiện không cung cấp bản cập nhật tương đương cho D365 F&O — muốn tra cứu đầy đủ field cần truy cập môi trường dev thật hoặc dùng công cụ reverse-engineering như extension nêu trên.
+</div>
 
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
 </div>

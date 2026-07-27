@@ -88,3 +88,8 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 | **Oracle EBS** | TCA (Customer model theo Party/Account/Site), Advanced Pricing, và Blanket Sales Agreement là 3 cấu phần đặc trưng. ATO/PTO là mô hình back-to-back đặc thù. |
 | **Epicor** | Mạnh về Configurator (Configure-to-Order) và Order Acknowledgement, phù hợp với doanh nghiệp sản xuất theo đơn đặt hàng. |
 | **Odoo** | Nhẹ hơn về Credit Management và Configure-to-Order (cần module mở rộng), nhưng tích hợp Sales–Inventory–Invoicing chặt hơn, ít bước trung gian. Có sẵn module Subscriptions cho mô hình thuê bao. |
+
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>

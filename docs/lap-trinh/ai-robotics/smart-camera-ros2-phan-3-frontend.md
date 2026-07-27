@@ -268,4 +268,7 @@ Trong hệ thống này có sự trợ giúp rất lớn của 3 AI: **ChatGPT, 
 
 ---
 
-<div align="center"><strong>Chúc các bạn thành công và vui vẻ!</strong></div>
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>

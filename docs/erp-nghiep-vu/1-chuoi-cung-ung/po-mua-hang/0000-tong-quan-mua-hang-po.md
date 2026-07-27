@@ -34,7 +34,7 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 
 ## 4. Quản lý Đơn mua hàng & Phê duyệt (Purchase Order Entry & Approval)
 
-- [ ] [4000 Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard Purchase Order Entry)]()
+- [x] [4000 Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard Purchase Order Entry)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)
 - [ ] [4010 Thiết lập luồng phê duyệt PO theo hạn mức tài chính và cấp bậc (PO Approval Workflow / Release Strategy)]()
 - [ ] [4020 Quy trình quản lý thay đổi và phiên bản PO sau khi đã phê duyệt (PO Revision & Change Management)]()
 

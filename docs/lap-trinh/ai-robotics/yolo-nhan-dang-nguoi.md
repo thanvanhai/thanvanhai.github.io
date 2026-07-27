@@ -279,4 +279,6 @@ streamlit run app.py
 
 Link source github: [https://github.com/thanvanhai/yolo_person_count_demo](https://github.com/thanvanhai/yolo_person_count_demo)
 
-<div align="center"><strong>Chúc các bạn thành công và vui vẻ!</strong></div>
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>
