@@ -138,3 +138,7 @@ Pattern lỗi tương tự cũng được ghi nhận ở một số doanh nghi�
 ## Kết luận
 
 Lỗi quy đổi UOM là ví dụ điển hình cho thấy những vấn đề tưởng chừng nhỏ và mang tính kỹ thuật thuần tuý trong ERP hoàn toàn có thể gây hậu quả nghiêm trọng — từ tranh cãi giữa các phòng ban đến sai lệch giá thành và quyết định mua hàng sai — nếu không được kiểm soát chặt chẽ ngay từ giai đoạn thiết kế báo cáo. Vì bản chất là lỗi thiết kế logic chứ không phải lỗi phần mềm, nó có thể xuất hiện ở bất kỳ hệ ERP nào có cơ chế đa UOM — điều quan trọng không phải "hệ nào an toàn hơn", mà là quy trình kiểm soát chất lượng báo cáo có đủ chặt chẽ để phát hiện sớm hay không.
+
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

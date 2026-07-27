@@ -252,3 +252,7 @@ ORDER BY
     *   *Lời khuyên:* Đặt mã Buyer theo nhóm hàng phụ trách (ví dụ: `BY_RAW` cho Buyer mua nguyên liệu, `BY_PKG` cho Buyer mua bao bì) rồi gán tài khoản của nhân viên cụ thể vào danh sách người dùng được ủy quyền (Authorized Users) của mã đó.
 3.  **Chuẩn hóa mã nhóm mua hàng (Purchasing Group):**
     *   Tương tự như trên, việc phân chia nhóm mua hàng rõ ràng ngay từ khâu thiết lập ban đầu giúp tự động hóa tối đa luồng đề xuất mua sắm khi hệ thống chạy hoạch toán nhu cầu vật tư (MRP).
+
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

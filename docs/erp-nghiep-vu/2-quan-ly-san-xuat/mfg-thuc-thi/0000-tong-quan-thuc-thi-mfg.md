@@ -68,3 +68,7 @@ Các mục dưới đây sẽ được cập nhật liên kết dần sau khi b�
 | **Oracle EBS** | WIP module dùng Discrete Job / Standard Job, hỗ trợ cả Move Transaction và Resource Transaction tách biệt. Backflush được gọi là "Pull Transactions"; đóng lệnh có 2 bước rõ rệt: Complete (hoàn thành số lượng) và Close (khóa tài chính), khác với TECO/CLSD của SAP nhưng cùng bản chất 2 lớp. |
 | **Epicor** | Ghi nhận qua MES/Shop Floor module dạng "Clock In/Out" theo Job Operation, tích hợp trực tiếp Labor & Machine time vào cùng 1 giao dịch. Material Substitution tại thời điểm tiêu thụ được hỗ trợ ngay trên màn hình Issue Material, thao tác đơn giản hơn SAP/Oracle. |
 | **Odoo** | Gộp khái niệm Manufacturing Order (MO) đơn giản hơn Discrete Job của Oracle/SAP; Backflush là mặc định gần như duy nhất (ít tùy chọn Manual Issue chi tiết theo từng nguyên công). Việc gán Lot/Serial khi hoàn thành thực hiện ngay trên màn hình "Mark as Done" của MO, khá trực quan nhưng thiếu các bước kiểm soát trung gian như IPQC tách biệt. |
+
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

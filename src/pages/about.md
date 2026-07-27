@@ -92,4 +92,6 @@ Nắm vững toàn diện từ **code, nghiệp vụ đến database**, phát tr
 - GitHub: [github.com/thanvanhai](https://github.com/thanvanhai)
 - Email: thanvanhai1021988@gmail.com
 
-<p style={{textAlign: 'center'}}><strong>Chúc các bạn thành công và vui vẻ!</strong></p>
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

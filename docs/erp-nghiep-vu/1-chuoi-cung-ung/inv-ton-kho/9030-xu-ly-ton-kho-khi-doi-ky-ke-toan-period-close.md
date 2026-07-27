@@ -165,3 +165,7 @@ WHERE xte.application_id = 401                      -- 401: Phân hệ Inventory
 - [ ] **Ràng buộc kiểm tra giao dịch dở dang trước khi Close:** Thiết lập điều kiện chặn (Validation Rule) trên màn hình khóa sổ: Chặn không cho phép người dùng bấm nút khóa sổ nếu hệ thống quét thấy vẫn còn giao dịch chưa tính giá (`costed_flag = 'N'` hoặc `PostedToGL = 0`) (Kịch bản 1).
 - [ ] **Xây dựng Dashboard theo dõi lỗi hạch toán thời gian thực:** Lập trình màn hình theo dõi lỗi hạch toán tự động (SLA/PE Error Dashboard) để kế toán có thể nhìn thấy ngay các giao dịch bị lỗi định khoản và sửa tài khoản kịp thời trong tháng, tránh dồn cục bộ vào ngày cuối tháng (Kịch bản 2).
 - [ ] **Tính năng đối chiếu tự động Subledger vs GL (Auto-Reconciliation Tool):** Phát triển công cụ tự động đối chiếu số dư nợ tài khoản kho trên Sổ cái (GL) với tổng trị giá tồn kho trên sổ phụ chi tiết (Subledger), tự động highlight dòng bị lệch để kế toán kho dễ dàng xử lý.
+
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

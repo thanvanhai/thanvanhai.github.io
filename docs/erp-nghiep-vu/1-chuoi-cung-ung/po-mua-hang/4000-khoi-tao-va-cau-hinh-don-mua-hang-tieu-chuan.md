@@ -203,3 +203,7 @@ Nếu đội ngũ của bạn đang tự xây dựng (In-house) phân hệ mua s
 4.  **Thiếu kiểm soát ngân sách trước khi tạo cam kết (Budgetary Control):**
     *   *Triệu chứng:* Hệ thống tự xây cho phép tạo và duyệt Standard PO ngay cả khi ngân sách của Cost Center/Project đã hết, dẫn đến vượt ngân sách mà không ai phát hiện cho đến kỳ báo cáo.
     *   *Giải pháp:* Tại thời điểm lưu/duyệt dòng Distribution, hệ thống nên gọi kiểm tra ngân sách còn lại (Funds Check) trước khi cho phép chuyển trạng thái PO sang "Approved", tương tự cơ chế Funds Available Check của Oracle EBS hoặc Budget Check của SAP.
+
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

@@ -144,3 +144,7 @@ Sơ đồ trên mô tả **3 luồng Logistics vật lý** và **1 luồng hạc
 - [x] [9010 Lỗi quy đổi đơn vị tính (UOM) — Pattern lỗi phổ biến khiến báo cáo ERP sai lệch](./9010-loi-quy-doi-uom-thuong-gap.md)
 - [x] [9020 Xử lý âm kho (Negative Inventory)](./9020-xu-ly-am-kho-negative-inventory.md)
 - [x] [9030 Xử lý tồn kho khi đổi kỳ kế toán (Period Close)](./9030-xu-ly-ton-kho-khi-doi-ky-ke-toan-period-close.md)
+
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

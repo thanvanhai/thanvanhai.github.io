@@ -78,3 +78,7 @@ Các mục dưới đây sẽ được cập nhật liên kết dần sau khi b�
 | **Oracle EBS** | Module BOM tách biệt rõ Standard Item / Model / Option Class Item, phục vụ trực tiếp cho Configure-to-Order. Module Engineering quản lý ECO bằng Change Order tách biệt khỏi BOM module chính, cho phép kiểm soát phiên bản chặt chẽ trước khi phát hành sang sản xuất. |
 | **Epicor** | Gộp BOM và Routing thành khái niệm thống nhất **Method of Manufacturing (MOM)**, quản lý qua Engineering Workbench với khả năng theo dõi revision trực quan. |
 | **Odoo** | BOM phân loại rõ theo Type (Manufacture / Kit / Subcontracting) ngay tại màn hình khai báo. Quản lý thay đổi kỹ thuật (ECO) tách thành ứng dụng riêng (PLM app), không nằm chung với Manufacturing app mặc định. |
+
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

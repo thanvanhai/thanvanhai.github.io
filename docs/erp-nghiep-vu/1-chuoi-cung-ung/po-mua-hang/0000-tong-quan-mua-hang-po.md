@@ -35,13 +35,13 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 ## 4. Quản lý Đơn mua hàng & Phê duyệt (Purchase Order Entry & Approval)
 
 - [x] [4000 Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard Purchase Order Entry)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)
-- [ ] [4010 Thiết lập luồng phê duyệt PO theo hạn mức tài chính và cấp bậc (PO Approval Workflow / Release Strategy)]()
-- [ ] [4020 Quy trình quản lý thay đổi và phiên bản PO sau khi đã phê duyệt (PO Revision & Change Management)]()
+- [x] [4010 Thiết lập luồng phê duyệt PO theo hạn mức tài chính và cấp bậc (PO Approval Workflow / Release Strategy)](./4010-thiet-lap-luong-phe-duyet-po.md)
+- [x] [4020 Quy trình quản lý thay đổi và phiên bản PO sau khi đã phê duyệt (PO Revision & Change Management)](./4020-quy-trinh-quan-ly-thay-doi-va-phien-ban-po.md)
 
 ## 5. Kiểm soát tiến độ, Nhận hàng & Mua hàng quốc tế (Expediting, Receiving & International Procurement)
 
-- [ ] [5000 Theo dõi tiến độ giao hàng qua cổng thông tin cộng tác tự phục vụ của nhà cung cấp (Supplier Portal / Vendor Self-service Collaboration - Order Confirmation & ASN)]()
-- [ ] [5010 Nghiệp vụ nhận hàng mua, kiểm tra chất lượng và nhập kho (PO Receiving, Quality Inspection & Putaway)]()
+- [x] [5000 Theo dõi tiến độ giao hàng qua cổng thông tin cộng tác tự phục vụ của nhà cung cấp (Supplier Portal / Vendor Self-service Collaboration - Order Confirmation & ASN)](./5000-theo-doi-tien-do-giao-hang-qua-cong-thong-tin-nha-cung-cap.md)
+- [x] [5010 Nghiệp vụ nhận hàng mua, kiểm tra chất lượng và nhập kho (PO Receiving, Quality Inspection & Putaway)](./5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)
 - [ ] [5020 Xử lý các tình huống giao hàng lỗi, thừa/thiếu số lượng và hoàn trả (Shortage, Over-delivery & Return to Vendor)]()
 - [ ] [5030 Thủ tục nhập khẩu, thông quan và điều kiện giao hàng quốc tế (Import Procurement, Customs Clearance & Incoterms)]()
 
@@ -83,3 +83,7 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 | **Oracle EBS** | Mô hình nhà cung cấp quản lý tập trung qua TCA (Trading Community Architecture). Dùng Approved Supplier List (ASL) và Sourcing Rules làm nền tảng. Module Landed Cost Management (LCM) xử lý phân bổ chi phí vận chuyển/thuế nhập khẩu rất mạnh. Luồng duyệt dùng AME (Approval Management Engine) cho phân quyền phức tạp. |
 | **Epicor** | Tích hợp chặt giữa MRP và Mua sắm qua PO Suggestions (tự động đề xuất RFQ/PO theo nhu cầu sản xuất). Mua hàng gia công (Subcontracting Operation) thiết kế mượt trực tiếp trên Job Entry. |
 | **Odoo** | Đơn giản hóa luồng nghiệp vụ, chuyển RFQ sang PO nhanh gọn. Reordering Rules tự động tạo RFQ nháp khi tồn kho dưới mức tối thiểu. 3-way match có thể bật/tắt tùy chọn nhưng tolerance mặc định ở mức cơ bản, cần tùy biến nếu muốn kiểm soát chặt như SAP/Oracle. |
+
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

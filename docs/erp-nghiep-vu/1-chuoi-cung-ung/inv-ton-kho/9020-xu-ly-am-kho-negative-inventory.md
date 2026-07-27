@@ -169,3 +169,7 @@ HAVING SUM(moqd.transaction_quantity) < 0           -- Lọc Locator bị âm s�
 - [ ] **Lập trình cảnh báo âm kho cục bộ:** Khi thủ kho làm phiếu chuyển vị trí kho nội bộ (`Bin Transfer`), hệ thống phải tự động cảnh báo đỏ nếu giao dịch làm âm cục bộ tại một ô kệ, yêu cầu thủ kho thực hiện đếm lại vị trí thực tế trước khi lưu.
 - [ ] **Cấu hình chặn âm kho trên luồng Backflush:** Đối với cơ chế trừ kho tự động khi sản xuất (`Backflushing`), nếu hệ thống quét thấy số lượng nguyên vật liệu chuẩn bị trừ kho bị âm trên máy, lập trình hệ thống tự động đẩy giao dịch này vào hàng đợi chờ xử lý (`Pending Queue / Error Log`) thay vì cho phép trừ âm trực tiếp, tránh gây âm kho hàng loạt ngoài tầm kiểm soát (Kịch bản 3).
 - [ ] **Tác vụ tự động tính lại giá vốn khi hết âm kho (Cost Adjustment Engine):** Lập trình quy trình tự động chạy hàng đêm (Nightly Job): Khi phát hiện một mã hàng bị âm kho được nạp giao dịch nhập kho dương, hệ thống tự động tính toán lại đơn giá bình quân thực tế và tự động tạo bút toán điều chỉnh giá vốn (`Cost Adjustment`) gửi sang Sổ cái để sửa sai lệch kế toán (Kịch bản 1).
+
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>
