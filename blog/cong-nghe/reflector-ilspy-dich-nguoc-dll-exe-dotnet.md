@@ -88,8 +88,6 @@ Cuối cùng các bạn chọn Save và save lại thành 1 project, và bây gi
 ![Chọn kiểu save](http://i1083.photobucket.com/albums/j383/thanvanhai/Game%20Show%20Rong%20Vang/saveproject.jpg)
 *Chọn kiểu save*
 
-<div style={{textAlign: 'center'}}>
-
-**Chúc các bạn thành công và vui vẻ!**
-
-</div>
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

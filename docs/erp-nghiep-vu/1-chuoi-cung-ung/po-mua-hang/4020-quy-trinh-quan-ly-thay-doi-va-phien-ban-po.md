@@ -1,6 +1,6 @@
 ---
 id: 4020-quy-trinh-quan-ly-thay-doi-va-phien-ban-po
-title: Quy trình quản lý thay đổi và phiên bản PO sau khi đã phê duyệt (PO Revision & Change Management)
+title: Thay đổi & Phiên bản PO sau phê duyệt (PO Revision & Change Management)
 description: "Quy trình kiểm soát thay đổi Đơn mua hàng (PO Change Management), lưu trữ lịch sử phiên bản (Revision History), tự động kích hoạt luồng duyệt lại (Re-approval Trigger) và kiến trúc lưu trữ lịch sử chống ghi đè dữ liệu cho hệ thống tự xây"
 sidebar_label: Quản lý thay đổi & Phiên bản
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/4020-quy-trinh-quan-ly-thay-doi-va-phien-ban-po

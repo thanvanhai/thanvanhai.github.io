@@ -71,8 +71,6 @@ Nếu blog của bạn hướng tới việc chia sẻ kiến thức bằng nhi�
 
 Cả Jekyll và Docusaurus đều là những công cụ xuất sắc và đã được chứng minh qua hàng ngàn dự án thực tế. Việc chuyển đổi từ Jekyll sang Docusaurus hiện nay cũng là xu hướng chung của nhiều lập trình viên khi nhu cầu tùy biến giao diện và nâng cao trải nghiệm người dùng ngày một lớn hơn. Hy vọng bài viết này đã cung cấp cho bạn một cái nhìn khách quan để lựa chọn công cụ phù hợp nhất cho dự án sắp tới.
 
-<div style={{textAlign: 'center'}}>
-
-**Chúc các bạn thành công và vui vẻ!**
-
-</div>
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

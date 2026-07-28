@@ -1,6 +1,6 @@
 ---
 id: 5000-theo-doi-tien-do-giao-hang-qua-cong-thong-tin-nha-cung-cap
-title: Theo dõi tiến độ giao hàng qua cổng thông tin cộng tác tự phục vụ của nhà cung cấp (Supplier Portal / Vendor Self-service Collaboration)
+title: Theo dõi giao hàng qua Cổng thông tin Nhà cung cấp (Supplier Portal & ASN)
 description: "Cấu hình quy trình cộng tác nhà cung cấp (Supplier Collaboration), thiết lập cổng thông tin tự phục vụ iSupplier Portal/Supplier Connect, quy trình xác nhận đơn hàng (PO Confirmation), thông báo giao hàng trước (ASN) và kiến trúc bảng đệm chống phơi nhiễm dữ liệu cho hệ thống tự xây"
 sidebar_label: Cộng tác nhà cung cấp & ASN
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/5000-theo-doi-tien-do-giao-hang-qua-cong-thong-tin-nha-cung-cap

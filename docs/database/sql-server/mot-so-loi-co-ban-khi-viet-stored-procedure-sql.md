@@ -90,4 +90,6 @@ END CATCH
 
 Nên có bước validate tham số đầu vào ở đầu Stored Procedure (kiểm tra `NULL`, kiểm tra tồn tại dữ liệu liên quan, kiểm tra kiểu dữ liệu hợp lệ...) thay vì để lỗi phát sinh ở giữa logic xử lý, vừa khó debug vừa dễ để dữ liệu sai lệch trước khi phát hiện lỗi.
 
-<p align="center"><strong>Chúc các bạn thành công và vui vẻ!</strong></p>
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

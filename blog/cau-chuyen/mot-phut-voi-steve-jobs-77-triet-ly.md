@@ -176,4 +176,6 @@ date: 2020-01-04T08:00:00+07:00
 
 **77:** Tôi muốn làm những điều cho con cái tôi như bố tôi đã làm cho tôi.
 
-<p style={{textAlign: 'center'}}><strong>Chúc các bạn thành công và vui vẻ!</strong></p>
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

@@ -148,4 +148,6 @@ Một bức hình hiếm hoi mà ta chụp chung với tên Steve Jobs trời đ
 
 *Nguồn: Sưu tầm Internet*
 
-<p style={{textAlign: 'center'}}><strong>Chúc các bạn thành công và vui vẻ!</strong></p>
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

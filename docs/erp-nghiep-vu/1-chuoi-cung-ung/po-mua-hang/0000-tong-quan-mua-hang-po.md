@@ -42,16 +42,16 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 
 - [x] [5000 Theo dõi tiến độ giao hàng qua cổng thông tin cộng tác tự phục vụ của nhà cung cấp (Supplier Portal / Vendor Self-service Collaboration - Order Confirmation & ASN)](./5000-theo-doi-tien-do-giao-hang-qua-cong-thong-tin-nha-cung-cap.md)
 - [x] [5010 Nghiệp vụ nhận hàng mua, kiểm tra chất lượng và nhập kho (PO Receiving, Quality Inspection & Putaway)](./5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)
-- [ ] [5020 Xử lý các tình huống giao hàng lỗi, thừa/thiếu số lượng và hoàn trả (Shortage, Over-delivery & Return to Vendor)]()
-- [ ] [5030 Thủ tục nhập khẩu, thông quan và điều kiện giao hàng quốc tế (Import Procurement, Customs Clearance & Incoterms)]()
+- [x] [5020 Xử lý các tình huống giao hàng lỗi, thừa/thiếu số lượng và hoàn trả (Shortage, Over-delivery & Return to Vendor)](./5020-xu-ly-tinh-huong-giao-hang-loi-thua-thieu-va-hoan-tra.md)
+- [x] [5030 Thủ tục nhập khẩu, thông quan và điều kiện giao hàng quốc tế (Import Procurement, Customs Clearance & Incoterms)](./5030-thu-tuc-nhap-khau-thong-quan-va-dieu-kien-giao-hang-quoc-te.md)
 
 ## 6. Các mô hình mua hàng đặc thù (Specialized Purchasing Scenarios)
 
-- [ ] [6000 Nghiệp vụ mua hàng gia công ngoài định mức (Subcontracting PO)]()
-- [ ] [6010 Nghiệp vụ mua hàng ký gửi nhà cung cấp và quản lý tồn kho VMI (Consignment PO & Vendor Managed Inventory)]()
-- [ ] [6020 Quản lý đơn mua hàng nội bộ giữa các pháp nhân trong tập đoàn (Intercompany Purchase Order)]()
-- [ ] [6030 Mua sắm dịch vụ phi vật chất và tài sản cố định (Service PO & Fixed Asset Procurement)]()
-- [ ] [6040 Mua hàng giao thẳng đến khách hàng không qua kho (Drop-ship / Third-Party Order liên kết với Sales Order)]()
+- [x] [6000 Nghiệp vụ mua hàng gia công ngoài định mức (Subcontracting PO)](./6000-nghiep-vu-mua-hang-gia-cong-ngoai-dinh-muc.md)
+- [x] [6010 Nghiệp vụ mua hàng ký gửi nhà cung cấp và quản lý tồn kho VMI (Consignment PO & Vendor Managed Inventory)](./6010-nghiep-vu-mua-hang-ky-gui-nha-cung-cap-va-vmi.md)
+- [x] [6020 Quản lý đơn mua hàng nội bộ giữa các pháp nhân trong tập đoàn (Intercompany Purchase Order)](./6020-quan-ly-don-mua-hang-noi-bo-giua-cac-phap-nhan.md)
+- [x] [6030 Mua sắm dịch vụ phi vật chất và tài sản cố định (Service PO & Fixed Asset Procurement)](./6030-mua-sam-dich-vu-phi-vat-chat-va-tai-san-co-dinh.md)
+- [x] [6040 Mua hàng giao thẳng đến khách hàng không qua kho (Drop-ship / Third-Party Order liên kết với Sales Order)](./6040-mua-hang-giao-thang-den-khach-hang-drop-ship.md)
 
 ## 7. Đối soát hóa đơn & Thanh toán (Invoice Verification & AP Integration)
 

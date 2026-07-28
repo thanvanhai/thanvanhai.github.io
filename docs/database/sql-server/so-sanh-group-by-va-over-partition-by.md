@@ -158,4 +158,6 @@ where (PartTran.PartNum = @PartNum  and PartTran.TranDate <= @TranDateTo)
 
 Cách viết này đặc biệt hữu dụng trong các hệ thống ERP (như ví dụ trên với bảng `Erp.PartTran`) khi cần truy vết tồn kho tại bất kỳ thời điểm nào trong quá khứ mà không cần snapshot dữ liệu hàng ngày — chỉ cần cộng dồn các giao dịch nhập/xuất theo đúng thứ tự thời gian.
 
-<p align="center"><strong>Chúc các bạn thành công và vui vẻ!</strong></p>
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

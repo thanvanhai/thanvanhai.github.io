@@ -138,3 +138,7 @@ Không chỉ hữu ích với lập trình viên hay người viết tài liệu
 ## Lời kết
 
 Đánh số thứ tự liên tiếp (`1, 2, 3...`) là một thói quen tự nhiên nhưng lại vô tình tạo ra rủi ro cho hệ thống khi mở rộng. Bằng việc áp dụng **Sparse Numbering** ngay từ khi bắt đầu — kết hợp với việc tách định danh liên kết ra khỏi tên file — bạn không chỉ tiết kiệm được thời gian cho chính mình mà còn giúp toàn bộ tài liệu, báo cáo, hay hệ thống dữ liệu của bạn luôn sẵn sàng cho sự thay đổi.
+
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

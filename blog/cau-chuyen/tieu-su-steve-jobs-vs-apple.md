@@ -132,4 +132,6 @@ date: 2020-01-02T09:00:00+07:00
 
 *Nguồn: Sưu tầm Internet*
 
-<p style={{textAlign: 'center'}}><strong>Chúc các bạn thành công và vui vẻ!</strong></p>
+<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</p>

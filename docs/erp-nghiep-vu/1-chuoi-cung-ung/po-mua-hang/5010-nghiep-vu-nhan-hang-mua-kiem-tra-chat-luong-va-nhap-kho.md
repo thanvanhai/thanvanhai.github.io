@@ -1,6 +1,6 @@
 ---
 id: 5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho
-title: Nghiệp vụ nhận hàng mua, kiểm tra chất lượng và nhập kho (PO Receiving, IQC & Putaway)
+title: Nhận hàng mua & Kiểm tra chất lượng (PO Receiving & IQC)
 description: "Quy trình thiết lập nghiệp vụ nhận hàng 3 bước (3-Step Receiving Routing), kiểm tra chất lượng đầu vào (IQC), cất hàng lên kệ (Putaway) và kiến trúc kho đệm cách ly chống sai lệch tồn kho cho hệ thống tự xây"
 sidebar_label: Nhận hàng & Kiểm tra chất lượng
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho
