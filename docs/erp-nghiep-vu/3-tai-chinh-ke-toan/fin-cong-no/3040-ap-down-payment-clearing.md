@@ -1,17 +1,17 @@
 ---
-id: 7020-nghiep-vu-thanh-toan-tam-ung-va-doi-tru-hoa-don
-title: Thanh toán tạm ứng & đối trừ hóa đơn nhà cung cấp (Prepayment AP)
-description: "Quy trình thiết lập nghiệp vụ thanh toán tạm ứng nhà cung cấp (AP Prepayment), quy trình tất toán đối trừ tạm ứng vào hóa đơn mua hàng chính thức (Prepayment Clearing/Application) và kiến trúc kiểm soát chống bẫy thanh toán thừa cho hệ thống tự xây"
-sidebar_label: Tạm ứng & Đối trừ AP
-slug: /erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/7020-nghiep-vu-thanh-toan-tam-ung-va-doi-tru-hoa-don
-sidebar_position: 7020
+id: 3040-ap-down-payment-clearing
+title: Tất toán tạm ứng nhà cung cấp
+description: Quy trình tất toán đối trừ tạm ứng người bán (AP Prepayment Clearing) vào hóa đơn Standard Invoice chính thức và bộ câu lệnh SQL đối soát
+sidebar_label: Tất toán tạm ứng nhà cung cấp
+slug: /erp-nghiep-vu/3-tai-chinh-ke-toan/fin-cong-no/3040-ap-down-payment-clearing
+sidebar_position: 3040
 date: 2026-12-24
 last_update:
   date: 2026-12-24
-tags: [erp, procurement, prepayment, down-payment, ap-clearing, invoice-reconciliation, advance-payment, oracle-ebs, epicor, sql]
+tags: [erp, finance, accounts-payable, prepayment, down-payment, ap-clearing, invoice-reconciliation, advance-payment, oracle-ebs, epicor]
 ---
 
-# 7020 Nghiệp vụ thanh toán tạm ứng và đối trừ AP
+# 3040 Tất toán tạm ứng nhà cung cấp
 
 Trong các giao dịch mua sắm thương mại, đặc biệt là mua sắm tài sản, thiết bị có giá trị lớn hoặc mua từ nhà cung cấp mới, doanh nghiệp thường phải thực hiện thanh toán tạm ứng một phần tiền (ví dụ: tạm ứng 30% giá trị hợp đồng khi ký kết). Trên hệ thống ERP, việc theo dõi các khoản tạm ứng (Prepayment / Down Payment) và tất toán đối trừ công nợ (Clearing / Application) khi hóa đơn chính thức về là nghiệp vụ quan trọng để ngăn ngừa rủi ro thanh toán trùng và đảm bảo ghi nhận chính xác dòng tiền.
 

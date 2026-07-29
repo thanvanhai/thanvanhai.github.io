@@ -1,17 +1,17 @@
 ---
-id: 7030-phan-bo-chi-phi-mua-hang-landed-cost
+id: 5000-landed-cost-allocation
 title: Phân bổ chi phí Landed Cost
-description: "Cơ chế phân bổ chi phí mua hàng trên đường (Landed Cost) theo hai kiến trúc phổ biến — có module LCM chuyên biệt và không có LCM (match trực tiếp phụ phí vào Receipt), đối chiếu hóa đơn dịch vụ vận tải/hải quan, hạch toán tài khoản trung gian Clearing và thuật toán xử lý chênh lệch giá thành thực tế cuối kỳ trên ERP"
+description: Thuật toán phân bổ chi phí vận chuyển, bảo hiểm, thuế nhập khẩu trên đường vào nguyên giá hàng tồn kho thực tế và hạch toán Sổ cái
 sidebar_label: Phân bổ chi phí Landed Cost
-slug: /erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/7030-phan-bo-chi-phi-mua-hang-landed-cost
-sidebar_position: 7030
+slug: /erp-nghiep-vu/3-tai-chinh-ke-toan/fin-gia-thanh/5000-landed-cost-allocation
+sidebar_position: 5000
 date: 2026-12-25
 last_update:
   date: 2026-12-25
-tags: [erp, finance, costing, landed-cost, cost-allocation, purchase-variance, actual-costing, oracle-ebs, epicor, sql]
+tags: [erp, finance, costing, landed-cost, cost-allocation, purchase-variance, actual-costing, oracle-ebs, epicor]
 ---
 
-# 7030 Phân bổ chi phí mua hàng Landed Cost
+# 5000 Phân bổ chi phí mua hàng Landed Cost
 
 Nghiệp vụ phân bổ chi phí mua hàng trên đường vào giá trị tồn kho (Landed Cost Allocation / Actual Costing) là khâu xử lý tài chính phức tạp thuộc phân hệ Kế toán giá thành (FIN-COST). Phân biệt rõ rệt với khâu khai báo tác nghiệp mua hàng nhập khẩu của chuỗi cung ứng, nghiệp vụ này chịu trách nhiệm thu thập các hóa đơn chi phí dịch vụ phát sinh thực tế (vận chuyển, hải quan, bảo hiểm), thực hiện thuật toán phân bổ giá vốn và kết chuyển phần chênh lệch vào giá trị tồn kho hoặc giá vốn hàng bán trong kỳ.
 

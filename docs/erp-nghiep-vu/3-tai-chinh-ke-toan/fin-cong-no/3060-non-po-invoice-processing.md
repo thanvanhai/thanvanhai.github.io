@@ -1,17 +1,17 @@
 ---
-id: 7040-xu-ly-hoa-don-khong-qua-don-dat-hang-po
-title: Hóa đơn không qua PO
-description: "Quy trình thiết lập nghiệp vụ xử lý hóa đơn không qua đơn đặt hàng (Non-PO Invoice / Miscellaneous Invoice), định khoản chi phí trực tiếp lên Sổ cái, kiểm soát ngân sách phòng ban, quy trình phê duyệt sau (Post-Approval) theo hạn mức và kiến trúc kiểm soát trùng lặp cho hệ thống tự xây"
-sidebar_label: Hóa đơn không qua PO
-slug: /erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/7040-xu-ly-hoa-don-khong-qua-don-dat-hang-po
-sidebar_position: 7040
+id: 3060-non-po-invoice-processing
+title: Hóa đơn không qua đơn hàng PO
+description: Xử lý hóa đơn chi phí hành chính và vận hành trực tiếp, định khoản trực tiếp lên Sổ cái (GL) gán trung tâm chi phí và kiểm soát hạn mức duyệt
+sidebar_label: Hóa đơn không qua đơn hàng PO
+slug: /erp-nghiep-vu/3-tai-chinh-ke-toan/fin-cong-no/3060-non-po-invoice-processing
+sidebar_position: 3060
 date: 2026-12-26
 last_update:
   date: 2026-12-26
-tags: [erp, finance, accounts-payable, non-po-invoice, expense-invoice, general-ledger, cost-center, budgetary-control, oracle-ebs, epicor, sql]
+tags: [erp, finance, accounts-payable, non-po-invoice, expense-invoice, general-ledger, cost-center, oracle-ebs, epicor, sql]
 ---
 
-# 7040 Hóa đơn không qua đơn đặt hàng (Non-PO Invoice)
+# 3060 Hóa đơn không qua đơn đặt hàng (Non-PO Invoice)
 
 Trong hoạt động vận hành của doanh nghiệp, có một nhóm chi phí gián tiếp (Indirect Spending) hoặc chi phí hành chính, dịch vụ cố định (như tiền điện, tiền nước, cước internet, tiền thuê văn phòng, phí kiểm toán) thường được nhà cung cấp gửi hóa đơn trực tiếp mà không cần đi qua quy trình tạo đơn đặt hàng PO trước đó. Nghiệp vụ xử lý hóa đơn không qua PO (Non-PO Invoice / Miscellaneous Invoice Processing) giúp phòng kế toán AP định khoản trực tiếp chi phí lên Sổ cái (GL) một cách nhanh chóng, đồng thời vẫn đảm bảo các chốt chặn phê duyệt và kiểm soát ngân sách nghiêm ngặt.
 
