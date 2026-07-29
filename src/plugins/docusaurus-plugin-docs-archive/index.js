@@ -102,6 +102,34 @@ function resolveCategory(filePath, docsDir) {
   };
 }
 
+// SubCategory = thư mục cha TRỰC TIẾP chứa file .md, khi thư mục đó
+// nằm sâu hơn thư mục category cấp 1 (tức file không nằm ngay tại docs/<category>/).
+// Ví dụ: docs/erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/7020-xxx.md
+//   -> category    = erp-nghiep-vu
+//   -> subCategory = po-mua-hang (thư mục cha trực tiếp của file)
+function resolveSubCategory(filePath, docsDir) {
+  const relative = path.relative(docsDir, filePath);
+  const segments = relative.split(path.sep);
+
+  // segments = [...folders..., fileName]
+  // Nếu file nằm ngay dưới thư mục category cấp 1 (segments.length <= 2)
+  // thì không có subcategory riêng, tránh trùng lặp với category.
+  if (segments.length <= 2) {
+    return null;
+  }
+
+  const parentSegments = segments.slice(0, -1); // bỏ tên file, giữ lại đường dẫn thư mục
+  const immediateFolder = parentSegments[parentSegments.length - 1];
+  const immediateFolderPath = path.join(docsDir, ...parentSegments);
+  const meta = readCategoryMeta(immediateFolderPath);
+
+  return {
+    slug: stripOrderPrefix(immediateFolder),
+    label: (meta && meta.label) || prettifyFolderName(immediateFolder),
+    position: meta && meta.position !== null ? meta.position : 999,
+  };
+}
+
 module.exports = function docsArchivePlugin(context) {
   const docsDir = path.join(context.siteDir, 'docs');
 
@@ -129,6 +157,7 @@ module.exports = function docsArchivePlugin(context) {
 
         const permalink = resolvePermalink(data, file, docsDir);
         const category = resolveCategory(file, docsDir);
+        const subCategory = resolveSubCategory(file, docsDir);
 
         posts.push({
           title: data.title || path.basename(file),
@@ -136,6 +165,7 @@ module.exports = function docsArchivePlugin(context) {
           permalink,
           tags: Array.isArray(data.tags) ? data.tags : [],
           category, // {slug, label, position} hoặc null
+          subCategory, // {slug, label, position} hoặc null
         });
       }
 

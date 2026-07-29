@@ -1,9 +1,7 @@
 ---
 id: tong-quan-quan-ly-ton-kho-inv
 title: Tổng quan Quản lý Tồn kho (INV)
-sidebar_label: Tổng quan Tồn kho (INV)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/tong-quan
-sidebar_position: 1
 date: 2026-07-21
 tags: [erp, inventory, inv, tong-quan, roadmap]
 ---

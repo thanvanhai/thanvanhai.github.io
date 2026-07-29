@@ -55,15 +55,15 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 
 ## 7. Đối soát hóa đơn & Thanh toán (Invoice Verification & AP Integration)
 
-- [ ] [7000 Nguyên lý đối soát khớp lệnh 3 chiều và 2 chiều (3-Way Match & 2-Way Match: PO - Receipt - Invoice)]()
-- [ ] [7010 Xử lý chênh lệch giá/số lượng trên hóa đơn và quy trình mở khóa thanh toán (Invoice Variance & Block/Release)]()
-- [ ] [7020 Nghiệp vụ thanh toán tạm ứng và đối trừ hóa đơn nhà cung cấp (Down Payment & Prepayment AP)]()
-- [ ] [7030 Phân bổ chi phí mua hàng trên đường vào giá trị tồn kho (Landed Cost / Actual Costing Allocation)]()
-- [ ] [7040 Xử lý hóa đơn không qua đơn đặt hàng chính thức cho chi tiêu Indirect (Non-PO Invoice Processing)]()
+- [x] [7000 Nguyên lý đối soát khớp lệnh 3 chiều và 2 chiều (3-Way Match & 2-Way Match: PO - Receipt - Invoice)](./7000-nguyen-ly-doi-soat-khop-lenh-3-chieu-va-2-chieu.md)
+- [x] [7010 Xử lý chênh lệch giá/số lượng trên hóa đơn và quy trình mở khóa thanh toán (Invoice Variance & Block/Release)](./7010-xu-ly-chenh-lech-gia-so-luong-tren-hoa-don.md)
+- [x] [7020 Nghiệp vụ thanh toán tạm ứng và đối trừ hóa đơn nhà cung cấp (Down Payment & Prepayment AP)](./7020-nghiep-vu-thanh-toan-tam-ung-va-doi-tru-hoa-don.md)
+- [x] [7030 Phân bổ chi phí mua hàng trên đường vào giá trị tồn kho (Landed Cost / Actual Costing Allocation)](./7030-phan-bo-chi-phi-mua-hang-landed-cost.md)
+- [x] [7040 Xử lý hóa đơn không qua đơn đặt hàng chính thức cho chi tiêu Indirect (Non-PO Invoice Processing)](./7040-xu-ly-hoa-don-khong-qua-don-dat-hang-po.md)
 
 ## 8. Báo cáo & Đánh giá nhà cung cấp (Analytics & Supplier Performance)
 
-- [ ] [8000 Phân tích cơ cấu chi phí mua hàng và hiệu quả chi tiêu (Procurement Spend Analysis)]()
+- [x] [8000 Phân tích cơ cấu chi phí mua hàng và hiệu quả chi tiêu (Procurement Spend Analysis)](./8000-phan-tich-co-cau-chi-phi-mua-hang-va-hieu-qua-chi-tieu.md)
 - [ ] [8010 Báo cáo theo dõi công nợ phải trả nhà cung cấp theo tuổi nợ (AP Aging Analysis)]()
 - [ ] [8020 Thiết lập bộ chỉ số đánh giá hiệu suất nhà cung cấp (Supplier Evaluation/Scorecard - OTD, Quality, Price)]()
 
