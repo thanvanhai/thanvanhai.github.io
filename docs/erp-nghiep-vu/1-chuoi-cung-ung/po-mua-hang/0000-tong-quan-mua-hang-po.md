@@ -4,13 +4,72 @@ title: Tổng quan Quản lý Mua hàng (PO)
 sidebar_label: Tổng quan Mua hàng (PO)
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/tong-quan
 sidebar_position: 1
-date: 2026-07-21
+date: 2026-12-28
 tags: [erp, procurement, purchasing, po, pr, rfq, tong-quan, roadmap, oracle-ebs, sap, epicor, odoo]
 ---
 
 # Tổng quan Quản lý Mua hàng (PO)
 
-Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu về nghiệp vụ **Quản lý Mua hàng (Purchasing / Procurement)**, **Yêu cầu mua sắm (Purchase Requisition - PR)** và **Đơn mua hàng (Purchase Order - PO)** trong hệ thống ERP doanh nghiệp, bao quát cả **Direct Procurement** (mua hàng phục vụ sản xuất) và **Indirect/MRO Procurement** (mua sắm dịch vụ, vật tư tiêu hao, chi tiêu vận hành). Các mục dưới đây đang ở trạng thái chờ viết chi tiết và sẽ được cập nhật liên kết dần sau khi hoàn thành.
+Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu về nghiệp vụ **Quản lý Mua hàng (Purchasing / Procurement)**, **Yêu cầu mua sắm (Purchase Requisition - PR)** và **Đơn mua hàng (Purchase Order - PO)** trong hệ thống ERP doanh nghiệp, bao quát cả **Direct Procurement** (mua hàng phục vụ sản xuất) và **Indirect/MRO Procurement** (mua sắm dịch vụ, vật tư tiêu hao, chi tiêu vận hành).
+
+---
+
+## Sơ đồ quy trình mua hàng chuẩn (Standard PO Process Flow)
+
+Sơ đồ dưới đây mô tả toàn bộ vòng đời một giao dịch mua hàng trong hệ thống ERP, từ lúc phát sinh nhu cầu đến khi hoàn tất thanh toán, bao gồm các điểm quyết định và nhánh rẽ nghiệp vụ thường gặp trong thực tế vận hành:
+
+```mermaid
+flowchart TD
+    START([Phát sinh nhu cầu mua sắm]) --> PR[Tạo Purchase Requisition - PR]
+    PR --> APV1{PR có cần phê duyệt?}
+    APV1 -->|Từ chối| REJECT1[PR bị từ chối / Trả lại yêu cầu]
+    APV1 -->|Duyệt| SOURCE{Xác định nguồn cung}
+
+    SOURCE -->|Chưa có NCC cố định| RFQ[Mời thầu / Yêu cầu báo giá - RFQ]
+    RFQ --> BID[So sánh và chọn báo giá thắng thầu]
+    BID --> POCREATE
+
+    SOURCE -->|Đã có Blanket PO / Hợp đồng khung| RELEASE[Tạo Release từ thỏa thuận khung]
+    RELEASE --> POCREATE
+
+    SOURCE -->|Mua Indirect/MRO qua danh mục| CATALOG[Chọn hàng từ e-Catalog / Punch-out]
+    CATALOG --> POCREATE
+
+    POCREATE[Khởi tạo đơn Purchase Order - PO] --> APV2{PO có vượt hạn mức phê duyệt?}
+    APV2 -->|Có, cần duyệt thêm cấp| WORKFLOW[Luồng phê duyệt theo hạn mức tài chính]
+    WORKFLOW --> APV2
+    APV2 -->|Đã đủ điều kiện| APPROVED[PO chuyển trạng thái: Approved]
+
+    APPROVED --> SEND[Gửi PO cho nhà cung cấp]
+    SEND --> CONFIRM{NCC xác nhận đơn hàng?}
+    CONFIRM -->|Từ chối / Không phản hồi| ESCALATE[Buyer liên hệ xử lý / Tìm nguồn thay thế]
+    CONFIRM -->|Xác nhận| TRACK[Theo dõi tiến độ giao hàng]
+
+    TRACK --> SHIP[Nhà cung cấp giao hàng]
+    SHIP --> RCV[Nhận hàng - Goods Receipt]
+    RCV --> QC{Kiểm tra chất lượng IQC đạt?}
+    QC -->|Không đạt| RETURN[Từ chối / Trả hàng cho NCC]
+    QC -->|Đạt| PUTAWAY[Nhập kho - Putaway]
+
+    PUTAWAY --> QTYCHECK{Số lượng nhận đủ so với đặt?}
+    QTYCHECK -->|Thiếu, NCC không giao tiếp| CLOSESHORT[Đóng ngắn hạn mức - Close Short]
+    QTYCHECK -->|Đủ| SYSCLOSE[Chờ hóa đơn để khớp lệnh]
+    CLOSESHORT --> SYSCLOSE
+
+    SYSCLOSE --> INVOICE[Nhận hóa đơn từ nhà cung cấp - AP Invoice]
+    INVOICE --> MATCH{Đối soát khớp lệnh PO - Receipt - Invoice}
+    MATCH -->|Khớp lệnh thành công| POST[Ghi nhận công nợ phải trả - AP]
+    MATCH -->|Sai lệch giá / số lượng| HOLD[Khóa hóa đơn - Invoice Hold]
+    HOLD --> RESOLVE[Buyer / AP xử lý sai lệch]
+    RESOLVE --> MATCH
+
+    POST --> PAY[Chuyển sang chu trình thanh toán - Payment]
+    PAY --> CLOSED([PO hoàn tất: Closed])
+```
+
+Sau khi đã hình dung được toàn cảnh quy trình, bạn có thể đi sâu vào từng công đoạn cụ thể qua các mục bài viết bên dưới, được tổ chức theo đúng trình tự nghiệp vụ từ thiết lập nền tảng đến vận hành và xử lý sự cố.
+
+---
 
 ## 1. Thiết lập tổ chức mua sắm (Procurement Organization Setup)
 
@@ -65,9 +124,8 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 
 ## 9. Lỗi thường gặp & Giải pháp khắc phục (Troubleshooting & Integration Issues)
 
-- [ ] [9000 Xử lý lỗi lệch đơn vị tính mua hàng và đơn vị tính lưu kho (Purchase UOM vs Base UOM Conversion)]()
-- [ ] [9010 Kỹ thuật đóng và dọn dẹp các yêu cầu PR/PO treo lâu ngày (Purging / Closing Aged PRs & POs)]()
-- [ ] [9020 Xử lý chênh lệch tỷ giá mua hàng đa tiền tệ phát sinh trong kỳ (Exchange Rate Variance - ERV)]()
+- [x] [9000 Xử lý lỗi lệch đơn vị tính mua hàng và đơn vị tính lưu kho (Purchase UOM vs Base UOM Conversion)](./9000-xu-ly-loi-lech-don-vi-tinh-mua-hang-va-luu-kho.md)
+- [x] [9010 Kỹ thuật đóng và dọn dẹp các yêu cầu PR/PO treo lâu ngày (Purging / Closing Aged PRs & POs)](./9010-ky-thuat-dong-va-don-dep-yeu-cau-pr-po-treo.md)
 
 ---
 

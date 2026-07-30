@@ -5,9 +5,9 @@ description: "Thiết lập mô hình phân tích chi phí mua sắm (Spend Anal
 sidebar_label: Phân tích chi phí mua hàng
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/8000-phan-tich-co-cau-chi-phi-mua-hang-va-hieu-qua-chi-tieu
 sidebar_position: 8000
-date: 2026-12-27
+date: 2026-12-24
 last_update:
-  date: 2026-12-27
+  date: 2026-12-24
 tags: [erp, procurement, spend-analysis, procurement-analytics, supplier-performance, purchasing-reports, oracle-ebs, epicor, sql]
 ---
 

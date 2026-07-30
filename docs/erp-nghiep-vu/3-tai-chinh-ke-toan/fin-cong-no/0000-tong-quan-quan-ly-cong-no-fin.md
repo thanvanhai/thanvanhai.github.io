@@ -44,6 +44,7 @@ Các mục dưới đây sẽ được cập nhật liên kết dần sau khi b�
 - [ ] [4010 - Quy trình gửi thư xác nhận và đối chiếu số dư công nợ định kỳ (AP/AR Balance Confirmation)]()
 - [ ] [4020 - Quy trình khóa sổ phân hệ công nợ và đối chiếu khớp số dư với Sổ cái (AP/AR Subledger to GL Reconciliation)]()
 - [ ] [4030 - Đối chiếu và xử lý tài khoản trung gian Nhận hàng chưa có hóa đơn (GR/IR Clearing Account Reconciliation)]()
+- [ ] [4040 - Xử lý chênh lệch tỷ giá mua hàng đa tiền tệ phát sinh trong kỳ (Exchange Rate Variance - ERV)](./4040-ap-exchange-rate-variance-erv.md)
 
 ## 5. Báo cáo & Phân tích Công nợ (AP/AR Analytics & Dunning)
 

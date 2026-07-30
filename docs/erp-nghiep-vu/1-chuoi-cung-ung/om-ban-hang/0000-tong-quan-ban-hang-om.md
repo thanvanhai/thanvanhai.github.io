@@ -13,8 +13,8 @@ tags: [erp, sales, om, so, tong-quan, roadmap, oracle-ebs, sap, epicor, odoo]
 Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu về nghiệp vụ **Quản lý Đơn hàng (Order Management - OM)** và **Đơn bán hàng (Sales Order - SO)** trong hệ thống ERP/OMS đa kênh. Các mục dưới đây đang ở trạng thái chờ viết chi tiết và sẽ được cập nhật liên kết dần sau khi hoàn thành.
 ## 1. Thiết lập tổ chức bán hàng (Sales Organization Setup)
 
-- [ ] [1000 Thiết lập cơ cấu tổ chức bán hàng đa công ty, đa kênh (Sales Org / Operating Unit / Business Unit Setup)]()
-- [ ] [1010 Thiết lập loại chứng từ đơn hàng (Sales Document Type Configuration)]()
+- [x] [1000 Thiết lập cơ cấu tổ chức bán hàng đa công ty, đa kênh (Sales Org / Operating Unit / Business Unit Setup)](./1000-thiet-lap-co-cau-to-chuc-ban-hang.md)
+- [x] [1010 Thiết lập loại chứng từ đơn hàng (Sales Document Type Configuration)](./1010-thiet-lap-loai-chung-tu-don-hang.md)
 
 ## 2. Thiết lập danh mục & Chính sách thương mại (Master Data & Commercial Policy)
 
