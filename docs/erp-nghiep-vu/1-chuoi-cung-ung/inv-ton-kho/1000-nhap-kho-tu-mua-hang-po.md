@@ -92,7 +92,7 @@ Khi thủ kho nhấn "Save & Post" phiếu nhập kho, hệ thống ERP sẽ t�
 * **Nợ (Debit):** `Tài khoản Kho` (152, 156...) — Trị giá hàng nhập kho.
 * **Có (Credit):** `Tài khoản AP Accrual` (3387 / 3388 hoặc tài khoản tạm tính tương đương) — Công nợ tạm tính.
 
-> Tài khoản AP Accrual này sẽ được đối chiếu và tất toán khi phòng Kế toán nhận và khớp hóa đơn từ nhà cung cấp. Quy trình đối chiếu định kỳ (Reconciliation) và xử lý các trường hợp lệch số dư giữa "Hàng đã nhận chưa có hóa đơn" thuộc nghiệp vụ **GR/IR Clearing Account Reconciliation** của phân hệ Công nợ — xem chi tiết tại **[AP/AR 4030 - GR/IR Clearing Account Reconciliation](/erp-nghiep-vu/3-tai-chinh-ke-toan/fin-cong-no/4030-gr-ir-clearing)**.
+> Tài khoản AP Accrual này sẽ được đối chiếu và tất toán khi phòng Kế toán nhận và khớp hóa đơn từ nhà cung cấp. Quy trình đối chiếu định kỳ (Reconciliation) và xử lý các trường hợp lệch số dư giữa "Hàng đã nhận chưa có hóa đơn" thuộc nghiệp vụ **GR/IR Clearing Account Reconciliation** của phân hệ Công nợ — xem chi tiết tại **[AP/AR 4030 - GR/IR Clearing Account Reconciliation]()**.
 
 ---
 
@@ -104,7 +104,7 @@ Khi thủ kho nhấn "Save & Post" phiếu nhập kho, hệ thống ERP sẽ t�
 
 Từ góc độ **giao dịch kho**, điều Developer/BA cần nắm là: nếu hệ thống cho phép ghi nhận nhập kho vượt số lượng PO mà không có ràng buộc, tồn kho khả dụng (On-hand Qty) sẽ tăng lên **không có căn cứ chứng từ mua hàng tương ứng**, và về sau khi hóa đơn NCC về đúng 105 con, hệ thống sẽ không khớp được với PO gốc (100 con) khi đối soát.
 
-Việc **cấu hình hạn mức dung sai nhận hàng (Over-Receipt Tolerance)**, ai được duyệt vượt dung sai, và hệ quả lên đối soát hóa đơn 3 chiều là nghiệp vụ của quy trình nhận hàng — xem chi tiết tại **[PO 5010 - PO Receiving, Quality Inspection & Putaway](/erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)** và **[PO 7000 - Nguyên lý đối soát khớp lệnh 3 chiều](/erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/7000-nguyen-ly-doi-soat-khop-lenh-3-chieu-va-2-chieu.md)**.
+Việc **cấu hình hạn mức dung sai nhận hàng (Over-Receipt Tolerance)**, ai được duyệt vượt dung sai, và hệ quả lên đối soát hóa đơn 3 chiều là nghiệp vụ của quy trình nhận hàng — xem chi tiết tại **[PO 5010 - PO Receiving, Quality Inspection & Putaway](../po-mua-hang/5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)** và **[PO 7000 - Nguyên lý đối soát khớp lệnh 3 chiều](../po-mua-hang/7000-nguyen-ly-doi-soat-khop-lenh-3-chieu-va-2-chieu.md)**.
 
 ---
 
@@ -114,7 +114,7 @@ Không phải cứ "nhận hàng" là tồn kho khả dụng (On-hand Qty dùng 
 
 Điều quan trọng với Developer viết báo cáo tồn kho: **giao dịch nhận hàng (Receipt) và giao dịch On-hand Qty tăng lên có thể là hai bước tách biệt về thời điểm.** Nếu báo cáo tồn kho chỉ đếm theo bảng Transaction gốc mà không lọc theo trạng thái Bin (Inspection vs Stock), số liệu tồn kho khả dụng sẽ bị thổi phồng sai so với thực tế hàng có thể xuất dùng.
 
-Toàn bộ quy trình 2 bước (nhận vào khu kiểm tra → QC phân loại đạt/lỗi → cất kho hoặc trả NCC) thuộc nghiệp vụ nhận hàng của phân hệ Mua hàng — xem chi tiết tại **[PO 5010 - PO Receiving, Quality Inspection & Putaway](/erp-nghiep-vu/1-chuoi-cung-ung/po-mua-hang/5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)**. Trường hợp hàng bị từ chối sau kiểm tra dẫn đến xuất trả nhà cung cấp, xem **[INV 2030 - Xuất kho trả nhà cung cấp (RTV)](/erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/2020-xuat-kho-tra-nha-cung-cap-rtv.md)**.
+Toàn bộ quy trình 2 bước (nhận vào khu kiểm tra → QC phân loại đạt/lỗi → cất kho hoặc trả NCC) thuộc nghiệp vụ nhận hàng của phân hệ Mua hàng — xem chi tiết tại **[PO 5010 - PO Receiving, Quality Inspection & Putaway](../po-mua-hang/5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)**. Trường hợp hàng bị từ chối sau kiểm tra dẫn đến xuất trả nhà cung cấp, xem **[INV 2030 - Xuất kho trả nhà cung cấp (RTV)](./2020-xuat-kho-tra-nha-cung-cap-rtv.md)**.
 
 ---
 
@@ -126,7 +126,7 @@ Nếu doanh nghiệp áp dụng **Tính giá thành tiêu chuẩn (Standard Cost
 
 **Hệ quả cần lưu ý khi viết báo cáo:** nếu lấy `Số lượng nhận × Đơn giá trên PO` để tính giá trị nhập kho trong kỳ đối với các doanh nghiệp chạy Standard Cost, số liệu sẽ lệch ngay so với Sổ cái — vì phần chênh lệch giá mua đã được tách ra khỏi giá trị kho.
 
-Cơ chế tính, hạch toán và phân tích khoản chênh lệch này (Purchase Price Variance - PPV) thuộc phân hệ Giá thành — xem chi tiết tại **[COST 4000 - Phân tích chênh lệch giá thành thực tế so với định mức](/erp-nghiep-vu/3-tai-chinh-ke-toan/fin-gia-thanh/4000-phan-tich-chenh-lech.md)**. Cách phân biệt các phương pháp tính giá tồn kho, xem **[INV 5000 - Các phương pháp Tính giá hàng Tồn kho](./5000-phuong-phap-tinh-gia-fifo-lifo-average-standard.md)**.
+Cơ chế tính, hạch toán và phân tích khoản chênh lệch này (Purchase Price Variance - PPV) thuộc phân hệ Giá thành — xem chi tiết tại **[COST 4000 - Phân tích chênh lệch giá thành thực tế so với định mức]()**. Cách phân biệt các phương pháp tính giá tồn kho, xem **[INV 5000 - Các phương pháp Tính giá hàng Tồn kho](./5000-phuong-phap-tinh-gia-fifo-lifo-average-standard.md)**.
 
 ---
 

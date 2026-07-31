@@ -73,7 +73,7 @@ Khi phân xưởng hoàn thành một lệnh sản xuất (Work Order / Job) và
 | **Chi phí tích lũy** | `Erp.JobAsmbl` (Lưu WIP chi tiết: Material, Labor, Burden...) | `WIP_PERIOD_BALANCES` | `COSB` (CO Objects: Cost Totals) |
 
 ### Bản chất chuyển dịch chi phí:
-Khi lệnh sản xuất được chạy, chi phí nguyên vật liệu, nhân công và máy móc được tích lũy vào tài khoản **WIP (Work in Process - Chi phí sản xuất dở dang)**. Khi giao dịch nhập kho thành phẩm diễn ra, chi phí này được rút ra khỏi WIP để nạp vào kho Thành phẩm. Cơ chế tích lũy chi tiết từng yếu tố chi phí (Material/Labor/Overhead) trong WIP trước thời điểm nhập kho thuộc phạm vi phân hệ Giá thành — xem **[COST 3000 - Quy trình tính toán giá trị sản phẩm dở dang cuối kỳ (WIP Calculation)](/erp-nghiep-vu/3-tai-chinh-ke-toan/fin-gia-thanh/3000-wip-calculation.md)**.
+Khi lệnh sản xuất được chạy, chi phí nguyên vật liệu, nhân công và máy móc được tích lũy vào tài khoản **WIP (Work in Process - Chi phí sản xuất dở dang)**. Khi giao dịch nhập kho thành phẩm diễn ra, chi phí này được rút ra khỏi WIP để nạp vào kho Thành phẩm. Cơ chế tích lũy chi tiết từng yếu tố chi phí (Material/Labor/Overhead) trong WIP trước thời điểm nhập kho thuộc phạm vi phân hệ Giá thành — xem **[COST 3000 - Quy trình tính toán giá trị sản phẩm dở dang cuối kỳ (WIP Calculation)]()**.
 
 ---
 
@@ -99,7 +99,7 @@ Bút toán nhập kho từ sản xuất phản ánh việc giảm chi phí dở 
 
 Từ góc độ **giao dịch kho**, điều Developer/BA cần nắm là: nếu hệ thống tính đơn giá nhập kho bằng cách lấy tổng chi phí hiện có trong WIP chia đều cho số lượng vừa nhận, giá trị 10 sản phẩm đầu tiên có thể bị "đội giá" gấp nhiều lần thực tế — vì WIP tại thời điểm đó gánh toàn bộ chi phí NVL nhưng chưa đủ chi phí nhân công tương ứng. Hậu quả trực tiếp lên kho: nếu 10 sản phẩm này được xuất bán ngay trong kỳ, giá vốn ghi nhận sẽ sai lệch nghiêm trọng.
 
-Cơ chế tính giá thực tế theo % hoàn thành, ước tính Labor/Overhead, và xử lý chênh lệch (Variance) cuối kỳ thuộc phân hệ Giá thành — xem **[COST 3010 - Các phương pháp tính giá thành thực tế cuối kỳ](/erp-nghiep-vu/3-tai-chinh-ke-toan/fin-gia-thanh/3010-actual-costing-methods.md)** và **[COST 4000 - Phân tích chênh lệch giá thành thực tế so với định mức](/erp-nghiep-vu/3-tai-chinh-ke-toan/fin-gia-thanh/4000-phan-tich-chenh-lech.md)**. Tiêu chí xác định khi nào một lệnh sản xuất được coi là hoàn thành từng phần/toàn bộ thuộc **[MFG-Exec 5000 - Nghiệp vụ báo cáo hoàn thành lệnh sản xuất](/erp-nghiep-vu/2-quan-ly-san-xuat/mfg-thuc-thi/5000-work-order-completion.md)**.
+Cơ chế tính giá thực tế theo % hoàn thành, ước tính Labor/Overhead, và xử lý chênh lệch (Variance) cuối kỳ thuộc phân hệ Giá thành — xem **[COST 3010 - Các phương pháp tính giá thành thực tế cuối kỳ]()** và **[COST 4000 - Phân tích chênh lệch giá thành thực tế so với định mức]()**. Tiêu chí xác định khi nào một lệnh sản xuất được coi là hoàn thành từng phần/toàn bộ thuộc **[MFG-Exec 5000 - Nghiệp vụ báo cáo hoàn thành lệnh sản xuất]()**.
 
 ---
 
@@ -109,7 +109,7 @@ Nhiều doanh nghiệp cấu hình **Backflushing**: khi thủ kho nhập kho th
 
 Từ góc độ **giao dịch kho**, điều cần nắm là: một giao dịch **nhập kho thành phẩm** không chỉ làm tăng tồn kho thành phẩm mà còn **đồng thời kích hoạt giảm tồn kho NVL** ở phía sau. Nếu tồn kho hệ thống của NVL tại thời điểm đó không đủ (dù thực tế ngoài kho vẫn có, chỉ là chưa kịp nhập phiếu), giao dịch có thể khiến tồn kho NVL bị âm, hoặc bị hệ thống chặn đứng khiến không nhập được thành phẩm.
 
-Cơ chế nổ BOM và tạo giao dịch xuất kho ngầm thuộc **[MFG-Exec 2010 - Cơ chế trừ kho vật tư tự động khi hoàn thành nguyên công (Backflushing Mechanics & Issues)](/erp-nghiep-vu/2-quan-ly-san-xuat/mfg-thuc-thi/2010-backflushing-mechanics.md)**. Nguyên lý xử lý âm kho nói chung xem **[INV 9020 - Xử lý âm kho (Negative Inventory)](/erp-nghiep-vu/1-chuoi-cung-ung/inv-ton-kho/9020-xu-ly-am-kho.md)**; nguyên nhân đặc thù phát sinh từ Backflush xem **[MFG-Exec 7010 - Xử lý lỗi tồn kho âm phát sinh từ cơ chế Backflush](/erp-nghiep-vu/2-quan-ly-san-xuat/mfg-thuc-thi/7010-negative-inventory-backflush.md)**.
+Cơ chế nổ BOM và tạo giao dịch xuất kho ngầm thuộc **[MFG-Exec 2010 - Cơ chế trừ kho vật tư tự động khi hoàn thành nguyên công (Backflushing Mechanics & Issues)]()**. Nguyên lý xử lý âm kho nói chung xem **[INV 9020 - Xử lý âm kho (Negative Inventory)](./9020-xu-ly-am-kho-negative-inventory.md)**; nguyên nhân đặc thù phát sinh từ Backflush xem **[MFG-Exec 7010 - Xử lý lỗi tồn kho âm phát sinh từ cơ chế Backflush]()**.
 
 ---
 
@@ -119,7 +119,7 @@ Không phải lúc nào một lệnh sản xuất cũng chỉ tạo ra một dò
 
 Từ góc độ **giao dịch kho**, điều cần nắm là: khi đối chiếu WIP đã kết chuyển hết chưa, cần cộng gộp **tất cả các dòng nhập kho** phát sinh từ cùng một lệnh sản xuất, không chỉ dòng sản phẩm chính — nếu chỉ đối chiếu 1 dòng, số liệu sẽ luôn thấy WIP "kết chuyển thiếu".
 
-Việc thiết lập tỷ lệ phân bổ chi phí cho Co-product trong BOM/Routing thuộc **[MFG-Tech 6000 - Quản lý Đồng sản phẩm (Co-product) và Phụ phẩm thu hồi (By-product)](/erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat/6000-quan-ly-dong-san-pham-va-phu-pham.md)**; cách hạch toán phân bổ giá trị khi nhập kho thuộc **[COST 3020 - Phân bổ chi phí giữa sản phẩm chính, phụ phẩm và xử lý giá trị phế phẩm thu hồi](/erp-nghiep-vu/3-tai-chinh-ke-toan/fin-gia-thanh/3020-by-product-scrap-costing.md)**.
+Việc thiết lập tỷ lệ phân bổ chi phí cho Co-product trong BOM/Routing thuộc **[MFG-Tech 6000 - Quản lý Đồng sản phẩm (Co-product) và Phụ phẩm thu hồi (By-product)](../../2-quan-ly-san-xuat/mfg-ky-thuat/6000-quan-ly-dong-san-pham-va-phu-pham.md)**; cách hạch toán phân bổ giá trị khi nhập kho thuộc **[COST 3020 - Phân bổ chi phí giữa sản phẩm chính, phụ phẩm và xử lý giá trị phế phẩm thu hồi]()**.
 
 ---
 
@@ -219,7 +219,7 @@ HAVING SUM(moqd.transaction_quantity) < 0;            -- Tồn kho đang bị â
 - **[MFG-Exec 5000 - Nghiệp vụ báo cáo hoàn thành lệnh sản xuất]()** — tiêu chí hoàn thành toàn bộ/từng phần, gán Lot/Serial.
 - **[MFG-Exec 2010 - Cơ chế trừ kho vật tư tự động (Backflushing Mechanics & Issues)]()** — chi tiết cơ chế nổ BOM và xuất kho ngầm.
 - **[MFG-Exec 7010 - Xử lý lỗi tồn kho âm phát sinh từ Backflush]()** — nguyên nhân đặc thù, xem thêm bài gốc INV-9020.
-- **[INV 9020 - Xử lý âm kho (Negative Inventory)](../inv-ton-kho/9020-xu-ly-am-kho-negative-inventory.md)** — nguyên lý chung và mọi nguyên nhân gây âm kho.
+- **[INV 9020 - Xử lý âm kho (Negative Inventory)](./9020-xu-ly-am-kho-negative-inventory.md)** — nguyên lý chung và mọi nguyên nhân gây âm kho.
 - **[MFG-Tech 6000 - Quản lý Đồng sản phẩm (Co-product) và Phụ phẩm thu hồi (By-product)](../../2-quan-ly-san-xuat/mfg-ky-thuat/6000-quan-ly-dong-san-pham-va-phu-pham.md)** — thiết lập tỷ lệ phân bổ chi phí kỹ thuật.
 - **[COST 3000 - Quy trình tính toán giá trị sản phẩm dở dang cuối kỳ (WIP Calculation)]()** — cơ chế tích lũy chi phí trong WIP.
 - **[COST 3010 - Các phương pháp tính giá thành thực tế cuối kỳ]()** — Job Costing, Process Costing, Material Ledger.

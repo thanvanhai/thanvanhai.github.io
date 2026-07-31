@@ -86,7 +86,7 @@ Khi hoàn thành việc nhập kho trả hàng, hệ thống tự động sinh b
 * **Nợ (Debit):** `Tài khoản Kho` (156, 155) — Tăng lại giá trị hàng tồn kho.
 * **Có (Credit):** `Tài khoản Giá vốn hàng bán (COGS)` (632) — Giảm giá vốn tương ứng của lô hàng đã bán.
 
-> Song song với bút toán kho này, kế toán còn phải xuất **Credit Memo** để giảm doanh thu và công nợ phải thu (Nợ Doanh thu/Thuế GTGT — Có Phải thu khách hàng) — đây là bút toán độc lập không phát sinh từ giao dịch kho, thuộc nghiệp vụ **[OM 8010 - Nhập kho hàng trả lại và hạch toán giảm trừ công nợ (RMA Receipt & Credit Memo)](/erp-nghiep-vu/1-chuoi-cung-ung/om-ban-hang/8010-rma-receipt-credit-memo.md)**.
+> Song song với bút toán kho này, kế toán còn phải xuất **Credit Memo** để giảm doanh thu và công nợ phải thu (Nợ Doanh thu/Thuế GTGT — Có Phải thu khách hàng) — đây là bút toán độc lập không phát sinh từ giao dịch kho, thuộc nghiệp vụ **[OM 8010 - Nhập kho hàng trả lại và hạch toán giảm trừ công nợ (RMA Receipt & Credit Memo)]()**.
 
 ---
 
@@ -111,7 +111,7 @@ Khi nhận lại hàng từ khách, tâm lý thủ kho thường muốn quét nh
 
 Từ góc độ **giao dịch kho**, điều Developer/BA cần nắm là: giao dịch nhập kho RMA phải luôn đưa vào **Kho biệt trữ/Kho chờ kiểm (Quarantine/Inspection Bin)** ở trạng thái khóa (Blocked Stock) — On-hand khả dụng dùng để bán tiếp **chưa được tăng** cho đến khi có quyết định xử lý. Nếu báo cáo tồn kho không lọc theo trạng thái Bin này, hàng lỗi/móp méo sẽ hiển thị như hàng sẵn sàng bán, dẫn đến bị bán nhầm cho khách hàng tiếp theo.
 
-Quyết định xử lý sau kiểm tra (chuyển kho bán, chuyển sửa chữa, hay hủy/bồi thường) thuộc nghiệp vụ **[OM 8020 - Xử lý đơn hàng đổi mới hoặc bồi thường hư hỏng (Exchange & Damage Claims)](/erp-nghiep-vu/1-chuoi-cung-ung/om-ban-hang/8020-exchange-damage-claims.md)**.
+Quyết định xử lý sau kiểm tra (chuyển kho bán, chuyển sửa chữa, hay hủy/bồi thường) thuộc nghiệp vụ **[OM 8020 - Xử lý đơn hàng đổi mới hoặc bồi thường hư hỏng (Exchange & Damage Claims)]()**.
 
 ---
 
@@ -121,7 +121,7 @@ Trong thực tế, có những trường hợp khách hàng trả lại hàng đ
 
 Từ góc độ **giao dịch kho**, vấn đề trực tiếp là: không có Invoice/Shipment gốc để tham chiếu (như ở Điểm 1) đồng nghĩa hệ thống **không có căn cứ tự động xác định đơn giá nhập kho**. Giao dịch buộc phải dùng đơn giá ước tính tạm tính (Estimated Return Value) — tuyệt đối không được để đơn giá bằng 0, vì sẽ lặp lại đúng lỗi "Standard Cost = 0" đã nói ở bài INV-5000.
 
-Việc kiểm soát ai được phép tạo RMA không tham chiếu, phân quyền duyệt để tránh rủi ro thông đồng xóa nợ khống, thuộc nghiệp vụ **[OM 8000 - Quy trình phê duyệt yêu cầu khách trả hàng (RMA Approval Flow)](/erp-nghiep-vu/1-chuoi-cung-ung/om-ban-hang/8000-rma-approval-flow.md)**.
+Việc kiểm soát ai được phép tạo RMA không tham chiếu, phân quyền duyệt để tránh rủi ro thông đồng xóa nợ khống, thuộc nghiệp vụ **[OM 8000 - Quy trình phê duyệt yêu cầu khách trả hàng (RMA Approval Flow)]()**.
 
 ---
 
