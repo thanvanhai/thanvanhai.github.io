@@ -5,9 +5,9 @@ description: "Phân tích nghiệp vụ thiết lập cơ cấu tổ chức bán
 sidebar_label: Tổ chức bán hàng
 slug: /erp-nghiep-vu/1-chuoi-cung-ung/om-ban-hang/1000-thiet-lap-co-cau-to-chuc-ban-hang
 sidebar_position: 1000
-date: 2026-12-29
+date: 2026-12-28
 last_update:
-  date: 2026-12-29
+  date: 2026-12-28
 tags: [erp, sales, om, sales-org, operating-unit, oracle-ebs, epicor, sql]
 ---
 

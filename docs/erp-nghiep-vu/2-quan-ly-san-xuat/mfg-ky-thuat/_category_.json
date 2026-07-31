@@ -2,9 +2,7 @@
   "label": "Kỹ thuật sản xuất (ERP - Master Data)",
   "position": 1,
   "link": {
-    "type": "generated-index",
-    "title": "Kỹ thuật sản xuất (Engineering - ERP: Master Data)",
-    "slug": "/erp-nghiep-vu/2-quan-ly-san-xuat/mfg-ky-thuat",
-    "description": "Engineering ERP - Master Data: BOM, Routing và các nghiệp vụ kỹ thuật trước sản xuất."
+    "type": "doc",
+    "id": "tong-quan-ky-thuat-san-xuat-mfg"
   }
 }

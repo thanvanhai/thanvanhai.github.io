@@ -18,16 +18,15 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 
 ## 2. Thiết lập danh mục & Chính sách thương mại (Master Data & Commercial Policy)
 
-- [ ] [2000 Thiết lập hồ sơ khách hàng và phân nhóm phân phối (Customer Master & Segmentation)]()
-- [ ] [2010 Quản lý hạn mức tín dụng khách hàng và luồng khóa đơn (Credit Limit & Credit Hold Setup)]()
-- [ ] [2020 Thiết lập bảng giá đa kênh và quy tắc áp dụng chiết khấu (Multi-channel Price List & Discount Rules)]()
-- [ ] [2030 Thiết lập chương trình khuyến mãi, quà tặng tự động (Promotion & Gift Rules Engine)]()
-- [ ] [2040 Thiết lập chính sách Rebate/Chiết khấu hồi tố (Rebate Agreement Management)]()
-- [ ] [2050 Thiết lập quy tắc xác định thuế theo khu vực/khách hàng/sản phẩm (Tax Determination Rules)]()
+- [x] [2000 Thiết lập hồ sơ khách hàng và phân nhóm phân phối (Customer Master & Segmentation)](./2000-thiet-lap-ho-so-khach-hang-va-phan-nhom.md)
+- [x] [2010 Quản lý hạn mức tín dụng khách hàng và luồng khóa đơn (Credit Limit & Credit Hold Setup)](./2010-quan-ly-han-muc-tin-dung-va-khoa-don.md)
+- [x] [2020 Thiết lập bảng giá đa kênh và quy tắc áp dụng chiết khấu (Multi-channel Price List & Discount Rules)](./2020-thiet-lap-bang-gia-da-kenh-va-chiet-khau.md)
+- [x] [2030 Thiết lập chương trình khuyến mãi, quà tặng tự động (Promotion & Gift Rules Engine)](./2030-thiet-lap-khuyen-mai-va-qua-tang-tu-dong.md)
+- [x] [2040 Thiết lập chính sách Rebate/Chiết khấu hồi tố (Rebate Agreement Management)](./2040-thiet-lap-chinh-sach-chiet-khau-hoi-to-rebate.md)
 
 ## 3. Tiếp nhận & Khởi tạo đơn hàng (Order Ingestion & Capture)
 
-- [ ] [3000 Nghiệp vụ Báo giá khách hàng và quy trình chuyển đổi sang SO (Sales Quotation to SO)]()
+- [x] [3000 Nghiệp vụ Báo giá khách hàng và quy trình chuyển đổi sang SO (Sales Quotation to SO)](./3000-nghiep-vu-bao-gia-khach-hang-va-chuyen-doi-so.md)
 - [ ] [3010 Nhập đơn bán hàng thủ công và đơn hàng mẫu (Manual Sales Order Entry)]()
 - [ ] [3020 Cơ chế đồng bộ đơn hàng tự động từ Website/POS/Sàn TMĐT về ERP (Omnichannel Order Sync)]()
 - [ ] [3030 Quản lý đơn đặt hàng trước và đơn hàng chờ (Pre-order & Backorder Management)]()

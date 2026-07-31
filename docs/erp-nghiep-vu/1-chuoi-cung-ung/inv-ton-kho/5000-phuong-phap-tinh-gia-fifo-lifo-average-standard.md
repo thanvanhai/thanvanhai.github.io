@@ -13,9 +13,11 @@ tags: [erp, inventory, costing, standard-cost, average-cost, fifo, lifo, cost-el
 
 > Standard Cost, Average, FIFO, LIFO và Bộ câu lệnh SQL Audit (Epicor & Oracle EBS)
 
-Trong hệ thống ERP, việc quản lý số lượng tồn kho vật lý (On-hand Qty) mới chỉ là một nửa chặng đường. Nửa chặng đường còn lại quyết định sự sống còn của phòng kế toán tài chính là **Định giá hàng tồn kho (Inventory Costing / Valuation)**. 
+Trong hệ thống ERP, việc quản lý số lượng tồn kho vật lý (On-hand Qty) mới chỉ là một nửa chặng đường. Nửa chặng đường còn lại quyết định sự sống còn của phòng kế toán tài chính là **Định giá hàng tồn kho (Inventory Costing / Valuation)**.
 
 Hệ thống ERP sử dụng các phương pháp tính giá vốn khác nhau để xác định xem mỗi khi hàng hóa được xuất kho (để bán hoặc đưa vào sản xuất), giá trị tiền tệ rút ra khỏi kho và chuyển vào Giá vốn hàng bán (COGS) hoặc Chi phí dở dang (WIP) sẽ là bao nhiêu.
+
+> **Phạm vi bài viết:** Bài này tập trung vào **cơ chế mà phân hệ Kho (INV) dùng để chọn lô/xác định đơn giá khi xuất kho** (cost layers, backdated transactions, đối chiếu tồn kho vs đơn giá). Phần **cách tính ra** đơn giá tiêu chuẩn/thực tế của sản phẩm (Cost Rollup, cấu thành yếu tố chi phí, phân tích chênh lệch giá thành sản xuất) thuộc phạm vi phân hệ **Kế toán Giá thành (FIN-Cost)** — xem link ở cuối bài.
 
 ---
 
@@ -41,30 +43,26 @@ Hệ thống rút hàng từ lớp giá mới nhất vừa nhập kho để tín
 
 ---
 
-## 2. Bóc tách 5 yếu tố cấu thành giá (Cost Elements) trên ERP
+## 2. Đơn giá tồn kho được cấu thành từ đâu? (tóm tắt)
 
-Một điểm ưu việt của các hệ thống ERP chuẩn quốc tế (như Oracle EBS, Epicor, SAP) là khả năng bóc tách đơn giá của một mặt hàng ra thành **5 yếu tố chi phí cấu thành (Cost Elements)** thay vì chỉ có một con số đơn giá duy nhất:
+Đơn giá của một mặt hàng trên ERP hiếm khi chỉ là một con số đơn lẻ — các hệ thống chuẩn quốc tế (Oracle EBS, Epicor, SAP) thường bóc tách đơn giá thành nhiều yếu tố chi phí (Cost Elements) như: chi phí nguyên vật liệu, nhân công trực tiếp, sản xuất chung, gia công ngoài, và chi phí quản lý/vận chuyển vật tư. Đây là lý do vì sao khi kiểm tra một mã hàng bị lỗi giá, kế toán kho cần biết đơn giá đó được **cộng dồn từ những cấu phần nào**, thay vì chỉ nhìn một con số tổng.
 
-1. **Material Cost (Chi phí nguyên vật liệu):** Giá trị mua thô của vật tư.
-2. **Labor Cost (Chi phí nhân công):** Chi phí tiền lương công nhân trực tiếp sản xuất ra sản phẩm.
-3. **Burden / Overhead Cost (Chi phí sản xuất chung):** Chi phí khấu hao máy móc, điện nước, khấu hao nhà xưởng được phân bổ.
-4. **Subcontract Cost (Chi phí gia công ngoài):** Chi phí trả cho đối tác xử lý công đoạn bên ngoài (OSP).
-5. **Material Burden (Chi phí quản lý/vận chuyển vật tư):** Chi phí thu mua, thuế nhập khẩu, phí vận chuyển cảng được phân bổ vào đơn giá mua.
-
-$$\text{Tổng đơn giá sản phẩm} = \text{Material} + \text{Labor} + \text{Burden} + \text{Subcontract} + \text{MatBurden}$$
+Việc tính toán chi tiết từng yếu tố này (Cost Rollup, phân bổ Overhead, xử lý chi phí gia công ngoài...) thuộc quy trình của phân hệ Giá thành — xem chi tiết tại bài **[Cấu hình thành phần chi phí sản xuất (COST-1000)]()** và **[Standard Cost Rollup (COST-1010)]()**.
 
 ---
 
 ## 3. Hai "Bẫy" thực chiến phá hủy hệ thống Giá thành ERP
 
-### ❌ Bẫy 1: Thảm họa bỏ trống giá tiêu chuẩn (Standard Cost = 0 USD)
+### ❌ Bẫy 1: Thảm họa bỏ trống giá tiêu chuẩn (Standard Cost = 0 USD) — góc nhìn từ Kho
 
-**Tình huống:** Doanh nghiệp áp dụng phương pháp giá Standard Cost. Khi phòng mua hàng tạo mới một mã hàng hóa (Item/Part) trên hệ thống, họ quên không yêu cầu kế toán chạy quy trình tính toán và áp giá tiêu chuẩn (Cost Rollup & Cost Posting). Mã hàng này được lưu trên ERP với đơn giá Standard Cost bằng **0 USD**.
+**Tình huống:** Doanh nghiệp áp dụng phương pháp giá Standard Cost. Khi phòng mua hàng tạo mới một mã hàng hóa (Item/Part) trên hệ thống, kế toán chưa kịp chạy quy trình tính toán và áp giá tiêu chuẩn (Cost Rollup & Cost Posting — xem quy trình chi tiết tại **COST-1010**). Mã hàng này được lưu trên ERP với đơn giá Standard Cost bằng **0 USD**.
 
-* **Hậu quả dây chuyền cực kỳ nghiêm trọng:** 
-  1. Khi xuất kho vật tư này đi sản xuất: Trị giá xuất kho bằng 0 USD. 
-  2. Khi lệnh sản xuất hoàn thành nhập kho thành phẩm: Trị giá nguyên vật liệu gánh cho thành phẩm bị thiếu hụt, làm giá thành thành phẩm bị tính sai lệch hàng loạt.
-  3. Giá trị tồn kho trên sổ phụ của doanh nghiệp bị bốc hơi bất thường, kế toán trưởng không thể đối chiếu nổi với sổ cái (GL) cuối tháng.
+* **Hậu quả nhìn từ phía kho:**
+  1. Khi xuất kho vật tư này đi sản xuất hoặc bán hàng: giao dịch xuất kho vẫn chạy bình thường về mặt số lượng, nhưng trị giá xuất kho ghi nhận bằng 0 USD — kho "cho không" giá trị mà không hề có cảnh báo.
+  2. Giá trị tồn kho trên sổ chi tiết kho (Inventory Ledger) bị lệch so với thực tế, khiến báo cáo tồn kho theo giá trị (không chỉ theo số lượng) sai ngay từ gốc.
+  3. Đến cuối kỳ, kế toán kho không thể đối chiếu nổi giá trị tồn kho với Sổ cái (GL), dù số lượng vật lý hoàn toàn khớp.
+
+> Nguyên nhân gốc (quy trình Cost Rollup bị bỏ sót, ai chịu trách nhiệm duyệt giá mới) và cách xử lý hậu quả vào WIP/thành phẩm thuộc phạm vi phân hệ Giá thành — xem **[Standard Cost Rollup, Marking & Releasing (COST-1010)]()**.
 
 ---
 
@@ -178,6 +176,19 @@ WHERE cic.cost_type_id IN (2, 5)                    -- Chỉ quét Average hoặ
 ## 5. Checklist dành cho Developer khi phát triển phân hệ Tính giá tồn kho
 
 - [ ] **Khóa chặn giao dịch xuất kho nếu giá bằng 0:** Thiết lập cảnh báo hoặc chặn đứng giao dịch xuất kho bán hàng (`STK-CUS`) hoặc xuất cho sản xuất (`STK-MTL`) nếu hệ thống kiểm tra thấy đơn giá tính toán của sản phẩm tại thời điểm xuất đang bằng 0 USD (tránh hỏng báo cáo giá vốn).
-- [ ] **Ràng buộc quy trình Cost Rollup phê duyệt:** Khi kế toán chạy quy trình cập nhật giá thành tiêu chuẩn mới, bắt buộc phải có bước duyệt (Approval) của Kế toán trưởng trước khi hệ thống chạy lệnh ghi đè giá mới vào sổ cái (GL Cost Post).
-- [ ] **Tự động tính toán chênh lệch giá (Variance Posting):** Đảm bảo viết logic tự động sinh bút toán hạch toán chênh lệch (PPV / Job Variance) tại mọi điểm giao dịch phát sinh lệch giá đối với các vật tư chạy Standard Cost.
 - [ ] **Hạn chế giao dịch lùi ngày (Backdated Control):** Thiết lập quy định chặn không cho phép người dùng tự ý làm giao dịch lùi ngày về các tháng trước đã khóa sổ tài chính (GL Closed), chỉ cho phép lùi ngày giới hạn trong vòng vài ngày của kỳ hiện tại đang mở.
+
+> Các kiểm soát ở tầng **thiết lập giá thành** (bắt buộc duyệt trước khi ghi đè Standard Cost mới vào GL, tự động sinh bút toán chênh lệch giá PPV/Job Variance) thuộc checklist của phân hệ Giá thành — xem **COST-1010 (Cost Rollup)** và **COST-4010 (Variance Settlement & Posting)**.
+
+---
+
+## Xem thêm
+
+- **[COST 1000 - Cấu hình thành phần chi phí sản xuất]()** — chi tiết 5 yếu tố cấu thành đơn giá (Material/Labor/Burden/Subcontract/Material Burden).
+- **[COST 1010 - Standard Cost Rollup, Marking & Releasing]()** — quy trình tính toán và phê duyệt giá tiêu chuẩn, nguyên nhân gốc của lỗi "Standard Cost = 0".
+- **[COST 4000-4010 - Variance Analysis & Settlement]()** — phân tích và kết chuyển chênh lệch giá thành (PPV, Job Variance).
+- **[INV 9020 - Xử lý âm kho (Negative Inventory)](./9020-xu-ly-am-kho-negative-inventory.md)** — các tình huống liên quan khi đơn giá/số lượng tồn kho bất thường.
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>

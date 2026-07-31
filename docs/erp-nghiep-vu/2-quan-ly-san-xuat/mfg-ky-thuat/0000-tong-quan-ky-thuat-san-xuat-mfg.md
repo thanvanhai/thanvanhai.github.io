@@ -14,6 +14,35 @@ Trang này tổng hợp lộ trình các bài viết về nghiệp vụ **Kỹ t
 
 Các mục dưới đây sẽ được cập nhật liên kết dần sau khi bài viết tương ứng được hoàn thành.
 
+## Sơ đồ luồng vận hành nội bộ (Internal Flow)
+
+Trước khi đi vào từng nhóm nghiệp vụ, sơ đồ dưới đây thể hiện quan hệ **bên trong** phân hệ Kỹ thuật Sản xuất — dữ liệu nào là input của dữ liệu nào, và toàn bộ khối này ghép nối ra sao với bước Thực thi Sản xuất (WIP/Work Order) ở tầng ERP tổng thể.
+
+```mermaid
+flowchart LR
+    ITEM[Item Master - INV<br/>6020] -->|Thành phần cấu trúc SP| BOM[2. BOM<br/>Định mức NVL]
+    WC[1. Work Center<br/>Trung tâm công việc] -->|Nơi thực hiện công đoạn| ROUTING[3. Routing<br/>Quy trình công nghệ]
+
+    BOM --> PV[4. Production Version<br/>Ghép BOM + Routing]
+    ROUTING --> PV
+
+    ECO[5. ECR/ECO<br/>Quản lý thay đổi kỹ thuật] -.->|Tạo version/hiệu lực mới| BOM
+    ECO -.->|Tạo version/hiệu lực mới| ROUTING
+
+    BOM --> COSTING[6. Cost Rollup<br/>Giá thành định mức]
+    ROUTING --> COSTING
+
+    PV -->|Xuất sang thực thi| B2([Thực thi Sản xuất<br/>WIP/Work Order])
+
+    BOM -.->|Dữ liệu nguồn| REPORT[7. Where-used /<br/>Mass Change / Troubleshooting]
+    ROUTING -.->|Dữ liệu nguồn| REPORT
+```
+
+**Cách đọc sơ đồ:**
+- **Mũi tên nét liền**: luồng dữ liệu chính, đi theo trình tự thiết lập — Work Center/Item Master → BOM/Routing → Production Version → đẩy sang thực thi sản xuất.
+- **Mũi tên nét đứt**: quan hệ điều chỉnh hoặc tham chiếu, không phải luồng tuần tự bắt buộc — ECO tạo ra phiên bản mới của BOM/Routing; báo cáo/troubleshooting đọc dữ liệu từ BOM/Routing nhưng không thay đổi luồng vận hành.
+- Nút `Thực thi Sản xuất (WIP/Work Order)` là **điểm nối** sang sơ đồ liên hệ phân hệ ở tầng ERP-MES tổng thể (ERP Tier ↔ MES Tier) đã trình bày ở tài liệu kiến trúc chung; sơ đồ trong trang này chỉ tập trung vào nội bộ khối Kỹ thuật Sản xuất để tránh trùng lặp thông tin.
+
 ## 1. Nguồn lực & Trung tâm công việc (Work Center & Resource)
 
 - [x] [1000 - Khai báo Trung tâm công việc (Work Center Setup)](./1000-khai-bao-work-center.md)
@@ -32,7 +61,7 @@ Các mục dưới đây sẽ được cập nhật liên kết dần sau khi b�
 - [x] [2040 - Ứng dụng BOM ảo (Phantom BOM) trong sản xuất lắp ráp](./2040-ung-dung-bom-ao-phantom-bom.md)
 - [x] [2050 - Phân biệt BOM Kỹ thuật và BOM Sản xuất (Engineering BOM vs Manufacturing BOM)](./2050-phan-biet-ebom-vs-mbom.md)
 - [x] [2060 - Thiết lập BOM cấu hình cho mô hình Sản xuất theo đơn đặt hàng (Configurable BOM / ATO - CTO)](./2060-thiet-lap-super-bom.md)
-- [x] [2070 - Phân loại BOM theo mục đích sử dụng (BOM Type - Manufacture / Kit / Subcontracting)]()
+- [x] [2070 - Phân loại BOM theo mục đích sử dụng (BOM Type - Manufacture / Kit / Subcontracting)](./2070-phan-loai-bom.md)
 
 ## 3. Quy trình công nghệ & Công đoạn (Routing & Operations)
 
