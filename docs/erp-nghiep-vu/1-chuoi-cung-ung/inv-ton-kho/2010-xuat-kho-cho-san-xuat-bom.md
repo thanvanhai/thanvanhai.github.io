@@ -286,7 +286,7 @@ WHERE wdj.status_type = 12                          -- 12: Closed
 
 Bài liên quan trong series Kho:
 - **[INV 1010 - Nhập kho từ sản xuất (Receipt from Work Order)](./1010-nhap-kho-tu-san-xuat-wo.md)** — nửa còn lại của chu trình WIP (nhận thành phẩm sau khi đã xuất NVL).
-- **[INV 9020 - Xử lý âm kho (Negative Inventory)](./9020-xu-ly-am-kho.md)** — nếu Bin Qty Check ở Checklist phát hiện âm kho cục bộ.
+- **[INV 9020 - Xử lý âm kho (Negative Inventory)](./9020-xu-ly-am-kho-negative-inventory.md)** — nếu Bin Qty Check ở Checklist phát hiện âm kho cục bộ.
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
