@@ -27,12 +27,12 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 ## 3. Tiếp nhận & Khởi tạo đơn hàng (Order Ingestion & Capture)
 
 - [x] [3000 Nghiệp vụ Báo giá khách hàng và quy trình chuyển đổi sang SO (Sales Quotation to SO)](./3000-nghiep-vu-bao-gia-khach-hang-va-chuyen-doi-so.md)
-- [ ] [3010 Nhập đơn bán hàng thủ công và đơn hàng mẫu (Manual Sales Order Entry)]()
-- [ ] [3020 Cơ chế đồng bộ đơn hàng tự động từ Website/POS/Sàn TMĐT về ERP (Omnichannel Order Sync)]()
-- [ ] [3030 Quản lý đơn đặt hàng trước và đơn hàng chờ (Pre-order & Backorder Management)]()
-- [ ] [3040 Quản lý hợp đồng khung và đơn hàng theo lịch giao (Blanket Sales Agreement / Scheduling Agreement)]()
-- [ ] [3050 Cấu hình sản phẩm theo yêu cầu khách hàng trước khi tạo đơn (Configure-to-Order / Product Configurator)]()
-- [ ] [3060 Quản lý đơn hàng thuê bao/dịch vụ định kỳ (Subscription & Recurring Order)]()
+- [x] [3010 Nhập đơn bán hàng thủ công và đơn hàng mẫu (Manual Sales Order Entry)](./3010-nhap-don-ban-hang-thu-cong-va-don-mau.md)
+- [x] [3020 Cơ chế đồng bộ đơn hàng tự động từ Website/POS/Sàn TMĐT về ERP (Omnichannel Order Sync)](./3020-co-che-dong-bo-don-hang-tu-dong-da-kenh.md)
+- [x] [3030 Quản lý đơn đặt hàng trước và đơn hàng chờ (Pre-order & Backorder Management)](./3030-quan-ly-don-dat-hang-truoc-va-don-hang-cho.md)
+- [x] [3040 Quản lý hợp đồng khung và đơn hàng theo lịch giao (Blanket Sales Agreement / Scheduling Agreement)](./3040-quan-ly-hop-dong-khung-va-don-hang-theo-lich-giao.md)
+- [x] [3050 Cấu hình sản phẩm theo yêu cầu khách hàng trước khi tạo đơn (Configure-to-Order / Product Configurator)](./3050-cau-hinh-san-pham-theo-yeu-cau-khach-hang-cto.md)
+- [x] [3060 Quản lý đơn hàng thuê bao/dịch vụ định kỳ (Subscription & Recurring Order)](./3060-quan-ly-don-hang-thue-bao-va-dich-vu-dinh-ky.md)
 
 ## 4. Kiểm tra điều kiện & Phân bổ tồn kho (Order Validation & Allocation)
 

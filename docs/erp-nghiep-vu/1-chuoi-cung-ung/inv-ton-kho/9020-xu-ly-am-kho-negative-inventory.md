@@ -17,11 +17,13 @@ Trong vận hành thực tế tại các nhà máy, **Âm tồn kho hệ thống
 
 Mặc dù việc cho phép xuất âm kho mang lại sự linh hoạt tạm thời cho thủ kho, đây lại là **"cơn ác mộng kinh hoàng"** đối với kế toán giá thành. Việc xuất âm kho phá hủy hoàn toàn thuật toán tính giá vốn tồn kho của hệ thống, dẫn đến những sai lệch khổng lồ về mặt giá trị tài sản mà không có công cụ kế toán nào có thể tự động sửa chữa.
 
+Bài viết này trình bày nguyên lý chung và toàn bộ các nguyên nhân phổ biến gây âm kho. Riêng nguyên nhân phát sinh từ cơ chế trừ kho tự động khi sản xuất (Backflush) có một lớp xử lý đặc thù ở tầng thực thi sản xuất, được trình bày sâu hơn tại MFG-Exec 7010 - Xử lý lỗi tồn kho âm phát sinh từ cơ chế Backflush.
+
 ---
 
 ## 1. Tại sao Âm kho là "Thảm họa toán học" đối với Kế toán giá thành?
 
-Để hiểu tại sao âm kho lại tàn phá hệ thống định giá, hãy nhìn vào cách hệ thống ERP tính toán giá trị tồn kho:
+Để hiểu tại sao âm kho lại tàn phá hệ thống định giá, hãy nhìn vào cách hệ thống ERP tính toán giá trị tồn kho (xem thêm nguyên lý các phương pháp tính giá tại **[INV 5000 - Các phương pháp Tính giá hàng Tồn kho](./5000-phuong-phap-tinh-gia-fifo-lifo-average-standard.md)**):
 
 ### A. Tác động hủy diệt đối với Giá bình quân (Average Costing)
 Thuật toán tính giá bình quân di động (Moving Average) hoạt động bằng cách chia tổng giá trị tồn kho cho số lượng tồn kho. 
@@ -72,6 +74,7 @@ Hệ thống ERP cung cấp hai tùy chọn cấu hình chính để kiểm soá
 **Tình huống:** Doanh nghiệp áp dụng cơ chế tự động trừ kho nguyên vật liệu khi nhập kho thành phẩm sản xuất (Backflushing). Thủ kho liên tục làm lệnh nhập kho thành phẩm, hệ thống tự động chạy lệnh xuất ngầm trừ kho nguyên vật liệu. 
 
 * **Hậu quả đứt gãy:** Do phòng mua hàng chưa kịp làm phiếu nhập kho cho nguyên vật liệu thô, cơ chế Backflush ngầm vẫn liên tục trừ kho khiến tồn kho của nguyên vật liệu thô bị **âm âm thầm lên tới hàng chục ngàn cái** cuối tháng mà không ai hay biết, cho đến khi kế toán chạy báo cáo định giá tồn kho thấy giá trị tài sản bị âm bất thường.
+* **Xử lý ở tầng thực thi sản xuất:** Cơ chế đưa giao dịch backflush vào hàng đợi chờ xử lý thay vì trừ âm trực tiếp, gắn với vòng đời của lệnh sản xuất, được trình bày chi tiết tại MFG-Exec 7010 - Xử lý lỗi tồn kho âm phát sinh từ cơ chế Backflush.
 
 ---
 
@@ -167,9 +170,19 @@ HAVING SUM(moqd.transaction_quantity) < 0           -- Lọc Locator bị âm s�
 
 - [ ] **Ràng buộc khóa âm kho cứng theo nhóm hàng:** Thiết lập cờ cấu hình `Disallow Negative Inventory` trên danh mục Nhóm hàng hóa (`Item Category`). Hệ thống bắt buộc phải kiểm tra số dư khả dụng trước khi lưu mọi giao dịch xuất kho, chặn đứng hành vi xuất hàng nếu số lượng khả dụng nhỏ hơn số lượng xuất.
 - [ ] **Lập trình cảnh báo âm kho cục bộ:** Khi thủ kho làm phiếu chuyển vị trí kho nội bộ (`Bin Transfer`), hệ thống phải tự động cảnh báo đỏ nếu giao dịch làm âm cục bộ tại một ô kệ, yêu cầu thủ kho thực hiện đếm lại vị trí thực tế trước khi lưu.
-- [ ] **Cấu hình chặn âm kho trên luồng Backflush:** Đối với cơ chế trừ kho tự động khi sản xuất (`Backflushing`), nếu hệ thống quét thấy số lượng nguyên vật liệu chuẩn bị trừ kho bị âm trên máy, lập trình hệ thống tự động đẩy giao dịch này vào hàng đợi chờ xử lý (`Pending Queue / Error Log`) thay vì cho phép trừ âm trực tiếp, tránh gây âm kho hàng loạt ngoài tầm kiểm soát (Kịch bản 3).
-- [ ] **Tác vụ tự động tính lại giá vốn khi hết âm kho (Cost Adjustment Engine):** Lập trình quy trình tự động chạy hàng đêm (Nightly Job): Khi phát hiện một mã hàng bị âm kho được nạp giao dịch nhập kho dương, hệ thống tự động tính toán lại đơn giá bình quân thực tế và tự động tạo bút toán điều chỉnh giá vốn (`Cost Adjustment`) gửi sang Sổ cái để sửa sai lệch kế toán (Kịch bản 1).
+- [ ] **Cấu hình chặn âm kho trên luồng Backflush:** Đối với cơ chế trừ kho tự động khi sản xuất (`Backflushing`), nếu hệ thống quét thấy số lượng nguyên vật liệu chuẩn bị trừ kho bị âm trên máy, lập trình hệ thống tự động đẩy giao dịch này vào hàng đợi chờ xử lý (`Pending Queue / Error Log`) thay vì cho phép trừ âm trực tiếp, tránh gây âm kho hàng loạt ngoài tầm kiểm soát (Kịch bản 3). Cơ chế hàng đợi gắn với vòng đời lệnh sản xuất xem thêm MFG-Exec 7010.
+- [ ] **Tác vụ tự động tính lại giá vốn khi hết âm kho (Cost Adjustment Engine):** Lập trình quy trình tự động chạy hàng đêm (Nightly Job): Khi phát hiện một mã hàng bị âm kho được nạp giao dịch nhập kho dương, hệ thống tự động tính toán lại đơn giá bình quân thực tế và tự động tạo bút toán điều chỉnh giá vốn (`Cost Adjustment`) gửi sang Sổ cái để sửa sai lệch kế toán (Kịch bản 1). Quy trình kết chuyển chênh lệch này vào COGS/tồn kho cuối kỳ ở quy mô toàn doanh nghiệp thuộc nghiệp vụ COST 4010 - Nghiệp vụ kết chuyển chênh lệch giá thành vào giá vốn hàng bán và tồn kho cuối kỳ (Variance Settlement & Posting).
 
-<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+---
+
+## Xem thêm
+
+- **[INV 5000 - Các phương pháp Tính giá hàng Tồn kho](./5000-phuong-phap-tinh-gia-fifo-lifo-average-standard.md)**
+- **[INV 1010 - Nghiệp vụ Nhập kho từ Sản xuất (Receipt from Work Order)](./1010-nhap-kho-tu-san-xuat-wo.md)**
+- **[INV 2010 - Nghiệp vụ Xuất kho cho Sản xuất (Issue for Work Order)](./2010-xuat-kho-cho-san-xuat-bom.md)**
+- **MFG-Exec 7010 - Xử lý lỗi tồn kho âm phát sinh từ cơ chế Backflush**
+- **COST 4010 - Nghiệp vụ kết chuyển chênh lệch giá thành vào giá vốn hàng bán và tồn kho cuối kỳ (Variance Settlement & Posting)**
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
-</p>
+</div>

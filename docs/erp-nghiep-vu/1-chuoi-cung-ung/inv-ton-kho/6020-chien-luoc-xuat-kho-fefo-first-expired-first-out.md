@@ -17,6 +17,8 @@ tags: [erp, inventory, fefo, fifo, lot-control, expiry-date, wms, sql-audit, ora
 
 Để giải quyết bài toán này, các hệ thống ERP và WMS cao cấp bắt buộc phải sử dụng chiến lược **FEFO (First Expired, First Out - Hết hạn trước, Xuất trước)**. Đây là quy tắc vàng giúp doanh nghiệp tối ưu hóa vòng đời sản phẩm, giảm thiểu tối đa tỷ lệ hàng hóa bị hủy bỏ do hết hạn và bảo vệ dòng tiền.
 
+Bài viết này là phần mở rộng của **[INV 6000 - Nghiệp vụ Quản lý theo Lô (Lot Control)](./6000-quan-ly-theo-lo-lot-control.md)**, đi sâu vào cơ chế FEFO khi picking. Để hiểu vì sao FIFO thông thường (xem thêm **[INV 5000](./5000-phuong-phap-tinh-gia-fifo-lifo-average-standard.md)**) là chưa đủ với hàng có hạn dùng, đọc mục 1 dưới đây.
+
 ---
 
 ## 1. Tại sao FIFO là chưa đủ? Sự ưu việt của FEFO
@@ -57,10 +59,10 @@ Khi nhân viên kho dùng Handheld quét mã vạch sản phẩm để xuất h�
 
 ### ❌ Bẫy 2: Bỏ quên hàng "cận hạn" (Near-Expiry) không có phương án giải phóng kịp thời
 
-**Tình huống:** Doanh nghiệp có 200 thùng sữa sắp hết hạn sử dụng trong vòng **15 ngày tới** (đã chạm ngưỡng cận hạn cảnh báo). Do hệ thống ERP thiếu tính năng cảnh báo sớm thời gian còn lại của hạn dùng (Remaining Shelf Life %), không ai phát hiện ra lô hàng này để làm chương trình khuyến mãi hoặc ưu tiên giải phóng gấp.
+**Tình huống:** Doanh nghiệp có 200 thùng sữa sắp hết hạn sử dụng trong vòng **15 ngày tới** (đã chạm ngưỡng cận hạn cảnh báo). Do hệ thống ERP thiếu tính năng cảnh báo sớm thời gian còn lại của hạn dùng (Remaining Shelf Life %), không ai phát hiện ra lô hàng này để ưu tiên giải phóng gấp.
 
 * **Hậu quả:** 15 ngày trôi qua, 200 thùng sữa chính thức hết hạn sử dụng. Doanh nghiệp không được phép bán và phải tốn thêm chi phí tiêu hủy hàng lỗi hỏng.
-* **Giải pháp:** Lập trình báo cáo hoặc Dashboard cảnh báo sớm tồn kho cận hạn sử dụng theo thời gian thực (ví dụ: Cảnh báo đỏ khi sản phẩm còn dưới 15% thời hạn sử dụng gốc).
+* **Giải pháp từ phía kho:** Lập trình báo cáo hoặc Dashboard cảnh báo sớm tồn kho cận hạn sử dụng theo thời gian thực (ví dụ: Cảnh báo đỏ khi sản phẩm còn dưới 15% thời hạn sử dụng gốc) để gửi cho các bộ phận liên quan xử lý kịp thời. Việc chủ động dựng chương trình khuyến mãi để giải phóng hàng cận hạn thuộc nghiệp vụ OM (Thiết lập chương trình khuyến mãi, quà tặng tự động).
 
 ---
 
@@ -223,6 +225,20 @@ ORDER BY days_remaining ASC;
 
   > **Shelf Life % còn lại** = (Ngày hết hạn − Ngày xuất hàng) ÷ (Ngày hết hạn − Ngày sản xuất) × 100
 
-  Chặn không cho phép xuất hàng nếu tỷ lệ này dưới mức yêu cầu của đại lý (ví dụ: siêu thị yêu cầu sữa xuất kho phải còn tối thiểu 70% hạn dùng).
-- [ ] **Lập trình Dashboard/Email cảnh báo cận hạn:** Xây dựng tính năng tự động chạy hàng ngày quét các Lô hàng có thời hạn sử dụng còn lại dưới 30 ngày để gửi Email cảnh báo (Email Alert) cho bộ phận kinh doanh và quản lý chất lượng (Kịch bản 2).
+  Chặn không cho phép xuất hàng nếu tỷ lệ này dưới mức yêu cầu của đại lý. Bản thân việc mỗi khách hàng có ngưỡng yêu cầu riêng (ví dụ siêu thị yêu cầu tối thiểu 70%) là thông tin cấu hình theo khách hàng thuộc OM (Customer Master), còn phép tính và chốt chặn khi xuất hàng vẫn nằm ở tầng giao dịch kho.
+- [ ] **Lập trình Dashboard/Email cảnh báo cận hạn:** Xây dựng tính năng tự động chạy hàng ngày quét các Lô hàng có thời hạn sử dụng còn lại dưới 30 ngày để gửi Email cảnh báo cho bộ phận kinh doanh và quản lý chất lượng (Kịch bản 2). Có thể kết hợp chung với báo cáo tồn kho chậm luân chuyển tại **[INV 8020 - Báo cáo tồn kho chậm luân chuyển (Slow-moving/Dead Stock)](./8020-bao-cao-ton-kho-cham-luan-chuyen-slow-moving-dead-stock.md)**.
 - [ ] **Tự động cập nhật trạng thái Lô hết hạn:** Viết tác vụ ngầm chạy hàng đêm (Nightly Job) quét toàn bộ bảng số dư tồn kho, nếu phát hiện Lô hàng đã chạm ngày hết hạn (`Expiration Date`), tự động cập nhật trạng thái của Lô đó thành `Blocked` (Bị khóa) để ngăn chặn triệt để lỗi xuất kho nhầm hàng hết hạn.
+
+---
+
+## Xem thêm
+
+- **[INV 6000 - Nghiệp vụ Quản lý theo Lô (Lot Control)](./6000-quan-ly-theo-lo-lot-control.md)**
+- **[INV 5000 - Các phương pháp Tính giá hàng Tồn kho](./5000-phuong-phap-tinh-gia-fifo-lifo-average-standard.md)**
+- **[INV 8020 - Báo cáo tồn kho chậm luân chuyển (Slow-moving/Dead Stock)](./8020-bao-cao-ton-kho-cham-luan-chuyen-slow-moving-dead-stock.md)**
+- **OM 2030 - Thiết lập chương trình khuyến mãi, quà tặng tự động (Promotion & Gift Rules Engine)**
+- **OM 2000 - Thiết lập hồ sơ khách hàng và phân nhóm phân phối (Customer Master & Segmentation)**
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>

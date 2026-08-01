@@ -15,7 +15,7 @@ tags: [erp, inventory, serial-control, serial-status, warranty, rma, database, s
 
 Nếu quản lý theo lô (Lot Control) dùng để theo dõi một nhóm sản phẩm có chung ngày sản xuất, thì **Quản lý theo số Serial (Serial Control)** là cấp độ kiểm soát chặt chẽ nhất của kho. Ở cấp độ này, mỗi một sản phẩm duy nhất sẽ được gán một "chứng minh nhân dân" riêng biệt là một chuỗi mã số Serial duy nhất. Số lượng tồn kho hệ thống của một số Serial luôn luôn bằng **1**.
 
-Nghiệp vụ này cực kỳ quan trọng đối với các ngành hàng sản xuất máy móc, thiết bị y tế, đồ điện tử công nghệ cao hoặc phụ tùng ô tô. Việc quản lý Serial giúp doanh nghiệp bảo vệ mình trước các khiếu nại bảo hành sai sự thật và theo dõi chi tiết lịch sử bảo dưỡng của từng sản phẩm cụ thể.
+Nghiệp vụ này cực kỳ quan trọng đối với các ngành hàng sản xuất máy móc, thiết bị y tế, đồ điện tử công nghệ cao hoặc phụ tùng ô tô — dữ liệu Serial do kho quản lý sau này còn là đầu vào cho các nghiệp vụ bảo hành và truy xuất nguồn gốc của các phân hệ khác.
 
 ---
 
@@ -38,11 +38,11 @@ Không giống như vật tư thông thường chỉ có số lượng On-hand Q
 
 ---
 
-## 2. Ứng dụng cốt lõi của Serial: Quản lý Bảo hành và Trả hàng RMA
+## 2. Vì sao dữ liệu Serial của kho lại quan trọng với Bảo hành và RMA
 
-Khi khách hàng mang một chiếc laptop bị hỏng đến trung tâm bảo hành và yêu cầu sửa chữa miễn phí:
-* **Nếu không có Serial Control:** Khách hàng có thể mang một chiếc máy cũ, mua từ cửa hàng khác hoặc đã hết hạn bảo hành đến để đòi sửa. Doanh nghiệp không có cách nào chứng minh chiếc máy này có phải do mình bán ra hay không.
-* **Nếu có Serial Control:** Kỹ thuật viên chỉ cần quét mã số sê-ri mặt sau máy. Hệ thống ERP lập tức truy xuất ngược: Chiếc máy này được lắp ráp ngày nào, xuất bán ngày nào, giao cho khách hàng nào, và **thời hạn bảo hành thực tế còn bao nhiêu ngày**. Nếu số sê-ri không khớp với cơ sở dữ liệu đã bán, hệ thống lập tức từ chối bảo hành hoặc RMA.
+Khi khách hàng mang một thiết bị bị hỏng đến trung tâm bảo hành, kỹ thuật viên chỉ cần quét mã số sê-ri để hệ thống truy xuất ngược: thiết bị này xuất bán ngày nào, giao cho khách hàng nào, thời hạn bảo hành còn bao nhiêu ngày. Nếu số sê-ri không khớp với dữ liệu đã bán ra, hệ thống có căn cứ để từ chối bảo hành.
+
+Toàn bộ dữ liệu nền cho khả năng tra cứu này (trạng thái, lịch sử giao dịch của từng Serial) do phân hệ Kho tạo ra và duy trì tính toàn vẹn — đây là trọng tâm của bài viết. Quy trình phê duyệt yêu cầu bảo hành/RMA và xử lý khiếu nại đầy đủ thuộc **OM 8000 - Quy trình phê duyệt yêu cầu khách trả hàng (RMA Approval Flow)** và **OM 8020 - Xử lý đơn hàng đổi mới hoặc bồi thường hư hỏng (Exchange & Damage Claims)**. Việc chuẩn hóa hồ sơ lịch sử thiết bị theo quy định ngành (Device History Record) thuộc **MES-TRC 4020 - Thiết lập báo cáo phả hệ điện tử cho ngành có điều kiện (EBR/DHR)**.
 
 ---
 
@@ -179,4 +179,18 @@ HAVING COUNT(msn.serial_number) > 1;                -- Có nhiều hơn 1 sê-ri
 - [ ] **Bắt buộc đồng bộ hóa số dư (Dual-Write Check):** Khi viết logic cho bất kỳ giao dịch kho nào (Nhập, Xuất, Điều chỉnh) có liên quan đến vật tư sê-ri, bắt buộc phải viết code đồng thời cập nhật cả bảng tồn kho tổng (`PartBin`/`Onhand`) lẫn bảng trạng thái sê-ri chi tiết (`SerialNo`/`MTL_SERIAL_NUMBERS`) để tránh lệch số dư (Kịch bản 1).
 - [ ] **Khóa chặn trùng lặp sê-ri (Unique Serial Check):** Thiết lập chỉ mục duy nhất (Unique Index) hoặc viết logic kiểm tra chặn không cho phép lưu giao dịch nhập kho sê-ri nếu số sê-ri đó đang tồn tại trên hệ thống ở trạng thái hoạt động khác hoặc đang tồn kho (Kịch bản 2).
 - [ ] **Bắt buộc nhập sê-ri khi giao dịch:** Nếu vật tư cấu hình quản lý sê-ri, lập trình giao diện kho bắt buộc người dùng phải nhập đúng số lượng sê-ri tương ứng với tổng số lượng giao dịch (ví dụ xuất bán 5 cái laptop, bắt buộc phải quét đủ 5 mã sê-ri khác nhau mới cho phép lưu phiếu xuất).
-- [ ] **Tích hợp lịch sử sê-ri (Serial History Tracking):** Khi thiết kế báo cáo hoặc tính năng RMA bảo hành, xây dựng màn hình truy vấn nhanh lịch sử sê-ri (`Serial Transaction History`) để hiển thị toàn bộ vòng đời của thiết bị: Ngày sản xuất $\rightarrow$ Ngày nhập kho $\rightarrow$ Ngày xuất bán $\rightarrow$ Các đợt bảo hành sửa chữa trước đó.
+- [ ] **Cung cấp API/màn hình tra cứu lịch sử sê-ri:** Xây dựng màn hình truy vấn nhanh lịch sử giao dịch của một Serial (ngày nhập kho, ngày xuất bán, các lần điều chỉnh) để làm dữ liệu nền cho các phân hệ khác — nghiệp vụ RMA/bảo hành đầy đủ dựng trên dữ liệu này thuộc OM.
+
+---
+
+## Xem thêm
+
+- **[INV 6000 - Nghiệp vụ Quản lý theo Lô (Lot Control)](./6000-quan-ly-theo-lo-lot-control.md)**
+- **[INV 1020 - Nghiệp vụ Nhập kho Trả hàng từ Khách (Sales Return)](./1020-nhap-kho-tra-hang-khach-rma.md)**
+- **OM 8000 - Quy trình phê duyệt yêu cầu khách trả hàng (RMA Approval Flow)**
+- **OM 8020 - Xử lý đơn hàng đổi mới hoặc bồi thường hư hỏng (Exchange & Damage Claims)**
+- **MES-TRC 4020 - Thiết lập báo cáo phả hệ điện tử cho ngành có điều kiện (EBR/DHR)**
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>

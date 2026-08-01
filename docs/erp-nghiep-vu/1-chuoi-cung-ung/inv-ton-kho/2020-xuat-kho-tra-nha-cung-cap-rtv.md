@@ -17,6 +17,38 @@ Trong vận hành chuỗi cung ứng, không phải lúc nào nguyên vật li�
 
 Dưới góc độ hệ thống ERP, đây là nghiệp vụ đi ngược lại luồng mua hàng (PO). Nó yêu cầu giảm trừ tài sản tồn kho, giảm trừ công nợ phải trả tạm tính (AP Accrual), và tự động tạo yêu cầu xuất **Hóa đơn giảm trừ công nợ mua hàng (Debit Memo)** gửi cho nhà cung cấp.
 
+Bài viết tập trung vào **giao dịch kho xuất trả hàng lỗi cho NCC** — dữ liệu ghi nhận ở đâu, tồn kho giảm khi nào, bút toán tự động phát sinh ra sao. Tình huống dẫn đến quyết định trả hàng (lỗi/thừa/thiếu khi nhận), luồng phê duyệt trước khi xuất, và việc xuất Debit Memo giảm công nợ được nhắc đến ở mức cần thiết, phần chi tiết nằm ở các bài chuyên trách trong mục "Xem thêm".
+
+---
+
+## Sơ đồ luồng Xuất kho trả Nhà cung cấp
+
+```mermaid
+flowchart TD
+    QC{"Hàng lỗi phát hiện<br/>qua QC/sản xuất"} --> APPROVE["Phê duyệt yêu cầu xuất trả"]
+    APPROVE --> REF["Tham chiếu Phiếu nhập kho gốc<br/>(PO Receipt)"]
+
+    REF --> QTYCHK{"SL xuất trả so với<br/>SL đã nhận thực tế"}
+    QTYCHK -->|"Trong phạm vi cho phép"| RCV["Ghi nhận giao dịch xuất kho<br/>PartTran STK-VEN / PUR-RTV"]
+    QTYCHK -.->|"Vượt số lượng đã nhận"| OVERRTV["⚠️ Over-Return"]
+
+    RCV --> SLA["Sinh bút toán tự động<br/>Nợ: AP Accrual | Có: Kho"]
+    SLA -.->|"Chênh lệch giá mua nếu chạy<br/>Standard Costing"| PPV["Hoàn trả PPV"]
+
+    RCV --> ONHAND[("Tồn kho NVL<br/>GIẢM")]
+
+    RCV -.->|"Kích hoạt yêu cầu giảm công nợ"| DEBITMEMO["Debit Memo"]
+    DEBITMEMO -.->|"Nếu không được tạo"| MISSING["⚠️ Thất thoát dòng tiền"]
+
+    classDef inv fill:#1d3557,stroke:#457b9d,stroke-width:2px,color:#fff;
+    classDef other fill:#adb5bd,stroke:#6c757d,stroke-width:1px,stroke-dasharray: 3 3,color:#212529;
+    classDef finance fill:#f4a261,stroke:#e76f51,stroke-width:2px,color:#fff;
+
+    class REF,QTYCHK,RCV,ONHAND inv;
+    class QC,APPROVE,OVERRTV,PPV,DEBITMEMO,MISSING other;
+    class SLA finance;
+```
+
 ---
 
 ## 1. Bản chất Giao dịch và Bản đồ dữ liệu (Under the Hood)
@@ -40,17 +72,17 @@ Bút toán hạch toán RTV sẽ đảo ngược lại bút toán nhập kho t�
 * **Nợ (Debit):** `Tài khoản AP Accrual` (3387/3388 - Phải trả tạm tính) — Giảm công nợ tạm tính của nhà cung cấp.
 * **Có (Credit):** `Tài khoản Kho Nguyên vật liệu` (152, 156) — Giảm trừ trị giá hàng tồn kho vật lý.
 
-> **Lưu ý nghiệp vụ:** Nếu PO nhập kho theo phương pháp giá Standard Cost, bất kỳ chênh lệch nào giữa đơn giá mua trên PO và giá tiêu chuẩn sẽ được hoàn lại vào tài khoản chênh lệch giá mua (`PPV`) tại bước xuất trả này.
+> **Lưu ý nghiệp vụ:** Nếu PO nhập kho theo phương pháp giá Standard Cost, bất kỳ chênh lệch nào giữa đơn giá mua trên PO và giá tiêu chuẩn sẽ được hoàn lại vào tài khoản chênh lệch giá mua (**PPV - Purchase Price Variance**) tại bước xuất trả này — cơ chế tính và phân tích PPV được trình bày chi tiết trong bài về Phân tích chênh lệch giá thành thực tế so với định mức.
 
 ---
 
-## 3. Hai "Bẫy" thực chiến và Các câu SQL Audit rà soát lỗi hệ thống
+## 3. Hai Kịch bản thực chiến và Các câu SQL Audit rà soát lỗi hệ thống
 
 ### ❌ Kịch bản 1: Đã xuất kho trả hàng (RTV) nhưng kế toán "quên" xuất hóa đơn giảm trừ nợ (Debit Memo)
 
 **Tình huống:** Thủ kho đã xuất trả 50 cái động cơ lỗi cho Nhà cung cấp và ký biên bản giao nhận. Tuy nhiên, do thiếu sót thông tin giữa kho và phòng kế toán, kế toán AP **quên không tạo phiếu giảm trừ nợ (Debit Memo)** trên hệ thống ERP.
 
-* **Hậu quả:** Doanh nghiệp vẫn thanh toán đủ 100% tiền hàng cho NCC theo hóa đơn cũ mà không trừ đi giá trị của 50 sản phẩm lỗi đã trả lại. Đây là kẽ hở gây thất thoát dòng tiền cực kỳ nghiêm trọng.
+* **Hậu quả:** Doanh nghiệp vẫn thanh toán đủ 100% tiền hàng cho NCC theo hóa đơn cũ mà không trừ đi giá trị của 50 sản phẩm lỗi đã trả lại. Đây là kẽ hở gây thất thoát dòng tiền cực kỳ nghiêm trọng — và là điểm đối chiếu quan trọng nhất giữa giao dịch kho và phân hệ Công nợ.
 * **SQL Audit rà soát:** Tìm tất cả các giao dịch xuất kho trả hàng nhà cung cấp (RTV) thành công nhưng chưa hề được kế toán liên kết đến bất kỳ hóa đơn giảm nợ (Debit Memo) nào trong phân hệ phải trả (AP).
 
 #### 💻 Code SQL dành cho Epicor ERP:
@@ -96,6 +128,8 @@ WHERE rt.transaction_type = 'RETURN TO VENDOR'
         AND ail.rcv_transaction_id = rt.transaction_id
   );
 ```
+
+---
 
 ### ❌ Kịch bản 2: Số lượng xuất trả vượt quá số lượng thực tế đã nhập kho
 
@@ -156,5 +190,19 @@ HAVING SUM(rt.quantity) > (
 
 - [ ] **Bắt buộc tham chiếu PO Receipt gốc:** Khóa tính năng tạo phiếu RTV tự do, bắt buộc người dùng chọn đúng số Phiếu nhập kho gốc (PO Receipt) để lấy đúng đơn giá gốc.
 - [ ] **Ràng buộc kiểm tra số lượng tối đa:** Không cho phép thủ kho nhập số lượng xuất trả vượt quá số lượng thực tế đã nhận kho trừ đi số lượng đã xuất trả trước đó của dòng PO đó (Kịch bản 2).
-- [ ] **Đồng bộ hóa quy trình phê duyệt RTV:** Phiếu xuất trả nhà cung cấp phải đi qua quy trình phê duyệt (Approval Workflow) của trưởng phòng mua hàng hoặc giám đốc sản xuất trước khi thủ kho được phép làm thủ tục xuất hàng vật lý.
-- [ ] **Tự động kích hoạt Debit Memo Request:** Lập trình cơ chế tự động gửi thông báo hoặc tạo bản ghi nháp (Draft Debit Memo) sang phân hệ kế toán AP ngay khi thủ kho bấm xác nhận xuất hàng RTV thành công (Kịch bản 1).
+- [ ] **Kiểm tra cờ phê duyệt trước khi xuất hàng vật lý:** Giao dịch xuất kho RTV cần kiểm tra đã có phê duyệt của trưởng phòng mua hàng hoặc giám đốc sản xuất chưa trước khi cho phép thủ kho hoàn tất thao tác — luồng phê duyệt đầy đủ thuộc quy trình xử lý tình huống giao hàng lỗi/thiếu/thừa phía mua hàng.
+- [ ] **Tự động kích hoạt Debit Memo Request:** Lập trình cơ chế tự động gửi thông báo hoặc tạo bản ghi nháp (Draft Debit Memo) sang phân hệ kế toán Công nợ ngay khi thủ kho bấm xác nhận xuất hàng RTV thành công (Kịch bản 1).
+
+---
+
+## Xem thêm
+
+- **PO 5020 - Xử lý các tình huống giao hàng lỗi, thừa/thiếu số lượng và hoàn trả (Shortage, Over-delivery & Return to Vendor)** — tình huống phát sinh và luồng phê duyệt dẫn đến quyết định RTV.
+- **AP/AR 6020 - Nghiệp vụ xử lý hóa đơn điều chỉnh tăng/giảm và hóa đơn trả lại (Debit/Credit Memo Posting & Matching)** — chi tiết xuất và đối soát Debit Memo.
+- **COST 4000 - Phân tích chênh lệch giá thành thực tế so với định mức** — cơ chế hoàn trả PPV khi RTV dưới Standard Costing.
+- **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](./1000-nhap-kho-tu-mua-hang-po.md)** — giao dịch gốc mà RTV tham chiếu ngược lại.
+- **[INV 5000 - Các phương pháp Tính giá hàng Tồn kho](./5000-phuong-phap-tinh-gia-fifo-lifo-average-standard.md)**.
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>

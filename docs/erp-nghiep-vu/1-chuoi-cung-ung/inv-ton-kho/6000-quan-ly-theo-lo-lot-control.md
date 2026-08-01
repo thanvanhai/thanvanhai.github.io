@@ -38,11 +38,11 @@ Khi một mặt hàng được thiết lập thuộc tính quản lý theo Lô (
 
 ---
 
-## 2. Chiến lược xuất kho FEFO (First Expired, First Out) vs FIFO
+## 2. Vì sao chỉ FIFO là chưa đủ với hàng có hạn dùng
 
-Đối với hàng hóa thông thường, ta áp dụng phương pháp **FIFO (Nhập trước, Xuất trước)** để tránh tồn kho lâu năm. Tuy nhiên, đối với hàng hóa có hạn sử dụng (phẩm màu, hóa chất, sữa, thuốc), ERP bắt buộc phải áp dụng chiến lược xuất kho **FEFO (First Expired, First Out - Hết hạn trước, Xuất trước)**.
+Đối với hàng hóa thông thường, ta áp dụng phương pháp FIFO (Nhập trước, Xuất trước — xem [INV 5000 - Các phương pháp Tính giá hàng Tồn kho](./5000-phuong-phap-tinh-gia-fifo-lifo-average-standard.md)) để tránh tồn kho lâu năm. Tuy nhiên, đối với hàng hóa có hạn sử dụng, một lô nhập sau hoàn toàn có thể hết hạn sớm hơn lô nhập trước, nên bắt buộc phải chuyển sang chiến lược xuất kho theo ngày hết hạn thay vì theo ngày nhập kho.
 
-* **Cơ chế hoạt động:** Khi phân xưởng làm lệnh yêu cầu cấp nguyên liệu cho sản xuất, hệ thống WMS sẽ quét qua danh sách các Lô tồn kho thực tế, tự động chỉ định thủ kho ra vị trí của lô có **Ngày hết hạn (`Expiration Date`) gần nhất** để lấy hàng, bất kể lô đó được nhập kho trước hay nhập kho sau.
+Cơ chế vận hành, các "bẫy" thực chiến và SQL Audit đầy đủ cho chiến lược này được trình bày chi tiết tại **[INV 6020 - Chiến lược Xuất kho FEFO (First Expired, First Out)](./6020-chien-luoc-xuat-kho-fefo-first-expired-first-out.md)**.
 
 ---
 
@@ -63,7 +63,8 @@ Khi một mặt hàng được thiết lập thuộc tính quản lý theo Lô (
 
 **Tình huống:** Mặt hàng bu-lông hàng không được cấu hình bắt buộc quản lý theo Lô để theo dõi chứng chỉ chất lượng mác thép. Khi làm phiếu xuất vật tư cho sản xuất (`Issue to Job`), công nhân xưởng cần gấp nên thủ kho đã làm phiếu xuất kho thô trên ERP nhưng **bỏ trống không nhập số Lô (Lot Number = rỗng/null)**. Hệ thống vẫn cho lưu vì lập trình viên không bắt buộc trường Lot phải có dữ liệu.
 
-* **Hậu quả mất dấu vết:** 3 tháng sau, máy bay gặp sự cố do nứt bu-lông. Cơ quan điều tra yêu cầu nhà máy truy xuất nguồn gốc xem lô bu-lông lỗi này được làm từ mác thép của nhà cung cấp nào. Khi quét lịch sử giao dịch trên ERP, dòng xuất kho vật tư bị trống thông tin Lot, chuỗi truy xuất nguồn gốc bị đứt gãy hoàn toàn. Nhà máy không thể chứng minh được quy trình sản xuất đạt chuẩn và phải gánh chịu toàn bộ trách nhiệm pháp lý.
+* **Hậu quả nhìn từ kho:** Ngay tại giao dịch xuất kho, mắt xích dữ liệu nối "vật tư đầu vào" với "thành phẩm đầu ra" đã bị đứt. Đây là điểm kho cần tự chặn được bằng ràng buộc bắt buộc nhập Lot Number, bất kể áp lực tiến độ từ phân xưởng.
+* **Hệ quả xa hơn:** Việc dựng lại toàn bộ phả hệ sản phẩm (Product Genealogy) để phục vụ điều tra thu hồi — truy vết ngược từ thành phẩm lỗi về đúng lô nguyên liệu và nhà cung cấp — thuộc nghiệp vụ **MES-TRC 1000 - Cấu trúc phả hệ sản phẩm xuôi dòng và ngược dòng (Product Genealogy)** và **MES-TRC 4000 - Quy trình phân tích nguyên nhân gốc rễ ngược dòng từ thành phẩm lỗi (Backward Traceability & Root Cause Analysis)**.
 
 ---
 
@@ -168,5 +169,20 @@ ORDER BY mmt.transaction_date DESC;
 
 - [ ] **Chặn cứng xuất hàng hết hạn:** Khi viết logic cho các giao dịch xuất kho (`STK-CUS`, `STK-MTL`, `STK-STK`), bắt buộc viết câu lệnh kiểm tra (Validation Rule) so sánh ngày hết hạn của Lô với ngày giao dịch thực tế, chặn không cho lưu nếu Lô đã hết hạn (Kịch bản 1).
 - [ ] **Ràng buộc trường số Lô bắt buộc (Mandatory Lot Field):** Nếu mặt hàng được cấu hình `LotTrack = 1` (Epicor) hoặc `lot_control_code = 2` (Oracle), giao diện nhập liệu của mọi nghiệp vụ kho bắt buộc phải để trường Số Lô ở trạng thái bắt buộc nhập (Required Field), không cho phép để trống (Kịch bản 2).
-- [ ] **Tự động gán trạng thái Quarantine:** Khi làm phiếu nhập kho thành phẩm từ sản xuất (`Receipt from WO`) hoặc nhập hàng mua từ PO (`Receipt from PO`), hệ thống phải tự động gán trạng thái của Số Lô mới sinh là `Quarantine` (Chờ kiểm định), không cho phép xuất bán cho đến khi có xác nhận đạt chất lượng (Passed) từ QC.
-- [ ] **Hỗ trợ thuật toán FEFO khi Picking:** Khi viết truy vấn gợi ý vị trí lấy hàng bán cho thủ kho, luôn sắp xếp danh sách các Lô tồn kho theo thứ tự ngày hết hạn tăng dần (`ORDER BY ExpirationDate ASC`) để hỗ trợ tối đa quy trình FEFO thực tế.
+- [ ] **Tự động gán trạng thái Quarantine:** Khi làm phiếu nhập kho thành phẩm từ sản xuất hoặc nhập hàng mua từ PO, hệ thống phải tự động gán trạng thái của Số Lô mới sinh là `Quarantine` (Chờ kiểm định), không cho phép xuất bán cho đến khi có xác nhận đạt chất lượng từ QC. Quy trình QC/Putaway đầy đủ cho hàng mua xem **[PO 5010 - Nghiệp vụ nhận hàng mua, kiểm tra chất lượng và nhập kho](../po-mua-hang/5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)**; cho hàng sản xuất thuộc nghiệp vụ MFG-Exec (Kiểm tra chất lượng công đoạn - IPQC).
+- [ ] **Hỗ trợ thuật toán FEFO khi Picking:** Khi viết truy vấn gợi ý vị trí lấy hàng, luôn sắp xếp danh sách các Lô tồn kho theo thứ tự ngày hết hạn tăng dần. Chi tiết thuật toán và các bẫy thực chiến xem **[INV 6020 - Chiến lược Xuất kho FEFO](./6020-chien-luoc-xuat-kho-fefo-first-expired-first-out.md)**.
+
+---
+
+## Xem thêm
+
+- **[INV 5000 - Các phương pháp Tính giá hàng Tồn kho](./5000-phuong-phap-tinh-gia-fifo-lifo-average-standard.md)**
+- **[INV 6020 - Chiến lược Xuất kho FEFO (First Expired, First Out)](./6020-chien-luoc-xuat-kho-fefo-first-expired-first-out.md)**
+- **[INV 6010 - Nghiệp vụ Quản lý theo số Serial (Serial Control)](./6010-quan-ly-theo-so-serial-serial-control.md)**
+- **[PO 5010 - Nghiệp vụ nhận hàng mua, kiểm tra chất lượng và nhập kho](../po-mua-hang/5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)**
+- **MES-TRC 1000 - Cấu trúc phả hệ sản phẩm xuôi dòng và ngược dòng (Product Genealogy)**
+- **MES-TRC 4000 - Quy trình phân tích nguyên nhân gốc rễ ngược dòng từ thành phẩm lỗi (Backward Traceability & Root Cause Analysis)**
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>
