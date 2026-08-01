@@ -94,7 +94,7 @@ Sơ đồ trên mô tả **3 luồng Logistics vật lý** và **1 luồng hạc
 
 - [x] [2000 Xuất kho bán hàng (Issue for Sales Order)](./2000-xuat-kho-ban-hang-shipment.md)
 - [x] [2010 Xuất kho cho sản xuất (Issue for Work Order/BOM)](./2010-xuat-kho-cho-san-xuat-bom.md)
-- [x] [2030 Xuất kho trả nhà cung cấp (Return to Vendor - RTV)](./2020-xuat-kho-tra-nha-cung-cap-rtv.md)
+- [x] [2020 Xuất kho trả nhà cung cấp (Return to Vendor - RTV)](./2020-xuat-kho-tra-nha-cung-cap-rtv.md)
 
 ## 3. Điều chuyển & tổ chức kho
 

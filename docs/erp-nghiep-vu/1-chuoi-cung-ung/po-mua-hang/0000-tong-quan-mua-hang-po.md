@@ -138,6 +138,6 @@ Sau khi đã hình dung được toàn cảnh quy trình, bạn có thể đi s�
 | **Epicor** | Tích hợp chặt giữa MRP và Mua sắm qua PO Suggestions (tự động đề xuất RFQ/PO theo nhu cầu sản xuất). Mua hàng gia công (Subcontracting Operation) thiết kế mượt trực tiếp trên Job Entry. |
 | **Odoo** | Đơn giản hóa luồng nghiệp vụ, chuyển RFQ sang PO nhanh gọn. Reordering Rules tự động tạo RFQ nháp khi tồn kho dưới mức tối thiểu. 3-way match có thể bật/tắt tùy chọn nhưng tolerance mặc định ở mức cơ bản, cần tùy biến nếu muốn kiểm soát chặt như SAP/Oracle. |
 
-<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
-</p>
+</div>

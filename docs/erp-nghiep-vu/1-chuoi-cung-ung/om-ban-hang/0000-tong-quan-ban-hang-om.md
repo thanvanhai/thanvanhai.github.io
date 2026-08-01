@@ -36,8 +36,8 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 
 ## 4. Kiểm tra điều kiện & Phân bổ tồn kho (Order Validation & Allocation)
 
-- [ ] [4000 Cơ chế kiểm tra khả năng cung ứng hàng hóa (ATP - Available to Promise)]()
-- [ ] [4010 Quy tắc giữ hàng và phân bổ tồn kho tối ưu (Inventory Allocation & Reservation Rules)]()
+- [x] [4000 Cơ chế kiểm tra khả năng cung ứng hàng hóa (ATP - Available to Promise)](./4000-co-che-kiem-tra-kha-nang-cung-ung-hang-hoa-atp.md)
+- [x] [4010 Quy tắc giữ hàng và phân bổ tồn kho tối ưu (Inventory Allocation & Reservation Rules)](./4010-quy-tac-giu-hang-va-phan-bo-ton-kho-toi-uu.md)
 - [ ] [4020 Thiết lập luồng phê duyệt đơn hàng tự động theo điều kiện (Auto-approval Workflow)]()
 - [ ] [4030 Cơ chế kiểm tra tín dụng và chặn giao/xuất hóa đơn tại thời điểm lưu đơn (Credit Check, Delivery Block & Billing Block)]()
 

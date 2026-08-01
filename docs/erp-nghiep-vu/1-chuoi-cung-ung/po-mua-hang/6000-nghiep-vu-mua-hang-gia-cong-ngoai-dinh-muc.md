@@ -151,11 +151,11 @@ flowchart TD
 
 ## 6. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
-*   **Định nghĩa trong công thức sản xuất:** Công đoạn gia công ngoài và định mức nguyên vật liệu cấp phát phải được cấu hình sẵn tại [mfg-ky-thuat (BOM/Routing)]() — áp dụng cho nhóm doanh nghiệp có tích hợp WIP.
-*   **Quản lý kho cấp phát:** Việc chuyển nguyên vật liệu sang nhà thầu phụ được thực hiện tại bài [3000 Chuyển kho nội bộ (Inter-warehouse Transfer)]() để chuyển dịch vị trí tồn kho sang kho ảo của đối tác.
-*   **Kiểm kê định kỳ kho ảo đối tác:** Vì hàng gửi gia công vẫn thuộc tài sản doanh nghiệp nhưng nằm ngoài nhà máy, cần đối chiếu định kỳ với đối tác — tham khảo quy trình kiểm kê tại bài [kiem-ke-kho (Cycle Count / Physical Inventory)]().
-*   **Hạch toán chi phí giá thành:** Giá trị dịch vụ OSP từ PO cộng với giá trị nguyên liệu tiêu hao từ kho ảo sẽ được tích lũy tự động (hoặc thủ công, nếu không có WIP) vào chi phí dở dang của Lệnh sản xuất tại phân hệ [Tài chính kế toán (Kế toán Giá thành - COST)]().
-*   **Ghi nhận hóa đơn dịch vụ gia công:** Hóa đơn dịch vụ do nhà thầu phụ xuất (bao gồm thuế GTGT dịch vụ gia công) được xử lý tại phân hệ Công nợ phải trả, tham khảo bài [3000 Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match)]().
+*   **Định nghĩa trong công thức sản xuất:** Công đoạn gia công ngoài và định mức nguyên vật liệu cấp phát phải được cấu hình sẵn tại **[MFG-Tech 3030 - Khai báo Công đoạn thuê ngoài gia công ngoài (Subcontracting Operation)](../../2-quan-ly-san-xuat/mfg-ky-thuat/3030-khai-bao-cong-doan-gia-cong-ngoai.md)** — áp dụng cho nhóm doanh nghiệp có tích hợp WIP.
+*   **Quản lý kho cấp phát:** Việc chuyển nguyên vật liệu sang nhà thầu phụ được thực hiện tại bài **[INV 3000 - Chuyển kho nội bộ (Inter-warehouse Transfer)](../inv-ton-kho/3000-chuyen-kho-noi-bo-transfer.md)** để chuyển dịch vị trí tồn kho sang kho ảo của đối tác.
+*   **Kiểm kê định kỳ kho ảo đối tác:** Vì hàng gửi gia công vẫn thuộc tài sản doanh nghiệp nhưng nằm ngoài nhà máy, cần đối chiếu định kỳ với đối tác — tham khảo quy trình kiểm kê tại bài **[INV 4010 - Kiểm kê định kỳ (Cycle Count)](../inv-ton-kho/4010-kiem-ke-dinh-ky-cycle-count.md)**.
+*   **Hạch toán chi phí giá thành:** Giá trị dịch vụ OSP từ PO cộng với giá trị nguyên liệu tiêu hao từ kho ảo sẽ được tích lũy tự động (hoặc thủ công, nếu không có WIP) vào chi phí dở dang của Lệnh sản xuất tại bài COST 2040 - Nghiệp vụ tính giá thành cho công đoạn gia công ngoài và tích hợp chi phí thầu phụ (Outside Processing / Subcontracting Costing).
+*   **Ghi nhận hóa đơn dịch vụ gia công:** Hóa đơn dịch vụ do nhà thầu phụ xuất (bao gồm thuế GTGT dịch vụ gia công) được xử lý tại phân hệ Công nợ phải trả, tham khảo bài AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match).
 
 ---
 
@@ -244,20 +244,33 @@ Nếu đội ngũ của bạn đang tự xây dựng (In-house) mô-đun Gia cô
     *   *Giải pháp khắc phục:* Thiết kế hệ thống hỗ trợ cả hai chế độ — có liên kết Job (tự động) và không liên kết Job (thủ công, xem mục 4.C) — với cùng một cơ chế tính giá thành tổng hợp cuối cùng.
 2.  **Bẫy thất thoát nguyên vật liệu cấp phát (Inventory Leakage Pitfall):**
     *   *Triệu chứng:* Khi chuyển 2 tấm thép thô cho nhà thầu phụ, lập trình viên viết logic làm giảm luôn số lượng tồn kho của nhà máy mình mà không ghi nhận số lượng này đang nằm tại kho của đối tác. Khi xảy ra hư hỏng, hao hụt tại xưởng của đối tác, doanh nghiệp hoàn toàn không có cơ sở đối chiếu và yêu cầu đền bù.
-    *   *Giải pháp khắc phục:* Thiết kế hệ thống kho ảo gọi là **Kho nhà thầu phụ (Subcontractor/Vendor Warehouse)**. Khi xuất hàng đi gia công, bắt buộc phải dùng giao dịch chuyển kho liên vị trí để chuyển tồn kho từ kho chính sang kho ảo của nhà thầu phụ. Số lượng này vẫn thuộc quyền sở hữu của doanh nghiệp trên báo cáo tài sản nhưng được định vị vật lý tại xưởng đối tác để dễ dàng kiểm kê, đối soát định kỳ.
+    *   *Giải pháp khắc phục:* Thiết kế hệ thống kho ảo gọi là **Kho nhà thầu phụ (Subcontractor/Vendor Warehouse)**. Khi xuất hàng đi gia công, bắt buộc phải dùng giao dịch chuyển kho liên vị trí để chuyển tồn kho từ kho chính sang kho ảo của nhà thầu phụ — cơ chế giao dịch chuyển kho chi tiết xem **[INV 3000 - Chuyển kho nội bộ (Inter-warehouse Transfer)](../inv-ton-kho/3000-chuyen-kho-noi-bo-transfer.md)**. Số lượng này vẫn thuộc quyền sở hữu của doanh nghiệp trên báo cáo tài sản nhưng được định vị vật lý tại xưởng đối tác để dễ dàng kiểm kê, đối soát định kỳ.
 3.  **Lỗi bỏ sót hao hụt nguyên liệu trong định mức gia công (Yield & Scrap handling):**
     *   *Triệu chứng:* Để gia công ra 100 sản phẩm mạ đạt chuẩn, định mức kỹ thuật cho phép hao hụt 5% nguyên vật liệu thô (cần cấp phát tương đương 105 sản phẩm thô). Nếu hệ thống tự xây tự động cấu hình tiêu hao cứng 1-1 (nhận 100 thì chỉ trừ kho ảo 100), hệ thống sẽ bị treo lượng tồn kho ảo dư thừa (5 sản phẩm thô bị hỏng) vĩnh viễn trên hệ thống.
-    *   *Giải pháp:* Thiết kế Form khai báo phế phẩm thu hồi và hao hụt gia công thực tế (Subcontracting Scrap Declaration) tại thời điểm làm phiếu nhận hàng để thủ kho thực hiện trừ kho ảo đối tác đúng với số lượng thực tế đã hao phí ngoài thực tế.
+    *   *Giải pháp:* Thiết kế Form khai báo phế phẩm thu hồi và hao hụt gia công thực tế (Subcontracting Scrap Declaration) tại thời điểm làm phiếu nhận hàng để thủ kho thực hiện trừ kho ảo đối tác đúng với số lượng thực tế đã hao phí ngoài thực tế. Tỷ lệ hao hụt định mức khai báo trong BOM xem **[MFG-Tech 2020 - Quản lý tỷ lệ hao hụt vật tư trong BOM (Scrap & Loss Factor)](../../2-quan-ly-san-xuat/mfg-ky-thuat/2020-quan-ly-hao-hut-vat-tu.md)**; ghi nhận hao hụt thực tế theo công đoạn thuộc MFG-Exec 3010 (Yield & Scrap Reporting with Reason Codes).
 4.  **Lỗi tính sai giá thành bán thành phẩm gia công:**
     *   *Triệu chứng:* Giá dịch vụ gia công trên PO là 2 USD. Giá trị vật tư thô gửi đi là 8 USD. Lập trình viên viết logic tính giá thành thành phẩm nhập kho chỉ bằng đúng đơn giá trên dòng PO gia công (2 USD).
-    *   *Giải pháp:* Đảm bảo thuật toán tính giá thành thành phẩm nhập kho (Landed Cost/Actual Cost of Subcontracting) phải bằng **Đơn giá dịch vụ mua trên PO + Giá trị của tất cả các nguyên vật liệu thô tiêu hao tương ứng** rút ra từ kho ảo đối tác.
+    *   *Giải pháp:* Đảm bảo thuật toán tính giá thành thành phẩm nhập kho (Landed Cost/Actual Cost of Subcontracting) phải bằng **Đơn giá dịch vụ mua trên PO + Giá trị của tất cả các nguyên vật liệu thô tiêu hao tương ứng** rút ra từ kho ảo đối tác. Đây chính là nội dung của bài COST 2040 (Outside Processing / Subcontracting Costing).
 5.  **Lỗi nhầm lẫn giá trị tính thuế GTGT dịch vụ gia công với giá trị nhập kho:**
     *   *Triệu chứng:* Hóa đơn nhà thầu phụ xuất cho dịch vụ gia công (2 USD) có thuế suất GTGT riêng theo quy định về hàng gia công. Nếu hệ thống tự xây nhầm lẫn cộng luôn phần thuế GTGT đầu vào của dịch vụ này vào giá trị nhập kho thành phẩm, giá vốn hàng tồn kho sẽ bị thổi phồng sai so với chuẩn mực kế toán (thuế GTGT đầu vào được khấu trừ, không phải một cấu phần của giá vốn).
-    *   *Giải pháp:* Thiết kế rõ ràng hai luồng dữ liệu tách biệt khi nhận hóa đơn dịch vụ gia công: phần giá trị trước thuế (Net Amount) được cộng vào giá thành nhập kho, còn phần thuế GTGT đầu vào được hạch toán riêng vào tài khoản thuế GTGT được khấu trừ, không đi vào giá vốn tồn kho.
+    *   *Giải pháp:* Thiết kế rõ ràng hai luồng dữ liệu tách biệt khi nhận hóa đơn dịch vụ gia công: phần giá trị trước thuế (Net Amount) được cộng vào giá thành nhập kho, còn phần thuế GTGT đầu vào được hạch toán riêng vào tài khoản thuế GTGT được khấu trừ, không đi vào giá vốn tồn kho — nguyên tắc đối chiếu và khấu trừ thuế GTGT đầu vào nói chung xem TAX 2000 (Nghiệp vụ kiểm soát, đối chiếu và khấu trừ thuế GTGT đầu vào).
 6.  **Lỗi mất dấu vết quyền sở hữu khi xử lý thủ công (đặc thù nhóm không có WIP):**
     *   *Triệu chứng:* Khi không có kho ảo hệ thống, thủ kho theo dõi vật tư gửi gia công bằng Excel song song ngoài hệ thống. Theo thời gian, file Excel và số liệu hệ thống lệch nhau, không ai biết chính xác đang có bao nhiêu vật tư nằm tại xưởng đối tác nào.
     *   *Giải pháp:* Ngay cả khi không có phân hệ WIP đầy đủ, hệ thống tối thiểu nên cấu hình một kho phụ (Subinventory/Location) riêng đại diện cho từng nhà thầu phụ để giao dịch xuất/nhập vẫn nằm trong hệ thống chính thức, tránh phụ thuộc hoàn toàn vào công cụ theo dõi ngoài hệ thống.
 
-<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+---
+
+## Xem thêm
+
+- **[MFG-Tech 3030 - Khai báo Công đoạn thuê ngoài gia công ngoài (Subcontracting Operation)](../../2-quan-ly-san-xuat/mfg-ky-thuat/3030-khai-bao-cong-doan-gia-cong-ngoai.md)**
+- **[MFG-Tech 2020 - Quản lý tỷ lệ hao hụt vật tư trong BOM (Scrap & Loss Factor)](../../2-quan-ly-san-xuat/mfg-ky-thuat/2020-quan-ly-hao-hut-vat-tu.md)**
+- **[INV 3000 - Chuyển kho nội bộ (Inter-warehouse Transfer)](../inv-ton-kho/3000-chuyen-kho-noi-bo-transfer.md)**
+- **[INV 4010 - Kiểm kê định kỳ (Cycle Count)](../inv-ton-kho/4010-kiem-ke-dinh-ky-cycle-count.md)**
+- **MFG-Exec 3010 - Ghi nhận sản lượng hoàn thành và phế phẩm theo từng công đoạn (Yield & Scrap Reporting with Reason Codes)**
+- **COST 2040 - Nghiệp vụ tính giá thành cho công đoạn gia công ngoài và tích hợp chi phí thầu phụ (Outside Processing / Subcontracting Costing)**
+- **AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match)**
+- **TAX 2000 - Nghiệp vụ kiểm soát, đối chiếu và khấu trừ thuế GTGT đầu vào**
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
-</p>
+</div>

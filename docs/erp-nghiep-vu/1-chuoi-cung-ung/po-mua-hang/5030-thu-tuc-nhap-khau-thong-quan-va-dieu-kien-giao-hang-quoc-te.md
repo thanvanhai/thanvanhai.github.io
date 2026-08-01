@@ -138,10 +138,10 @@ flowchart TD
 
 ## 6. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
-*   **Tham chiếu đơn hàng:** Quy trình nhập khẩu bắt buộc phải liên kết trực tiếp với đơn PO nhập khẩu đã khởi tạo tại [4000 Khởi tạo Đơn mua hàng tiêu chuẩn (Standard PO)]().
-*   **Đối soát kho vật lý:** Số lượng thực nhận sau thông quan là căn cứ để thủ kho thực hiện giao dịch tại bài [1000 Nhập kho từ mua hàng (Receipt from PO)]() tại phân hệ Tồn kho.
-*   **Xử lý hóa đơn chi phí (trường hợp không dùng LCM):** Hóa đơn cước vận chuyển, thuế nhập khẩu do bên thứ ba xuất được ghi nhận và phân bổ thủ công tại phân hệ Công nợ phải trả, tham khảo thêm bài [3000 Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match)]().
-*   **Chuyển giao cho kế toán giá thành:** Dữ liệu chênh lệch giữa giá PO gốc và giá Landed Cost thực tế sau phân bổ (dù qua LCM tự động hay qua Standard Costing thủ công) được chuyển giao trực tiếp sang phân hệ kế toán giá thành tại bài [5000 Phân bổ chi phí mua hàng trên đường vào giá vốn nguyên vật liệu nhập khẩu (Landed Cost Allocation)]() để tính giá thành sản phẩm chính xác.
+*   **Tham chiếu đơn hàng:** Quy trình nhập khẩu bắt buộc phải liên kết trực tiếp với đơn PO nhập khẩu đã khởi tạo tại **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard PO)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**.
+*   **Đối soát kho vật lý:** Số lượng thực nhận sau thông quan là căn cứ để thủ kho thực hiện giao dịch tại bài **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../inv-ton-kho/1000-nhap-kho-tu-mua-hang-po.md)** tại phân hệ Tồn kho.
+*   **Xử lý hóa đơn chi phí (trường hợp không dùng LCM):** Hóa đơn cước vận chuyển, thuế nhập khẩu do bên thứ ba xuất được ghi nhận và phân bổ thủ công tại phân hệ Công nợ phải trả, tham khảo thêm bài AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match).
+*   **Chuyển giao cho kế toán giá thành:** Dữ liệu chênh lệch giữa giá PO gốc và giá Landed Cost thực tế sau phân bổ (dù qua LCM tự động hay qua Standard Costing thủ công) được chuyển giao trực tiếp sang phân hệ kế toán giá thành tại bài COST 5000 - Phân bổ chi phí vận chuyển, thuế nhập khẩu và bảo hiểm vào giá vốn nguyên vật liệu nhập khẩu (Landed Cost Allocation) để tính giá thành sản phẩm chính xác.
 
 ---
 
@@ -177,7 +177,7 @@ Oracle EBS cung cấp phân hệ chuyên biệt **Landed Cost Management (LCM)**
 
 1.  **Nhận hàng và ghi nhận theo giá PO gốc:**
     *   *Đường dẫn:* `Purchasing Super User > Receiving > Receipts`
-    *   *Nghiệp vụ:* Thủ kho nhận hàng bình thường theo quy trình chuẩn tại bài 5010. Giá trị nhập kho tạm thời ghi nhận đúng bằng đơn giá FOB trên PO, chưa bao gồm chi phí phụ trội.
+    *   *Nghiệp vụ:* Thủ kho nhận hàng bình thường theo quy trình chuẩn tại bài **[PO 5010 Nghiệp vụ nhận hàng mua, kiểm tra chất lượng và nhập kho (PO Receiving, Quality Inspection & Putaway](./5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)**. Giá trị nhập kho tạm thời ghi nhận đúng bằng đơn giá FOB trên PO, chưa bao gồm chi phí phụ trội.
 2.  **Ghi nhận hóa đơn chi phí và phân bổ thủ công (Freight/Miscellaneous Lines):**
     *   *Đường dẫn:* `Payables > Invoices > Entry > Invoices` (hoặc trực tiếp tại `Purchasing > Invoice Matching` nếu phân bổ ngay trên PO)
     *   *Nghiệp vụ:* Kế toán AP nhập hóa đơn của hãng tàu/đơn vị khai hải quan, sử dụng chức năng `Freight` hoặc `Miscellaneous Charges` để gán và phân bổ số tiền này vào các dòng PO liên quan theo tỷ lệ số lượng hoặc giá trị.
@@ -356,14 +356,26 @@ Nếu đội ngũ của bạn đang tự xây dựng (In-house) giải pháp gi�
     *   *Giải pháp khắc phục:* Thiết kế hệ thống tài khoản trung gian gọi là **Tài khoản phân bổ chi phí Landed Cost (Landed Cost Clearing Account)**. Khi nhận hàng, hệ thống sẽ sử dụng đơn giá Landed Cost ước tính (Estimated Landed Cost) để hạch toán tăng tài sản kho và ghi Có tài khoản Clearing này. Khi hóa đơn thực tế của hãng tàu về, kế toán hạch toán hóa đơn vào tài khoản Clearing để đối trừ triệt tiêu số dư chênh lệch, đảm bảo tính liên tục và khớp số liệu kế toán.
 4.  **Lỗi "trôi giá" khi hàng đã xuất kho trước khi có hóa đơn chi phí thực tế:**
     *   *Triệu chứng:* Lô nguyên vật liệu nhập khẩu về kho ngày 01/12 với giá FOB là 10 USD. Ngày 05/12, bộ phận sản xuất đã lấy toàn bộ lô hàng này ra sử dụng để làm ra thành phẩm bán đi. Đến ngày 20/12, hóa đơn cước vận chuyển thực tế (phân bổ thêm 2 USD/kg) mới gửi về đến phòng kế toán. Lúc này, do hàng trong kho đã xuất dùng hết (On-hand = 0), hệ thống tự xây không thể phân bổ 2 USD này vào tài sản kho được nữa, gây lỗi tính toán sai giá thành sản phẩm.
-    *   *Giải pháp:* Thiết kế logic tự động chuyển tiếp chênh lệch giá thành (Variance Forwarding Logic). Nếu số lượng hàng tồn kho thực tế nhỏ hơn số lượng cần phân bổ chi phí phụ trội, hệ thống bắt buộc phải tự động kết chuyển phần chi phí chênh lệch này trực tiếp vào Giá vốn hàng bán (COGS Account) của kỳ hiện tại thay vì cố đè vào giá trị kho chính.
+    *   *Giải pháp:* Thiết kế logic tự động chuyển tiếp chênh lệch giá thành (Variance Forwarding Logic). Nếu số lượng hàng tồn kho thực tế nhỏ hơn số lượng cần phân bổ chi phí phụ trội, hệ thống bắt buộc phải tự động kết chuyển phần chi phí chênh lệch này trực tiếp vào Giá vốn hàng bán (COGS Account) của kỳ hiện tại thay vì cố đè vào giá trị kho chính. Đây là một dạng cụ thể của bài toán kết chuyển chênh lệch giá thành cuối kỳ, xem thêm COST 5000 (Landed Cost Allocation) và COST 4010 (Variance Settlement & Posting).
 5.  **Lỗi không đồng bộ tỷ giá ngoại tệ tại thời điểm thông quan Hải quan:**
     *   *Triệu chứng:* Đơn PO nhập khẩu đặt bằng đồng USD. Ngày khai hải quan áp dụng tỷ giá của Ngân hàng Nhà nước tại ngày thông quan, trong khi ngày nhận hàng kho lại áp dụng tỷ giá tại ngày nhập kho thực tế. Sự sai lệch tỷ giá này nếu không được xử lý tự động sẽ gây lệch số dư công nợ AP và giá trị tài sản kho.
-    *   *Giải pháp:* Hệ thống bắt buộc phải hỗ trợ quản lý đa tiền tệ (Multi-Currency) và tự động tính toán chênh lệch tỷ giá phát sinh (Exchange Rate Variance - ERV) tại từng thời điểm ghi nhận chứng từ để hạch toán vào tài khoản chênh lệch tỷ giá mặc định.
+    *   *Giải pháp:* Hệ thống bắt buộc phải hỗ trợ quản lý đa tiền tệ (Multi-Currency) và tự động tính toán chênh lệch tỷ giá phát sinh (Exchange Rate Variance - ERV) tại từng thời điểm ghi nhận chứng từ để hạch toán vào tài khoản chênh lệch tỷ giá mặc định — nguyên lý đánh giá lại số dư ngoại tệ nói chung xem thêm GL 4000 (GL Foreign Exchange Revaluation).
 6.  **Lỗi phân bổ trùng hoặc bỏ sót khi xử lý thủ công qua AP (đặc thù nhóm không dùng LCM):**
     *   *Triệu chứng:* Do không có công cụ tự động, kế toán AP phân bổ chi phí Freight bằng tay cho nhiều dòng PO khác nhau trong cùng một lô hàng nhập khẩu. Nếu không có bảng theo dõi tập trung, rất dễ xảy ra tình trạng phân bổ trùng cho cùng một dòng PO hai lần, hoặc bỏ sót một số dòng không được phân bổ chi phí nào.
     *   *Giải pháp:* Ngay cả khi không có phân hệ LCM tự động, hệ thống nên thiết kế tối thiểu một bảng theo dõi trung gian (ví dụ `manual_landed_cost_allocation_log`) ghi nhận: hóa đơn chi phí gốc, danh sách các PO Line đã được phân bổ, số tiền phân bổ cho từng dòng và tổng số tiền đã phân bổ lũy kế, kèm ràng buộc kiểm tra tổng số tiền phân bổ không vượt quá giá trị hóa đơn gốc.
 
-<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+---
+
+## Xem thêm
+
+- **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard Purchase Order Entry)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**
+- **[PO 5010 - Nhận hàng mua và Kiểm tra chất lượng (Receiving & IQC)](./5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)**
+- **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../inv-ton-kho/1000-nhap-kho-tu-mua-hang-po.md)**
+- **AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match - PO & Non-PO)**
+- **COST 5000 - Phân bổ chi phí vận chuyển, thuế nhập khẩu và bảo hiểm vào giá vốn nguyên vật liệu nhập khẩu (Landed Cost Allocation)**
+- **COST 4010 - Nghiệp vụ kết chuyển chênh lệch giá thành vào giá vốn hàng bán và tồn kho cuối kỳ (Variance Settlement & Posting)**
+- **GL 4000 - Quản lý tỷ giá đa tiền tệ và nghiệp vụ đánh giá lại số dư tài khoản ngoại tệ (GL Foreign Exchange Revaluation)**
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
-</p>
+</div>

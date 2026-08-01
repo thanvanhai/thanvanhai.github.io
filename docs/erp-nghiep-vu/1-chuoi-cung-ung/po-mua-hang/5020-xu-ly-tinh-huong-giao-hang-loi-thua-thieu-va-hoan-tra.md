@@ -35,8 +35,8 @@ Hệ thống ERP tiêu chuẩn quản lý các tình huống sai lệch giao nh�
 
 ### Kịch bản 3: Xuất trả hàng nhà cung cấp (Return to Vendor - RTV)
 *   *Nghiệp vụ:* Trả lại hàng lỗi cho nhà cung cấp.
-    *   *Trả tại kho đệm:* Phát hiện hàng lỗi ngay tại bước kiểm QC của bài [5010 Nhận hàng mua và Kiểm tra chất lượng (Receiving & IQC)]().
-    *   *Trả tại kho chính:* Phát hiện hàng lỗi sau khi đã nhập kho lưu trữ hoặc đang trong quá trình sản xuất.
+    *   *Trả tại kho đệm:* Phát hiện hàng lỗi ngay tại bước kiểm QC của bài **[PO 5010 - Nhận hàng mua và Kiểm tra chất lượng (Receiving & IQC)](./5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)**.
+    *   *Trả tại kho chính:* Phát hiện hàng lỗi sau khi đã nhập kho lưu trữ hoặc đang trong quá trình sản xuất — giao dịch xuất kho vật lý cho trường hợp này được ghi nhận chi tiết tại **[INV 2020 - Nghiệp vụ Xuất kho trả Nhà cung cấp (Return to Vendor - RTV)](../inv-ton-kho/2020-xuat-kho-tra-nha-cung-cap-rtv.md)**.
 
 ---
 
@@ -71,10 +71,10 @@ flowchart TD
 
 ## 4. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
-*   **Đối chiếu đơn hàng gốc:** Mọi giao dịch xuất trả RTV hoặc đóng ngắn hạn mức bắt buộc phải tham chiếu đến thông tin PO gốc đã tạo tại [4000 Khởi tạo Đơn mua hàng tiêu chuẩn (Standard PO)]().
-*   **Nguồn gốc số lượng bị lỗi:** Số lượng `Reject` phát hiện tại bước kiểm tra chất lượng được xử lý ngay tại kho đệm theo bài [5010 Nhận hàng mua và Kiểm tra chất lượng (Receiving & IQC)]().
-*   **Ghi giảm tồn kho chính xác:** Giao dịch RTV thực hiện ghi giảm trực tiếp số lượng tồn kho vật lý tại phân hệ Tồn kho, theo logic được mô tả tại bài [1000 Nhập kho từ mua hàng (Receipt from PO)]().
-*   **Trừ công nợ tự động:** Dữ liệu Debit Memo sinh ra từ giao dịch RTV chỉ dừng ở trạng thái nháp (Draft) tại phân hệ Kho. Việc rà soát, phê duyệt, khớp hóa đơn và hạch toán giảm trừ công nợ chính thức được xử lý chi tiết tại bài [6020 Nghiệp vụ xử lý hóa đơn điều chỉnh tăng/giảm và hóa đơn trả lại (Debit/Credit Memo Posting & Matching)]() thuộc phân hệ Công nợ phải trả (AP).
+*   **Đối chiếu đơn hàng gốc:** Mọi giao dịch xuất trả RTV hoặc đóng ngắn hạn mức bắt buộc phải tham chiếu đến thông tin PO gốc đã tạo tại **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard PO)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**.
+*   **Nguồn gốc số lượng bị lỗi:** Số lượng `Reject` phát hiện tại bước kiểm tra chất lượng được xử lý ngay tại kho đệm theo bài **[PO 5010 - Nhận hàng mua và Kiểm tra chất lượng (Receiving & IQC)](./5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)**.
+*   **Ghi giảm tồn kho chính xác:** Giao dịch RTV thực hiện ghi giảm trực tiếp số lượng tồn kho vật lý tại phân hệ Tồn kho, theo logic được mô tả tại bài **[INV 2020 - Nghiệp vụ Xuất kho trả Nhà cung cấp (Return to Vendor - RTV)](../inv-ton-kho/2020-xuat-kho-tra-nha-cung-cap-rtv.md)**.
+*   **Trừ công nợ tự động:** Dữ liệu Debit Memo sinh ra từ giao dịch RTV chỉ dừng ở trạng thái nháp (Draft) tại phân hệ Kho. Việc rà soát, phê duyệt, khớp hóa đơn và hạch toán giảm trừ công nợ chính thức được xử lý chi tiết tại bài AP/AR 6020 - Nghiệp vụ xử lý hóa đơn điều chỉnh tăng/giảm và hóa đơn trả lại (Debit/Credit Memo Posting & Matching) thuộc phân hệ Công nợ phải trả (AP).
 
 ---
 
@@ -188,17 +188,28 @@ Nếu đội ngũ của bạn đang tự phát triển mô-đun Kho và Mua hàn
 
 1.  **Bẫy rò rỉ công nợ do thiếu liên kết tự động (Data Silo Pitfall):**
     *   *Triệu chứng:* Thủ kho làm phiếu xuất trả 10 cái máy bơm bị lỗi thực tế ngoài kho và cập nhật số lượng tồn kho giảm đi 10 cái. Tuy nhiên, hệ thống không tự động đẩy thông tin này sang phân hệ kế toán AP. Đến kỳ thanh toán, kế toán AP vẫn thanh toán đủ tiền 100 cái máy bơm dựa trên hóa đơn giấy của nhà cung cấp gửi sang, gây thiệt hại nghiêm trọng cho doanh nghiệp.
-    *   *Giải pháp khắc phục:* Thiết kế sự kiện kích hoạt (Event-driven Trigger) tại cơ sở dữ liệu. Ngay khi một dòng giao dịch RTV được ghi nhận thành công, hệ thống bắt buộc phải tự động viết một bản ghi mới ở trạng thái "Chờ phê duyệt" (Draft) vào bảng hóa đơn nhà cung cấp `AP_Invoices` với loại hóa đơn là `DEBIT` để kế toán AP bắt buộc phải đối chiếu trừ tiền khi chạy thanh toán.
+    *   *Giải pháp khắc phục:* Thiết kế sự kiện kích hoạt (Event-driven Trigger) tại cơ sở dữ liệu. Ngay khi một dòng giao dịch RTV được ghi nhận thành công, hệ thống bắt buộc phải tự động viết một bản ghi mới ở trạng thái "Chờ phê duyệt" (Draft) vào bảng hóa đơn nhà cung cấp `AP_Invoices` với loại hóa đơn là `DEBIT` để kế toán AP bắt buộc phải đối chiếu trừ tiền khi chạy thanh toán. Đây là cơ chế phòng ngừa ở tầng thiết kế; công cụ SQL Audit để dò các trường hợp đã lọt lưới xem thêm **[INV 2020 - Xuất kho trả Nhà cung cấp (RTV)](../inv-ton-kho/2020-xuat-kho-tra-nha-cung-cap-rtv.md)**.
 2.  **Lỗi "âm kho" khi xuất trả hàng đã đưa vào sử dụng sản xuất:**
     *   *Triệu chứng:* Hàng hóa đã được Deliver (nhập kho chính) từ tuần trước và đã được bộ phận sản xuất lấy ra sử dụng. Sau đó sản xuất phát hiện lỗi và yêu cầu thủ kho làm phiếu RTV trả lại cho nhà cung cấp. Nếu thủ kho chọn trực tiếp giao dịch RTV từ số nhận hàng cũ mà không kiểm tra lượng tồn kho thực tế hiện tại, hệ thống sẽ cho phép xuất vượt quá lượng đang có, dẫn đến hiện tượng âm kho trên hệ thống.
-    *   *Giải pháp:* Hệ thống bắt buộc phải kiểm tra lượng tồn khả dụng hiện tại (On-hand Stock) tại ô kệ trước khi cho phép xác nhận giao dịch RTV. Nếu lượng tồn thực tế nhỏ hơn số lượng muốn trả, bắt buộc hệ thống phải khóa giao dịch và yêu cầu làm thủ tục thu hồi hàng lỗi từ sản xuất về kho trước.
+    *   *Giải pháp:* Bắt buộc kiểm tra lượng tồn khả dụng hiện tại trước khi xác nhận giao dịch RTV — đây là một trường hợp cụ thể của bài toán âm kho tổng quát đã trình bày tại **[INV 9020 - Xử lý Âm kho (Negative Inventory)](../inv-ton-kho/9020-xu-ly-am-kho-negative-inventory.md)**, và trùng với ràng buộc số lượng tối đa đã nêu ở Kịch bản 2 của **[INV 2020  Xuất kho trả nhà cung cấp (Return to Vendor - RTV](../inv-ton-kho/2020-xuat-kho-tra-nha-cung-cap-rtv.md)**.
 3.  **Lỗi sai lệch đơn giá khi làm Debit Memo:**
     *   *Triệu chứng:* PO đặt mua với giá 100$ nhưng nhà cung cấp có chiết khấu thương mại trên hóa đơn thực tế còn 95$. Khi làm phiếu RTV xuất trả hàng lỗi, nếu hệ thống tự xây tự động lấy đơn giá PO gốc (100$) để làm Debit Memo thay vì lấy đơn giá hóa đơn thực tế (95$), hệ thống sẽ bị sai lệch số liệu đối chiếu công nợ cuối kỳ với đối tác.
-    *   *Giải pháp:* Thiết kế liên kết thông tin 3 chiều chéo. Đơn giá trên Giấy báo nợ Debit Memo khi tự sinh từ RTS/RTV phải kế thừa logic ưu tiên: ưu tiên lấy đơn giá đã khớp trên hóa đơn AP thực tế (nếu đã nhập hóa đơn), nếu chưa có hóa đơn thì mới lấy đơn giá thỏa thuận trên PO gốc.
+    *   *Giải pháp:* Thiết kế liên kết thông tin 3 chiều chéo. Đơn giá trên Giấy báo nợ Debit Memo khi tự sinh từ RTS/RTV phải kế thừa logic ưu tiên: ưu tiên lấy đơn giá đã khớp trên hóa đơn AP thực tế (nếu đã nhập hóa đơn), nếu chưa có hóa đơn thì mới lấy đơn giá thỏa thuận trên PO gốc. Trường hợp doanh nghiệp chạy Standard Costing, phần chênh lệch giữa giá RTV và giá tiêu chuẩn còn liên quan đến PPV — xem thêm COST 4000 (Phân tích chênh lệch giá thành thực tế so với định mức); việc khớp lệnh Debit Memo với hóa đơn AP thuộc AP/AR 6020.
 4.  **Rủi ro trùng Operating Unit khi đối soát Debit Memo (đa đơn vị vận hành):**
     *   *Triệu chứng:* Với hệ thống tự xây vận hành nhiều pháp nhân/đơn vị kinh doanh (Multi-Org) dùng chung một mã nhà cung cấp, nếu truy vấn đối soát RTV với hóa đơn AP chỉ khớp theo `po_header_id` mà không khóa thêm theo đơn vị vận hành, báo cáo có thể hiển thị nhầm một Debit Memo của đơn vị A là đã xử lý cho giao dịch RTV của đơn vị B, gây sai lệch số liệu đối soát công nợ giữa các pháp nhân.
     *   *Giải pháp:* Mọi truy vấn hoặc logic đối soát tự động giữa giao dịch kho (RTV) và hóa đơn tài chính (Debit Memo) bắt buộc phải khóa thêm điều kiện theo đơn vị vận hành (`Operating Unit` / `Company Code`), không chỉ dựa vào số PO hay mã nhà cung cấp.
 
-<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+---
+
+## Xem thêm
+
+- **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard Purchase Order Entry)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**
+- **[PO 5010 - Nhận hàng mua và Kiểm tra chất lượng (Receiving & IQC)](./5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)**
+- **[INV 2020 - Nghiệp vụ Xuất kho trả Nhà cung cấp (Return to Vendor - RTV)](../inv-ton-kho/2020-xuat-kho-tra-nha-cung-cap-rtv.md)**
+- **[INV 9020 - Xử lý Âm kho (Negative Inventory)](../inv-ton-kho/9020-xu-ly-am-kho-negative-inventory.md)**
+- **AP/AR 6020 - Nghiệp vụ xử lý hóa đơn điều chỉnh tăng/giảm và hóa đơn trả lại (Debit/Credit Memo Posting & Matching)**
+- **COST 4000 - Phân tích chênh lệch giá thành thực tế so với định mức**
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
-</p>
+</div>
