@@ -15,6 +15,8 @@ tags: [erp, procurement, consignment, vmi, vendor-managed-inventory, consignment
 
 Mua hàng ký gửi (Consignment Procurement) và Tồn kho do nhà cung cấp quản lý (Vendor Managed Inventory - VMI) là các phương thức cộng tác chuỗi cung ứng hiện đại giúp doanh nghiệp tối ưu hóa chi phí sử dụng vốn. Trong mô hình này, nhà cung cấp chuyển hàng đến lưu trữ trực tiếp tại kho của doanh nghiệp, nhưng quyền sở hữu tài sản (Ownership) vẫn thuộc về họ. Doanh nghiệp chỉ chính thức hạch toán tăng tài sản và ghi nhận nợ phải trả kế toán tại thời điểm lấy hàng ra tiêu dùng thực tế.
 
+Bài viết này tập trung vào **phía mua/nhận hàng ký gửi từ nhà cung cấp**. Trường hợp doanh nghiệp là bên ký gửi hàng cho khách hàng (Consignment Sales) thuộc phân hệ OM — xem link ở cuối bài.
+
 ---
 
 ## 1. Bản chất nghiệp vụ & Thách thức thiết kế trên hệ thống
@@ -97,9 +99,10 @@ flowchart TD
 
 ## 5. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
-*   **Tham chiếu đơn hàng khung:** Đơn giá tiêu dùng hàng ký gửi được hệ thống tự động đối chiếu từ hợp đồng nguyên tắc đã duyệt tại [2010 Bảng giá & Thỏa thuận dài hạn (Blanket PO & Contract)]().
-*   **Quản lý Lot/Serial:** Hàng ký gửi bắt buộc phải được theo dõi số lô để quản lý tuổi hàng của nhà cung cấp, thiết lập tại [6000 Quản lý theo lô (Lot Control)]() tại phân hệ Tồn kho.
-*   **Thanh toán công nợ:** Dữ liệu tiêu dùng (Consumption Advice) là căn cứ duy nhất để kế toán thực hiện đối soát và chạy thanh toán tại bài [3020 Nghiệp vụ chi tiền thanh toán và đối trừ hóa đơn nhà cung cấp (Vendor Payment Run)]() bên phân hệ AP.
+*   **Tham chiếu đơn hàng khung:** Đơn giá tiêu dùng hàng ký gửi được hệ thống tự động đối chiếu từ hợp đồng nguyên tắc đã duyệt tại **[PO 2010 - Thiết lập bảng giá nhà cung cấp và thỏa thuận mua hàng dài hạn (Purchasing Info Record / Blanket PO / Contract)](./2010-thiet-lap-bang-gia-nha-cung-cap-va-thoa-thuan-mua-hang.md)**.
+*   **Quản lý Lot/Serial:** Hàng ký gửi bắt buộc phải được theo dõi số lô để quản lý tuổi hàng của nhà cung cấp, thiết lập tại **[INV 6000 - Quản lý theo lô (Lot Control)](../inv-ton-kho/6000-quan-ly-theo-lo-lot-control.md)** tại phân hệ Tồn kho.
+*   **Thanh toán công nợ:** Dữ liệu tiêu dùng (Consumption Advice) là căn cứ duy nhất để kế toán thực hiện đối soát và chạy thanh toán tại bài AP/AR 3020 - Nghiệp vụ chi tiền thanh toán và đối trừ hóa đơn nhà cung cấp (Vendor Payment Run) bên phân hệ AP.
+*   **Chiều ngược lại — ký gửi cho khách hàng:** Nếu doanh nghiệp là bên gửi hàng ký gửi cho khách hàng (thay vì nhận từ NCC như bài này), xem OM 6020 - Quản lý đơn hàng ký gửi đại lý và đối soát tiêu dùng (Consignment Sales Order) thuộc phân hệ Bán hàng.
 
 ---
 
@@ -220,14 +223,25 @@ Nếu đội ngũ của bạn đang tự phát triển mô-đun Kho và Ký gử
     *   *Giải pháp khắc phục:* Bắt buộc phải thiết kế thêm trường **Chủ sở hữu (Owner_ID)** làm khóa chính (Primary Key) trong bảng tồn kho chi tiết `Inventory_Balances`. Khi truy vấn, hệ thống phải phân tách rõ ràng lượng tồn kho thuộc sở hữu của doanh nghiệp (`Owner_ID = 'OUR_COMPANY_ID'`) và lượng tồn kho thuộc sở hữu của đối tác (`Owner_ID = 'SUPPLIER_A_ID'`).
 3.  **Lỗi "kiểm kê khống" tài sản của doanh nghiệp:**
     *   *Triệu chứng:* Khi chạy chương trình kiểm kê cuối năm, nhân viên kho quét qua kệ và ghi nhận 1,000 cái mô-tơ ký gửi đang nằm ngoài kho thực tế. Hệ thống tự xây tự động hạch toán phần chênh lệch kiểm kê (Adjustment) tăng thẳng vào giá trị tài sản ròng của doanh nghiệp.
-    *   *Giải pháp:* Đối với các giao dịch điều chỉnh kiểm kê phát sinh tại vị trí kho được đánh dấu là Kho ký gửi (Vendor-Owned), hệ thống bắt buộc phải khóa tính năng tự động ghi sổ tài chính, mọi chênh lệch thừa/thiếu chỉ được ghi nhận số lượng vật lý và gửi thư đối chiếu xác nhận cho nhà cung cấp.
+    *   *Giải pháp:* Đối với các giao dịch điều chỉnh kiểm kê phát sinh tại vị trí kho được đánh dấu là Kho ký gửi (Vendor-Owned), hệ thống bắt buộc phải khóa tính năng tự động ghi sổ tài chính, mọi chênh lệch thừa/thiếu chỉ được ghi nhận số lượng vật lý và gửi thư đối chiếu xác nhận cho nhà cung cấp. Đây là một trường hợp đặc thù của nghiệp vụ **[INV 4030 - Xử lý chênh lệch kiểm kê (Count Variance)](../inv-ton-kho/4030-xu-ly-chenh-lech-kiem-ke-count-variance.md)**, cần bổ sung thêm điều kiện loại trừ riêng cho kho ký gửi.
 4.  **Lỗi trôi ngày hết hạn và tuổi hàng (Lot Expiration Issues):**
     *   *Triệu chứng:* Hàng ký gửi có hạn sử dụng (ví dụ: hóa chất). Nhà cung cấp tự ý luân chuyển các lô hàng cũ sắp hết hạn đến kho ký gửi của doanh nghiệp để giải phóng kho của họ. Nếu hệ thống tự xây không hỗ trợ quản lý cảnh báo tuổi hàng ký gửi, doanh nghiệp sẽ phải gánh chịu toàn bộ chi phí xử lý tiêu hủy hóa chất hết hạn.
-    *   *Giải pháp:* Cấu hình thuộc tính kiểm soát ngày hết hạn nghiêm ngặt tại thời điểm Nhập kho ký gửi. Hệ thống phải tự động chặn nhận hàng nếu ngày hết hạn của lô hàng nhỏ hơn ngưỡng an toàn quy định trong chính sách mua sắm.
+    *   *Giải pháp:* Cấu hình thuộc tính kiểm soát ngày hết hạn nghiêm ngặt tại thời điểm Nhập kho ký gửi. Hệ thống phải tự động chặn nhận hàng nếu ngày hết hạn của lô hàng nhỏ hơn ngưỡng an toàn quy định trong chính sách mua sắm — cơ chế cảnh báo cận hạn và chiến lược xuất theo FEFO xem thêm **[INV 6020 - Chiến lược Xuất kho FEFO](../inv-ton-kho/6020-chien-luoc-xuat-kho-fefo-first-expired-first-out.md)**.
 5.  **Lỗi thất lạc đối chiếu khi xử lý thủ công bằng kho phụ (đặc thù nhóm không có module):**
     *   *Triệu chứng:* Với cách làm kho phụ thủ công, nếu không có quy trình đối chiếu định kỳ chặt chẽ, số lượng ghi nhận trên bảng kê nội bộ dễ lệch với số liệu nhà cung cấp tự theo dõi bên họ, dẫn đến tranh chấp công nợ cuối kỳ vì không bên nào có bằng chứng xác nhận song phương.
     *   *Giải pháp:* Ngay cả khi xử lý thủ công, nên thiết kế biểu mẫu đối chiếu định kỳ (Consignment Reconciliation Statement) có xác nhận chữ ký/email hai chiều giữa thủ kho doanh nghiệp và đại diện nhà cung cấp, lưu trữ lại làm bằng chứng đối soát mỗi kỳ thay vì chỉ dựa vào số liệu nội bộ một phía.
 
-<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+---
+
+## Xem thêm
+
+- **[PO 2010 - Thiết lập bảng giá nhà cung cấp và thỏa thuận mua hàng dài hạn (Blanket PO / Contract)](./2010-thiet-lap-bang-gia-nha-cung-cap-va-thoa-thuan-mua-hang.md)**
+- **[INV 6000 - Quản lý theo lô (Lot Control)](../inv-ton-kho/6000-quan-ly-theo-lo-lot-control.md)**
+- **[INV 6020 - Chiến lược Xuất kho FEFO](../inv-ton-kho/6020-chien-luoc-xuat-kho-fefo-first-expired-first-out.md)**
+- **[INV 4030 - Xử lý chênh lệch kiểm kê (Count Variance)](../inv-ton-kho/4030-xu-ly-chenh-lech-kiem-ke-count-variance.md)**
+- **AP/AR 3020 - Nghiệp vụ chi tiền thanh toán và đối trừ hóa đơn nhà cung cấp (Vendor Payment Run)**
+- **OM 6020 - Quản lý đơn hàng ký gửi đại lý và đối soát tiêu dùng (Consignment Sales Order)**
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
-</p>
+</div>

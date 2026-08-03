@@ -15,6 +15,8 @@ tags: [erp, procurement, intercompany, intercompany-po, transfer-pricing, drop-s
 
 Trong các tập đoàn đa quốc gia hoặc tổng công ty đa pháp nhân, nghiệp vụ mua bán nội bộ (Intercompany Transactions) diễn ra với tần suất rất lớn. Doanh nghiệp mua hàng (Công ty A) sẽ phát hành một Đơn mua hàng nội bộ (Intercompany PO) gửi cho doanh nghiệp bán (Công ty B, thuộc cùng tập đoàn). Quy trình này đòi hỏi sự đồng bộ dữ liệu thời gian thực giữa hai thực thể pháp lý độc lập để đảm bảo tuyệt đối cân bằng công nợ nội bộ khi thực hiện báo cáo tài chính hợp nhất.
 
+Bài viết này tập trung vào **phía chứng từ mua hàng** (khởi tạo, đồng bộ, nhận diện đối tác nội bộ). Chứng từ bán hàng đối ứng (Intercompany SO) thuộc phân hệ OM; việc hạch toán loại trừ giao dịch nội bộ khi hợp nhất báo cáo tài chính tập đoàn thuộc phân hệ Sổ cái (GL) — xem link ở mục 5 và cuối bài.
+
 ---
 
 ## 1. Bản chất nghiệp vụ & Cơ chế đồng bộ PO-SO tự động
@@ -93,19 +95,23 @@ flowchart TD
 
     AR_INV -->|"Tự động đẩy ngược lại"| AP_INV["5. Hóa đơn phải trả nội bộ - AP"]
 
+    AP_INV -.->|"Hạch toán loại trừ khi hợp nhất báo cáo"| ELIM["6. Bút toán triệt tiêu giao dịch nội bộ"]
+
     N1["Đảm bảo khớp số liệu 100%<br/>Công nợ AR công ty B = Công nợ AP công ty A"]
     AP_INV -.-> N1
 
     style N1 fill:none,stroke:none,color:#888
+    style ELIM fill:none,stroke:none,color:#888
 ```
 
 ---
 
 ## 5. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
-*   **Quản lý mã hàng chung:** Mặt hàng giao dịch giữa hai công ty bắt buộc phải được chuẩn hóa mã và đơn vị tính tại [7000 Item Master (thiết lập mã hàng hoá, đơn vị tính)]().
-*   **Xuất nhập kho liên công ty:** Luồng giao nhận hàng vật lý được định nghĩa kho nhận và xử lý tại bài [3000 Chuyển kho nội bộ (Inter-warehouse Transfer)]() của phân hệ Tồn kho.
-*   **Bù trừ công nợ nội bộ:** Các hóa đơn AP và AR phát sinh từ giao dịch này sẽ được đẩy trực tiếp về bài [2020 Quy trình xử lý bù trừ công nợ giữa cùng một đối tượng vừa mua vừa bán (AP/AR Netting)]() thuộc phân hệ Công nợ phải thu/phải trả để triệt tiêu dòng tiền thanh toán cuối kỳ.
+*   **Quản lý mã hàng chung:** Mặt hàng giao dịch giữa hai công ty bắt buộc phải được chuẩn hóa mã và đơn vị tính tại **[INV 7000 - Item Master (thiết lập mã hàng hoá, đơn vị tính)](../inv-ton-kho/7000-thiet-lap-danh-muc-item-master.md)**.
+*   **Xuất nhập kho liên công ty:** Luồng giao nhận hàng vật lý được định nghĩa kho nhận và xử lý tại bài **[INV 3000 - Chuyển kho nội bộ (Inter-warehouse Transfer)](../inv-ton-kho/3000-chuyen-kho-noi-bo-transfer.md)** của phân hệ Tồn kho.
+*   **Bù trừ công nợ nội bộ:** Các hóa đơn AP và AR phát sinh từ giao dịch này sẽ được đẩy trực tiếp về bài AP/AR 2020 - Quy trình xử lý bù trừ công nợ giữa cùng một đối tượng vừa mua vừa bán (AP/AR Netting) thuộc phân hệ Công nợ phải thu/phải trả để triệt tiêu dòng tiền thanh toán cuối kỳ.
+*   **Hạch toán loại trừ khi hợp nhất báo cáo tài chính:** Việc ghi nhận và đối soát giao dịch nội bộ ở quy mô toàn tập đoàn, cũng như bút toán loại trừ khi lập báo cáo hợp nhất, thuộc bài GL 5000 - Quy trình ghi nhận và đối soát giao dịch nội bộ giữa các công ty thành viên (Intercompany Transactions) và GL 5010 - Nghiệp vụ hợp nhất báo cáo tài chính tập đoàn và loại trừ giao dịch nội bộ (Financial Consolidation & Elimination) thuộc phân hệ Sổ cái (GL).
 
 ---
 
@@ -249,14 +255,26 @@ Nếu đội ngũ của bạn đang tự xây dựng (In-house) giải pháp mua
     *   *Giải pháp khắc phục:* Không lọc theo giá trị lookup code viết chết trong code/query. Nên xây một **bảng cấu hình trung gian** (ví dụ `intercompany_partner_config`) lưu danh sách vendor_id/mã phân loại nào được xác nhận là nội bộ tại từng doanh nghiệp cụ thể, được cập nhật qua giao diện quản trị thay vì sửa trực tiếp mã nguồn mỗi khi triển khai dự án mới.
 2.  **Bẫy thiết kế lệch pha sửa đổi chứng từ (Data Desync Pitfall):**
     *   *Triệu chứng:* Đơn PO liên công ty trị giá 10,000 USD đã tự động đồng bộ sang SO là 10,000 USD. Sau đó, Công ty mua tự ý sửa số lượng trên PO khiến giá trị PO tăng lên thành 12,000 USD. Nếu hệ thống tự xây không tự động cập nhật hoặc khóa không cho phép sửa đổi trực tiếp khi SO đã ở trạng thái xử lý, dữ liệu hai đầu sẽ bị lệch hoàn toàn.
-    *   *Giải pháp khắc phục:* Khi PO liên kết sang SO đã được duyệt hoạt động, bắt buộc hệ thống phải khóa tính năng sửa đổi thủ công trực tiếp từ giao diện. Mọi yêu cầu thay đổi giá trị hoặc số lượng phải được thực hiện thông qua quy trình kiểm soát thay đổi chuẩn tại bài [4020 Quy trình quản lý thay đổi và phiên bản PO sau khi đã phê duyệt](), hệ thống tự động đẩy yêu cầu sửa đổi sang SO đối ứng để duyệt đồng bộ.
+    *   *Giải pháp khắc phục:* Khi PO liên kết sang SO đã được duyệt hoạt động, bắt buộc hệ thống phải khóa tính năng sửa đổi thủ công trực tiếp từ giao diện. Mọi yêu cầu thay đổi giá trị hoặc số lượng phải được thực hiện thông qua quy trình kiểm soát thay đổi chuẩn tại bài **[PO 4020 - Quy trình quản lý thay đổi và phiên bản PO sau khi đã phê duyệt (PO Revision & Change Management)](./4020-quy-trinh-quan-ly-thay-doi-va-phien-ban-po.md)**, hệ thống tự động đẩy yêu cầu sửa đổi sang SO đối ứng để duyệt đồng bộ.
 3.  **Lỗi lệch tài khoản phải thu/phải trả nội bộ (Unbalanced Intercompany Accounts):**
     *   *Triệu chứng:* Khi chạy báo cáo tài chính hợp nhất, số dư tài khoản Phải trả nội bộ (Tài khoản 336 tại Việt Nam) của Công ty A không bằng số dư tài khoản Phải thu nội bộ (Tài khoản 136) của Công ty B do lệch múi giờ ghi nhận hóa đơn hoặc lệch tỷ giá quy đổi ngoại tệ.
-    *   *Giải pháp:* Thiết kế một thực thể đối soát tập trung gọi là **Bảng đệm đối chiếu liên công ty (Intercompany Reconciliation Hub)**. Toàn bộ các hóa đơn AP và AR nội bộ phát sinh phải được hệ thống tự động đối chiếu chéo hàng ngày dựa trên mã cặp giao dịch độc nhất (`Intercompany Transaction ID`). Hệ thống tự động gửi cảnh báo lệch số dư cho kế toán hai đầu xử lý trước khi bước vào kỳ khóa sổ tháng.
+    *   *Giải pháp:* Thiết kế một thực thể đối soát tập trung gọi là **Bảng đệm đối chiếu liên công ty (Intercompany Reconciliation Hub)**. Toàn bộ các hóa đơn AP và AR nội bộ phát sinh phải được hệ thống tự động đối chiếu chéo hàng ngày dựa trên mã cặp giao dịch độc nhất (`Intercompany Transaction ID`). Hệ thống tự động gửi cảnh báo lệch số dư cho kế toán hai đầu xử lý trước khi bước vào kỳ khóa sổ tháng. Đây là bài toán ở quy mô toàn tập đoàn thuộc GL 5000 (Intercompany Transactions) và AP/AR 2020 (AP/AR Netting).
 4.  **Lỗi vi phạm quy tắc định giá chuyển giao (Transfer Pricing Audit Failure):**
     *   *Triệu chứng:* Lập trình viên cho phép nhân viên mua hàng tự gõ đơn giá giao dịch liên công ty một cách tự do trên PO. Điều này vi phạm nghiêm trọng quy định chống chuyển giá của cơ quan thuế (luật thuế yêu cầu giá giao dịch nội bộ phải tuân theo nguyên tắc giá thị trường tự do hoặc phương pháp giá vốn cộng lãi - Cost Plus).
-    *   *Giải pháp:* Khóa hoàn toàn tính năng gõ đơn giá thủ công trên các đơn hàng mua bán nội bộ. Đơn giá chuyển giao bắt buộc phải được hệ thống lấy tự động và gán cứng từ bảng giá chuyển giao tập trung (`Intercompany Price List`) đã được ban giám đốc tài chính phê duyệt theo đúng quy định pháp lý của cơ quan thuế.
+    *   *Giải pháp:* Khóa hoàn toàn tính năng gõ đơn giá thủ công trên các đơn hàng mua bán nội bộ. Đơn giá chuyển giao bắt buộc phải được hệ thống lấy tự động và gán cứng từ bảng giá chuyển giao tập trung (`Intercompany Price List`) đã được ban giám đốc tài chính phê duyệt theo đúng quy định pháp lý của cơ quan thuế — hồ sơ tuân thủ chi tiết xem TAX 5030 (Quản lý hồ sơ Giá chuyển nhượng - Nghị định 132).
 
-<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+---
+
+## Xem thêm
+
+- **[PO 4020 - Quy trình quản lý thay đổi và phiên bản PO sau khi đã phê duyệt](./4020-quy-trinh-quan-ly-thay-doi-va-phien-ban-po.md)**
+- **[INV 7000 - Item Master (thiết lập mã hàng hoá, đơn vị tính)](../inv-ton-kho/7000-thiet-lap-danh-muc-item-master.md)**
+- **[INV 3000 - Chuyển kho nội bộ (Inter-warehouse Transfer)](../inv-ton-kho/3000-chuyen-kho-noi-bo-transfer.md)**
+- **AP/AR 2020 - Quy trình xử lý bù trừ công nợ giữa cùng một đối tượng vừa mua vừa bán (AP/AR Netting)**
+- **GL 5000 - Quy trình ghi nhận và đối soát giao dịch nội bộ giữa các công ty thành viên (Intercompany Transactions)**
+- **GL 5010 - Nghiệp vụ hợp nhất báo cáo tài chính tập đoàn và loại trừ giao dịch nội bộ (Financial Consolidation & Elimination)**
+- **TAX 5030 - Quản lý hồ sơ Giá chuyển nhượng và tác động đến chi phí được trừ khi tính CIT (Transfer Pricing Documentation - Nghị định 132)**
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
-</p>
+</div>

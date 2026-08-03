@@ -15,6 +15,8 @@ tags: [erp, procurement, service-po, fixed-assets, fa-procurement, asset-creatio
 
 Bên cạnh việc mua sắm nguyên vật liệu cho sản xuất, doanh nghiệp liên tục phát sinh nhu cầu mua sắm phi vật chất (như dịch vụ tư vấn, dịch vụ bảo trì phần mềm, quảng cáo) và mua sắm tài sản cố định phục vụ đầu tư phát triển (CAPEX - như máy móc, thiết bị văn phòng, xe tải). Trên hệ thống ERP, các loại mua sắm này không đi qua quy trình nhập kho thông thường mà yêu cầu cơ chế kiểm soát tiến độ hoàn thành (Milestone Tracking) và cơ chế tự động chuyển giao dữ liệu sang phân hệ Quản lý tài sản cố định (FIN-FA).
 
+Bài viết tập trung vào **phía tạo đơn mua và bàn giao dữ liệu sang FA** — cách tài sản cố định được vốn hóa và trích khấu hao sau khi nhận dữ liệu từ PO thuộc phân hệ Tài sản cố định (FA), xem link ở mục 5 và cuối bài.
+
 ---
 
 ## 1. Bản chất nghiệp vụ & Thách thức thiết kế trên hệ thống
@@ -39,14 +41,14 @@ Không phải cứ mua sắm máy móc, thiết bị là tự động ghi nhận
 
 Nếu thiết bị không đạt đủ 3 điều kiện trên (ví dụ một máy tính văn phòng giá 15 triệu VNĐ, thời gian dùng trên 1 năm nhưng không đạt ngưỡng giá trị), khoản mua sắm này **không được đẩy vào phân hệ FA**, mà phải xử lý theo một trong hai hướng:
 *   Ghi nhận thẳng vào chi phí trong kỳ (nếu giá trị nhỏ, dùng ngay).
-*   Ghi nhận là **Công cụ dụng cụ (CCDC)** và phân bổ dần chi phí qua nhiều kỳ (Prepaid Expense / Deferred Expense Allocation) — không qua phân hệ FA mà qua một cơ chế phân bổ chi phí trả trước riêng.
+*   Ghi nhận là **Công cụ dụng cụ (CCDC)** và phân bổ dần chi phí qua nhiều kỳ (Prepaid Expense / Deferred Expense Allocation) — cơ chế phân bổ chi phí trả trước theo định kỳ nói chung được xử lý bằng bút toán phân bổ tự động (Recurring & Allocation Journals) thuộc phân hệ Sổ cái, không đi qua phân hệ FA.
 
 ### Ý nghĩa thiết kế hệ thống:
 Nhóm mua sắm (`Category`) gán trên dòng PO không chỉ quyết định tài khoản hạch toán, mà còn nên **liên động với ngưỡng giá trị** để tự động gợi ý đúng luồng xử lý:
 *   PO có `Category = FIXED_ASSETS` và giá trị dòng **≥ 30 triệu VNĐ** → tự động trỏ tài khoản Asset Clearing, chuẩn bị đẩy sang FA.
 *   PO có `Category = FIXED_ASSETS` nhưng giá trị dòng **< 30 triệu VNĐ** → hệ thống nên cảnh báo và gợi ý chuyển sang nhóm CCDC/chi phí trả trước thay vì cho qua luồng FA mặc định.
 
-Việc thiếu kiểm tra ngưỡng này là nguyên nhân phổ biến khiến kế toán tài sản phải tự tay rà soát và loại bỏ hàng loạt "tài sản" không đủ điều kiện ra khỏi phân hệ FA cuối mỗi kỳ.
+Việc thiếu kiểm tra ngưỡng này là nguyên nhân phổ biến khiến kế toán tài sản phải tự tay rà soát và loại bỏ hàng loạt "tài sản" không đủ điều kiện ra khỏi phân hệ FA cuối mỗi kỳ. Việc thiết lập nhóm tài sản, sổ khấu hao và tài khoản định khoản tương ứng thuộc FA 1000 (Cấu hình nhóm tài sản cố định, sổ khấu hao và tài khoản định khoản).
 
 ---
 
@@ -91,10 +93,10 @@ Khi chuyển đổi giữa các hệ thống ERP hoặc tự thiết kế hệ t
 
 ## 5. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
-*   **Tham chiếu đơn hàng:** Đơn mua dịch vụ và tài sản cố định được kế thừa toàn bộ thông tin phê duyệt hạn mức từ bài [4010 Thiết lập luồng phê duyệt PO theo hạn mức tài chính và cấp bậc (PO Approval Workflow)]().
-*   **Đối soát công nợ:** Hóa đơn AP phát sinh từ các đơn hàng này được thực hiện khớp lệnh tại bài [3000 Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match)]() thuộc phân hệ Công nợ.
-*   **Xử lý khi không đạt ngưỡng TSCĐ:** Các khoản mua sắm không đạt ngưỡng ghi nhận sẽ chuyển hướng sang phân hệ theo dõi công cụ dụng cụ và chi phí trả trước, tham khảo bài [ccdc-chi-phi-tra-truoc (CCDC & Prepaid Expense Allocation)]().
-*   **Khởi tạo thẻ tài sản cố định:** Dữ liệu sau khi thông quan hoặc nghiệm thu bàn giao thiết bị được đẩy trực tiếp về phân hệ [Tài sản cố định - FA]() để bắt đầu chu kỳ theo dõi khấu hao trong suốt vòng đời tài sản.
+*   **Tham chiếu đơn hàng:** Đơn mua dịch vụ và tài sản cố định được kế thừa toàn bộ thông tin phê duyệt hạn mức từ bài **[PO 4010 - Thiết lập luồng phê duyệt PO theo hạn mức tài chính và cấp bậc (PO Approval Workflow)](./4010-thiet-lap-luong-phe-duyet-po.md)**.
+*   **Đối soát công nợ:** Hóa đơn AP phát sinh từ các đơn hàng này được thực hiện khớp lệnh tại bài AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match) thuộc phân hệ Công nợ.
+*   **Xử lý khi không đạt ngưỡng TSCĐ:** Các khoản mua sắm không đạt ngưỡng ghi nhận cần được phân bổ dần qua nhiều kỳ. Roadmap hiện chưa có bài riêng cho chủ đề Công cụ dụng cụ (CCDC); cơ chế gần nhất đã có kế hoạch là GL 2020 - Nghiệp vụ hạch toán bút toán phân bổ tự động và bút toán định kỳ cuối tháng (Recurring & Allocation Journals) thuộc phân hệ Sổ cái.
+*   **Khởi tạo thẻ tài sản cố định:** Dữ liệu sau khi thông quan hoặc nghiệm thu bàn giao thiết bị được đẩy trực tiếp về bài FA 2000 - Quy trình mua sắm và vốn hóa tài sản cố định từ đơn mua hàng (Asset Acquisition from PO/AP) để bắt đầu chu kỳ theo dõi khấu hao trong suốt vòng đời tài sản.
 
 ---
 
@@ -106,7 +108,7 @@ Khi chuyển đổi giữa các hệ thống ERP hoặc tự thiết kế hệ t
     *   *Đường dẫn:* `Purchasing Super User > Setup > Document > Line Types`
     *   *Nghiệp vụ:* Khai báo Line Type mới (ví dụ: `Fixed Price Services`), cấu hình thuộc tính `Value Basis = Amount` và `Receiving Routing = 2-Way` (đối chiếu trực tiếp PO-Invoice không cần làm phiếu nhập kho).
 2.  **Khởi tạo PO mua tài sản cố định:**
-    *   *Nghiệp vụ:* Tạo Standard PO thông thường tại bài [4000 Khởi tạo Đơn mua hàng tiêu chuẩn (Standard PO)](). Tại dòng PO, để trống mã Item, nhập mô tả thiết bị tại `Description` và chọn nhóm mua tài sản tại `Category`.
+    *   *Nghiệp vụ:* Tạo Standard PO thông thường tại bài **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard PO)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**. Tại dòng PO, để trống mã Item, nhập mô tả thiết bị tại `Description` và chọn nhóm mua tài sản tại `Category`.
 3.  **Gán tài khoản Asset Clearing:**
     *   *Nghiệp vụ:* Tại tab `Distributions`, chọn tài khoản hạch toán chi phí đầu vào là tài khoản Xây dựng dở dang / Chờ phân bổ tài sản (ví dụ: `2411` hoặc `242`). Trước khi gán, người mua hàng nên đối chiếu giá trị dòng PO với ngưỡng ghi nhận TSCĐ (xem mục 2) để chọn đúng nhóm tài khoản.
 4.  **Chạy chương trình đẩy tài sản sang phân hệ FA:**
@@ -207,8 +209,20 @@ Nếu đội ngũ của bạn đang tự phát triển mô-đun Mua sắm, hãy 
     *   *Giải pháp:* Thiết kế cấu trúc dòng PO hỗ trợ chia nhỏ kế hoạch nghiệm thu dịch vụ (Billing/Milestone Schedule). Mỗi đợt hoàn thành thực tế sẽ được xác nhận thông qua form Nghiệm thu dịch vụ nháp (`Service Acceptance Entry`), hệ thống khóa và trừ dần vào giá trị cam kết tổng của dòng PO.
 4.  **Lỗi mất dấu vết nguồn gốc tài sản (Loss of Traceability):**
     *   *Triệu chứng:* Kế toán tài sản mở phân hệ FA và tự tay gõ thông tin Thẻ tài sản cố định mới mua về. Tuy nhiên, thẻ tài sản này hoàn toàn không có liên kết dữ liệu với số PO mua hàng và số hóa đơn AP ban đầu. Khi cơ quan kiểm toán yêu cầu truy xuất nguồn gốc chứng từ mua sắm của tài sản đó, kế toán phải lật tìm hàng ngàn hồ sơ giấy rất tốn thời gian.
-    *   *Giải pháp:* Thiết kế khóa ngoại liên kết trực tiếp. Bảng thẻ tài sản `FA_Assets` bắt buộc phải lưu trữ thông tin trường `PO_Header_ID` và `Invoice_ID` của giao dịch mua sắm gốc để hỗ trợ tính năng truy vết ngược (Drill-down / Audit Trail) chỉ bằng một cú click chuột trên màn hình.
-    
-<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+    *   *Giải pháp:* Thiết kế khóa ngoại liên kết trực tiếp. Bảng thẻ tài sản `FA_Assets` bắt buộc phải lưu trữ thông tin trường `PO_Header_ID` và `Invoice_ID` của giao dịch mua sắm gốc để hỗ trợ tính năng truy vết ngược (Drill-down / Audit Trail) chỉ bằng một cú click chuột trên màn hình. Quy trình vốn hóa và cấu trúc thẻ tài sản chi tiết thuộc FA 2000 (Asset Acquisition from PO/AP) và FA 7010 (Fixed Asset Register & Depreciation Schedule).
+
+---
+
+## Xem thêm
+
+- **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard Purchase Order Entry)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**
+- **[PO 4010 - Thiết lập luồng phê duyệt PO theo hạn mức tài chính và cấp bậc (PO Approval Workflow)](./4010-thiet-lap-luong-phe-duyet-po.md)**
+- **AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match)**
+- **FA 1000 - Cấu hình nhóm tài sản cố định, sổ khấu hao và tài khoản định khoản (Asset Classes, Books & GL Accounts)**
+- **FA 2000 - Quy trình mua sắm và vốn hóa tài sản cố định từ đơn mua hàng (Asset Acquisition from PO/AP)**
+- **FA 7010 - Thiết lập sổ chi tiết tài sản cố định và bảng tính khấu hao (Fixed Asset Register & Depreciation Schedule)**
+- **GL 2020 - Nghiệp vụ hạch toán bút toán phân bổ tự động và bút toán định kỳ cuối tháng (Recurring & Allocation Journals)**
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
-</p>
+</div>
