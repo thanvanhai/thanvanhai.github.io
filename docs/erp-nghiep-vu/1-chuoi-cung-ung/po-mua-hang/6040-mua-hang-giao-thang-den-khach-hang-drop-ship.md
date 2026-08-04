@@ -15,6 +15,8 @@ tags: [erp, procurement, drop-ship, third-party-order, order-management, sales-i
 
 Nghiệp vụ mua hàng giao thẳng (Drop-shipment / Third-Party Procurement) là giải pháp chuỗi cung ứng tối ưu giúp doanh nghiệp giảm thiểu chi phí lưu kho và vận chuyển. Khi phát sinh đơn đặt hàng từ khách hàng (Sales Order - SO), thay vì nhập hàng về kho của mình rồi mới giao đi, doanh nghiệp phát hành Đơn mua hàng (PO) yêu cầu nhà cung cấp giao thẳng trực tiếp đến địa chỉ của khách hàng. Trên hệ thống ERP, đây là nghiệp vụ tích hợp trực tiếp giữa quy trình Bán hàng (OM/SO) và Mua hàng (PO).
 
+Bài viết này tập trung vào **phía đặt hàng nhà cung cấp giao thẳng (PO)**. Chứng từ bán hàng đối ứng và luồng xác nhận giao hàng cho khách thuộc phân hệ Bán hàng (OM) — xem link ở mục 5 và cuối bài.
+
 ---
 
 ## 1. Bản chất nghiệp vụ & Cơ chế nhận hàng ảo (Logical Receipt)
@@ -22,7 +24,7 @@ Nghiệp vụ mua hàng giao thẳng (Drop-shipment / Third-Party Procurement) l
 ### Vấn đề cốt lõi:
 Trong nghiệp vụ Drop-ship, hàng hóa đi trực tiếp từ kho của nhà cung cấp đến tay khách hàng. Doanh nghiệp hoàn toàn không thực hiện bất kỳ hoạt động bốc dỡ hay lưu trữ vật lý nào tại kho của mình.
 Nếu lập trình viên hệ thống tự xây (In-house) ép buộc thủ kho phải làm phiếu nhập kho vật lý để hệ thống ghi nhận nhập hàng, rồi sau đó lại làm phiếu xuất kho vật lý giao đi:
-*   Hệ thống sẽ ghi nhận số liệu tồn kho ảo (Phantom Stock) trong khoảng thời gian giữa nhập và xuất, làm sai lệch báo cáo kiểm kê kho thực tế tại [8000 Báo cáo tồn kho theo thời điểm (Stock on Hand)]().
+*   Hệ thống sẽ ghi nhận số liệu tồn kho ảo (Phantom Stock) trong khoảng thời gian giữa nhập và xuất, làm sai lệch báo cáo kiểm kê kho thực tế tại **[INV 8000 - Báo cáo tồn kho theo thời điểm (Stock on Hand)](../inv-ton-kho/8000-bao-cao-ton-kho-theo-thoi-diem-stock-on-hand.md)**.
 *   Làm khống các chỉ số hiệu suất vận hành kho (KPIs nhận/xuất hàng của thủ kho).
 
 ### Giải pháp kiến trúc nhận xuất ảo (Logical / Virtual Transaction):
@@ -47,7 +49,7 @@ Trên thực tế, nhà cung cấp không phải lúc nào cũng giao đủ số
 Một số nhà cung cấp — đặc biệt trong giao dịch xuyên biên giới hoặc theo thỏa thuận thương mại đặc thù — xuất hóa đơn GTGT **trực tiếp cho khách hàng cuối** thay vì xuất cho doanh nghiệp trung gian (Drop-ship 3 bên/Triangulation). Trường hợp này khác biệt hoàn toàn với luồng AP/AR chuẩn mô tả ở mục 1:
 *   Doanh nghiệp trung gian **không ghi nhận doanh thu bán hàng đầy đủ và giá vốn hàng bán** theo cách thông thường, mà chỉ ghi nhận phần chênh lệch hoa hồng/phí trung gian (nếu có) hoặc theo thỏa thuận hợp đồng ba bên cụ thể.
 *   Hệ thống cần hỗ trợ cấu hình loại đơn hàng Drop-ship đặc biệt này tách biệt với Drop-ship chuẩn, vì luồng hạch toán AP Accrual/COGS ở mục 1 sẽ **không áp dụng đúng** cho trường hợp tam giác.
-*   Cần tham vấn bộ phận kế toán thuế trước khi thiết kế logic hạch toán, vì quy định về hóa đơn tam giác có yêu cầu pháp lý riêng theo từng thời điểm và loại hình giao dịch.
+*   Cần tham vấn bộ phận kế toán thuế trước khi thiết kế logic hạch toán, vì quy định về hóa đơn tam giác có yêu cầu pháp lý riêng theo từng thời điểm và loại hình giao dịch. Roadmap hiện chưa có bài riêng cho chủ đề này; các quy tắc thuế liên quan đến giao dịch xuyên biên giới gần nhất thuộc nhóm TAX 4010 (Import/Export Duty & Customs Integration) — cần tham vấn trực tiếp kế toán thuế thay vì suy diễn từ tài liệu.
 
 ---
 
@@ -93,10 +95,10 @@ Khi chuyển đổi giữa các hệ thống ERP hoặc tự thiết kế hệ t
 
 ## 5. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
-*   **Đầu vào từ đơn bán hàng:** Toàn bộ thông tin tên mặt hàng, số lượng và địa chỉ giao hàng được thừa hưởng trực tiếp từ đơn SO tại phân hệ Bán hàng, tham khảo bài quy trình bán hàng Drop-shipment thuộc phân hệ Order Management (mã số riêng, không trùng dải 6000 của phân hệ Mua hàng) [Quy trình bán hàng Drop-shipment từ nhà cung cấp (Drop-ship Order Flow - OM)]().
-*   **Tham chiếu đơn mua hàng:** Đơn mua hàng Drop-ship PO được quản lý phê duyệt hạn mức chuẩn theo bài [4010 Thiết lập luồng phê duyệt PO theo hạn mức tài chính và cấp bậc (PO Approval Workflow)]().
-*   **Hạch toán Giá vốn & Doanh thu:** Giao dịch nhận hàng ảo (Logical Receipt) đồng thời kích hoạt luồng hạch toán giá vốn (COGS) gửi sang phân hệ [Tài chính kế toán (Kế toán Giá thành - COST)]() và chuyển trạng thái đơn SO sang sẵn sàng xuất hóa đơn phải thu tại bài [2000 Nghiệp vụ ghi nhận hóa đơn bán hàng (AR Invoice Entry)]().
-*   **Xử lý hóa đơn tam giác:** Trường hợp nhà cung cấp xuất hóa đơn trực tiếp cho khách hàng cuối (mục 2.B) cần phối hợp riêng với bộ phận kế toán thuế, tham khảo thêm tại [Nghiệp vụ hóa đơn ba bên và giao dịch trung gian (Triangulation Invoicing)]().
+*   **Đầu vào từ đơn bán hàng:** Toàn bộ thông tin tên mặt hàng, số lượng và địa chỉ giao hàng được thừa hưởng trực tiếp từ đơn SO tại phân hệ Bán hàng, tham khảo bài OM 6000 - Quy trình bán hàng Drop-shipment từ nhà cung cấp (Drop-ship Order Flow) *(mã số riêng, không trùng dải 6000 của phân hệ Mua hàng)*.
+*   **Tham chiếu đơn mua hàng:** Đơn mua hàng Drop-ship PO được quản lý phê duyệt hạn mức chuẩn theo bài **[PO 4010 - Thiết lập luồng phê duyệt PO theo hạn mức tài chính và cấp bậc (PO Approval Workflow)](./4010-thiet-lap-luong-phe-duyet-po.md)**.
+*   **Hạch toán Giá vốn & Doanh thu:** Giao dịch nhận hàng ảo (Logical Receipt) đồng thời kích hoạt luồng hạch toán giá vốn (COGS). Đây là bút toán giao dịch thương mại thuần túy (không đi qua tính giá thành sản xuất), nên phối hợp với kế toán để xác định đúng tài khoản; luồng xuất hóa đơn bán hàng tương ứng thuộc AP/AR 2000 - Nghiệp vụ ghi nhận hóa đơn bán hàng và hạch toán doanh thu công nợ (AR Invoice Entry & Posting).
+*   **Xử lý hóa đơn tam giác:** Trường hợp nhà cung cấp xuất hóa đơn trực tiếp cho khách hàng cuối (mục 2.B) hiện chưa có bài chuyên trách trong roadmap — cần phối hợp trực tiếp với bộ phận kế toán thuế theo từng thương vụ cụ thể.
 
 ---
 
@@ -236,6 +238,16 @@ Nếu đội ngũ của bạn đang tự phát triển mô-đun Bán hàng và M
     *   *Triệu chứng:* Đội phát triển áp dụng đồng loạt logic AP Accrual/COGS chuẩn (mục 3) cho mọi đơn hàng Drop-ship, kể cả trường hợp nhà cung cấp xuất hóa đơn trực tiếp cho khách hàng cuối (mục 2.B). Điều này dẫn đến doanh nghiệp ghi nhận doanh thu và giá vốn không đúng bản chất giao dịch, có thể vi phạm quy định về hóa đơn chứng từ.
     *   *Giải pháp:* Thiết kế cờ phân loại rõ ràng ngay từ khi tạo SO (`Drop_Ship_Type = 'STANDARD'` hoặc `'TRIANGULATION'`), để hệ thống áp dụng đúng luồng hạch toán tương ứng, và bắt buộc có bước xác nhận từ kế toán thuế trước khi đơn hàng dạng tam giác được xử lý tự động.
 
-<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+---
+
+## Xem thêm
+
+- **[PO 4010 - Thiết lập luồng phê duyệt PO theo hạn mức tài chính và cấp bậc (PO Approval Workflow)](./4010-thiet-lap-luong-phe-duyet-po.md)**
+- **[INV 8000 - Báo cáo tồn kho theo thời điểm (Stock on Hand)](../inv-ton-kho/8000-bao-cao-ton-kho-theo-thoi-diem-stock-on-hand.md)**
+- **OM 6000 - Quy trình bán hàng Drop-shipment từ nhà cung cấp (Drop-ship Order Flow)**
+- **AP/AR 2000 - Nghiệp vụ ghi nhận hóa đơn bán hàng và hạch toán doanh thu công nợ (AR Invoice Entry & Posting)**
+- **TAX 4010 - Tích hợp thuế Xuất nhập khẩu với phân hệ Logistics/Hải quan (Import/Export Duty & Customs Integration)**
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
-</p>
+</div>

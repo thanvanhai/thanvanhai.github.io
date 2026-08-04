@@ -15,6 +15,8 @@ tags: [erp, procurement, 3-way-match, 2-way-match, invoice-verification, account
 
 Quy trình đối soát hóa đơn mua hàng đầu vào (Invoice Verification / Matching) là bước kiểm soát cuối cùng của chu trình Mua hàng đến Thanh toán (Procure-to-Pay). Việc áp dụng nghiêm ngặt các nguyên lý đối soát khớp lệnh 2 chiều, 3 chiều hoặc 4 chiều trên hệ thống ERP là chốt chặn quan trọng nhất để bảo vệ dòng tiền của doanh nghiệp, đảm bảo bộ phận kế toán phải trả (AP) chỉ thực hiện thanh toán đúng với những gì doanh nghiệp thực tế đặt mua và thực tế đã nhập kho đạt chất lượng.
 
+Bài viết này là bài gốc trình bày **nguyên lý và kỹ thuật đối soát**. Bước ghi nhận hóa đơn chính thức vào sổ công nợ sau khi khớp lệnh thành công thuộc AP/AR 3000 (AP Invoice Match - PO & Non-PO); các hệ quả kế toán chuyên sâu hơn (đối chiếu tài khoản trung gian, chênh lệch giá mua, chênh lệch tỷ giá, thuế GTGT, hóa đơn điều chỉnh) được link tới bài chuyên trách ngay tại từng mục bên dưới.
+
 ---
 
 ## 1. Bản chất nghiệp vụ & Các cơ chế đối soát (PO Matching Rules)
@@ -99,27 +101,28 @@ Nếu hệ thống kế toán ghi nhận ngay công nợ AP phải trả tại t
     * `Nợ TK 3388 (Nhận hàng chưa có hóa đơn) / Có TK 331 (Phải trả người bán AP)`
     * *Kết quả:* Số dư tài khoản trung gian `3388` tự động triệt tiêu về không nếu hóa đơn và phiếu nhập kho khớp nhau hoàn toàn.
 
-> **Lưu ý quan trọng:** Đây là giải pháp thiết kế tùy biến để giải quyết bài toán kỹ thuật (chưa có hóa đơn nhưng đã có hàng), không phải là quy định bắt buộc trong chế độ kế toán Việt Nam. Doanh nghiệp cần thống nhất với kiểm toán và cơ quan thuế về việc sử dụng tiểu khoản này trước khi triển khai trên hệ thống chính thức.
+> **Lưu ý quan trọng:** Đây là giải pháp thiết kế tùy biến để giải quyết bài toán kỹ thuật (chưa có hóa đơn nhưng đã có hàng), không phải là quy định bắt buộc trong chế độ kế toán Việt Nam. Doanh nghiệp cần thống nhất với kiểm toán và cơ quan thuế về việc sử dụng tiểu khoản này trước khi triển khai trên hệ thống chính thức. Việc đối chiếu định kỳ số dư tài khoản trung gian này để phát hiện các khoản treo lâu ngày (hàng đã nhận nhưng mãi chưa có hóa đơn, hoặc ngược lại) là một nghiệp vụ riêng, xem AP/AR 4030 (Đối chiếu và xử lý tài khoản trung gian Nhận hàng chưa có hóa đơn - GR/IR Clearing Account Reconciliation).
 
 ### Chênh lệch tỷ giá (Exchange Rate Variance) khi PO bằng ngoại tệ
 
-Với các PO đặt bằng ngoại tệ (USD, EUR...), tỷ giá áp dụng tại thời điểm nhập kho (GRN) thường khác với tỷ giá tại thời điểm ghi nhận hóa đơn AP, do biến động tỷ giá liên ngân hàng theo ngày. Hệ thống cần tách riêng phần chênh lệch này ra tài khoản doanh thu/chi phí tài chính (TK 515 nếu lãi tỷ giá, TK 635 nếu lỗ tỷ giá), không được gộp chung vào chênh lệch giá mua hàng hóa (IPV) ở mục 7 bên dưới, vì bản chất hai loại chênh lệch này khác nhau hoàn toàn.
+Với các PO đặt bằng ngoại tệ (USD, EUR...), tỷ giá áp dụng tại thời điểm nhập kho (GRN) thường khác với tỷ giá tại thời điểm ghi nhận hóa đơn AP, do biến động tỷ giá liên ngân hàng theo ngày. Hệ thống cần tách riêng phần chênh lệch này ra tài khoản doanh thu/chi phí tài chính (TK 515 nếu lãi tỷ giá, TK 635 nếu lỗ tỷ giá), không được gộp chung vào chênh lệch giá mua hàng hóa (IPV) ở mục 7 bên dưới, vì bản chất hai loại chênh lệch này khác nhau hoàn toàn. Nguyên lý đánh giá lại số dư ngoại tệ nói chung xem GL 4000 (GL Foreign Exchange Revaluation).
 
 ### Thuế GTGT đầu vào
 
-Đối soát 3 chiều/2 chiều/4 chiều luôn thực hiện trên **giá trị trước thuế (net amount)**. Thuế GTGT đầu vào được tách riêng và hạch toán vào TK 1331, không đưa vào phép so khớp số lượng/đơn giá giữa PO – GRN – Invoice, để tránh sai lệch điều kiện khớp lệnh do thuế suất khác nhau giữa các dòng hàng.
+Đối soát 3 chiều/2 chiều/4 chiều luôn thực hiện trên **giá trị trước thuế (net amount)**. Thuế GTGT đầu vào được tách riêng và hạch toán vào TK 1331, không đưa vào phép so khớp số lượng/đơn giá giữa PO – GRN – Invoice, để tránh sai lệch điều kiện khớp lệnh do thuế suất khác nhau giữa các dòng hàng. Nghiệp vụ kiểm soát, đối chiếu và khấu trừ thuế GTGT đầu vào đầy đủ xem TAX 2000.
 
 ### Xử lý Credit Memo (hóa đơn điều chỉnh giảm)
 
-Khi nhà cung cấp phát hành hóa đơn điều chỉnh giảm (credit note) do trả hàng hoặc điều chỉnh giá sau khi hóa đơn gốc đã được khớp lệnh và thanh toán, hệ thống cần cho phép đối soát credit memo ngược lại với hóa đơn gốc (tham chiếu theo PO/GRN đã dùng), đồng thời giảm trừ số lượng/giá trị đã ghi nhận là "đã khớp" trên GRN gốc để không làm sai lệch số liệu kiểm soát về sau.
+Khi nhà cung cấp phát hành hóa đơn điều chỉnh giảm (credit note) do trả hàng hoặc điều chỉnh giá sau khi hóa đơn gốc đã được khớp lệnh và thanh toán, hệ thống cần cho phép đối soát credit memo ngược lại với hóa đơn gốc (tham chiếu theo PO/GRN đã dùng), đồng thời giảm trừ số lượng/giá trị đã ghi nhận là "đã khớp" trên GRN gốc để không làm sai lệch số liệu kiểm soát về sau. Quy trình xuất và đối soát Debit/Credit Memo đầy đủ xem AP/AR 6020 (Debit/Credit Memo Posting & Matching).
 
 ---
 
 ## 4. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
-* **Tham chiếu đơn hàng:** Đối soát hóa đơn kế toán bắt buộc phải đối chiếu trực tiếp với thông tin đơn hàng đã ký duyệt tại [4000 Khởi tạo Đơn mua hàng tiêu chuẩn (Standard PO)]().
-* **Đối chiếu phiếu nhập kho:** Số lượng hóa đơn đầu vào bắt buộc phải so khớp với số lượng thực nhận trên phiếu nhập kho tại bài [1000 Nhập kho từ mua hàng (Receipt from PO)]() thuộc phân hệ Tồn kho.
-* **Chuyển giao cho AP:** Hóa đơn sau khi được đối soát thành công thông qua bài viết này sẽ được đẩy trực tiếp về bài [3020 Nghiệp vụ chi tiền thanh toán và đối trừ hóa đơn nhà cung cấp (Vendor Payment Run)]() thuộc phân hệ AP bên FIN để thực hiện chi tiền.
+* **Tham chiếu đơn hàng:** Đối soát hóa đơn kế toán bắt buộc phải đối chiếu trực tiếp với thông tin đơn hàng đã ký duyệt tại **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard PO)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**.
+* **Đối chiếu phiếu nhập kho:** Số lượng hóa đơn đầu vào bắt buộc phải so khớp với số lượng thực nhận trên phiếu nhập kho tại bài **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../inv-ton-kho/1000-nhap-kho-tu-mua-hang-po.md)** thuộc phân hệ Tồn kho.
+* **Ghi nhận hóa đơn chính thức:** Sau khi khớp lệnh thành công theo nguyên lý trong bài này, hóa đơn được ghi sổ chính thức tại bài AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match - PO & Non-PO).
+* **Chuyển giao cho thanh toán:** Hóa đơn sau khi được đối soát thành công thông qua bài viết này sẽ được đẩy trực tiếp về bài AP/AR 3020 - Nghiệp vụ chi tiền thanh toán và đối trừ hóa đơn nhà cung cấp (Vendor Payment Run) thuộc phân hệ AP bên FIN để thực hiện chi tiền.
 
 ---
 
@@ -169,7 +172,8 @@ SELECT
     ail.quantity_invoiced         AS qty_invoiced,
     ail.unit_price                AS matched_unit_price,
     rsh.receipt_num               AS receipt_number,
-    ail.rcv_transaction_id        AS linked_grn_trx_id
+    ail.rcv_transaction_id        AS linked_grn_trx_id,
+    aia.source                    AS invoice_source
 FROM 
     ap_invoices_all aia
 INNER JOIN 
@@ -179,19 +183,24 @@ INNER JOIN
 INNER JOIN 
     hz_parties hp ON aps.party_id = hp.party_id
 INNER JOIN 
-    po_headers_all pha ON aia.po_header_id = pha.po_header_id
-INNER JOIN 
-    po_lines_all pla ON ail.po_line_id = pla.po_line_id
-INNER JOIN 
     hr_operating_units hou ON aia.org_id = hou.organization_id
+LEFT JOIN 
+    po_lines_all pla ON ail.po_line_id = pla.po_line_id
+LEFT JOIN 
+    po_headers_all pha ON pla.po_header_id = pha.po_header_id
 LEFT JOIN 
     rcv_transactions rt ON ail.rcv_transaction_id = rt.transaction_id
 LEFT JOIN 
     rcv_shipment_headers rsh ON rt.shipment_header_id = rsh.shipment_header_id
 WHERE 
-    aia.source = 'RCV' OR ail.po_line_id IS NOT NULL
+    -- Chỉ lấy các hóa đơn đã được đối soát (Matched)
+    (ail.po_line_id IS NOT NULL OR ail.rcv_transaction_id IS NOT NULL)
+    --AND aia.invoice_date >= TRUNC(SYSDATE) - 90  -- Tùy chỉnh khoảng thời gian
+    AND aia.cancelled_date IS NULL               -- Loại bỏ hóa đơn đã hủy
 ORDER BY 
-    aia.invoice_date DESC, aia.invoice_num;
+    aia.invoice_date DESC, 
+    aia.invoice_num
+--FETCH FIRST 10000 ROWS ONLY;  -- Giới hạn để tránh tràn bộ nhớ
 ```
 
 ### B. Cho Epicor ERP (Truy vấn cơ sở dữ liệu SQL Server)
@@ -237,7 +246,7 @@ Nếu đội ngũ của bạn đang tự phát triển mô-đun hóa đơn và �
 
 2. **Lỗi "treo" tài khoản trung gian do lệch đơn giá:**
     * *Triệu chứng:* Thủ kho nhập kho 100 cái với giá tạm tính trên PO là 10$/cái (Ghi Có tài khoản trung gian là 1.000$). Khi hóa đơn nhà cung cấp về, đơn giá thực tế tăng lên thành 11$/cái (Kế toán AP hạch toán ghi Nợ tài khoản trung gian là 1.100$ và ghi Có tài khoản công nợ `331` là 1.100$). Việc này khiến tài khoản trung gian bị lệch dư Nợ 100$ vĩnh viễn trên sổ cái tài chính.
-    * *Giải pháp:* Thiết kế cơ chế tự động ghi nhận chênh lệch giá mua (Invoice Price Variance - IPV). Hệ thống tự xây phải tự động phát hiện lệch đơn giá, tự động tất toán số dư 1.000$ của tài khoản trung gian để triệt tiêu về không, và tự động hạch toán phần chênh lệch 100$ vào tài khoản chênh lệch IPV đã cấu hình trước — tách biệt hoàn toàn với chênh lệch tỷ giá đã nêu ở Mục 3.
+    * *Giải pháp:* Thiết kế cơ chế tự động ghi nhận chênh lệch giá mua (Invoice Price Variance - IPV). Hệ thống tự xây phải tự động phát hiện lệch đơn giá, tự động tất toán số dư 1.000$ của tài khoản trung gian để triệt tiêu về không, và tự động hạch toán phần chênh lệch 100$ vào tài khoản chênh lệch IPV đã cấu hình trước — tách biệt hoàn toàn với chênh lệch tỷ giá đã nêu ở Mục 3. Phân tích và kết chuyển chênh lệch giá thành thực tế so với định mức ở quy mô toàn doanh nghiệp xem COST 4000 (Phân tích chênh lệch giá thành thực tế so với định mức).
 
 3. **Lỗi khóa chết dòng PO đang đối soát (Database Lock / Race Condition):**
     * *Triệu chứng:* Hai kế toán AP cùng mở hai màn hình khác nhau để khớp hai hóa đơn khác nhau của cùng một nhà cung cấp vào cùng một số đơn hàng PO. Khi cả hai cùng bấm lưu ở cùng một giây, hệ thống có thể bị lỗi xung đột hoặc ghi nhận sai lệch số lượng `Qty_Invoiced` do không có cơ chế khóa tuần tự.
@@ -247,6 +256,20 @@ Nếu đội ngũ của bạn đang tự phát triển mô-đun hóa đơn và �
     * *Triệu chứng:* Trong thực tế, chứng từ hóa đơn giấy từ nhà cung cấp thường về đến bộ phận AP nhanh hơn tốc độ thủ kho hoàn tất nhập kho hệ thống — đặc biệt với hàng nhập khẩu có thời gian thông quan kéo dài. Nếu hệ thống tự xây xử lý cứng nhắc theo kiểu "không có GRN thì từ chối hẳn hóa đơn", kế toán AP sẽ không thể nhập liệu trước, dẫn đến dồn ứ công việc vào cuối kỳ.
     * *Giải pháp:* Thiết kế trạng thái trung gian **"Chờ khớp lệnh" (Parked / Pending Match)** cho phép kế toán AP nhập trước thông tin hóa đơn vào hệ thống, hóa đơn ở trạng thái này chưa được tính vào công nợ chính thức và chưa thể chuyển sang kỳ thanh toán. Khi GRN tương ứng phát sinh, hệ thống tự động dò tìm và gợi ý ghép nối hóa đơn đang chờ với phiếu nhập kho mới về.
 
-<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
+---
+
+## Xem thêm
+
+- **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard Purchase Order Entry)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**
+- **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../inv-ton-kho/1000-nhap-kho-tu-mua-hang-po.md)**
+- **AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match - PO & Non-PO)**
+- **AP/AR 3020 - Nghiệp vụ chi tiền thanh toán và đối trừ hóa đơn nhà cung cấp (Vendor Payment Run)**
+- **AP/AR 4030 - Đối chiếu và xử lý tài khoản trung gian Nhận hàng chưa có hóa đơn (GR/IR Clearing Account Reconciliation)**
+- **AP/AR 6020 - Nghiệp vụ xử lý hóa đơn điều chỉnh tăng/giảm và hóa đơn trả lại (Debit/Credit Memo Posting & Matching)**
+- **COST 4000 - Phân tích chi tiết các loại chênh lệch giá thành thực tế so với định mức (Material/Labor/Overhead Variance Analysis)**
+- **GL 4000 - Quản lý tỷ giá đa tiền tệ và nghiệp vụ đánh giá lại số dư tài khoản ngoại tệ (GL Foreign Exchange Revaluation)**
+- **TAX 2000 - Nghiệp vụ kiểm soát, đối chiếu và khấu trừ thuế GTGT đầu vào (Input VAT Reconciliation & Verification)**
+
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
-</p>
+</div>

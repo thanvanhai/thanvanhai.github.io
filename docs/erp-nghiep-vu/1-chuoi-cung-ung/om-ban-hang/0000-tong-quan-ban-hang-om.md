@@ -38,12 +38,12 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 
 - [x] [4000 Cơ chế kiểm tra khả năng cung ứng hàng hóa (ATP - Available to Promise)](./4000-co-che-kiem-tra-kha-nang-cung-ung-hang-hoa-atp.md)
 - [x] [4010 Quy tắc giữ hàng và phân bổ tồn kho tối ưu (Inventory Allocation & Reservation Rules)](./4010-quy-tac-giu-hang-va-phan-bo-ton-kho-toi-uu.md)
-- [ ] [4020 Thiết lập luồng phê duyệt đơn hàng tự động theo điều kiện (Auto-approval Workflow)]()
-- [ ] [4030 Cơ chế kiểm tra tín dụng và chặn giao/xuất hóa đơn tại thời điểm lưu đơn (Credit Check, Delivery Block & Billing Block)]()
+- [x] [4020 Thiết lập luồng phê duyệt đơn hàng tự động theo điều kiện (Auto-approval Workflow)](./4020-thiet-lap-luong-phe-duyet-don-hang-tu-dong.md)
+- [x] [4030 Cơ chế kiểm tra tín dụng và chặn giao/xuất hóa đơn tại thời điểm lưu đơn (Credit Check, Delivery Block & Billing Block)](./4030-co-che-kiem-tra-tin-dung-va-chan-giao-xuat-hoa-don.md)
 
 ## 5. Điều phối giao hàng & Vận chuyển (Fulfillment & Logistics Integration)
 
-- [ ] [5000 Chỉ thị chuẩn bị hàng, gom đơn và phân vùng đóng gói (Pick Release & Wave Planning)]()
+- [x] [5000 Chỉ thị chuẩn bị hàng, gom đơn và phân vùng đóng gói (Pick Release & Wave Planning)](./5000-chi-thi-chuan-bi-hang-gom-don-va-phan-vung-dong-goi.md)
 - [ ] [5010 Giải pháp kết nối đơn vị vận chuyển thứ ba và theo dõi hành trình (3PL Logistics Integration & Tracking)]()
 - [ ] [5020 Xác nhận giao hàng thành công và bàn giao trách nhiệm (Ship Confirmation / POD)]()
 - [ ] [5030 Quản lý thay đổi đơn hàng sau khi đã xác nhận/phân bổ tồn kho (Order Change Management)]()
