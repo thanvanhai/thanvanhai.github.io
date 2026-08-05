@@ -44,14 +44,14 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 ## 5. Điều phối giao hàng & Vận chuyển (Fulfillment & Logistics Integration)
 
 - [x] [5000 Chỉ thị chuẩn bị hàng, gom đơn và phân vùng đóng gói (Pick Release & Wave Planning)](./5000-chi-thi-chuan-bi-hang-gom-don-va-phan-vung-dong-goi.md)
-- [ ] [5010 Giải pháp kết nối đơn vị vận chuyển thứ ba và theo dõi hành trình (3PL Logistics Integration & Tracking)]()
-- [ ] [5020 Xác nhận giao hàng thành công và bàn giao trách nhiệm (Ship Confirmation / POD)]()
-- [ ] [5030 Quản lý thay đổi đơn hàng sau khi đã xác nhận/phân bổ tồn kho (Order Change Management)]()
+- [x] [5010 Giải pháp kết nối đơn vị vận chuyển thứ ba và theo dõi hành trình (3PL Logistics Integration & Tracking)](./5010-giai-phap-ket-noi-don-vi-van-chuyen-thu-ba-va-theo-doi-hanh-trinh.md)
+- [x] [5020 Xác nhận giao hàng thành công và bàn giao trách nhiệm (Ship Confirmation / POD)](./5020-xac-nhan-giao-hang-thanh-cong-va-ban-giao-trach-nhiem.md)
+- [x] [5030 Quản lý thay đổi đơn hàng sau khi đã xác nhận/phân bổ tồn kho (Order Change Management)](./5030-quan-ly-thay-doi-don-hang-sau-khi-da-xac-nhan-phan-bo.md)
 
 ## 6. Các mô hình bán hàng đặc thù (Specialized Sales Scenarios)
 
-- [ ] [6000 Quy trình bán hàng Drop-shipment từ nhà cung cấp (Drop-ship Order Flow)]()
-- [ ] [6010 Quy trình bán hàng liên kết mua hàng/sản xuất trực tiếp (Back-to-back Order Flow)]()
+- [x] [6000 Quy trình bán hàng Drop-shipment từ nhà cung cấp (Drop-ship Order Flow)](./6000-quy-trinh-ban-hang-drop-shipment-tu-nha-cung-cap.md)
+- [x] [6010 Quy trình bán hàng liên kết mua hàng/sản xuất trực tiếp (Back-to-back Order Flow)](./6010-quy-trinh-ban-hang-lien-ket-mua-hang-san-xuat-truc-tiep.md)
 - [ ] [6020 Quản lý đơn hàng ký gửi đại lý và đối soát tiêu dùng (Consignment Sales Order)]()
 - [ ] [6030 Quy trình xử lý đơn hàng xuất khẩu và thủ tục liên quan (Export Sales Order Flow)]()
 - [ ] [6040 Quản lý đơn hàng nội bộ giữa các công ty/chi nhánh (Intercompany Sales Order)]()
