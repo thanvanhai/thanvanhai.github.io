@@ -52,30 +52,22 @@ Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu 
 
 - [x] [6000 Quy trình bán hàng Drop-shipment từ nhà cung cấp (Drop-ship Order Flow)](./6000-quy-trinh-ban-hang-drop-shipment-tu-nha-cung-cap.md)
 - [x] [6010 Quy trình bán hàng liên kết mua hàng/sản xuất trực tiếp (Back-to-back Order Flow)](./6010-quy-trinh-ban-hang-lien-ket-mua-hang-san-xuat-truc-tiep.md)
-- [ ] [6020 Quản lý đơn hàng ký gửi đại lý và đối soát tiêu dùng (Consignment Sales Order)]()
-- [ ] [6030 Quy trình xử lý đơn hàng xuất khẩu và thủ tục liên quan (Export Sales Order Flow)]()
-- [ ] [6040 Quản lý đơn hàng nội bộ giữa các công ty/chi nhánh (Intercompany Sales Order)]()
+- [x] [6020 Quản lý đơn hàng ký gửi đại lý và đối soát tiêu dùng (Consignment Sales Order)](./6020-quan-ly-don-hang-ky-gui-dai-ly-va-doi-soat-tieu-dung.md)
+- [x] [6030 Quy trình xử lý đơn hàng xuất khẩu và thủ tục liên quan (Export Sales Order Flow)](./6030-quy-trinh-xu-ly-don-hang-xuat-khau.md)
+- [x] [6040 Quản lý đơn hàng nội bộ giữa các công ty/chi nhánh (Intercompany Sales Order)](./6040-quan-ly-don-hang-noi-bo-giua-cac-cong-ty-chi-nhanh.md)
 
-## 7. Hóa đơn & Ghi nhận tài chính (Billing & Revenue)
+## 7. Đổi trả hàng & Xử lý khiếu nại (RMA & Reverse Logistics)
 
-- [ ] [7000 Xuất hóa đơn bán hàng và đồng bộ hóa đơn điện tử (AR Invoicing & E-Invoice Integration)]()
-- [ ] [7010 Quy tắc ghi nhận doanh thu theo tiêu chuẩn kế toán (Revenue Recognition Rules - IFRS 15 / VAS)]()
-- [ ] [7020 Khấu trừ công nợ và đối soát dòng tiền cổng thanh toán (Payment Gateway Reconciliation)]()
-- [ ] [7030 Xuất hóa đơn theo tiến độ/mốc thời gian (Billing Plan / Milestone Billing)]()
-- [ ] [7040 Xử lý tạm ứng và hóa đơn đặt cọc (Down Payment / Advance Payment Invoice)]()
+- [x] [7000 Quy trình phê duyệt yêu cầu khách trả hàng (RMA Approval Flow)](./7000-quy-trinh-phe-duyet-yeu-cau-khach-tra-hang-rma.md)
+- [ ] [7010 Nhập kho hàng trả lại và hạch toán giảm trừ công nợ (RMA Receipt & Credit Memo)]()
+- [ ] [7020 Xử lý đơn hàng đổi mới hoặc bồi thường hư hỏng (Exchange & Damage Claims)]()
 
-## 8. Đổi trả hàng & Xử lý khiếu nại (RMA & Reverse Logistics)
+## 8. Báo cáo & Tối ưu vận hành (Analytics & Troubleshooting)
 
-- [ ] [8000 Quy trình phê duyệt yêu cầu khách trả hàng (RMA Approval Flow)]()
-- [ ] [8010 Nhập kho hàng trả lại và hạch toán giảm trừ công nợ (RMA Receipt & Credit Memo)]()
-- [ ] [8020 Xử lý đơn hàng đổi mới hoặc bồi thường hư hỏng (Exchange & Damage Claims)]()
-
-## 9. Báo cáo & Tối ưu vận hành (Analytics & Troubleshooting)
-
-- [ ] [9000 Báo cáo tỷ lệ hoàn thành đơn hàng và phân tích backlog (Order Fill Rate & Backlog Report)]()
-- [ ] [9010 Phân tích hiệu suất bán hàng đa kênh và đóng góp doanh thu (Omnichannel Sales Analytics)]()
-- [ ] [9020 Cách xử lý lỗi giữ hàng ảo và nghẽn đơn giờ cao điểm (Ghost Reservation & Concurrency Issues)]()
-- [ ] [9030 Quản lý đa tiền tệ và hợp nhất báo cáo liên công ty (Multi-currency & Multi-company Consolidation)]()
+- [ ] [8000 Báo cáo tỷ lệ hoàn thành đơn hàng và phân tích backlog (Order Fill Rate & Backlog Report)]()
+- [ ] [8010 Phân tích hiệu suất bán hàng đa kênh và đóng góp doanh thu (Omnichannel Sales Analytics)]()
+- [ ] [8020 Cách xử lý lỗi giữ hàng ảo và nghẽn đơn giờ cao điểm (Ghost Reservation & Concurrency Issues)]()
+- [ ] [8030 Quản lý đa tiền tệ và hợp nhất báo cáo liên công ty (Multi-currency & Multi-company Consolidation)]()
 
 ---
 
