@@ -4,7 +4,7 @@ title: Tổng quan Kế toán Sổ cái (General Ledger)
 sidebar_label: Tổng quan Sổ cái (GL)
 slug: /erp-nghiep-vu/3-tai-chinh-ke-toan/fin-so-cai/tong-quan
 sidebar_position: 1
-date: 2026-07-21
+date: 2026-08-29
 tags: [erp, finance, accounting, general-ledger, gl, chart-of-accounts, consolidation, financial-statements, closing, budgetary-control, audit-trail, tong-quan, roadmap]
 ---
 
@@ -13,6 +13,10 @@ tags: [erp, finance, accounting, general-ledger, gl, chart-of-accounts, consolid
 Trang này tổng hợp lộ trình các bài viết nghiên cứu chuyên sâu về nghiệp vụ **Kế toán Sổ cái & Báo cáo Tài chính (General Ledger - GL)** trong hệ thống ERP doanh nghiệp. Đây là phân hệ trung tâm tích hợp toàn bộ dữ liệu kế toán chi tiết, chịu trách nhiệm kiểm soát ngân sách, khóa sổ kỳ kế toán và lập các báo cáo tài chính hợp pháp.
 
 Các mục dưới đây sẽ được cập nhật liên kết dần sau khi bài viết tương ứng được hoàn thành.
+
+## 0. Kiến trúc nền tảng (đọc trước khi setup COA)
+
+- [x] [Chiến lược Kiến trúc Legal Entity & Ledger: Tách riêng hay Gộp chung một Sổ cái?](/erp-nghiep-vu/3-tai-chinh-ke-toan/fin-so-cai/kien-truc-legal-entity-ledger)
 
 ## 1. Hệ thống tài khoản & Cấu trúc Sổ cái (Chart of Accounts & Organization)
 
@@ -75,3 +79,6 @@ Sổ cái là nơi thể hiện rõ nhất triết lý thiết kế cơ sở d�
 | **Odoo** | Sử dụng một cơ sở dữ liệu hợp nhất tối giản. Odoo loại bỏ hoàn toàn cấu trúc bảng phân tách giữa sổ chi tiết (Subledger) và Sổ cái (GL). Mọi giao dịch phát sinh (Hóa đơn, Thanh toán, Dịch chuyển kho) đều ghi nhận trực tiếp vào bảng dòng bút toán chung (`account.move` và `account.move.line`). Các kích thước tài chính thay vì chia đoạn trên tài khoản thì được quản lý thông qua tính năng **Kế toán phân tích (Analytic Accounts / Analytic Tags)**. Quy trình khóa sổ kế toán được đơn giản hóa tối đa nhưng đòi hỏi người dùng hiểu rõ bản chất hạch toán của Odoo để tránh các bút toán rác. |
 | **Microsoft Dynamics 365 F&O** | Cấu trúc COA linh hoạt qua **Main Account** kết hợp với **Financial Dimensions** (không giới hạn số chiều phân tích, khác với Segment cố định của Oracle). Có module **Budgeting** riêng hỗ trợ Budget Control với cảnh báo/chặn vượt ngân sách theo thời gian thực khi hạch toán. Hỗ trợ Consolidation qua công ty ảo (Consolidation Company). |
 | **NetSuite** | Kiến trúc đơn giản tương tự Odoo, dữ liệu tập trung tại bảng Transaction Line hợp nhất. Điểm mạnh nằm ở khả năng đóng sổ nhanh (Close Management) với checklist trực quan, tính năng **OneWorld** hỗ trợ hợp nhất báo cáo đa công ty, đa tiền tệ, đa chuẩn mực khá tốt cho doanh nghiệp vừa có nhiều pháp nhân quốc tế. |
+<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
+  <strong>Chúc các bạn thành công và vui vẻ!</strong>
+</div>
