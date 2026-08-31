@@ -3,7 +3,7 @@ id: tong-quan-ke-toan-so-cai-fin
 title: Tổng quan Kế toán Sổ cái (General Ledger)
 sidebar_label: Tổng quan Sổ cái (GL)
 slug: /erp-nghiep-vu/3-tai-chinh-ke-toan/fin-so-cai/tong-quan
-sidebar_position: 1
+sidebar_position: 2
 date: 2026-08-29
 tags: [erp, finance, accounting, general-ledger, gl, chart-of-accounts, consolidation, financial-statements, closing, budgetary-control, audit-trail, tong-quan, roadmap]
 ---
@@ -16,7 +16,7 @@ Các mục dưới đây sẽ được cập nhật liên kết dần sau khi b�
 
 ## 0. Kiến trúc nền tảng (đọc trước khi setup COA)
 
-- [x] [Chiến lược Kiến trúc Legal Entity & Ledger: Tách riêng hay Gộp chung một Sổ cái?](/erp-nghiep-vu/3-tai-chinh-ke-toan/fin-so-cai/kien-truc-legal-entity-ledger)
+- [x] [Chiến lược Kiến trúc Legal Entity & Ledger: Tách riêng hay Gộp chung một Sổ cái?](./kien-truc-legal-entity-ledger.md)
 
 ## 1. Hệ thống tài khoản & Cấu trúc Sổ cái (Chart of Accounts & Organization)
 
