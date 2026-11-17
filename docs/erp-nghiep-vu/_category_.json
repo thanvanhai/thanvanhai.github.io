@@ -1,4 +1,8 @@
-﻿{
+{
   "label": "ERP Nghiệp vụ",
-  "position": 2
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "erp-nghiep-vu/index"
+  }
 }

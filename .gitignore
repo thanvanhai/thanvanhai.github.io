@@ -1,6 +1,6 @@
 # Dependencies
 /node_modules
-
+/tools
 # Production
 /build
 
@@ -18,3 +18,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+serve.log
+build.log
