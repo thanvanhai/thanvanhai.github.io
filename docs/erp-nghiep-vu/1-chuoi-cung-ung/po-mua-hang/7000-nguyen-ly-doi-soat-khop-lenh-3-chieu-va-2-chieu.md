@@ -120,7 +120,7 @@ Khi nhà cung cấp phát hành hóa đơn điều chỉnh giảm (credit note) 
 ## 4. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
 * **Tham chiếu đơn hàng:** Đối soát hóa đơn kế toán bắt buộc phải đối chiếu trực tiếp với thông tin đơn hàng đã ký duyệt tại **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard PO)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**.
-* **Đối chiếu phiếu nhập kho:** Số lượng hóa đơn đầu vào bắt buộc phải so khớp với số lượng thực nhận trên phiếu nhập kho tại bài **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../inv-ton-kho/1000-nhap-kho-tu-mua-hang-po.md)** thuộc phân hệ Tồn kho.
+* **Đối chiếu phiếu nhập kho:** Số lượng hóa đơn đầu vào bắt buộc phải so khớp với số lượng thực nhận trên phiếu nhập kho tại bài **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)** thuộc phân hệ Tồn kho.
 * **Ghi nhận hóa đơn chính thức:** Sau khi khớp lệnh thành công theo nguyên lý trong bài này, hóa đơn được ghi sổ chính thức tại bài AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match - PO & Non-PO).
 * **Chuyển giao cho thanh toán:** Hóa đơn sau khi được đối soát thành công thông qua bài viết này sẽ được đẩy trực tiếp về bài AP/AR 3020 - Nghiệp vụ chi tiền thanh toán và đối trừ hóa đơn nhà cung cấp (Vendor Payment Run) thuộc phân hệ AP bên FIN để thực hiện chi tiền.
 
@@ -261,7 +261,7 @@ Nếu đội ngũ của bạn đang tự phát triển mô-đun hóa đơn và �
 ## Xem thêm
 
 - **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard Purchase Order Entry)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**
-- **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../inv-ton-kho/1000-nhap-kho-tu-mua-hang-po.md)**
+- **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)**
 - **AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match - PO & Non-PO)**
 - **AP/AR 3020 - Nghiệp vụ chi tiền thanh toán và đối trừ hóa đơn nhà cung cấp (Vendor Payment Run)**
 - **AP/AR 4030 - Đối chiếu và xử lý tài khoản trung gian Nhận hàng chưa có hóa đơn (GR/IR Clearing Account Reconciliation)**

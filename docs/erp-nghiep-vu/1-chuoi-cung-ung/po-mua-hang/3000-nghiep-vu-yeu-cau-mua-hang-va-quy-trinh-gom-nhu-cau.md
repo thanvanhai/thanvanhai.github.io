@@ -56,8 +56,8 @@ flowchart TD
 Yêu cầu mua sắm PR là điểm tiếp nhận và xử lý chéo nhu cầu từ khắp các phân hệ trong doanh nghiệp:
 
 ### A. Tiếp nhận nhu cầu từ phân hệ Tồn kho (INV) và Sản xuất (MFG)
-*   **Điểm bổ sung kho tự động:** Khi tồn kho xuống dưới mức an toàn, hệ thống tự động khởi tạo PR dựa trên cấu hình tại [7030 Thiết lập điểm đặt hàng lại (Reorder Point / Min-Max)](../inv-ton-kho/7030-thiet-lap-diem-dat-hang-lai-reorder-point-min-max.md).
-*   **Mua hàng phục vụ lệnh sản xuất:** Khi lệnh sản xuất dở dang phát sinh nhu cầu mua nguyên vật liệu thầu phụ, hệ thống tự động đẩy yêu cầu mua hàng sang phân hệ PO thông qua luồng [2010 Xuất kho cho sản xuất (Issue for Work Order/BOM)](../inv-ton-kho/2010-xuat-kho-cho-san-xuat-bom.md).
+*   **Điểm bổ sung kho tự động:** Khi tồn kho xuống dưới mức an toàn, hệ thống tự động khởi tạo PR dựa trên cấu hình tại [7030 Thiết lập điểm đặt hàng lại (Reorder Point / Min-Max)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md).
+*   **Mua hàng phục vụ lệnh sản xuất:** Khi lệnh sản xuất dở dang phát sinh nhu cầu mua nguyên vật liệu thầu phụ, hệ thống tự động đẩy yêu cầu mua hàng sang phân hệ PO thông qua luồng [2010 Xuất kho cho sản xuất (Issue for Work Order/BOM)](../../1-kho/3000-giao-dich-nhap-xuat-chuyen.md).
 
 ### B. Kiểm soát ban đầu với phân hệ Tài chính (FIN)
 *   **Kiểm soát ngân sách bộ phận (Budget Check / Cost Center):** Mỗi PR khi tạo bắt buộc phải gán với một Trung tâm chi phí (Cost Center) hoặc Mã dự án (Project Code) đã định nghĩa tại phân hệ [Sổ cái - GL](). Hệ thống sẽ kiểm tra số dư ngân sách còn lại của phòng ban trước khi cho phép đệ trình phê duyệt [1].

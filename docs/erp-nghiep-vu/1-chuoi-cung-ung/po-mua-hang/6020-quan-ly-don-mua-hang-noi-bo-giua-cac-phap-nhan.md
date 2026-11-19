@@ -108,8 +108,8 @@ flowchart TD
 
 ## 5. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
-*   **Quản lý mã hàng chung:** Mặt hàng giao dịch giữa hai công ty bắt buộc phải được chuẩn hóa mã và đơn vị tính tại **[INV 7000 - Item Master (thiết lập mã hàng hoá, đơn vị tính)](../inv-ton-kho/7000-thiet-lap-danh-muc-item-master.md)**.
-*   **Xuất nhập kho liên công ty:** Luồng giao nhận hàng vật lý được định nghĩa kho nhận và xử lý tại bài **[INV 3000 - Chuyển kho nội bộ (Inter-warehouse Transfer)](../inv-ton-kho/3000-chuyen-kho-noi-bo-transfer.md)** của phân hệ Tồn kho.
+*   **Quản lý mã hàng chung:** Mặt hàng giao dịch giữa hai công ty bắt buộc phải được chuẩn hóa mã và đơn vị tính tại **[INV 7000 - Item Master (thiết lập mã hàng hoá, đơn vị tính)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md)**.
+*   **Xuất nhập kho liên công ty:** Luồng giao nhận hàng vật lý được định nghĩa kho nhận và xử lý tại bài **[INV 3000 - Chuyển kho nội bộ (Inter-warehouse Transfer)](../../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)** của phân hệ Tồn kho.
 *   **Bù trừ công nợ nội bộ:** Các hóa đơn AP và AR phát sinh từ giao dịch này sẽ được đẩy trực tiếp về bài AP/AR 2020 - Quy trình xử lý bù trừ công nợ giữa cùng một đối tượng vừa mua vừa bán (AP/AR Netting) thuộc phân hệ Công nợ phải thu/phải trả để triệt tiêu dòng tiền thanh toán cuối kỳ.
 *   **Hạch toán loại trừ khi hợp nhất báo cáo tài chính:** Việc ghi nhận và đối soát giao dịch nội bộ ở quy mô toàn tập đoàn, cũng như bút toán loại trừ khi lập báo cáo hợp nhất, thuộc bài GL 5000 - Quy trình ghi nhận và đối soát giao dịch nội bộ giữa các công ty thành viên (Intercompany Transactions) và GL 5010 - Nghiệp vụ hợp nhất báo cáo tài chính tập đoàn và loại trừ giao dịch nội bộ (Financial Consolidation & Elimination) thuộc phân hệ Sổ cái (GL).
 
@@ -268,8 +268,8 @@ Nếu đội ngũ của bạn đang tự xây dựng (In-house) giải pháp mua
 ## Xem thêm
 
 - **[PO 4020 - Quy trình quản lý thay đổi và phiên bản PO sau khi đã phê duyệt](./4020-quy-trinh-quan-ly-thay-doi-va-phien-ban-po.md)**
-- **[INV 7000 - Item Master (thiết lập mã hàng hoá, đơn vị tính)](../inv-ton-kho/7000-thiet-lap-danh-muc-item-master.md)**
-- **[INV 3000 - Chuyển kho nội bộ (Inter-warehouse Transfer)](../inv-ton-kho/3000-chuyen-kho-noi-bo-transfer.md)**
+- **[INV 7000 - Item Master (thiết lập mã hàng hoá, đơn vị tính)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md)**
+- **[INV 3000 - Chuyển kho nội bộ (Inter-warehouse Transfer)](../../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)**
 - **AP/AR 2020 - Quy trình xử lý bù trừ công nợ giữa cùng một đối tượng vừa mua vừa bán (AP/AR Netting)**
 - **GL 5000 - Quy trình ghi nhận và đối soát giao dịch nội bộ giữa các công ty thành viên (Intercompany Transactions)**
 - **GL 5010 - Nghiệp vụ hợp nhất báo cáo tài chính tập đoàn và loại trừ giao dịch nội bộ (Financial Consolidation & Elimination)**

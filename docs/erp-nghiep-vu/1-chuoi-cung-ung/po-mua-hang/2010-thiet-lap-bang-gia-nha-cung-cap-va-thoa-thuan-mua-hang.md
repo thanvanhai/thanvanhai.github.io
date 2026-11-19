@@ -49,8 +49,8 @@ flowchart TD
 Cấu hình đơn giá mua hàng chi phối trực tiếp đến nghiệp vụ quản lý vật tư và kế toán chi phí:
 
 ### A. Liên kết với phân hệ Tồn kho (INV)
-*   **Mã hàng hóa:** Việc thiết lập bảng giá hoặc Blanket PO bắt buộc phải tham chiếu trực tiếp đến danh mục hàng hóa tại [7000 Item Master (thiết lập mã hàng hoá, đơn vị tính)](../inv-ton-kho/7000-thiet-lap-danh-muc-item-master.md).
-*   **Phân bậc giá theo kho nhận (Price Breaks by Location):** Đơn giá mua sắm của một mặt hàng có thể thay đổi tùy thuộc vào vị trí nhà máy nhận hàng được cấu hình tại [3020 Quản lý nhiều kho, nhiều địa điểm (Multi-warehouse)](../inv-ton-kho/3020-quan-ly-nhieu-kho-nhieu-dia-diem-multi-warehouse.md) do chi phí vận chuyển hoặc chính sách thuế khác nhau.
+*   **Mã hàng hóa:** Việc thiết lập bảng giá hoặc Blanket PO bắt buộc phải tham chiếu trực tiếp đến danh mục hàng hóa tại [7000 Item Master (thiết lập mã hàng hoá, đơn vị tính)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md).
+*   **Phân bậc giá theo kho nhận (Price Breaks by Location):** Đơn giá mua sắm của một mặt hàng có thể thay đổi tùy thuộc vào vị trí nhà máy nhận hàng được cấu hình tại [3020 Quản lý nhiều kho, nhiều địa điểm (Multi-warehouse)](../../1-kho/1000-cau-truc-kho-va-vi-tri.md) do chi phí vận chuyển hoặc chính sách thuế khác nhau.
 
 ### B. Liên kết với phân hệ Tài chính kế toán (FIN)
 *   **Hạch toán chênh lệch giá mua (Purchase Price Variance - PPV):** Khi đơn giá trên hóa đơn nhà cung cấp nhập tại phân hệ [Công nợ phải trả - AP]() lệch so với đơn giá thỏa thuận trên PO, tài khoản hạch toán PPV mặc định được thiết lập tại [1010 Thiết lập nhóm hạch toán công nợ và tự động hóa định khoản Sổ cái (Posting Groups & GL Accounts Mapping)]() sẽ ghi nhận phần chênh lệch này để đẩy vào Sổ cái.

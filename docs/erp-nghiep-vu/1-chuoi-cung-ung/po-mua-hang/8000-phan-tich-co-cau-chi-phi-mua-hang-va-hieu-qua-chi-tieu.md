@@ -66,7 +66,7 @@ flowchart TD
 
 ## 3. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
-* **Chuẩn hóa nhóm mua sắm:** Toàn bộ dữ liệu phân tích chi phí theo nhóm mặt hàng được lấy trực tiếp từ thuộc tính phân loại tại [7020 Nhóm hàng hoá / danh mục vật tư (Item Category)](../inv-ton-kho/7020-nhom-hang-hoa-danh-muc-vat-tu-item-category.md) thuộc phân hệ Tồn kho.
+* **Chuẩn hóa nhóm mua sắm:** Toàn bộ dữ liệu phân tích chi phí theo nhóm mặt hàng được lấy trực tiếp từ thuộc tính phân loại tại [7020 Nhóm hàng hoá / danh mục vật tư (Item Category)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md) thuộc phân hệ Tồn kho.
 * **Phân tích dựa trên đơn hàng thực tế:** Nguồn dữ liệu đầu vào của lớp chi tiêu cam kết được quét trực tiếp từ các đơn mua hàng Standard PO đã được phê duyệt thành công tại bài [4000 Khởi tạo Đơn mua hàng tiêu chuẩn (Standard PO)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md).
 * **Nguồn dữ liệu chi tiêu thực chi:** Lớp chi tiêu thực chi (Realized Spend) được lấy từ dữ liệu hóa đơn đã đối soát khớp lệnh thành công tại bài [7000 Đối soát khớp lệnh 3 chiều và 2 chiều (PO Matching)](./7000-nguyen-ly-doi-soat-khop-lenh-3-chieu-va-2-chieu.md).
 * **Đối chiếu ngân sách tài chính:** Báo cáo chi tiêu theo bộ phận được đối chiếu trực tiếp với hạn mức ngân sách phòng ban đã thiết lập tại phân hệ [Sổ cái - GL]().

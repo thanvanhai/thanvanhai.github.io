@@ -61,8 +61,8 @@ Cấu hình thuế đầu vào là cầu nối trực tiếp giữa phân hệ m
 
 ### A. Liên kết với phân hệ Tồn kho (INV)
 
-* **Phân loại thuế của vật tư:** Mã vật tư được cấu hình nhóm phân loại thuế tại [7000 Item Master (thiết lập mã hàng hoá, đơn vị tính)](../inv-ton-kho/7000-thiet-lap-danh-muc-item-master.md) hoặc gán nhóm thuế tại [7020 Nhóm hàng hoá / danh mục vật tư (Item Category)](../inv-ton-kho/7020-nhom-hang-hoa-danh-muc-vat-tu-item-category.md) để làm căn cứ xác định thuế suất tự động .
-* **Kho bãi nhận hàng:** Vị trí nhận hàng thực tế tại [3020 Quản lý nhiều kho, nhiều địa điểm (Multi-warehouse)](../inv-ton-kho/3020-quan-ly-nhieu-kho-nhieu-dia-diem-multi-warehouse.md) quyết định địa bàn/vùng tính thuế (Tax Jurisdiction) .
+* **Phân loại thuế của vật tư:** Mã vật tư được cấu hình nhóm phân loại thuế tại [7000 Item Master (thiết lập mã hàng hoá, đơn vị tính)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md) hoặc gán nhóm thuế tại [7020 Nhóm hàng hoá / danh mục vật tư (Item Category)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md) để làm căn cứ xác định thuế suất tự động .
+* **Kho bãi nhận hàng:** Vị trí nhận hàng thực tế tại [3020 Quản lý nhiều kho, nhiều địa điểm (Multi-warehouse)](../../1-kho/1000-cau-truc-kho-va-vi-tri.md) quyết định địa bàn/vùng tính thuế (Tax Jurisdiction) .
 
 ### B. Liên kết với phân hệ Tài chính kế toán (FIN)
 

@@ -73,7 +73,7 @@ Khi vận hành hoặc chuyển đổi giữa các hệ thống ERP, bạn có t
 *   **Nhu cầu PR:** Standard PO có thể được tạo tự động bằng cách gom các yêu cầu PR đã duyệt tại bài [3000 Yêu cầu mua sắm và quy trình gom nhu cầu (PR & Consolidation)](./3000-nghiep-vu-yeu-cau-mua-hang-va-quy-trinh-gom-nhu-cau.md).
 
 ### B. Chuyển giao dữ liệu đích (Outbound Link)
-*   **Đối soát kho:** Dữ liệu PO Shipment là căn cứ duy nhất để thủ kho đối chiếu số lượng khi thực hiện [1000 Nhập kho từ mua hàng (Receipt from PO)](../inv-ton-kho/1000-nhap-kho-tu-mua-hang-po.md).
+*   **Đối soát kho:** Dữ liệu PO Shipment là căn cứ duy nhất để thủ kho đối chiếu số lượng khi thực hiện [1000 Nhập kho từ mua hàng (Receipt from PO)](../../1-kho/3000-giao-dich-nhap-xuat-chuyen.md).
 *   **Đối soát công nợ:** Dữ liệu PO Distribution là cơ sở để kế toán hạch toán Nợ/Có và đối chiếu khớp lệnh 3 chiều tại bài **3000 Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match)** — *link tới bài này đang để trống trong bản gốc, cần bổ sung đường dẫn thực tế của bài AP Invoice Match trong repo (ví dụ dạng `../ap-cong-no/3000-...`).*
 
 ---

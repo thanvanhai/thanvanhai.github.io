@@ -24,7 +24,7 @@ Bài viết này tập trung vào **phía đặt hàng nhà cung cấp giao th�
 ### Vấn đề cốt lõi:
 Trong nghiệp vụ Drop-ship, hàng hóa đi trực tiếp từ kho của nhà cung cấp đến tay khách hàng. Doanh nghiệp hoàn toàn không thực hiện bất kỳ hoạt động bốc dỡ hay lưu trữ vật lý nào tại kho của mình.
 Nếu lập trình viên hệ thống tự xây (In-house) ép buộc thủ kho phải làm phiếu nhập kho vật lý để hệ thống ghi nhận nhập hàng, rồi sau đó lại làm phiếu xuất kho vật lý giao đi:
-*   Hệ thống sẽ ghi nhận số liệu tồn kho ảo (Phantom Stock) trong khoảng thời gian giữa nhập và xuất, làm sai lệch báo cáo kiểm kê kho thực tế tại **[INV 8000 - Báo cáo tồn kho theo thời điểm (Stock on Hand)](../inv-ton-kho/8000-bao-cao-ton-kho-theo-thoi-diem-stock-on-hand.md)**.
+*   Hệ thống sẽ ghi nhận số liệu tồn kho ảo (Phantom Stock) trong khoảng thời gian giữa nhập và xuất, làm sai lệch báo cáo kiểm kê kho thực tế tại **[INV 8000 - Báo cáo tồn kho theo thời điểm (Stock on Hand)](../../1-kho/6000-dinh-gia-va-bao-cao-kho.md)**.
 *   Làm khống các chỉ số hiệu suất vận hành kho (KPIs nhận/xuất hàng của thủ kho).
 
 ### Giải pháp kiến trúc nhận xuất ảo (Logical / Virtual Transaction):
@@ -243,7 +243,7 @@ Nếu đội ngũ của bạn đang tự phát triển mô-đun Bán hàng và M
 ## Xem thêm
 
 - **[PO 4010 - Thiết lập luồng phê duyệt PO theo hạn mức tài chính và cấp bậc (PO Approval Workflow)](./4010-thiet-lap-luong-phe-duyet-po.md)**
-- **[INV 8000 - Báo cáo tồn kho theo thời điểm (Stock on Hand)](../inv-ton-kho/8000-bao-cao-ton-kho-theo-thoi-diem-stock-on-hand.md)**
+- **[INV 8000 - Báo cáo tồn kho theo thời điểm (Stock on Hand)](../../1-kho/6000-dinh-gia-va-bao-cao-kho.md)**
 - **OM 6000 - Quy trình bán hàng Drop-shipment từ nhà cung cấp (Drop-ship Order Flow)**
 - **AP/AR 2000 - Nghiệp vụ ghi nhận hóa đơn bán hàng và hạch toán doanh thu công nợ (AR Invoice Entry & Posting)**
 - **TAX 4010 - Tích hợp thuế Xuất nhập khẩu với phân hệ Logistics/Hải quan (Import/Export Duty & Customs Integration)**

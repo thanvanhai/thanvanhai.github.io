@@ -56,7 +56,7 @@ Hợp đồng mua sắm dài hạn chi phối trực tiếp đến các giao d�
 ### A. Liên kết với phân hệ Mua hàng (PO) và Tồn kho (INV)
 
 * **Tham chiếu đơn giá tự động:** Các đơn mua hàng con Standard PO khi khởi tạo sẽ đối chiếu trực tiếp thời gian hiệu lực của hợp đồng tại bài [2010 Bảng giá & Thỏa thuận dài hạn (Blanket PO & Contract)](./2010-thiet-lap-bang-gia-nha-cung-cap-va-thoa-thuan-mua-hang.md) để tự động gán đơn giá thỏa thuận.
-* **Quản lý danh mục vật tư:** Các mặt hàng ký kết trong hợp đồng khung phải được quản lý tập trung tại [7000 Item Master (thiết lập mã hàng hoá, đơn vị tính)](../inv-ton-kho/7000-thiet-lap-danh-muc-item-master.md).
+* **Quản lý danh mục vật tư:** Các mặt hàng ký kết trong hợp đồng khung phải được quản lý tập trung tại [7000 Item Master (thiết lập mã hàng hoá, đơn vị tính)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md).
 
 ### B. Liên kết với phân hệ Tài chính kế toán (FIN)
 

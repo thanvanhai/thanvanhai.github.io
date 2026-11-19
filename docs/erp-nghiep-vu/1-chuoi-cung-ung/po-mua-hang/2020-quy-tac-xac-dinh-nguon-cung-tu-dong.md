@@ -49,9 +49,9 @@ flowchart TD
 Quy tắc nguồn cung là chốt chặn kết nối chặt chẽ giữa chuỗi cung ứng mua hàng và kế hoạch sản xuất:
 
 ### A. Liên kết với phân hệ Tồn kho (INV) và Sản xuất (MFG)
-*   **Danh mục vật tư:** Các quy tắc nguồn cung luôn gắn chặt với mã vật tư tại [7000 Item Master (thiết lập mã hàng hoá, đơn vị tính)](../inv-ton-kho/7000-thiet-lap-danh-muc-item-master.md).
-*   **Điểm đặt hàng lại (Reorder Point):** Khi lượng tồn kho khả dụng giảm xuống dưới mức tối thiểu được cấu hình tại [7030 Thiết lập điểm đặt hàng lại (Reorder Point / Min-Max)](../inv-ton-kho/7030-thiet-lap-diem-dat-hang-lai-reorder-point-min-max.md), hệ thống sẽ kích hoạt công cụ đề xuất mua hàng dựa trên Sourcing Rules để bổ sung kho tự động.
-*   **Quy trình Điều chuyển nội bộ (Transfer From):** Khi cấu hình nguồn cung dạng `Transfer From`, hệ thống sẽ tự động tạo yêu cầu chuyển kho tại bài [3000 Chuyển kho nội bộ (Inter-warehouse Transfer)](../inv-ton-kho/3000-chuyen-kho-noi-bo-transfer.md) thay vì tạo đơn mua hàng ngoài.
+*   **Danh mục vật tư:** Các quy tắc nguồn cung luôn gắn chặt với mã vật tư tại [7000 Item Master (thiết lập mã hàng hoá, đơn vị tính)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md).
+*   **Điểm đặt hàng lại (Reorder Point):** Khi lượng tồn kho khả dụng giảm xuống dưới mức tối thiểu được cấu hình tại [7030 Thiết lập điểm đặt hàng lại (Reorder Point / Min-Max)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md), hệ thống sẽ kích hoạt công cụ đề xuất mua hàng dựa trên Sourcing Rules để bổ sung kho tự động.
+*   **Quy trình Điều chuyển nội bộ (Transfer From):** Khi cấu hình nguồn cung dạng `Transfer From`, hệ thống sẽ tự động tạo yêu cầu chuyển kho tại bài [3000 Chuyển kho nội bộ (Inter-warehouse Transfer)](../../1-kho/3000-giao-dich-nhap-xuat-chuyen.md) thay vì tạo đơn mua hàng ngoài.
 
 ### B. Liên kết với phân hệ Mua hàng (PO) và Tài chính (FIN)
 *   **Xác định đơn giá thỏa thuận:** Nguồn cung sau khi được hệ thống tự động gán sẽ thừa hưởng đơn giá tương ứng từ bài [2010 Bảng giá & Thỏa thuận dài hạn (Blanket PO & Contract)]() [1].

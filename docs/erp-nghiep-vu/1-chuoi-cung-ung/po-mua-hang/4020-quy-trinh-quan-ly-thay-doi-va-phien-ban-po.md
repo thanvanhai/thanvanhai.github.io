@@ -68,7 +68,7 @@ flowchart TD
 
 ## 4. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
-*   **Chốt chặn cho nhận hàng (INV):** Thủ kho khi làm phiếu [1000 Nhập kho từ mua hàng (Receipt from PO)](../inv-ton-kho/1000-nhap-kho-tu-mua-hang-po.md) chỉ nhìn thấy số lượng và đơn giá của phiên bản được phê duyệt mới nhất (Latest Approved Revision). Toàn bộ các phiên bản cũ hoặc phiên bản đang nằm chờ duyệt lại sẽ bị khóa không cho phép nhận hàng.
+*   **Chốt chặn cho nhận hàng (INV):** Thủ kho khi làm phiếu [1000 Nhập kho từ mua hàng (Receipt from PO)](../../1-kho/3000-giao-dich-nhap-xuat-chuyen.md) chỉ nhìn thấy số lượng và đơn giá của phiên bản được phê duyệt mới nhất (Latest Approved Revision). Toàn bộ các phiên bản cũ hoặc phiên bản đang nằm chờ duyệt lại sẽ bị khóa không cho phép nhận hàng.
 *   **Đối soát kế toán (AP):** Khi kế toán AP thực hiện đối soát hóa đơn tại bài [3000 Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match)](), hệ thống sẽ kiểm tra hóa đơn gửi sang có khớp với đơn giá và số lượng của phiên bản PO hoạt động cuối cùng không. Nếu có sai lệch vượt định mức, hóa đơn sẽ bị khóa thanh toán tự động.
 
 ---

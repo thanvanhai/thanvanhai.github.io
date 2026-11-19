@@ -70,7 +70,7 @@ Khi chuyển đổi giữa các hệ thống ERP hoặc tự xây dựng hệ th
 ## 3. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
 *   **Kiểm tra điều kiện đơn hàng:** Giao dịch nhận hàng bắt buộc phải đối chiếu trực tiếp với thông tin số lượng, ngày cam kết giao tại **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard PO)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**.
-*   **Tăng tồn kho khả dụng:** Sau khi hoàn thành bước 3 (Deliver), số lượng đạt sẽ được đẩy thẳng vào bài **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../inv-ton-kho/1000-nhap-kho-tu-mua-hang-po.md)** tại phân hệ Tồn kho.
+*   **Tăng tồn kho khả dụng:** Sau khi hoàn thành bước 3 (Deliver), số lượng đạt sẽ được đẩy thẳng vào bài **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)** tại phân hệ Tồn kho.
 *   **Hạch toán giá vốn kế toán:** Bút toán tự động hạch toán tăng tài sản kho và ghi nhận nợ phải trả trung gian (Tài khoản GR/IR - Nhận hàng chưa có hóa đơn) được chuyển giao sang phân hệ kế toán công nợ tại bài AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match) để chuẩn bị cho khớp lệnh 3 chiều.
 *   **Xử lý sai lệch số lượng và hàng lỗi:** Các trường hợp giao hàng thừa/thiếu hoặc bị QC từ chối tại bước INSPECT sẽ được xử lý chi tiết tại bài **[PO 5020 - Xử lý các tình huống giao hàng lỗi, thừa/thiếu số lượng và hoàn trả (Shortage, Over-delivery & Return to Vendor)](./5020-xu-ly-tinh-huong-giao-hang-loi-thua-thieu-va-hoan-tra.md)**.
 
@@ -195,7 +195,7 @@ Nếu đội ngũ của bạn đang tự phát triển mô-đun Kho và kiểm t
     *   *Giải pháp:* Thiết kế tài khoản hạch toán tạm tính cho hàng đang đi đường / hàng nhận tạm (Receiving Accrual Account) ngay tại bước RECEIVE. Việc đối chiếu và tất toán định kỳ tài khoản trung gian này khi hóa đơn về sau đó thuộc nghiệp vụ AP/AR 4030 - Đối chiếu và xử lý tài khoản trung gian Nhận hàng chưa có hóa đơn (GR/IR Clearing Account Reconciliation).
 3.  **Lỗi không kiểm soát được số lô/serial (Lot/Serial) ngay từ bước nhận đệm:**
     *   *Triệu chứng:* Hàng quản lý theo số lô (Lot) hoặc số serial. Nếu hệ thống cho phép bước Receive (Nhận tạm) bỏ qua việc khai báo Lot/Serial và đợi đến bước Deliver mới bắt nhập, hệ thống sẽ bị mất dấu vết nguồn gốc từ nhà cung cấp nếu có xảy ra tranh chấp hoặc hàng bị lỗi ngay tại bước kiểm tra chất lượng.
-    *   *Giải pháp:* Bắt buộc khai báo thông tin Lot/Serial ngay tại bước RECEIVE (Bước 1) đối với các vật tư được gán cấu hình quản lý theo Lot/Serial — nguyên tắc quản lý chi tiết xem **[INV 6000 - Nghiệp vụ Quản lý theo Lô (Lot Control)](../inv-ton-kho/6000-quan-ly-theo-lo-lot-control.md)** và **[INV 6010 - Nghiệp vụ Quản lý theo số Serial (Serial Control)](../inv-ton-kho/6010-quan-ly-theo-so-serial-serial-control.md)**.
+    *   *Giải pháp:* Bắt buộc khai báo thông tin Lot/Serial ngay tại bước RECEIVE (Bước 1) đối với các vật tư được gán cấu hình quản lý theo Lot/Serial — nguyên tắc quản lý chi tiết xem **[INV 6000 - Nghiệp vụ Quản lý theo Lô (Lot Control)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md)** và **[INV 6010 - Nghiệp vụ Quản lý theo số Serial (Serial Control)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md)**.
 4.  **Thiếu cơ chế cảnh báo tồn đọng hàng chờ kiểm (Aging Alert):**
     *   *Triệu chứng:* Hàng nằm ở Quarantine quá lâu (nhiều ngày) mà không ai xử lý kiểm tra, gây tồn đọng vốn và có nguy cơ hết hạn sử dụng đối với vật tư có hạn dùng, nhưng hệ thống không có cơ chế cảnh báo nên không ai phát hiện kịp thời.
     *   *Giải pháp:* Thiết kế job định kỳ (chạy hàng ngày) quét các dòng đang ở trạng thái `RECEIVE` quá X ngày chưa có kết quả `INSPECT`, tự động gửi cảnh báo cho trưởng bộ phận QC và thủ kho liên quan.
@@ -207,8 +207,8 @@ Nếu đội ngũ của bạn đang tự phát triển mô-đun Kho và kiểm t
 - **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard Purchase Order Entry)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**
 - **[PO 5020 - Xử lý các tình huống giao hàng lỗi, thừa/thiếu số lượng và hoàn trả](./5020-xu-ly-tinh-huong-giao-hang-loi-thua-thieu-va-hoan-tra.md)**
 - **[PO 7000 - Nguyên lý đối soát khớp lệnh 3 chiều và 2 chiều](./7000-nguyen-ly-doi-soat-khop-lenh-3-chieu-va-2-chieu.md)**
-- **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../inv-ton-kho/1000-nhap-kho-tu-mua-hang-po.md)**
-- **[INV 6000 - Nghiệp vụ Quản lý theo Lô (Lot Control)](../inv-ton-kho/6000-quan-ly-theo-lo-lot-control.md)**
+- **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)**
+- **[INV 6000 - Nghiệp vụ Quản lý theo Lô (Lot Control)](../../1-kho/2000-item-master-va-thuoc-tinh-kho.md)**
 - **AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match - PO & Non-PO)**
 - **AP/AR 4030 - Đối chiếu và xử lý tài khoản trung gian Nhận hàng chưa có hóa đơn (GR/IR Clearing Account Reconciliation)**
 

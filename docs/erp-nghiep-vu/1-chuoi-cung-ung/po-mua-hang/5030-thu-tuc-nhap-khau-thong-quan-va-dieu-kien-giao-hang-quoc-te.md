@@ -139,7 +139,7 @@ flowchart TD
 ## 6. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
 *   **Tham chiếu đơn hàng:** Quy trình nhập khẩu bắt buộc phải liên kết trực tiếp với đơn PO nhập khẩu đã khởi tạo tại **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard PO)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**.
-*   **Đối soát kho vật lý:** Số lượng thực nhận sau thông quan là căn cứ để thủ kho thực hiện giao dịch tại bài **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../inv-ton-kho/1000-nhap-kho-tu-mua-hang-po.md)** tại phân hệ Tồn kho.
+*   **Đối soát kho vật lý:** Số lượng thực nhận sau thông quan là căn cứ để thủ kho thực hiện giao dịch tại bài **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)** tại phân hệ Tồn kho.
 *   **Xử lý hóa đơn chi phí (trường hợp không dùng LCM):** Hóa đơn cước vận chuyển, thuế nhập khẩu do bên thứ ba xuất được ghi nhận và phân bổ thủ công tại phân hệ Công nợ phải trả, tham khảo thêm bài AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match).
 *   **Chuyển giao cho kế toán giá thành:** Dữ liệu chênh lệch giữa giá PO gốc và giá Landed Cost thực tế sau phân bổ (dù qua LCM tự động hay qua Standard Costing thủ công) được chuyển giao trực tiếp sang phân hệ kế toán giá thành tại bài COST 5000 - Phân bổ chi phí vận chuyển, thuế nhập khẩu và bảo hiểm vào giá vốn nguyên vật liệu nhập khẩu (Landed Cost Allocation) để tính giá thành sản phẩm chính xác.
 
@@ -370,7 +370,7 @@ Nếu đội ngũ của bạn đang tự xây dựng (In-house) giải pháp gi�
 
 - **[PO 4000 - Khởi tạo và cấu hình Đơn mua hàng tiêu chuẩn (Standard Purchase Order Entry)](./4000-khoi-tao-va-cau-hinh-don-mua-hang-tieu-chuan.md)**
 - **[PO 5010 - Nhận hàng mua và Kiểm tra chất lượng (Receiving & IQC)](./5010-nghiep-vu-nhan-hang-mua-kiem-tra-chat-luong-va-nhap-kho.md)**
-- **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../inv-ton-kho/1000-nhap-kho-tu-mua-hang-po.md)**
+- **[INV 1000 - Nhập kho từ mua hàng (Receipt from PO)](../../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)**
 - **AP/AR 3000 - Ghi nhận hóa đơn nhà cung cấp từ đơn mua hàng (AP Invoice Match - PO & Non-PO)**
 - **COST 5000 - Phân bổ chi phí vận chuyển, thuế nhập khẩu và bảo hiểm vào giá vốn nguyên vật liệu nhập khẩu (Landed Cost Allocation)**
 - **COST 4010 - Nghiệp vụ kết chuyển chênh lệch giá thành vào giá vốn hàng bán và tồn kho cuối kỳ (Variance Settlement & Posting)**
