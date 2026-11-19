@@ -4,7 +4,7 @@ title: "4000 Giữ hàng, phân bổ & ATP"
 slug: /erp-nghiep-vu/kho/giu-hang-phan-bo-va-atp
 sidebar_position: 4000
 description: "Cơ chế giữ chỗ (soft allocation) và phân bổ (hard allocation) tồn kho, tính khả năng cung ứng ATP theo mốc thời gian, tồn an toàn, FEFO và shelf-life, giữ hàng ảo, tranh chấp cùng một lượng tồn kho và cách thiết kế chống oversell. Tham chiếu Epicor ERP 10.2 (E10.2)."
-date: 2026-07-26
+date: 2026-07-25
 last_update:
   date: 2026-11-19
 tags: [erp, inventory, reservation, allocation, atp, oversell, fefo, epicor-e10]
@@ -143,34 +143,58 @@ Toàn bộ bút toán liên quan tới tồn kho và giá vốn được định
 
 | Khái niệm | Oracle EBS R12 `*` | Epicor ERP 10.2 (E10.2) | SAP S/4HANA `*` | Odoo `*` |
 |---|---|---|---|---|
-| Giữ hàng | `MTL_RESERVATIONS` (nguồn nhu cầu: Sales Order) | Nhu cầu và nguồn cung được duy trì ở `Erp.PartDtl` (nhu cầu từ đơn bán `SourceFile = 'OR'`, từ lệnh SX `JM/JH...`). Lượng giữ nằm ở `Erp.PartAlloc.ReservedQty` (giữ qua chương trình Order Allocations) | Reservation (bảng `RESB`) `*` | `stock.move` ở trạng thái `assigned` / `stock.quant.reserved_quantity` |
+| Giữ hàng | `MTL_RESERVATIONS` (nguồn nhu cầu: Sales Order) | Nhu cầu và nguồn cung ở `Erp.PartDtl` (nhu cầu từ đơn bán `SourceFile = 'OR'`, từ lệnh SX `JM/JH...`). Giữ và phân bổ ở `Erp.PartAlloc` (`ReservedQty` qua Order Allocations, `AllocatedQty` qua Fulfillment Workbench). **Tên gọi và thứ tự các mức của Epicor không trùng 1-1 với bài**, xem khối `PartWhse` bên dưới | Reservation (bảng `RESB`) `*` | `stock.move` ở trạng thái `assigned` / `stock.quant.reserved_quantity` |
 | Cấp phát chỉ định bin/lô | Pick Release → gán Lot/Serial/Locator | `Erp.PartAlloc.AllocatedQty` (schema ghi rõ là Hard Allocation, thực hiện qua Fulfillment Workbench), kèm `PickingQty`, `PickedQty` (hard allocation đang pick / đã pick); chỉ định kho, bin, lô bằng `WarehouseCode`, `BinNum`, `LotNum`; serial ở `Erp.PartAllocSerial` `*` | Reservation + gán bin ở WM/EWM `*` | `stock.move.line` gán `location_id` cụ thể |
-| Tồn tự do | `On-hand − Reserved` | Tính từ `Erp.PartWhse` / `Erp.PartBin`; mô tả cột của `PartAlloc` nhắc tới `PartWhse.SalesReservedQty`, `PartWhse.SalesPickingQty` và `JobHead.ReservedQty`. Lượng Picking/Picked bị loại khỏi tính toán lượng khả dụng `*` | Unrestricted − Reserved | `quantity − reserved_quantity` |
-| ATP | `INV > Supply to Demand` / APS | Time Phase Inquiry (dựng từ `Erp.PartDtl`) và Part Tracker `*` | Kiểm tra ATP / aATP `*` | Số lượng dự báo (`virtual_available`) |
-| Hết hạn giữ hàng | Không có mặc định — phải viết job dọn | Không có mặc định `*` | Có thể cấu hình theo loại reservation `*` | Tự giải phóng khi hủy đơn |
+| Tồn tự do | `On-hand − Reserved` | `Erp.PartWhse.OnHandQty` (chỉ bin nettable) cùng các tổng `Sales*`, `Job*`, `TFOrd*` (Reserved/Allocated/Picking/Picked), do trigger cập nhật; chi tiết ở `Erp.PartBin`. Picking/Picked bị loại khỏi lượng khả dụng; công thức Available đối chiếu với Part Tracker `*` | Unrestricted − Reserved | `quantity − reserved_quantity` |
+| ATP | `INV > Supply to Demand` / APS | Time Phase Inquiry (dựng từ `Erp.PartDtl`, dùng `PartWhse.MinimumQty`/`SafetyQty` để cảnh báo) và Part Tracker `*` | Kiểm tra ATP / aATP `*` | Số lượng dự báo (`virtual_available`) |
+| Hết hạn giữ hàng | Không có mặc định — phải viết job dọn | `PartAlloc` không có cột hạn giữ (schema 43 cột): chỉ có `CreateDate`/`CreateTime` và cờ `OnHold`; phải viết job dọn theo tuổi | Có thể cấu hình theo loại reservation `*` | Tự giải phóng khi hủy đơn |
 
-**Điều đã thấy trực tiếp trong schema E10.2 (`E10_Demo.Erp.PartDtl`):** bảng này là **bảng cung - cầu theo mốc ngày**, không phải bảng cấp phát. Các cột đã xác nhận qua schema:
+**Điều đã thấy trực tiếp trong schema E10.2 (`E10_Demo.Erp.PartDtl`, từ đầu bảng đến `PartDtlSeq`):** bảng này là **bảng cung - cầu theo mốc ngày**, không phải bảng cấp phát. Các cột đã xác nhận qua schema:
 
-- `DueDate` (ngày cần hoặc ngày hàng về) và `Quantity` (lượng còn mở của nguồn cung hoặc nhu cầu).
-- `SourceFile` cho biết bản ghi sinh ra từ đâu: `JH` JobHead, `JA` JobAsmbl, `JM` JobMtl, `JO` JobOper, `PO` PoRels, `OR` OrderRels, `FC` ForCast, `PC` PlanningContract, `FS` Epicor FSA.
-- `OrderNum`, `OrderLine`, `OrderRelNum` (chỉ có nghĩa khi là nhu cầu từ đơn bán), `JobNum`, `PONum`, `POLine`, `PORelNum`, `TargetWarehouseCode` (chỉ có nghĩa với nguồn cung), `StockTrans` (bản ghi có ảnh hưởng tồn hay không), `Plant`.
-- `RequirementFlag` chỉ để sắp xếp nguồn cung trước nhu cầu và "không hiển thị cho người dùng"; cột boolean thực sự phân biệt nhu cầu với nguồn cung là **`Requirement`** (xuất hiện trong mô tả của các cột khác). Cột này không nằm trong đoạn schema đã chụp, cần xác nhận `*`.
-- `Company` và `PartNum` thường có trong bảng nhưng không nằm trong đoạn đã chụp `*`.
+- **Định danh:** `Company`, `Type` (`Mtl` là vật tư, `Sub` là gia công ngoài), `PartNum`, `PartDtlSeq`.
+- **Thời điểm:** `DueDate` (ngày cần hoặc ngày hàng về), **cột duy nhất cho phép NULL** trong đoạn đã chụp.
+- **Số lượng và đơn vị:** `Quantity` (lượng còn mở, theo đơn vị `IUM` của dòng), `BaseQty` (cùng lượng đó quy về đơn vị tính gốc của part, `BaseQtyUOM`, do trigger ghi), `InvtyQty` (theo đơn vị theo dõi tồn kho, `InvtyQtyUOM`). Khi **cộng nhiều nguồn** phải dùng `BaseQty`, không dùng `Quantity`.
+- **Nguồn gốc bản ghi:** `SourceFile` là `JH` JobHead, `JA` JobAsmbl, `JM` JobMtl, `JO` JobOper, `PO` PoRels, `OR` OrderRels, `FC` ForCast, `PC` PlanningContract, `FS` Epicor FSA; kèm `OrderNum`, `OrderLine`, `OrderRelNum` (nhu cầu từ đơn bán), `JobNum`, `AssemblySeq`, `JobSeq`, `PONum`, `POLine`, `PORelNum`, `TFOrdNum`, `TFOrdLine`, `CustNum` (chỉ cho dự báo).
+- **Nguồn cung đang lấp nhu cầu nào:** `TargetOrderNum`, `TargetOrderLine`, `TargetOrderRelNum`, `TargetWarehouseCode`, `TargetJobNum`, `TargetAssemblySeq`, `TargetMtlSeq` (chỉ có nghĩa với bản ghi nguồn cung).
+- **Cờ lọc:** `StockTrans` (có ảnh hưởng tồn kho hay không), `FirmRelease`, `JobFirm` (dùng khi lọc cho MRP), `NonPart`, `BOMChanged`, `Plant`, `InvLinkNum`.
+- **`RequirementFlag`:** bit, mô tả "receipt hay requirement, chỉ dùng để sắp xếp nguồn cung trước nhu cầu". **Trong đoạn đã chụp không có cột tên `Requirement`**; cụm "Requirement = Yes/No" trong mô tả các cột khác chỉ là khái niệm. Vì nguồn cung được xếp trước nhu cầu, suy luận hợp lý là `0 = nguồn cung`, `1 = nhu cầu`, nhưng **đây là suy luận `*`**, phải kiểm tra bằng truy vấn kiểm tra phân cực ở mục C. Bản trước của bài dùng cột `Requirement` là chưa đúng.
+- Ảnh chụp dừng ở `PartDtlSeq`, có thể còn cột bên dưới (ví dụ cột cho biết kho của nhu cầu) `*`.
 - Ảnh chụp **không** cho thấy cột `AllocatedQty` trên `PartDtl`. Truy vấn Epicor trong bản bài trước dùng cột này là sai, đã được thay ở mục C.
 
-**Điều đã thấy trực tiếp trong schema E10.2 (`E10_Demo.Erp.PartAlloc`):** đây mới là bảng giữ chỗ và phân bổ. Các cột đã xác nhận qua schema:
+**Điều đã thấy trực tiếp trong schema E10.2 (`E10_Demo.Erp.PartAlloc`):** đây mới là bảng giữ chỗ và phân bổ. Schema có **43 cột**, đã đối chiếu đủ qua hai ảnh chụp:
 
 - **Khóa hàng:** `Company`, `PartNum`, `WarehouseCode`, `BinNum`, `LotNum`, `DimCode` (từ bản 9.0 trở đi chứa mã đơn vị tính, không còn là kích thước).
 - **Nhu cầu được giữ hoặc phân bổ:** `OrderNum`, `OrderLine`, `OrderRelNum` (đơn bán); `JobNum`, `AssemblySeq`, `MtlSeq` (vật tư lệnh SX); `TFOrdNum`, `TFOrdLine` (chuyển kho); phân loại bằng `DemandType` (`Order`, `Job` hoặc `Transfer`). `SupplyJobNum` là lệnh SX đang cấp hàng.
 - **Bốn loại số lượng:** `ReservedQty` (giữ, tạo qua Order Allocations), `AllocatedQty` (**Hard Allocation**, tạo qua Fulfillment Workbench của từng loại nhu cầu), `PickingQty` (đang trong quy trình pick) và `PickedQty` (đã pick). Schema ghi rõ `PickingQty` và `PickedQty` là các loại hard allocation **bị loại khỏi tính toán lượng khả dụng**.
 - **Thông tin xuất kho:** `DistributionType` (`PICKPACK` hoặc `HANDHELD`), `WaveNum`, `WaveDestBinNum`, `WavePickTicketPrinted`, `ZoneID`, `CreateDate`, `CreateTime`, và `SearchSort` (`FIFO`, `LIFO`, `BINASC`, `BINDESC`, `QTYASC`, `QTYDESC`).
+- **Điều phối và ưu tiên:** `TransPriority` (1–9, **1 là cao nhất**), `OnHold` (bit, khi mục trong Material Queue được thêm thì tự đặt On Hold), `HardAllocation` (bit, cờ đánh dấu hard allocation trên dòng), `CrossDocking`.
+- **Kho, bin và vị trí:** `WhseDestWarehouseCode` (kho đích của lượng được phân bổ), `WhseGroupCode`, `BinType` (`Standard`, `Managed` hoặc `Both`), `BinNumFirstOption`, `BinNumProductionIn`, `MultiplePartsPerBin`, `ForwardStageGroup`, `PackStation`.
+- **Kỹ thuật:** `SysRevID` (timestamp, tăng sau mỗi lần ghi), `SysRowID` (GUID), `PCID`.
+- **Cột cho phép NULL:** theo cột Nullable trong schema, chỉ `CreateDate` được đánh dấu; các cột còn lại không cho NULL.
 
-Bốn điều rút ra cho thiết kế:
+Năm điều rút ra cho thiết kế:
 
-1. Epicor E10.2 tự chia cam kết theo mức, khớp với nguyên lý 5 (giữ rồi mới cấp phát cứng).
+1. Epicor E10.2 chia cam kết thành bốn mức Allocated / Reserved / Picking / Picked theo từng loại nhu cầu (Sales, Job, Transfer), nhưng **tên gọi và thứ tự không trùng 1-1** với "giữ mềm → cấp phát cứng" của bài (xem khối `PartWhse` ngay bên dưới). Nguyên lý 5 vẫn đúng ở mức khái niệm; chỉ không ánh xạ cứng từng tên cột.
 2. Danh sách `SearchSort` **không có lựa chọn theo hạn dùng**, tức không thấy FEFO ở đây. Với hàng có hạn dùng, ràng buộc FEFO và shelf-life phải xử lý ở chỗ khác (thuộc tính lô, tùy chỉnh) `*`; không giả định Epicor đã làm sẵn.
 3. Vì có thêm Picking/Picked, ATP trên Epicor phải trừ cả bốn loại số lượng; thiết kế tự xây nếu có bước pick riêng cần thêm trạng thái tương ứng.
-4. Trong đoạn đã chụp **không thấy cột hạn giữ** (chỉ có `CreateDate`, `CreateTime`), nên job dọn giữ hàng cũ phải dựa vào tuổi bản ghi. Ảnh chụp chưa cuộn hết bảng, có thể còn cột khác `*`.
+4. Trong cả 43 cột **không có cột hạn giữ** và không có cột hạn dùng của lô; chỉ có `CreateDate`, `CreateTime` (và `CreateDate` còn cho phép NULL), cùng cờ `OnHold` không gắn thời gian. Job dọn giữ hàng cũ phải dựa vào tuổi bản ghi và phải tính cả dòng `CreateDate` NULL. Hạn dùng của lô nếu cần phải tra ở bảng lô (`Erp.PartLot`) `*`.
+5. Epicor có sẵn khái niệm ưu tiên (`TransPriority`, 1 là cao nhất) và cờ `HardAllocation`. Thiết kế tự xây nên chốt chiều ưu tiên rõ ràng (số nhỏ là ưu tiên cao) để ánh xạ được sang Epicor; ý nghĩa chính xác của cờ `HardAllocation` so với `AllocatedQty` chưa được mô tả trong schema (chỉ ghi "Hard Allocation") nên cần kiểm tra khi dùng `*`.
+
+**Điều đã thấy trực tiếp trong schema E10.2 (`E10_Demo.Erp.PartWhse`):** **54 cột**, khóa chính (`Company`, `PartNum`, `WarehouseCode`), không có cột tính toán. Đây là bảng **số dư tổng hợp theo kho**, được duy trì bằng trigger từ `PartBin` và `PartAlloc`:
+
+- **Tồn:** `OnHandQty` (tổng `PartBin.OnHandQty` của các bin **nettable**, tức `WhseBin.NonNettable = NO`) và `NonNettableQty` (bin non-nettable). `OnHandQty` chính là khái niệm "tồn khả dụng đã loại bin không bán được" mà bài gọi là `Qty_Onhand_Usable`.
+- **Tổng cam kết, mỗi loại nhu cầu bốn mức:** Sales (`SalesReservedQty`, `SalesAllocatedQty`, `SalesPickingQty`, `SalesPickedQty`), Job (`JobReservedQty`, `JobAllocatedQty`, `JobPickingQty`, `JobPickedQty`), Transfer (`TFOrdReservedQty`, `TFOrdAllocatedQty`, `TFOrdPickingQty`, `TFOrdPickedQty`); cộng với các tổng chung `ReservedQty`, `AllocatedQty`, `PickingQty`, `PickedQty`. Ba loại nhu cầu cùng tiêu thụ một lượng tồn, nên ATP phải trừ cả Sales, Job và Transfer, không chỉ đơn bán.
+- **Nhu cầu chưa phân bổ:** `DemandQty`, `SalesDemandQty`, `JobDemandQty`, `TFOrdDemandQty`, `UnfirmJobDemandQty` (lệnh SX chưa firm). `BuyToOrderQty` là nhu cầu mua theo đơn, **không được trừ khỏi lượng khả dụng**.
+- **Chính sách tồn:** `SafetyQty` (schema mô tả là "đệm mua hàng", dùng cho báo cáo reorder và time phase; Safety + Minimum = Reorder Point), `MinimumQty`, `MaximumQty`. Theo mô tả, Epicor **không tự trừ** `SafetyQty` khỏi lượng bán được; đúng với nguyên lý 7 của bài: trừ hay không là chính sách của doanh nghiệp.
+- **Cột cho phép NULL:** chỉ `CountedDate` và `LastCCDate`.
+- **Nhóm không liên quan đến giữ hàng:** kanban (`KB*`), kiểm kê và dung sai (`PcntTolerance`, `QtyTolerance`, `ValueTolerance`, `Calc*`), phân loại ABC.
+
+Ba điều cần lưu ý khi đọc các mô tả này:
+
+1. **Thứ tự các mức.** Mô tả `SalesAllocatedQty` ghi hệ thống theo dõi tổng theo trình tự `AllocQty → ReservedQty → PickingQty → PickedQty`, tức Epicor coi "allocated" là mức đầu, rồi mới "reserved". Trong khi `PartAlloc.AllocatedQty` lại được mô tả là Hard Allocation và `ReservedQty` là giữ qua Order Allocations. Hai mô tả khó đối chiếu, nên **không giả định** `ReservedQty` = giữ mềm và `AllocatedQty` = cấp phát cứng. Cách chắc chắn: tạo một đơn mẫu, chạy từng bước (allocate, reserve, pick) và quan sát các bản ghi `PartAlloc` và dòng `PartWhse` thay đổi ra sao, rồi ghi bảng quy đổi vào tài liệu thiết kế.
+2. **Công thức trong mô tả không dùng nguyên văn.** Mô tả `SalesAllocatedQty` có dấu trong công thức không nhất quán, còn mô tả `DemandQty` ghi Available = `OnhandQty − AllocatedQty` trong khi `PartAlloc` cho biết Picking/Picked cũng bị loại khỏi lượng khả dụng. Con số khả dụng đúng phải đối chiếu với màn hình Part Tracker `*`.
+3. **Tổng trên `PartWhse` là số lưu sẵn** do trigger cập nhật. Thiết kế tự xây trong bài chủ động **không** đặt `Reserved_Qty` trên bảng số dư, vì số lưu sẵn có thể lệch khỏi chi tiết; Epicor chấp nhận đánh đổi đó, nên cần truy vấn đối soát ở mục C.
+
 
 ### B. Hệ thống tự xây — thiết kế tối thiểu
 
@@ -181,8 +205,8 @@ Gồm bốn thành phần: **bảng số dư tức thời** (điểm khóa), **b
 CREATE TABLE Inventory_Balance (
     Warehouse_ID        VARCHAR(20)   NOT NULL,
     Item_ID             VARCHAR(50)   NOT NULL,
-    Qty_Onhand_Usable   DECIMAL(18,4) NOT NULL DEFAULT 0,  -- đã loại bin chờ kiểm, lỗi, block
-    Safety_Stock_Qty    DECIMAL(18,4) NOT NULL DEFAULT 0,  -- 0 nếu chính sách không trừ khỏi ATP
+    Qty_Onhand_Usable   DECIMAL(18,4) NOT NULL DEFAULT 0,  -- đã loại bin chờ kiểm, lỗi, block (Epicor E10.2: PartWhse.OnHandQty, chỉ bin nettable)
+    Safety_Stock_Qty    DECIMAL(18,4) NOT NULL DEFAULT 0,  -- 0 nếu chính sách không trừ khỏi ATP (Epicor E10.2: PartWhse.SafetyQty, chỉ dùng cho báo cáo reorder/time phase)
     CONSTRAINT PK_Balance PRIMARY KEY (Warehouse_ID, Item_ID)
 );
 -- KHÔNG đặt cột Reserved_Qty ở đây: nguồn sự thật cho lượng giữ là Inventory_Reservation.
@@ -203,7 +227,7 @@ CREATE TABLE Inventory_Reservation (
     Demand_Source    VARCHAR(20)   NOT NULL, -- SO | WO | MANUAL
     Demand_Doc_No    VARCHAR(50)   NOT NULL,
     Demand_Line      INT           NOT NULL,
-    Priority         INT           NOT NULL DEFAULT 5,
+    Priority         INT           NOT NULL DEFAULT 5,   -- số nhỏ = ưu tiên cao (cùng chiều TransPriority 1–9 của Epicor)
     Hold_Until       DATETIME      NULL,
     Created_At       DATETIME      NOT NULL DEFAULT GETDATE(),
     CONSTRAINT CK_Res_Status  CHECK (Status IN ('HELD','ALLOCATED','CONSUMED','RELEASED')),
@@ -320,47 +344,87 @@ WHERE b.Qty_Onhand_Usable <> ISNULL(t.Qty_From_Txn, 0);
 
 Truy vấn này nặng, chỉ chạy ngoài giờ hoặc theo lô; không chạy trong đường giữ hàng.
 
+**Epicor E10.2 — kiểm tra phân cực của `RequirementFlag` (chạy trước khi dùng các truy vấn Epicor bên dưới):**
+
+```sql
+-- Kỳ vọng: PO, JH (nguồn cung) cùng một giá trị cờ; OR, JM (nhu cầu) cùng giá trị cờ còn lại
+SELECT pd.SourceFile, pd.RequirementFlag,
+       COUNT(*) AS Row_Count, SUM(pd.BaseQty) AS Sum_BaseQty
+FROM Erp.PartDtl pd
+WHERE pd.Company = 'YOUR_COMPANY_CODE'   -- thay mã công ty
+GROUP BY pd.SourceFile, pd.RequirementFlag
+ORDER BY pd.SourceFile, pd.RequirementFlag;
+```
+
+Nếu `OR` và `JM` cùng mang giá trị 1 thì giả định "1 = nhu cầu" đúng; nếu ngược lại, đảo điều kiện trong các truy vấn bên dưới.
+
 **Epicor ERP 10.2 (E10.2) — nhu cầu đơn bán còn mở đã quá hạn (dựa trên `Erp.PartDtl`):**
 
 ```sql
--- Chỉ dùng cột đã xác nhận trong schema E10.2, trừ các cột đánh dấu *
-SELECT pd.PartNum,            -- *
+-- Cột đã xác nhận qua schema E10.2; phân cực RequirementFlag cần kiểm tra bằng truy vấn kiểm tra phân cực ở trên
+SELECT pd.PartNum,
        pd.OrderNum, pd.OrderLine, pd.OrderRelNum,
-       pd.DueDate, pd.Quantity,
+       pd.DueDate, pd.BaseQty AS Open_Demand_BaseQty,
        DATEDIFF(DAY, pd.DueDate, GETDATE()) AS Days_Late
 FROM Erp.PartDtl pd
-WHERE pd.Company     = 'YOUR_COMPANY_CODE'   -- *
-  AND pd.Requirement = 1                      -- * nhu cầu (không phải nguồn cung)
+WHERE pd.Company         = 'YOUR_COMPANY_CODE'   -- thay mã công ty
+  AND pd.RequirementFlag = 1                      -- * giả định 1 = nhu cầu
   AND pd.SourceFile  = 'OR'                   -- nhu cầu sinh từ OrderRel
   AND pd.StockTrans  = 1                      -- ảnh hưởng tồn kho
-  AND pd.Quantity    > 0
-  AND pd.DueDate     < GETDATE()
+  AND pd.BaseQty     > 0
+  AND pd.DueDate     < GETDATE()      -- DueDate cho phép NULL: dòng NULL bị loại
 ORDER BY Days_Late DESC;
 ```
 
 **Epicor E10.2 — dòng cung - cầu theo ngày của một part (nền của Time Phase Inquiry), có lũy kế:**
 
 ```sql
--- Chưa gồm tồn hiện tại (PartWhse/PartBin *) và chưa tách kho; chỉ tách theo Plant
+-- Dùng BaseQty (cùng đơn vị tính gốc). Chưa gồm tồn hiện tại (PartWhse.OnHandQty) và chưa tách kho; chỉ tách theo Plant
 SELECT pd.DueDate,
-       SUM(CASE WHEN pd.Requirement = 1 THEN -pd.Quantity ELSE pd.Quantity END) AS Net_Qty,
-       SUM(SUM(CASE WHEN pd.Requirement = 1 THEN -pd.Quantity ELSE pd.Quantity END))
-           OVER (ORDER BY pd.DueDate) AS Running_Net_Qty
+       SUM(CASE WHEN pd.RequirementFlag = 1 THEN -pd.BaseQty ELSE pd.BaseQty END) AS Net_BaseQty,   -- * giả định 1 = nhu cầu
+       SUM(SUM(CASE WHEN pd.RequirementFlag = 1 THEN -pd.BaseQty ELSE pd.BaseQty END))
+           OVER (ORDER BY pd.DueDate) AS Running_Net_BaseQty
 FROM Erp.PartDtl pd
-WHERE pd.Company = 'YOUR_COMPANY_CODE'   -- *
-  AND pd.PartNum = @PartNum              -- *
+WHERE pd.Company = 'YOUR_COMPANY_CODE'   -- thay mã công ty
+  AND pd.PartNum = @PartNum
   AND pd.Plant   = @Plant
   AND pd.StockTrans = 1
 GROUP BY pd.DueDate
 ORDER BY pd.DueDate;
 ```
 
+**Epicor E10.2 — đối soát tổng lưu sẵn trên `PartWhse` với chi tiết `PartAlloc`:**
+
+```sql
+SELECT w.PartNum, w.WarehouseCode,
+       w.ReservedQty  AS Whse_Reserved,  ISNULL(a.Reserved_Qty, 0)  AS Alloc_Reserved,
+       w.AllocatedQty AS Whse_Allocated, ISNULL(a.Allocated_Qty, 0) AS Alloc_Allocated,
+       w.PickingQty   AS Whse_Picking,   ISNULL(a.Picking_Qty, 0)   AS Alloc_Picking,
+       w.PickedQty    AS Whse_Picked,    ISNULL(a.Picked_Qty, 0)    AS Alloc_Picked
+FROM Erp.PartWhse w
+LEFT JOIN (SELECT Company, PartNum, WarehouseCode,
+                  SUM(ReservedQty)  AS Reserved_Qty,
+                  SUM(AllocatedQty) AS Allocated_Qty,
+                  SUM(PickingQty)   AS Picking_Qty,
+                  SUM(PickedQty)    AS Picked_Qty
+           FROM Erp.PartAlloc
+           GROUP BY Company, PartNum, WarehouseCode) a
+       ON a.Company = w.Company AND a.PartNum = w.PartNum AND a.WarehouseCode = w.WarehouseCode
+WHERE w.Company = 'YOUR_COMPANY_CODE'   -- thay mã công ty
+  AND (w.ReservedQty  <> ISNULL(a.Reserved_Qty, 0)
+    OR w.AllocatedQty <> ISNULL(a.Allocated_Qty, 0)
+    OR w.PickingQty   <> ISNULL(a.Picking_Qty, 0)
+    OR w.PickedQty    <> ISNULL(a.Picked_Qty, 0));
+```
+
+Cách đọc kết quả: schema mô tả `PartWhse.ReservedQty` và `AllocatedQty` vừa là "TOTAL trong PartAlloc" vừa là "cho đơn bán", nên chưa rõ có gồm Job và Transfer hay không; `PickingQty` và `PickedQty` mô tả rõ là "for all demand". Ngoài ra `PartAlloc` lưu lượng theo đơn vị ở `DimCode` còn `PartWhse` theo đơn vị gốc, nên khi hai đơn vị khác nhau có thể báo lệch giả. Dùng kết quả để **tìm bất thường rồi điều tra**, không coi mọi dòng trả về là lỗi.
+
 **Epicor E10.2 — đơn bán còn mở đã quá hạn nhưng chưa giữ, chưa cấp phát, chưa pick (nhu cầu từ `Erp.PartDtl`, phân bổ từ `Erp.PartAlloc`):**
 
 ```sql
 SELECT pd.PartNum,                              -- *
        pd.OrderNum, pd.OrderLine, pd.OrderRelNum,
-       pd.DueDate, pd.Quantity AS Open_Demand_Qty,
+       pd.DueDate, pd.BaseQty AS Open_Demand_BaseQty,
        DATEDIFF(DAY, pd.DueDate, GETDATE()) AS Days_Late
 FROM Erp.PartDtl pd
 LEFT JOIN (SELECT Company, PartNum, OrderNum, OrderLine, OrderRelNum,
@@ -373,12 +437,12 @@ LEFT JOIN (SELECT Company, PartNum, OrderNum, OrderLine, OrderRelNum,
            GROUP BY Company, PartNum, OrderNum, OrderLine, OrderRelNum) a
        ON a.Company = pd.Company AND a.PartNum = pd.PartNum
       AND a.OrderNum = pd.OrderNum AND a.OrderLine = pd.OrderLine AND a.OrderRelNum = pd.OrderRelNum
-WHERE pd.Company     = 'YOUR_COMPANY_CODE'      -- *
-  AND pd.Requirement = 1                         -- *
+WHERE pd.Company         = 'YOUR_COMPANY_CODE'      -- thay mã công ty
+  AND pd.RequirementFlag = 1                         -- * giả định 1 = nhu cầu
   AND pd.SourceFile  = 'OR'
   AND pd.StockTrans  = 1
-  AND pd.Quantity    > 0
-  AND pd.DueDate     < GETDATE()
+  AND pd.BaseQty     > 0
+  AND pd.DueDate     < GETDATE()      -- DueDate cho phép NULL: dòng NULL bị loại
   AND ISNULL(a.Reserved_Qty, 0) + ISNULL(a.Allocated_Qty, 0)
     + ISNULL(a.Picking_Qty, 0)  + ISNULL(a.Picked_Qty, 0) = 0
 ORDER BY Days_Late DESC;
@@ -394,11 +458,11 @@ SELECT pa.PartNum, pa.WarehouseCode, pa.BinNum, pa.LotNum,
 FROM Erp.PartAlloc pa
 WHERE pa.Company = 'YOUR_COMPANY_CODE'           -- *
   AND pa.ReservedQty + pa.AllocatedQty + pa.PickingQty + pa.PickedQty > 0
-  AND pa.CreateDate < DATEADD(DAY, -7, GETDATE())  -- ngưỡng 7 ngày: do doanh nghiệp quy định
+  AND (pa.CreateDate IS NULL OR pa.CreateDate < DATEADD(DAY, -7, GETDATE()))  -- CreateDate cho phép NULL; ngưỡng 7 ngày do doanh nghiệp quy định
 ORDER BY Age_Days DESC;
 ```
 
-> Các cột của `Erp.PartAlloc` dùng ở trên đã được xác nhận qua schema E10.2 (`Company`, `PartNum`, `WarehouseCode`, `BinNum`, `LotNum`, `DemandType`, `OrderNum`, `OrderLine`, `OrderRelNum`, `JobNum`, `ReservedQty`, `AllocatedQty`, `PickingQty`, `PickedQty`, `CreateDate`). Riêng `PartDtl.PartNum`, `PartDtl.Company`, `PartDtl.Requirement` và giá trị chuỗi của `DemandType` (`'Order'`) cần xác nhận `*`. Hai truy vấn này, cùng truy vấn đơn bán quá hạn và dòng cung - cầu ở trên, **thay thế** truy vấn "chưa cấp phát" của bản trước (dùng `PartDtl.AllocatedQty` và `PartDtl.OrderLine`, không đúng với schema E10.2). Mọi cột và tên bảng Epicor vẫn phải được kiểm tra bằng Data Dictionary Viewer của đúng môi trường E10.2 trước khi đưa vào báo cáo.
+> Các cột của `Erp.PartAlloc` dùng ở trên đã được xác nhận qua schema E10.2 (`Company`, `PartNum`, `WarehouseCode`, `BinNum`, `LotNum`, `DemandType`, `OrderNum`, `OrderLine`, `OrderRelNum`, `JobNum`, `ReservedQty`, `AllocatedQty`, `PickingQty`, `PickedQty`, `CreateDate`). Các cột của `Erp.PartDtl` dùng ở trên (`Company`, `PartNum`, `DueDate`, `RequirementFlag`, `BaseQty`, `SourceFile`, `StockTrans`, `Plant`, `OrderNum`, `OrderLine`, `OrderRelNum`) và của `Erp.PartWhse` (`Company`, `PartNum`, `WarehouseCode`, `ReservedQty`, `AllocatedQty`, `PickingQty`, `PickedQty`) cũng đã xác nhận qua schema; chỉ **phân cực của `RequirementFlag`** còn là suy luận, kiểm tra bằng truy vấn kiểm tra phân cực; giá trị `DemandType` theo schema là `Order`, `Job`, `Transfer` (kiểm tra hoa/thường). Hai truy vấn này, cùng truy vấn đơn bán quá hạn và dòng cung - cầu ở trên, **thay thế** truy vấn "chưa cấp phát" của bản trước (dùng `PartDtl.AllocatedQty` và `PartDtl.OrderLine`, không đúng với schema E10.2). Lưu ý `PartDtl.DueDate` và `PartAlloc.CreateDate` đều cho phép NULL: dòng NULL bị loại khỏi điều kiện so sánh ngày, nên cần thêm một báo cáo đếm riêng các dòng NULL. Mọi cột và tên bảng Epicor vẫn phải được kiểm tra bằng Data Dictionary Viewer của đúng môi trường E10.2 trước khi đưa vào báo cáo.
 
 ## 6. Bẫy thực chiến & Checklist
 
@@ -417,6 +481,9 @@ ORDER BY Age_Days DESC;
 | 11 | `SUM` trên bảng giao dịch lớn khi đang khóa, hoặc khóa nhiều SKU không theo thứ tự | Giao dịch kho chờ dài, deadlock giờ cao điểm | Khóa dòng `Inventory_Balance`; đơn nhiều dòng khóa theo thứ tự `Item_ID` cố định |
 | 12 | Tồn an toàn bị bỏ quên hoặc hard-code | Bán chạm mức dự phòng, hoặc bị trừ cả khi chính sách không yêu cầu | Tham số tồn an toàn theo SKU/kho trong bảng số dư; ngoại lệ có quyền và phê duyệt |
 | 13 | Epicor E10.2: dùng `Erp.PartDtl` như bảng cấp phát, hoặc tính khả dụng mà bỏ Picking/Picked | Báo cáo "đã cấp phát" sai, lỗi cột không tồn tại, ATP cao hơn thực tế | `Erp.PartDtl` là bảng cung - cầu; giữ và phân bổ nằm ở `Erp.PartAlloc` (`ReservedQty`, `AllocatedQty`, `PickingQty`, `PickedQty`); khi tính ATP trừ đủ bốn loại |
+| 14 | Epicor E10.2: cộng `PartDtl.Quantity` giữa các nguồn có đơn vị khác nhau | Time phase sai khi `IUM` khác đơn vị tính gốc | Dùng `BaseQty`; nhớ `PartAlloc` lưu theo đơn vị ở `DimCode` |
+| 15 | Epicor E10.2: giả định `ReservedQty` = giữ mềm, `AllocatedQty` = cấp phát sau giữ | Quy trình và báo cáo hiểu ngược thứ tự (schema ghi thứ tự `AllocQty → ReservedQty → PickingQty → PickedQty`) | Chạy thử một đơn mẫu, quan sát `PartAlloc` và `PartWhse`, ghi bảng quy đổi vào thiết kế |
+| 16 | Epicor E10.2: ATP chỉ trừ nhu cầu đơn bán | Hứa hàng đang bị lệnh SX hoặc chuyển kho cam kết, hoặc tính cả `BuyToOrderQty` | Trừ cả Sales, Job, Transfer; loại `BuyToOrderQty` khỏi phần trừ |
 
 **Checklist trước go-live:**
 
@@ -433,7 +500,7 @@ ORDER BY Age_Days DESC;
 - [ ] Hủy đơn bán / hủy lệnh sản xuất đều giải phóng giữ hàng tương ứng.
 - [ ] Báo cáo "cam kết vượt tồn khả dụng" chạy định kỳ và phải trả về 0 dòng; đối soát số dư với giao dịch chạy ngoài giờ.
 - [ ] Đã xác định quy tắc ưu tiên giữ hàng và người có quyền thay đổi quy tắc đó.
-- [ ] Phần Epicor E10.2: các cột và bảng đánh dấu `*` đã được kiểm tra trên Data Dictionary Viewer của môi trường thật.
+- [ ] Phần Epicor E10.2: đã chạy truy vấn kiểm tra phân cực `RequirementFlag`, đã thử một đơn mẫu để ghi bảng quy đổi Allocated / Reserved / Picking / Picked, và các ô `*` còn lại đã được kiểm tra trên môi trường thật.
 
 ## Xem thêm
 
