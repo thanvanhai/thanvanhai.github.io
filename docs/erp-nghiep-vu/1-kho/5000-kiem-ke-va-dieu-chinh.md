@@ -4,6 +4,9 @@ title: "5000 Kiểm kê & điều chỉnh tồn kho"
 slug: /erp-nghiep-vu/kho/kiem-ke-va-dieu-chinh
 sidebar_position: 5000
 description: "Kiểm kê định kỳ (cycle count) và kiểm kê toàn bộ, quy trình đếm và phê duyệt chênh lệch, điều chỉnh tăng giảm, xử lý âm kho và ngưỡng dung sai cho hệ thống tự xây."
+date: 2026-07-28
+last_update:
+  date: 2026-11-19
 tags: [erp, inventory, cycle-count, adjustment, negative-stock]
 ---
 

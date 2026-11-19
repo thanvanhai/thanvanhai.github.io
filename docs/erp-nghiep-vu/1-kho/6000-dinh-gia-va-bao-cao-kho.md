@@ -4,6 +4,9 @@ title: "6000 Định giá & báo cáo kho"
 slug: /erp-nghiep-vu/kho/dinh-gia-va-bao-cao-kho
 sidebar_position: 6000
 description: "Ảnh hưởng của phương pháp tính giá tới sổ kho, báo cáo tồn kho - nhập xuất tồn - hàng chậm luân chuyển, chi phí thu mua phân bổ và đối chiếu kho với sổ cái."
+date: 2026-07-29
+last_update:
+  date: 2026-11-19
 tags: [erp, inventory, valuation, reporting, cogs]
 ---
 

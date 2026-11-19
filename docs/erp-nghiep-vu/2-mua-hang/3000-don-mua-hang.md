@@ -4,6 +4,9 @@ title: "3000 Đơn mua hàng"
 slug: /erp-nghiep-vu/mua-hang/don-mua-hang
 sidebar_position: 3000
 description: "Cấu trúc bốn tầng của đơn mua hàng (header, line, shipment, distribution), phê duyệt theo hạn mức, quản lý thay đổi và phiên bản PO, theo dõi tiến độ giao hàng và cổng nhà cung cấp."
+date: 2026-08-04
+last_update:
+  date: 2026-11-19
 tags: [erp, procurement, purchase-order, approval, revision]
 ---
 

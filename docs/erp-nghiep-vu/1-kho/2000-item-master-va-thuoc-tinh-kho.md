@@ -4,6 +4,9 @@ title: "2000 Item Master & thuộc tính kho"
 slug: /erp-nghiep-vu/kho/item-master-va-thuoc-tinh-kho
 sidebar_position: 2000
 description: "Sáu thuộc tính kho của một mã hàng: đơn vị tính gốc, quản lý lô, quản lý serial, chiến lược xuất kho FEFO, điểm đặt hàng lại và những thuộc tính bất biến sau khi phát sinh giao dịch."
+date: 2026-07-24
+last_update:
+  date: 2026-07-31
 tags: [erp, inventory, item-master, uom, lot, serial, fefo, reorder-point]
 ---
 

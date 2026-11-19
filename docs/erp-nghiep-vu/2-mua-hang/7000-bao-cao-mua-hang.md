@@ -4,6 +4,9 @@ title: "7000 Báo cáo mua hàng"
 slug: /erp-nghiep-vu/mua-hang/bao-cao-mua-hang
 sidebar_position: 7000
 description: "Phân tích cơ cấu chi tiêu, chi phí đơn vị, tỷ lệ nhà cung cấp độc quyền và bộ chỉ số đánh giá hiệu suất nhà cung cấp: giao đúng hạn, chất lượng, giá."
+date: 2026-08-08
+last_update:
+  date: 2026-11-19
 tags: [erp, procurement, spend-analysis, supplier-scorecard, otd]
 ---
 

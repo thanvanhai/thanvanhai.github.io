@@ -4,7 +4,7 @@ title: "4000 Nhận hàng & kiểm tra chất lượng"
 slug: /erp-nghiep-vu/mua-hang/nhan-hang-va-kiem-qc
 sidebar_position: 4000
 description: "Bài gốc về quy trình nhận hàng 3 bước (Nhận - Kiểm - Nhập kho), kiểm tra chất lượng đầu vào (IQC), xử lý hàng không đạt, các tình huống nhận đặc biệt và điểm nối sang giao dịch kho, hạch toán và đối soát hóa đơn."
-date: 2026-07-22
+date: 2026-08-05
 last_update:
   date: 2026-11-17
 tags: [erp, procurement, receiving, iqc, putaway]

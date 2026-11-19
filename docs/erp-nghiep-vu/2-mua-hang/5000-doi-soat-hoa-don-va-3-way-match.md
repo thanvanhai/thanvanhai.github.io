@@ -4,6 +4,9 @@ title: "5000 Đối soát hóa đơn & 3-Way Match"
 slug: /erp-nghiep-vu/mua-hang/doi-soat-hoa-don-va-3-way-match
 sidebar_position: 5000
 description: "Nguyên lý khớp lệnh 2/3/4 chiều giữa đơn mua, phiếu nhận và hóa đơn; dung sai giá và số lượng; cơ chế khóa và mở khóa thanh toán; xử lý sai lệch đơn giá, số lượng và tỷ giá."
+date: 2026-08-06
+last_update:
+  date: 2026-11-19
 tags: [erp, procurement, invoice-match, three-way-match, tolerance, hold]
 ---
 

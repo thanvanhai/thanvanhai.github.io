@@ -4,7 +4,7 @@ title: "4000 Giữ hàng, phân bổ & ATP"
 slug: /erp-nghiep-vu/kho/giu-hang-phan-bo-va-atp
 sidebar_position: 4000
 description: "Cơ chế giữ chỗ (soft allocation) và phân bổ (hard allocation) tồn kho, tính khả năng cung ứng ATP theo mốc thời gian, tồn an toàn, FEFO và shelf-life, giữ hàng ảo, tranh chấp cùng một lượng tồn kho và cách thiết kế chống oversell. Tham chiếu Epicor ERP 10.2 (E10.2)."
-date: 2026-07-25
+date: 2026-07-26
 last_update:
   date: 2026-11-19
 tags: [erp, inventory, reservation, allocation, atp, oversell, fefo, epicor-e10]

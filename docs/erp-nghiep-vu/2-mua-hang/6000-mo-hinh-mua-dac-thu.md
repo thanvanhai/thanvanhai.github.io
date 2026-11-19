@@ -4,6 +4,9 @@ title: "6000 Mô hình mua đặc thù"
 slug: /erp-nghiep-vu/mua-hang/mo-hinh-mua-dac-thu
 sidebar_position: 6000
 description: "Sáu mô hình mua không theo chuẩn: gia công ngoài, ký gửi và VMI, mua nội bộ giữa pháp nhân, mua dịch vụ và tài sản cố định, drop-ship, nhập khẩu — kèm điểm khác biệt cốt lõi của từng mô hình."
+date: 2026-08-07
+last_update:
+  date: 2026-11-19
 tags: [erp, procurement, subcontracting, consignment, vmi, intercompany, service-po, drop-ship, import]
 ---
 

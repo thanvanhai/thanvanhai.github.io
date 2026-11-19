@@ -4,6 +4,9 @@ title: "1000 Nhu cầu mua hàng & lựa chọn nhà cung cấp"
 slug: /erp-nghiep-vu/mua-hang/nhu-cau-va-lua-chon-ncc
 sidebar_position: 1000
 description: "Yêu cầu mua hàng (PR), gom nhu cầu, phê duyệt theo hạn mức, mời thầu RFQ, phân tích báo giá, bảo mật thầu kín và mua sắm tự phục vụ qua danh mục điện tử."
+date: 2026-08-02
+last_update:
+  date: 2026-11-19
 tags: [erp, procurement, pr, rfq, sourcing, bidding]
 ---
 

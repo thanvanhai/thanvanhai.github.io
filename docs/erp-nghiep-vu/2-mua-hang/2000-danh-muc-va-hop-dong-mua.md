@@ -4,6 +4,9 @@ title: "2000 Danh mục & hợp đồng mua"
 slug: /erp-nghiep-vu/mua-hang/danh-muc-va-hop-dong-mua
 sidebar_position: 2000
 description: "Hồ sơ nhà cung cấp, bảng giá mua, thỏa thuận khung, vòng đời hợp đồng (sửa đổi, gia hạn, kiểm soát hạn mức), quy tắc xác định nguồn cung và phân bổ tỷ lệ, quy tắc thuế đầu vào."
+date: 2026-08-03
+last_update:
+  date: 2026-11-19
 tags: [erp, procurement, supplier-master, contract, sourcing, quota]
 ---
 

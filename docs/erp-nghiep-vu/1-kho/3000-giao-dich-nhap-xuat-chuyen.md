@@ -4,7 +4,7 @@ title: "3000 Giao dịch nhập, xuất & chuyển kho"
 slug: /erp-nghiep-vu/kho/giao-dich-nhap-xuat-chuyen
 sidebar_position: 3000
 description: "Bài gốc về giao dịch kho: năm loại chuyển động, cơ chế ghi sổ một chiều (append-only) với vị trí ảo có tên, giao dịch ảo cho drop-ship, nguyên tắc sinh bút toán và truy vấn kiểm soát tính toàn vẹn tồn kho."
-date: 2026-07-22
+date: 2026-07-25
 last_update:
   date: 2026-11-17
 tags: [erp, inventory, transaction, movement, logical-transaction]

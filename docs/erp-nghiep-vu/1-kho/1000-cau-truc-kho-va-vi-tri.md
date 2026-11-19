@@ -4,6 +4,9 @@ title: "1000 Cấu trúc kho & vị trí"
 slug: /erp-nghiep-vu/kho/cau-truc-kho-va-vi-tri
 sidebar_position: 1000
 description: "Thiết kế cây kho nhiều tầng: công ty, site, kho, khu vực, dãy, kệ, ô; phân biệt kho thật và kho ảo (đệm, ký gửi, hàng đi đường) và nguyên tắc gán vị trí khi nhập hàng."
+date: 2026-07-23
+last_update:
+  date: 2026-07-30
 tags: [erp, inventory, warehouse, bin, location]
 ---
 

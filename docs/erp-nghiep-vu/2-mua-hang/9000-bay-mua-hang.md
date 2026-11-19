@@ -4,6 +4,9 @@ title: "9000 Bẫy thực chiến mua hàng"
 slug: /erp-nghiep-vu/mua-hang/bay-mua-hang
 sidebar_position: 9000
 description: "Tổng hợp lỗi thường gặp trong mua hàng: lệch đơn vị tính mua và kho, đơn mua và yêu cầu treo lâu ngày, hóa đơn trùng lặp, On-Order ảo và cách phát hiện bằng truy vấn."
+date: 2026-08-09
+last_update:
+  date: 2026-11-19
 tags: [erp, procurement, troubleshooting, uom, duplicate-invoice]
 ---
 
