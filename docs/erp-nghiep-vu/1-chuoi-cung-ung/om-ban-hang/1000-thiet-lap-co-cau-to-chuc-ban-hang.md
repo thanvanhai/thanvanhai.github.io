@@ -142,7 +142,7 @@ Thiết kế cơ cấu tổ chức bán hàng chuẩn xác là tiền đề đ�
 
 *   **Tích hợp Tài chính kế toán (FIN):** Mối quan hệ giữa Tổ chức bán hàng và Pháp nhân giúp phân hệ Kế toán công nợ (AR) tự động định vị đúng Sổ cái và Mã số thuế phát hành hóa đơn điện tử dựa trên Đơn hàng (Sales Order) được tạo.
 *   **Tích hợp Quản lý Kho (WMS/INV):** Khi tạo đơn hàng tại một Vùng bán hàng cụ thể, hệ thống sẽ đối chiếu với cấu hình phân vùng địa lý để tự động giới hạn danh sách kho xuất hàng (Shipping Warehouses) hiển thị trên đơn hàng, tránh tình trạng nhân viên bán hàng chọn nhầm kho xuất ở khu vực địa lý quá xa gây lãng phí chi phí vận chuyển.
-*   **Sinh đơn mua hàng nội bộ tự động:** Khi Công ty A bán hàng nhưng Công ty B giữ kho, cơ chế Intercompany dựa trên chính cơ cấu tổ chức này để tự động sinh đơn PO/SO nội bộ, được phân tích chi tiết tại bài [6020 Quản lý đơn mua hàng nội bộ giữa các pháp nhân trong tập đoàn](../po-mua-hang/6020-quan-ly-don-mua-hang-noi-bo-giua-cac-phap-nhan.md) thuộc phân hệ PO.
+*   **Sinh đơn mua hàng nội bộ tự động:** Khi Công ty A bán hàng nhưng Công ty B giữ kho, cơ chế Intercompany dựa trên chính cơ cấu tổ chức này để tự động sinh đơn PO/SO nội bộ, được phân tích chi tiết tại bài 6020 Quản lý đơn mua hàng nội bộ giữa các pháp nhân trong tập đoàn thuộc phân hệ PO.
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

@@ -35,26 +35,14 @@ Nhận hàng là điểm giao nhau giữa **giấy tờ (PO)** và **hàng thậ
 ## 1. Luồng vận hành
 
 ```mermaid
-flowchart TD
-    PO["Đơn mua hàng - PO<br/>Đặt 100, giá 10"] --> NEED{"Mặt hàng có<br/>yêu cầu kiểm?"}
-    NEED -->|Không| DIRECT["Nhận thẳng vào kho chính<br/>1 bước"]
-    NEED -->|Có| REC["Bước 1 - NHẬN<br/>Ghi số lượng thực giao, lô, hạn dùng<br/>Vào khu chờ kiểm<br/>Chưa khả dụng"]
-    REC --> QC{"Bước 2 - KIỂM<br/>QC quyết định"}
-    QC -->|Đạt| PUT["Bước 3 - NHẬP KHO<br/>Cất lên bin chính"]
-    QC -->|Đạt có điều kiện| WAIVER["Đặc cách sử dụng<br/>cần phê duyệt, ghi lý do"]
-    QC -->|Không đạt| REJ["Khu biệt trữ hàng lỗi"]
-    QC -->|Đạt một phần| SPLIT["Tách: phần đạt nhập kho<br/>phần lỗi sang biệt trữ"]
-    WAIVER --> PUT
-    SPLIT --> PUT
-    SPLIT --> REJ
-    DIRECT --> STK[("Tồn kho khả dụng<br/>On-hand")]
-    PUT --> STK
-    REJ --> DISP{"Xử lý hàng lỗi"}
-    DISP -->|Trả NCC| RTV["Trả hàng nhà cung cấp<br/>xem 6000"]
-    DISP -->|Chọn lọc / tái gia công| REWORK["Xử lý rồi kiểm lại"]
-    DISP -->|Huỷ| SCRAP["Huỷ, có chứng từ"]
-    REWORK --> QC
-    STK --> MATCH["Đối soát hóa đơn 3 chiều<br/>xem 5000"]
+flowchart LR
+    PO["Đơn mua"] -->|1. RECEIVE| REC["Nhận tạm<br/>kho đệm"]
+    REC -->|2. INSPECT| QC{"Bộ phận IQC<br/>kiểm tra"}
+    QC -->|Đạt| DEL["3. DELIVER<br/>cất lên bin chính"]
+    QC -->|Không đạt| REJ["Khu biệt trữ<br/>hàng lỗi"]
+    DEL --> STK[("Tồn kho<br/>khả dụng")]
+    REJ --> RTV["Luồng trả hàng<br/>nhà cung cấp"]
+    STK --> MATCH["Đối soát<br/>hóa đơn"]
 ```
 
 ### 1.1 Xử lý hàng không đạt
@@ -85,7 +73,7 @@ Hàng không đạt không chỉ có một đường "trả nhà cung cấp":
 | Lập PO, xác định dung sai nhận | ✅ tạo PO, khai báo dung sai nhận thừa/thiếu | — | — | — |
 | **Bước 1 - Nhận** | Xem tiến độ nhận trên dòng PO | ✅ lập phiếu nhận, ghi số lượng thực giao, lô, hạn | — | Nhận bút toán ghi nhận hàng và công nợ trung gian, **nếu** cấu hình ghi nhận khi nhận |
 | **Bước 2 - Kiểm** | Xem kết quả, không sửa số lượng | ✅ di chuyển hàng theo quyết định của QC | ✅ kiểm và ra quyết định (đạt / không đạt / đặc cách) | — |
-| **Bước 3 - Nhập kho** | Dòng PO chuyển "đã nhận đủ / một phần" (do hệ thống cập nhật) | ✅ cất lên bin chính, tăng On-hand | — | ✅ nhận bút toán chuyển từ hàng chờ kiểm sang tồn kho (hoặc bút toán đầy đủ nếu ghi nhận khi nhập kho) |
+| **Bước 3 - Nhập kho** | Dòng PO chuyển "đã nhận đủ / một phần" (do hệ thống cập nhật) | ✅ cất lên bin chính, tăng tồn khả dụng | — | ✅ nhận bút toán chuyển từ hàng chờ kiểm sang tồn kho (hoặc bút toán đầy đủ nếu ghi nhận khi nhập kho) |
 | **Hàng lỗi** | ✅ làm việc với NCC, duyệt phương án xử lý | ✅ di chuyển sang biệt trữ, thực hiện trả hàng | ✅ quyết định mức độ lỗi và phương án | Đảo hoặc điều chỉnh công nợ cho phần trả / huỷ |
 | **Đối soát hóa đơn** | ✅ duyệt sai lệch | Cung cấp số lượng đã nhận | — | ✅ chạy 3-way match |
 
@@ -156,7 +144,7 @@ Quy tắc chung cho cả hai cấu hình:
 3. **Kiểm:** `Receiving > Inspections` → `Accept` / `Reject` theo số lượng.
 4. **Nhập kho:** `Receiving > Receiving Transactions` → chọn dòng đã `Accept`, chỉ định Subinventory và Locator (Deliver).
 
-> Việc cập nhật On-hand khả dụng chỉ xảy ra sau bước Deliver. Bút toán tài khoản kiểm nhập có thể phát sinh từ bước Receive nếu bật ghi nhận khi nhận.
+> Tồn khả dụng chỉ tăng sau bước Deliver. Bút toán tài khoản kiểm nhập có thể phát sinh từ bước Receive nếu bật ghi nhận khi nhận.
 
 ### C. Epicor ERP — luồng thao tác tham khảo
 
@@ -226,7 +214,7 @@ HAVING r.Qty_Received - ISNULL(SUM(i.Qty_Invoiced), 0) > 0;
 |---|---|---|---|
 | 1 | Hàng cần IQC mà nhận 1 bước | QC phát hiện lỗi sau khi sản xuất đã dùng → phải lập phiếu xuất trả ngược, sổ kho rối | Gắn yêu cầu kiểm theo vật tư / nhà cung cấp; khu chờ kiểm **không** vào tồn khả dụng |
 | 2 | Ép mọi mặt hàng qua 3 bước | Khu chờ kiểm đầy hàng, thao tác thừa, sản xuất thiếu vật tư dù hàng đã về | Chỉ nhóm hàng có rủi ro mới cần kiểm; nhóm còn lại nhận thẳng |
-| 3 | Cộng On-hand khả dụng ngay khi Nhận | Báo cáo tồn khả dụng cao hơn hàng thực dùng được; MRP không đặt thêm | Hàng chờ kiểm chỉ hiện ở báo cáo riêng, không tính vào tồn khả dụng |
+| 3 | Cộng vào tồn khả dụng ngay khi Nhận | Báo cáo tồn khả dụng cao hơn hàng thực dùng được; MRP không đặt thêm | Hàng chờ kiểm chỉ hiện ở báo cáo riêng, không tính vào tồn khả dụng |
 | 4 | Nhận thừa không chặn | Hóa đơn 105 cái không khớp PO 100 cái → khóa thanh toán hàng loạt | Bật dung sai nhận thừa + người duyệt vượt dung sai |
 | 5 | Hàng bị loại vẫn tính là tồn kho dùng được | Giá trị tồn kho phồng, công nợ phải trả sai | Hàng loại ở khu biệt trữ, xử lý theo mục 1.1, không vào tồn khả dụng |
 | 6 | Cấu hình ghi nhận khi nhận / khi nhập kho không thống nhất với kế toán | Lệch tài khoản trung gian và tài khoản hàng chờ kiểm cuối kỳ | Chọn một cấu hình, ghi vào tài liệu thiết kế, kế toán ký duyệt |

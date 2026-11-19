@@ -21,14 +21,15 @@ tags: [erp, inventory, transaction, movement, logical-transaction]
 1. **Tồn kho không phải một con số, mà là kết quả cộng dồn của các giao dịch.** Hệ thống chuẩn không cho phép "sửa số tồn"; nó chỉ cho phép **ghi thêm giao dịch**. Muốn sửa sai, ghi giao dịch đảo. Đây là nền tảng của mọi audit trail trong kho.
 2. **Chỉ có 5 loại chuyển động gốc:** **Nhập (Receipt)**, **Xuất (Issue)**, **Chuyển (Transfer)**, **Điều chỉnh (Adjustment)** và **Đảo (Reversal)**. Mọi nghiệp vụ — mua, bán, sản xuất, trả hàng, chuyển kho — đều quy về một trong năm loại này. Kiểm kê **không phải** loại giao dịch; nó là *sự kiện* dẫn tới giao dịch Điều chỉnh. Các hệ thống lớn như SAP có hàng trăm movement type, nhưng đó đều là biến thể của năm loại gốc: khác nhau ở **quy tắc hạch toán** và **chứng từ nguồn**, không khác ở bản chất chuyển động.
 3. **Mỗi giao dịch là một cặp (vị trí nguồn → vị trí đích), và cả hai đầu đều là vị trí có tên.** Thế giới bên ngoài kho cũng được mô hình hóa thành *vị trí ảo*: `SUPPLIER`, `CUSTOMER`, `WIP`, `ADJUSTMENT`, `SCRAP`. Khi đó:
-   - Nhập = `SUPPLIER` (hoặc `WIP`, `CUSTOMER` khi khách trả) → bin
-   - Xuất = bin → `CUSTOMER` / `WIP` / `SUPPLIER` (trả NCC)
-   - Chuyển = bin A → bin B
+   - Nhập = `SUPPLIER` (hoặc `WIP`, `CUSTOMER` khi khách trả) → khu chờ kiểm hoặc bin
+   - Xuất = bin → `CUSTOMER` / `WIP` / `SUPPLIER` (trả NCC) / `SCRAP` (huỷ)
+   - Chuyển = bin A → bin B (gồm cả chuyển từ khu chờ kiểm sang bin chính)
    - Điều chỉnh tăng = `ADJUSTMENT` → bin; giảm = bin → `ADJUSTMENT`
 
    Cách làm này (giống Odoo) có một lợi ích lớn: **tổng tồn của mọi vị trí, kể cả vị trí ảo, luôn bằng 0**. Nếu không bằng 0 thì có giao dịch bị ghi sai. Dùng `NULL` cho "bên ngoài" thì mất khả năng tự kiểm tra này.
 4. **Giá trị đi kèm số lượng.** Mỗi giao dịch mang cả `Qty` và `Unit_Cost`, vì kho là sổ cái vật chất đồng thời là nguồn dữ liệu giá vốn. Giao dịch kho không có giá trị là lỗ hổng lớn nhất khiến kho và sổ cái lệch nhau.
-5. **Giao dịch ảo (logical) không đụng tồn kho vật lý.** Với drop-ship hay hàng ký gửi, hệ thống vẫn ghi chuyển động để có dòng chứng từ đối soát, nhưng gắn cờ để **loại khỏi** báo cáo On-hand. Không có cơ chế này thì hoặc mất dấu đối soát, hoặc sinh tồn kho ảo.
+5. **Giao dịch ảo (logical) không đụng tồn kho vật lý.** Với drop-ship hay hàng ký gửi, hệ thống vẫn ghi chuyển động để có dòng chứng từ đối soát, nhưng gắn cờ để **loại khỏi** báo cáo On-hand. Không có cơ chế này thì hoặc mất dấu đối soát, hoặc sinh tồn kho ảo. 
+**On-hand** trong bộ tài liệu này là **tồn vật lý**: gồm mọi hàng đang nằm trong kho, kể cả hàng ở khu chờ kiểm và khu biệt trữ. Phần hàng thực sự được bán hoặc cấp cho sản xuất gọi là **tồn khả dụng**, xem [4000 Giữ hàng, phân bổ & ATP](./4000-giu-hang-phan-bo-va-atp.md).
 6. **Một dịch vụ ghi sổ kho duy nhất.** Các module khác (mua, bán, sản xuất) không ghi trực tiếp vào bảng giao dịch; chúng **kích hoạt** dịch vụ ghi sổ kho thông qua chứng từ nguồn. Nhờ vậy mọi kiểm tra (đủ giá trị, đúng kỳ, không âm kho, đúng quyền) nằm ở một chỗ.
 7. **Không sửa giao dịch đã ghi.** Sửa sai bằng giao dịch đảo, ghi vào **kỳ đang mở** với ngày hạch toán hiện tại. Giao dịch của kỳ đã khóa không bao giờ bị động tới. Đây là ranh giới giữa "sửa lỗi nghiệp vụ" và "làm giả sổ".
 
@@ -101,7 +102,8 @@ Quy tắc: module nguồn **tạo sự kiện / chứng từ nguồn**; dịch v
 
 | Loại giao dịch | Sự kiện kích hoạt (module nguồn) | Kho ghi giao dịch | Kế toán (GL) |
 |---|---|---|---|
-| **Nhập từ PO** | Mua hàng: xác nhận PO, duyệt sai lệch. Kho: hoàn tất bước nhập kho chính thức theo quy trình 3 bước | ✅ Nhập `SUPPLIER` → bin | Bút toán tồn kho + tài khoản trung gian |
+| **Nhập từ PO** | Mua hàng: xác nhận PO, duyệt sai lệch. Kho: nhận hàng thực tế | ✅ Nhập `SUPPLIER` → khu chờ kiểm (mặt hàng cần kiểm) hoặc → bin (mặt hàng không cần kiểm) | Tùy cấu hình ghi nhận, xem mục 3 |
+| **Cất hàng sau kiểm** | QC: quyết định đạt. Kho: cất hàng | ✅ Chuyển khu chờ kiểm → bin chính | Tùy cấu hình ghi nhận, xem mục 3 |
 | **Nhập từ sản xuất** | Sản xuất: hoàn thành lệnh SX | ✅ Nhập `WIP` → bin | Bút toán WIP → Thành phẩm |
 | **Nhập từ RMA** | Bán hàng: duyệt RMA; kho nhận hàng trả | ✅ Nhập `CUSTOMER` → bin | Đảo giá vốn |
 | **Xuất cho bán** | Bán hàng: xác nhận giao hàng | ✅ Xuất bin → `CUSTOMER` | Ghi nhận giá vốn (COGS) |
@@ -110,7 +112,7 @@ Quy tắc: module nguồn **tạo sự kiện / chứng từ nguồn**; dịch v
 | **Chuyển kho / bin** | Kho | ✅ Chuyển bin A → bin B | Chỉ sinh bút toán khi đổi pháp nhân, đổi tài khoản tồn kho hoặc có hàng đang vận chuyển (xem mục 3) |
 | **Điều chỉnh** | Kho: kiểm kê hoặc phiếu điều chỉnh, **đã được duyệt** | ✅ Điều chỉnh qua `ADJUSTMENT` | Duyệt và nhận bút toán chênh lệch |
 | **Đảo** | Người có quyền, kèm lý do | ✅ Giao dịch đối ứng, trỏ về giao dịch gốc | Đảo bút toán tương ứng trong kỳ mở |
-
+| **Huỷ / phế** | Kho: lập phiếu huỷ đã được duyệt (hàng lỗi không trả được, hết hạn) | ✅ Xuất bin hoặc khu biệt trữ → `SCRAP` | Ghi chi phí hàng huỷ |
 **Phân quyền cốt lõi:** không module nào ngoài dịch vụ ghi sổ kho được `INSERT` vào bảng giao dịch. Nếu mua hàng hay bán hàng ghi thẳng, các kiểm tra (kỳ, âm kho, giá trị) bị bỏ qua và dòng chứng từ mất truy vết. Nguyên tắc tách nhiệm vụ chi tiết xem [4000 Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md).
 
 ## 3. Hạch toán
@@ -119,7 +121,7 @@ Bài này **không định nghĩa lại tài khoản**. Bản đồ tài khoản
 
 | Giao dịch | Sinh bút toán? | Ghi chú |
 |---|---|---|
-| Nhập / Xuất với bên ngoài (NCC, khách, sản xuất) | Có | Theo quy tắc của luồng nghiệp vụ tương ứng |
+| Nhập / Xuất với bên ngoài (NCC, khách, sản xuất) | Có | heo quy tắc của luồng nghiệp vụ tương ứng; riêng nhập từ PO xem dòng bên dưới |
 | Điều chỉnh | Có, **sau khi duyệt** | Không đẩy thẳng từ màn hình kiểm kê sang GL |
 | Đảo | Có | Bút toán đảo của giao dịch gốc, trong kỳ mở |
 | Chuyển bin trong cùng kho | Không | Chỉ đổi vị trí |
@@ -128,6 +130,9 @@ Bài này **không định nghĩa lại tài khoản**. Bản đồ tài khoản
 | Chuyển kho **khác tài khoản tồn kho** (ví dụ kho NVL sang kho thành phẩm tách tài khoản) | Có | Chuyển giá trị giữa hai tài khoản |
 | Chuyển kho có **hàng đang vận chuyển (in-transit)** | Có | Ghi qua tài khoản hàng đang đi đường cho tới khi nhận |
 | Giao dịch ảo (drop-ship, ký gửi) | **Không sinh bút toán tồn kho** | Bút toán tài khoản trung gian và giá vốn vẫn phát sinh theo luồng nghiệp vụ của mua/bán |
+| Nhập từ PO (bước Nhận) | **Tùy cấu hình** | Có bút toán nếu ghi nhận khi nhận; không có nếu ghi nhận khi nhập kho. Xem [Nhận hàng & kiểm tra chất lượng](../2-mua-hang/4000-nhan-hang-va-kiem-qc.md) |
+| Chuyển từ khu chờ kiểm sang bin chính | **Tùy cấu hình** | Có bút toán chuyển từ tài khoản hàng chờ kiểm sang tồn kho, hoặc bút toán đầy đủ, tùy cấu hình ghi nhận |
+| Huỷ / phế | Có, **sau khi duyệt** | Ghi chi phí hàng huỷ, không đẩy thẳng sang sổ cái |
 
 Ba điều kho cần nhớ:
 
@@ -361,6 +366,7 @@ Với Epicor và SAP, nên ưu tiên báo cáo chuẩn của hệ thống (Part 
 - [0000 Tổng quan Kho](./0000-tong-quan-kho.md)
 - [1000 Cấu trúc kho & vị trí](./1000-cau-truc-kho-va-vi-tri.md)
 - [2000 Item Master & thuộc tính kho](./2000-item-master-va-thuoc-tinh-kho.md)
+- [Mua hàng 4000 - Nhận hàng & kiểm tra chất lượng](../2-mua-hang/4000-nhan-hang-va-kiem-qc.md)
 - [4000 Giữ hàng, phân bổ & ATP](./4000-giu-hang-phan-bo-va-atp.md)
 - [5000 Kiểm kê & điều chỉnh](./5000-kiem-ke-va-dieu-chinh.md)
 - [6000 Định giá & báo cáo kho](./6000-dinh-gia-va-bao-cao-kho.md)

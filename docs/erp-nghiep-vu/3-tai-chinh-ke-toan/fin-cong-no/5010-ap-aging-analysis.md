@@ -69,10 +69,10 @@ Khi chuyển đổi giữa các hệ thống ERP hoặc tự thiết kế hệ t
 ## 3. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
 * **Danh mục đối tác:** Thông tin nhà cung cấp và điều khoản thanh toán mặc định được tham chiếu từ [2000 Quản lý hồ sơ nhà cung cấp (Supplier Master)]().
-* **Chứng từ đầu vào của tuổi nợ:** Dữ liệu hóa đơn gốc phát sinh từ các đơn hàng PO đã hoàn thành đối soát tại bài [7000 Đối soát khớp lệnh 3 chiều và 2 chiều (PO Matching)](../../1-chuoi-cung-ung/po-mua-hang/7000-nguyen-ly-doi-soat-khop-lenh-3-chieu-va-2-chieu.md).
-* **Tách hóa đơn đang tranh chấp:** Trạng thái khóa/mở khóa hóa đơn nêu ở Mục 1 được đồng bộ trực tiếp từ bài [7010 Xử lý chênh lệch hóa đơn và Mở khóa thanh toán (Invoice Variance & Block/Release)](../../1-chuoi-cung-ung/po-mua-hang/7010-xu-ly-chenh-lech-gia-so-luong-tren-hoa-don.md).
+* **Chứng từ đầu vào của tuổi nợ:** Dữ liệu hóa đơn gốc phát sinh từ các đơn hàng PO đã hoàn thành đối soát tại bài 7000 Đối soát khớp lệnh 3 chiều và 2 chiều (PO Matching).
+* **Tách hóa đơn đang tranh chấp:** Trạng thái khóa/mở khóa hóa đơn nêu ở Mục 1 được đồng bộ trực tiếp từ bài 7010 Xử lý chênh lệch hóa đơn và Mở khóa thanh toán (Invoice Variance & Block/Release).
 * **Trừ khoản tạm ứng đang treo:** Số dư nợ thực tế hiển thị trên báo cáo tuổi nợ bắt buộc phải trừ đi các khoản tiền doanh nghiệp đã ứng trước cho nhà cung cấp tại bài [7020 Nghiệp vụ thanh toán tạm ứng và đối trừ hóa đơn nhà cung cấp (Prepayment AP)]() để phản ánh đúng nghĩa vụ nợ ròng cuối cùng.
-* **Trừ khoản giấy báo nợ hoàn trả hàng:** Các giấy báo nợ phát sinh từ nghiệp vụ hoàn trả nhà cung cấp cũng cần được khấu trừ tương tự — tham chiếu bài [5020 Xử lý các tình huống giao hàng lỗi, thừa/thiếu số lượng và hoàn trả (Shortage, Over-delivery & Return to Vendor)](../../1-chuoi-cung-ung/po-mua-hang/5020-xu-ly-tinh-huong-giao-hang-loi-thua-thieu-va-hoan-tra.md) trong cùng nhóm PO Mua hàng.
+* **Trừ khoản giấy báo nợ hoàn trả hàng:** Các giấy báo nợ phát sinh từ nghiệp vụ hoàn trả nhà cung cấp cũng cần được khấu trừ tương tự — tham chiếu bài 5020 Xử lý các tình huống giao hàng lỗi, thừa/thiếu số lượng và hoàn trả (Shortage, Over-delivery & Return to Vendor) trong cùng nhóm PO Mua hàng.
 
 ---
 
