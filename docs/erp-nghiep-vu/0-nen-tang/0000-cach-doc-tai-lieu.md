@@ -4,54 +4,71 @@ title: "Cách đọc tài liệu ERP Nghiệp vụ"
 sidebar_label: Cách đọc tài liệu
 slug: /erp-nghiep-vu/nen-tang/tong-quan
 sidebar_position: 0
-description: "Bản đồ 7 khối tài liệu ERP nghiệp vụ (Nền tảng, Kho, Mua hàng, Sản xuất, Bán hàng, Công nợ, Kế toán chung) và quy ước đọc."
-tags: [erp, dinh-huong, roadmap]
+description: "Bản đồ tài liệu ERP Nghiệp vụ theo bảy khối: Nền tảng, Kho, Mua hàng, Sản xuất, Bán hàng, Công nợ, Kế toán chung — và cách tra cứu theo tình huống."
+tags: [erp, tong-quan]
 ---
 
 # Cách đọc tài liệu ERP Nghiệp vụ
 
-> **Trạng thái:** khung tài liệu (đang hoàn thiện). Mục lục bên dưới là danh sách bài sẽ có; các bài chưa viết được giữ ở trạng thái `[ ]`.
+Tài liệu này viết cho người **làm nghiệp vụ ERP** — dù bạn dùng SAP, Oracle EBS, Epicor, Odoo hay hệ thống do doanh nghiệp tự xây. Nội dung được tổ chức theo **quy trình vận hành thật**, không theo module phần mềm, vì ngoài đời người ta không "vận hành module" mà vận hành một quy trình đi xuyên nhiều phân hệ.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Bảy khối tài liệu
 
-_(Chưa biên soạn)_
+| Khối | Nội dung | Khi nào đọc |
+|---|---|---|
+| **Nền tảng** | Tổ chức, pháp nhân, thuật ngữ, chứng từ, kiểm soát nội bộ, đơn vị tính | Đọc trước tiên, một lần |
+| **Kho** | Cấu trúc kho, giao dịch nhập xuất, giữ hàng, kiểm kê, định giá | Khi cần hiểu hàng hóa được ghi nhận thế nào |
+| **Mua hàng** | Nhu cầu, chọn nhà cung cấp, đơn mua, nhận hàng, đối soát hóa đơn | Khi làm nghiệp vụ mua |
+| **Sản xuất** | Kỹ thuật sản xuất, lệnh sản xuất, dở dang, giá thành | Khi làm nghiệp vụ sản xuất |
+| **Bán hàng** | Đơn bán, giao hàng, đổi trả, mô hình bán đặc thù | Khi làm nghiệp vụ bán |
+| **Công nợ** | Phải trả, phải thu, đối trừ, tuổi nợ, dòng tiền | Khi làm công nợ |
+| **Kế toán chung** | Tài khoản trung gian, giá vốn, thuế, tài sản cố định, sổ cái, đóng kỳ | Khi làm tổng hợp và khóa sổ |
 
-## 1. Luồng vận hành
+## Mọi thứ nối với nhau theo một dòng
 
-_(Chưa biên soạn)_
+```mermaid
+flowchart LR
+    MUA["Mua hàng<br/>P2P"] --> KHO[("Kho")]
+    KHO --> SX["Sản xuất"]
+    SX --> KHO
+    KHO --> BAN["Bán hàng<br/>O2C"]
+    MUA --> AP["Công nợ phải trả"]
+    BAN --> AR["Công nợ phải thu"]
+    AP --> KT["Kế toán chung"]
+    AR --> KT
+    KHO -->|Giá trị hàng tồn| KT
+```
 
-## 2. Ai làm gì ở module nào
+Hàng đi qua kho, tiền đi ngược chiều qua công nợ, và kế toán chung là nơi ghi nhận giá trị của cả hai. Đây là lý do tài liệu không tách rời từng module: hiểu một bước mà không thấy nó nối sang đâu thì không dùng được trong công việc thật.
 
-_(Chưa biên soạn)_
+## Tra cứu theo tình huống
 
-## 3. Hạch toán
+Nếu bạn có câu hỏi cụ thể, đi thẳng tới đây:
 
-_(Chưa biên soạn)_
+| Tình huống | Xem bài |
+|---|---|
+| Hàng về kho rồi mà hóa đơn chưa về thì ghi thế nào? | Kế toán chung → Hạch toán & tài khoản trung gian |
+| Hóa đơn lệch giá hoặc lệch số lượng so với đơn mua | Mua hàng → Đối soát hóa đơn & 3-Way Match |
+| Báo cáo tồn kho lệch so với thực tế | Kho → Kiểm kê & điều chỉnh |
+| Tồn kho đúng số lượng nhưng lệch tiền so với sổ cái | Kho → Định giá & báo cáo kho |
+| Báo cáo số liệu sai dù hệ thống lưu đúng | Nền tảng → Nguyên lý quy đổi đơn vị tính |
+| Bán hàng cho khách nhưng hàng giao thẳng từ nhà cung cấp | Bán hàng → Mô hình bán đặc thù |
+| Chi phí sản xuất không khớp giá thành | Sản xuất → Giá thành sản xuất |
+| Cùng một người vừa tạo đơn vừa duyệt chi tiền | Nền tảng → Kiểm soát nội bộ & phân tách nhiệm vụ |
 
-## 4. Điểm chạm & rủi ro
+## Mỗi bài được viết theo cùng một cấu trúc
 
-_(Chưa biên soạn)_
+1. **Nguyên lý** — phần dùng chung cho mọi hệ thống ERP, không phụ thuộc hãng nào.
+2. **Luồng vận hành** — sơ đồ để nắm nhanh toàn cảnh.
+3. **Ai làm gì ở module nào** — bảng phân vai giữa các bộ phận, đây là phần hay bị bỏ sót khi triển khai.
+4. **Hạch toán** — chỉ dẫn tới bài gốc về tài khoản, không định nghĩa trùng.
+5. **Điểm chạm & rủi ro** — bài này nối sang bài nào, và sai ở đây thì hỏng cái gì.
+6. **Triển khai tham chiếu** — cấu hình và câu truy vấn cụ thể trên Oracle EBS, Epicor, SAP, Odoo. Bạn có thể bỏ qua phần này nếu chỉ cần nghiệp vụ thuần.
+7. **Bẫy thực chiến & Checklist** — lỗi đã gặp ngoài thực tế và cách phòng tránh.
 
-## 5. Triển khai tham chiếu ERP
+## Một nguyên tắc khi đọc
 
-_(Chưa biên soạn)_
-
-## 6. Bẫy thực chiến & Checklist
-
-_(Chưa biên soạn)_
-
-## Mục lục tầng nền tảng
-
-- [ ] [1000 - Tổ chức & Pháp nhân (Legal Entity / Ledger)](./1000-to-chuc-va-phap-nhan.md)
-- [ ] [2000 - Glossary & ánh xạ thuật ngữ giữa các hệ thống](./2000-glossary-va-anh-xa-he-thong.md)
-- [ ] [3000 - Item Master & thuộc tính (danh mục gốc)](./2000-item-master-va-thuoc-tinh.md)
-- [ ] [4000 - Chứng từ & nguyên lý đối soát](./3000-chung-tu-va-nguyen-ly-doi-soat.md)
-- [ ] [5000 - Kiểm soát nội bộ & phân tách nhiệm vụ](./4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
-- [ ] [6000 - Nguyên lý quy đổi đơn vị tính (UOM)](./5000-nguyen-ly-quy-doi-uom.md)
-- [ ] [7000 - Thuật ngữ kỹ thuật & dữ liệu chuẩn](./6000-thuat-ngu-ky-thuat-va-du-lieu.md)
-- [ ] [9000 - Bản đồ di trú bài viết cũ → khung mới](./9000-ban-do-di-tru.md)
-
-> Thứ tự đọc đúng là **1000 → 2000 → 7000 → 3000 → 4000 → 5000 → 6000**. Số thứ tự thể hiện thứ tự trong sidebar, không phải thứ tự đọc bắt buộc.
+Mỗi khái niệm chỉ được định nghĩa **một lần** ở bài gốc. Gặp lại ở bài khác, bạn sẽ thấy dẫn link thay vì giải thích lại — vì nếu giải thích lại ở nhiều nơi, sớm muộn các chỗ đó cũng nói khác nhau, và người đọc không biết tin chỗ nào.
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
