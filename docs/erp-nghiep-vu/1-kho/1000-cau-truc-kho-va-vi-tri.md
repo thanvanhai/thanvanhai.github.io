@@ -137,6 +137,7 @@ CREATE TABLE Inv_Location (
     Parent_ID       VARCHAR(50)  NULL REFERENCES Inv_Location(Location_ID),  -- cây phân cấp
     Legal_Entity_ID VARCHAR(20)  NULL,       -- NULL với vị trí ảo dùng chung
     Site_ID         VARCHAR(50)  NULL,       -- NULL với vị trí ảo
+    Warehouse_ID    VARCHAR(50)  NULL,       -- kho chứa vị trí này; NULL với vị trí ảo
     Leaf_Level      VARCHAR(20)  NULL,       -- mức dùng để ghi giao dịch
     Is_Available    BIT NOT NULL DEFAULT 1,  -- có tính vào tồn khả dụng
     Is_Blocked      BIT NOT NULL DEFAULT 0,  -- đang khóa (kiểm kê, sự cố)

@@ -28,8 +28,9 @@ tags: [erp, inventory, transaction, movement, logical-transaction]
 
    Cách làm này (giống Odoo) có một lợi ích lớn: **tổng tồn của mọi vị trí, kể cả vị trí ảo, luôn bằng 0**. Nếu không bằng 0 thì có giao dịch bị ghi sai. Dùng `NULL` cho "bên ngoài" thì mất khả năng tự kiểm tra này.
 4. **Giá trị đi kèm số lượng.** Mỗi giao dịch mang cả `Qty` và `Unit_Cost`, vì kho là sổ cái vật chất đồng thời là nguồn dữ liệu giá vốn. Giao dịch kho không có giá trị là lỗ hổng lớn nhất khiến kho và sổ cái lệch nhau.
-5. **Giao dịch ảo (logical) không đụng tồn kho vật lý.** Với drop-ship hay hàng ký gửi, hệ thống vẫn ghi chuyển động để có dòng chứng từ đối soát, nhưng gắn cờ để **loại khỏi** báo cáo On-hand. Không có cơ chế này thì hoặc mất dấu đối soát, hoặc sinh tồn kho ảo. 
-**On-hand** trong bộ tài liệu này là **tồn vật lý**: gồm mọi hàng đang nằm trong kho, kể cả hàng ở khu chờ kiểm và khu biệt trữ. Phần hàng thực sự được bán hoặc cấp cho sản xuất gọi là **tồn khả dụng**, xem [4000 Giữ hàng, phân bổ & ATP](./4000-giu-hang-phan-bo-va-atp.md).
+5. **Giao dịch ảo (logical) không đụng tồn kho vật lý.** Với drop-ship (hàng đi thẳng từ nhà cung cấp tới khách, không qua kho), hệ thống vẫn ghi chuyển động để có dòng chứng từ đối soát, nhưng gắn cờ để **loại khỏi** báo cáo On-hand. Không có cơ chế này thì hoặc mất dấu đối soát, hoặc sinh tồn kho ảo. Hàng ký gửi của nhà cung cấp nằm trong kho mình thì khác: đó là hàng thật, ghi vào vị trí vật lý có `Ownership = VENDOR` (xem [1000 Cấu trúc kho & vị trí](./1000-cau-truc-kho-va-vi-tri.md)) và vẫn nằm trong On-hand.
+
+   **On-hand** trong bộ tài liệu này là **tồn vật lý**: gồm mọi hàng đang nằm trong kho, kể cả hàng ở khu chờ kiểm và khu biệt trữ. Phần hàng thực sự được bán hoặc cấp cho sản xuất gọi là **tồn khả dụng**, xem [4000 Giữ hàng, phân bổ & ATP](./4000-giu-hang-phan-bo-va-atp.md).
 6. **Một dịch vụ ghi sổ kho duy nhất.** Các module khác (mua, bán, sản xuất) không ghi trực tiếp vào bảng giao dịch; chúng **kích hoạt** dịch vụ ghi sổ kho thông qua chứng từ nguồn. Nhờ vậy mọi kiểm tra (đủ giá trị, đúng kỳ, không âm kho, đúng quyền) nằm ở một chỗ.
 7. **Không sửa giao dịch đã ghi.** Sửa sai bằng giao dịch đảo, ghi vào **kỳ đang mở** với ngày hạch toán hiện tại. Giao dịch của kỳ đã khóa không bao giờ bị động tới. Đây là ranh giới giữa "sửa lỗi nghiệp vụ" và "làm giả sổ".
 
@@ -47,7 +48,7 @@ flowchart LR
         SO["Xuất giao cho khách"]
         TRF["Chuyển kho / chuyển bin"]
         CNT["Kiểm kê (sự kiện)"]
-        DS["Drop-ship / Ký gửi"]
+        DS["Drop-ship"]
         ERR["Phát hiện ghi sai"]
     end
 
@@ -113,6 +114,7 @@ Quy tắc: module nguồn **tạo sự kiện / chứng từ nguồn**; dịch v
 | **Điều chỉnh** | Kho: kiểm kê hoặc phiếu điều chỉnh, **đã được duyệt** | ✅ Điều chỉnh qua `ADJUSTMENT` | Duyệt và nhận bút toán chênh lệch |
 | **Đảo** | Người có quyền, kèm lý do | ✅ Giao dịch đối ứng, trỏ về giao dịch gốc | Đảo bút toán tương ứng trong kỳ mở |
 | **Huỷ / phế** | Kho: lập phiếu huỷ đã được duyệt (hàng lỗi không trả được, hết hạn) | ✅ Xuất bin hoặc khu biệt trữ → `SCRAP` | Ghi chi phí hàng huỷ |
+
 **Phân quyền cốt lõi:** không module nào ngoài dịch vụ ghi sổ kho được `INSERT` vào bảng giao dịch. Nếu mua hàng hay bán hàng ghi thẳng, các kiểm tra (kỳ, âm kho, giá trị) bị bỏ qua và dòng chứng từ mất truy vết. Nguyên tắc tách nhiệm vụ chi tiết xem [4000 Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md).
 
 ## 3. Hạch toán
@@ -121,7 +123,7 @@ Bài này **không định nghĩa lại tài khoản**. Bản đồ tài khoản
 
 | Giao dịch | Sinh bút toán? | Ghi chú |
 |---|---|---|
-| Nhập / Xuất với bên ngoài (NCC, khách, sản xuất) | Có | heo quy tắc của luồng nghiệp vụ tương ứng; riêng nhập từ PO xem dòng bên dưới |
+| Nhập / Xuất với bên ngoài (NCC, khách, sản xuất) | Có | Theo quy tắc của luồng nghiệp vụ tương ứng; riêng nhập từ PO xem dòng bên dưới |
 | Điều chỉnh | Có, **sau khi duyệt** | Không đẩy thẳng từ màn hình kiểm kê sang GL |
 | Đảo | Có | Bút toán đảo của giao dịch gốc, trong kỳ mở |
 | Chuyển bin trong cùng kho | Không | Chỉ đổi vị trí |
@@ -129,7 +131,7 @@ Bài này **không định nghĩa lại tài khoản**. Bản đồ tài khoản
 | Chuyển kho **khác pháp nhân** | Có | Phát sinh nội bộ giữa hai pháp nhân |
 | Chuyển kho **khác tài khoản tồn kho** (ví dụ kho NVL sang kho thành phẩm tách tài khoản) | Có | Chuyển giá trị giữa hai tài khoản |
 | Chuyển kho có **hàng đang vận chuyển (in-transit)** | Có | Ghi qua tài khoản hàng đang đi đường cho tới khi nhận |
-| Giao dịch ảo (drop-ship, ký gửi) | **Không sinh bút toán tồn kho** | Bút toán tài khoản trung gian và giá vốn vẫn phát sinh theo luồng nghiệp vụ của mua/bán |
+| Giao dịch ảo (drop-ship) | **Không sinh bút toán tồn kho** | Bút toán tài khoản trung gian và giá vốn vẫn phát sinh theo luồng nghiệp vụ của mua/bán |
 | Nhập từ PO (bước Nhận) | **Tùy cấu hình** | Có bút toán nếu ghi nhận khi nhận; không có nếu ghi nhận khi nhập kho. Xem [Nhận hàng & kiểm tra chất lượng](../2-mua-hang/4000-nhan-hang-va-kiem-qc.md) |
 | Chuyển từ khu chờ kiểm sang bin chính | **Tùy cấu hình** | Có bút toán chuyển từ tài khoản hàng chờ kiểm sang tồn kho, hoặc bút toán đầy đủ, tùy cấu hình ghi nhận |
 | Huỷ / phế | Có, **sau khi duyệt** | Ghi chi phí hàng huỷ, không đẩy thẳng sang sổ cái |
@@ -179,17 +181,11 @@ Ba điều kho cần nhớ:
 
 ### B. Mô hình dữ liệu gợi ý cho hệ thống tự xây
 
-Tối thiểu cần **hai** bảng: danh mục vị trí (gồm vị trí ảo) và **một** bảng giao dịch phẳng, chỉ `INSERT`.
+Bảng danh mục vị trí `Inv_Location` (gồm cả vị trí ảo) được định nghĩa đầy đủ ở [1000 Cấu trúc kho & vị trí](./1000-cau-truc-kho-va-vi-tri.md). Bài này chỉ dùng các cột `Location_ID`, `Location_Type` (`PHYSICAL` hoặc `VIRTUAL`) và `Legal_Entity_ID`. Vị trí ảo mặc định: `SUPPLIER`, `CUSTOMER`, `WIP`, `ADJUSTMENT`, `SCRAP`.
+
+Tối thiểu cần **ba** bảng: danh mục vị trí, **một** bảng giao dịch phẳng chỉ `INSERT`, và bảng số dư theo vị trí (suy ra từ giao dịch, dùng để đọc nhanh và để kiểm tra âm kho).
 
 ```sql
-CREATE TABLE Inv_Location (
-    Location_ID     VARCHAR(50) PRIMARY KEY,
-    Location_Type   VARCHAR(10) NOT NULL,   -- PHYSICAL | VIRTUAL
-    Legal_Entity_ID VARCHAR(20) NULL,       -- NULL với vị trí ảo dùng chung
-    Description     NVARCHAR(200)
-);
--- Vị trí ảo mặc định: SUPPLIER, CUSTOMER, WIP, ADJUSTMENT, SCRAP
-
 CREATE TABLE Inventory_Transaction (
     Trx_ID           BIGINT IDENTITY PRIMARY KEY,
     Trx_Type         VARCHAR(20)  NOT NULL,   -- RECEIPT | ISSUE | TRANSFER | ADJUSTMENT | REVERSAL
@@ -197,7 +193,8 @@ CREATE TABLE Inventory_Transaction (
     To_Location_ID   VARCHAR(50)  NOT NULL REFERENCES Inv_Location(Location_ID),
     Legal_Entity_ID  VARCHAR(20)  NOT NULL,
     Item_ID          VARCHAR(50)  NOT NULL,
-    Lot_Serial       VARCHAR(50)  NULL,
+    Lot_No           VARCHAR(50)  NULL,       -- theo mã hàng quản lý lô
+    Serial_No        VARCHAR(50)  NULL,       -- theo mã hàng quản lý serial
     Qty              DECIMAL(18,4) NOT NULL,  -- theo UOM giao dịch, luôn dương
     UOM              VARCHAR(10)  NOT NULL,
     Qty_Base         DECIMAL(18,4) NOT NULL,  -- đã quy về UOM gốc
@@ -227,6 +224,24 @@ CREATE INDEX IX_InvTrx_Item_To   ON Inventory_Transaction (Item_ID, To_Location_
 CREATE INDEX IX_InvTrx_Item_From ON Inventory_Transaction (Item_ID, From_Location_ID) INCLUDE (Qty_Base, Is_Logical);
 CREATE INDEX IX_InvTrx_Source    ON Inventory_Transaction (Source_Doc_No, Source_Line_No);
 ```
+```sql
+-- Số dư theo vị trí: bản suy ra từ Inventory_Transaction, cập nhật trong CÙNG transaction với mỗi giao dịch
+CREATE TABLE Inventory_Balance (
+    Item_ID         VARCHAR(50)   NOT NULL,
+    Location_ID     VARCHAR(50)   NOT NULL REFERENCES Inv_Location(Location_ID),
+    Lot_No          VARCHAR(50)   NULL,
+    Serial_No       VARCHAR(50)   NULL,
+    Qty_Onhand      DECIMAL(18,4) NOT NULL DEFAULT 0,   -- UOM gốc
+    Negative_Since  DATETIME      NULL,                 -- thời điểm số dư chuyển sang âm; NULL nếu không âm
+    Updated_At      DATETIME      NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT CK_Balance_Negative CHECK (Negative_Since IS NULL OR Qty_Onhand < 0)
+);
+CREATE UNIQUE INDEX UX_Balance ON Inventory_Balance (Item_ID, Location_ID, Lot_No, Serial_No);
+```
+
+Quy tắc cho `Negative_Since`: dịch vụ ghi sổ kho đặt cột này bằng giờ hiện tại khi số dư chuyển từ không âm sang âm, giữ nguyên khi số dư vẫn âm, và xóa về `NULL` khi số dư trở lại không âm. Cả ba thao tác nằm trong cùng transaction với giao dịch gây ra thay đổi. Cột này dùng để tính tuổi của số âm theo chính sách ở [5000 Kiểm kê & điều chỉnh](./5000-kiem-ke-va-dieu-chinh.md).
+
+Bảng số dư chỉ là bản suy ra; nguồn sự thật vẫn là `Inventory_Transaction`. Truy vấn kiểm soát số 1 ở mục C đối soát hai bên.
 
 **Ý nghĩa các cột chính:**
 
@@ -234,8 +249,9 @@ CREATE INDEX IX_InvTrx_Source    ON Inventory_Transaction (Source_Doc_No, Source
 |---|---|
 | `Trx_Type` | Một trong năm loại gốc. Biến thể theo nghiệp vụ (nhập PO, nhập RMA, ...) phân biệt bằng `Trx_Source` và `Reason_Code` |
 | `From/To_Location_ID` | Luôn có giá trị. "Bên ngoài" là vị trí ảo có tên, không dùng `NULL` |
+| `Lot_No` / `Serial_No` | Hai trục độc lập: một mã hàng có thể có lô, có serial, cả hai hoặc không có. Khi có `Serial_No` thì `Qty_Base` của dòng đó luôn bằng 1. Xem [2000 Item Master & thuộc tính kho](./2000-item-master-va-thuoc-tinh-kho.md) |
 | `Qty` / `Qty_Base` | `Qty` theo UOM giao dịch; `Qty_Base` đã quy đổi, mọi báo cáo dùng cột này. Quy tắc quy đổi xem [0-nền tảng 5000](../0-nen-tang/5000-nguyen-ly-quy-doi-uom.md) |
-| `Unit_Cost` | Bắt buộc với giao dịch nhập (trừ trường hợp hợp lệ có `Reason_Code`, ví dụ hàng mẫu tặng); giao dịch xuất kế thừa giá theo phương pháp tính giá |
+| `Unit_Cost` | Bắt buộc với giao dịch nhập (trừ trường hợp hợp lệ có `Reason_Code`, ví dụ hàng mẫu tặng); giao dịch xuất kế thừa giá theo phương pháp tính giá. Với phương pháp bình quân cả kỳ, đơn giá thật của giao dịch xuất chỉ có sau khi chạy tính giá cuối kỳ: trong kỳ cột này để giá tạm tính hoặc `NULL`, còn giá chính thức ghi ở bảng giá trị riêng của dịch vụ tính giá, không `UPDATE` vào giao dịch. Xem [6000 Định giá & báo cáo kho](./6000-dinh-gia-va-bao-cao-kho.md) |
 | `Trx_Date` vs `Posting_Date` | Ngày xảy ra khác ngày hạch toán. Kiểm tra kỳ luôn dựa vào `Posting_Date` / `Period_ID` |
 | `Is_Logical` | `1` = giao dịch ảo, loại khỏi On-hand |
 | `Reversed_Trx_ID` | Trỏ về giao dịch bị đảo; có ràng buộc duy nhất để chặn đảo hai lần |
@@ -247,40 +263,49 @@ CREATE INDEX IX_InvTrx_Source    ON Inventory_Transaction (Source_Doc_No, Source
 3. `Qty > 0`; chiều biểu diễn bằng From/To, không dùng số âm.
 4. Mọi giao dịch phải có `Source_Doc_No`. Ngoại lệ duy nhất là `ADJUSTMENT` có phiếu duyệt.
 5. Giao dịch đảo ghi vào kỳ **đang mở**, `Posting_Date` là ngày hiện tại; không ghi vào kỳ đã khóa.
-6. Xuất khỏi vị trí vật lý chỉ được ghi nếu tồn tại vị trí đó đủ (xem phần dưới).
+6. Xuất khỏi vị trí vật lý chỉ được ghi nếu tồn tại vị trí đó đủ, trừ khi loại hàng hoặc vị trí đó được bật ngoại lệ âm kho (xem phần dưới).
 
-**Chặn âm kho ngay lúc ghi sổ.** Việc kiểm tra "đủ tồn" và việc ghi giao dịch xuất phải nằm trong **cùng một transaction** và khóa dòng tồn của (item, lot, vị trí) đang xuất. Nếu kiểm tra xong rồi mới ghi mà không khóa, hai người xuất cùng lúc có thể cùng thấy "còn đủ" và làm tồn âm. Chính sách cho phép hay không cho phép âm kho theo từng loại hàng nằm ở [5000 Kiểm kê & điều chỉnh](./5000-kiem-ke-va-dieu-chinh.md).
+**Chặn âm kho ngay lúc ghi sổ.** Mặc định, việc kiểm tra "đủ tồn" và việc ghi giao dịch xuất phải nằm trong **cùng một transaction** và khóa dòng tồn của (item, lot, vị trí) đang xuất. Nếu kiểm tra xong rồi mới ghi mà không khóa, hai người xuất cùng lúc có thể cùng thấy "còn đủ" và làm tồn âm.
+
+Một số doanh nghiệp (sản xuất liên tục, bán lẻ) bật ngoại lệ "cho phép âm kho tạm thời" theo chính sách đã được duyệt, vì hàng đã rời kho trước khi chứng từ nhập kịp vào hệ thống. Khi đó vẫn phải khóa dòng tồn như trên, số âm phải hiện trên báo cáo cảnh báo, và được bù bằng chứng từ nhập đến muộn. Chính sách cho phép hay không theo từng loại hàng nằm ở [5000 Kiểm kê & điều chỉnh](./5000-kiem-ke-va-dieu-chinh.md).
 
 ### C. Truy vấn kiểm soát
 
 **1. Đối soát tồn suy ra từ giao dịch với bảng số dư (hệ thống tự xây).** Kết quả phải rỗng.
 
 ```sql
-/* Giả định có bảng Inventory_Balance(Item_ID, Location_ID, Lot_Serial, Qty_Onhand).
-   Chỉ tính vị trí vật lý và giao dịch không ảo. */
+/* Dùng bảng Inventory_Balance định nghĩa ở mục 5B.
+   Chỉ so sánh vị trí vật lý và giao dịch không ảo. */
 WITH Moves AS (
-    SELECT Item_ID, To_Location_ID   AS Location_ID, Lot_Serial,  Qty_Base AS Qty
+    SELECT Item_ID, To_Location_ID   AS Location_ID, Lot_No, Serial_No,  Qty_Base AS Qty
     FROM Inventory_Transaction WHERE Is_Logical = 0
     UNION ALL
-    SELECT Item_ID, From_Location_ID AS Location_ID, Lot_Serial, -Qty_Base AS Qty
+    SELECT Item_ID, From_Location_ID AS Location_ID, Lot_No, Serial_No, -Qty_Base AS Qty
     FROM Inventory_Transaction WHERE Is_Logical = 0
 ),
 Calc AS (
-    SELECT m.Item_ID, m.Location_ID, m.Lot_Serial, SUM(m.Qty) AS Qty_Calc
+    SELECT m.Item_ID, m.Location_ID, m.Lot_No, m.Serial_No, SUM(m.Qty) AS Qty_Calc
     FROM Moves m
     JOIN Inv_Location l ON l.Location_ID = m.Location_ID AND l.Location_Type = 'PHYSICAL'
-    GROUP BY m.Item_ID, m.Location_ID, m.Lot_Serial
+    GROUP BY m.Item_ID, m.Location_ID, m.Lot_No, m.Serial_No
+),
+Bal AS (
+    SELECT b.Item_ID, b.Location_ID, b.Lot_No, b.Serial_No, b.Qty_Onhand
+    FROM Inventory_Balance b
+    JOIN Inv_Location l ON l.Location_ID = b.Location_ID AND l.Location_Type = 'PHYSICAL'
 )
 SELECT COALESCE(c.Item_ID, b.Item_ID)         AS Item_ID,
        COALESCE(c.Location_ID, b.Location_ID) AS Location_ID,
-       COALESCE(c.Lot_Serial, b.Lot_Serial)   AS Lot_Serial,
+       COALESCE(c.Lot_No, b.Lot_No)           AS Lot_No,
+       COALESCE(c.Serial_No, b.Serial_No)     AS Serial_No,
        ISNULL(c.Qty_Calc, 0)    AS Qty_From_Trx,
        ISNULL(b.Qty_Onhand, 0)  AS Qty_From_Balance,
        ISNULL(c.Qty_Calc, 0) - ISNULL(b.Qty_Onhand, 0) AS Diff
 FROM Calc c
-FULL JOIN Inventory_Balance b
+FULL JOIN Bal b
        ON b.Item_ID = c.Item_ID AND b.Location_ID = c.Location_ID
-      AND ISNULL(b.Lot_Serial, '') = ISNULL(c.Lot_Serial, '')
+      AND ISNULL(b.Lot_No, '')    = ISNULL(c.Lot_No, '')
+      AND ISNULL(b.Serial_No, '') = ISNULL(c.Serial_No, '')
 WHERE ABS(ISNULL(c.Qty_Calc, 0) - ISNULL(b.Qty_Onhand, 0)) > 0.0001;
 ```
 
@@ -321,6 +346,17 @@ WHERE oap.open_flag = 'N'
 
 Với Epicor và SAP, nên ưu tiên báo cáo chuẩn của hệ thống (Part Transaction Tracker, báo cáo chứng từ vật tư và đối soát tồn kho theo kỳ) thay vì tự viết SQL trên bảng lõi, vì cấu trúc bảng thay đổi theo phiên bản và một câu truy vấn sai dễ cho kết quả "đẹp" nhưng không đúng.
 
+**5. Cân bằng kép trên bảng số dư (gồm cả vị trí ảo).** Kết quả phải rỗng. Chạy trên bảng giao dịch thì vô nghĩa, vì mỗi dòng giao dịch luôn có đủ hai đầu.
+
+```sql
+SELECT Item_ID, SUM(Qty_Onhand) AS Imbalance
+FROM Inventory_Balance
+GROUP BY Item_ID
+HAVING ABS(SUM(Qty_Onhand)) > 0.0001;
+```
+
+Truy vấn này yêu cầu `Inventory_Balance` lưu cả vị trí ảo (số dư âm ở `SUPPLIER`, `CUSTOMER`...). Nếu hệ thống chỉ lưu số dư vật lý thì bỏ truy vấn này.
+
 ## 6. Bẫy thực chiến & Checklist
 
 | # | Bẫy | Triệu chứng | Cách phòng tránh |
@@ -349,6 +385,7 @@ Với Epicor và SAP, nên ưu tiên báo cáo chuẩn của hệ thống (Part 
 - [ ] Tổng tồn của tất cả vị trí (kể cả vị trí ảo) bằng 0.
 - [ ] Điều chỉnh kho bắt buộc có chứng từ nguồn và phê duyệt.
 - [ ] Kiểm tra đủ tồn và ghi xuất nằm trong cùng transaction, có khóa dòng tồn.
+- [ ] Bảng số dư có `Negative_Since` được cập nhật cùng transaction với giao dịch kho; số âm có tuổi để cảnh báo.
 - [ ] **Kịch bản kiểm thử chuẩn:**
 
   | Bước | Thao tác | Tồn bin A | Tồn bin B | Tổng tồn |

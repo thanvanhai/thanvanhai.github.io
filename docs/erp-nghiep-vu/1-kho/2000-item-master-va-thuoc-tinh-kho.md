@@ -6,7 +6,7 @@ sidebar_position: 2000
 description: "Sáu thuộc tính kho của một mã hàng: đơn vị tính gốc, quản lý lô, quản lý serial, chiến lược xuất kho FEFO, điểm đặt hàng lại và những thuộc tính bất biến sau khi phát sinh giao dịch."
 date: 2026-07-24
 last_update:
-  date: 2026-07-31
+  date: 2026-11-19
 tags: [erp, inventory, item-master, uom, lot, serial, fefo, reorder-point]
 ---
 
@@ -21,9 +21,11 @@ Sáu câu trả lời đó chính là sáu thuộc tính dưới đây. Sai mộ
 ## 0. Nguyên lý (áp dụng mọi ERP)
 
 1. **Mọi số lượng trong hệ thống phải quy về một đơn vị gốc duy nhất.** Mua theo thùng, bán theo hộp, sản xuất theo cái — nhưng tồn kho chỉ có một con số và nó ở đơn vị nhỏ nhất không chia được. Không có đơn vị gốc thì mọi báo cáo sẽ so sánh những thứ khác đơn vị với nhau.
+
+   **Ngoại lệ:** hàng có trọng lượng tự nhiên dao động (cá, thịt, thép cuộn) không có tỷ lệ quy đổi cố định — 10 con có thể nặng 520 kg lần này và 480 kg lần khác. Những mặt hàng này cần cơ chế đơn vị tính kép (catch weight), theo dõi song song hai số lượng độc lập; cơ chế đó nằm ngoài thiết kế tối thiểu của bài này.
 2. **Quy đổi có hai tầng: chuẩn và đặc thù.** Quy đổi chuẩn dùng chung cho cả nhóm đơn vị (1 tấn = 1000 kg). Quy đổi đặc thù phải khai riêng cho từng mã, vì mỗi mã có tỷ lệ riêng (1 cây thép φ10 dài 12 m, φ16 chỉ dài 11,7 m).
 3. **Quy đổi chéo nhóm là nơi dễ sai nhất.** Mua theo lít, tồn theo kg — tỷ lệ phụ thuộc tỷ trọng riêng của từng chất. Không thể dùng hệ số chung, và không thể để mặc định.
-4. **Lô và serial là hai cấp độ truy vết khác nhau, không thay thế nhau.** Lô theo dõi một nhóm sản phẩm cùng đặc tính sản xuất; serial theo dõi từng cá thể duy nhất. Mã hàng cần cấp nào là do yêu cầu chất lượng/pháp lý quyết định, không do thói quen.
+4. **Lô và serial là hai trục độc lập, không thay thế nhau.** Lô theo dõi một nhóm sản phẩm cùng đặc tính sản xuất; serial theo dõi từng cá thể duy nhất. Một mã hàng có thể chỉ quản lý lô (hóa chất, thực phẩm), chỉ quản lý serial (laptop, máy móc), quản lý cả hai (pin xe điện, linh kiện hàng không) hoặc không quản lý cái nào. Mã hàng cần cấp nào là do yêu cầu chất lượng/pháp lý quyết định, không do thói quen.
 5. **Hàng có hạn dùng thì FIFO là chưa đủ, phải FEFO.** Lô nhập sau có thể hết hạn trước. Xuất theo ngày nhập sẽ đẩy hàng cận hạn nằm sâu trong kho đến ngày phải hủy.
 6. **Thuộc tính danh mục trở thành bất biến ngay khi phát sinh giao dịch.** Đổi đơn vị gốc của một mã đã có 100 giao dịch không phải là "sửa danh mục" — đó là làm cho 100 giao dịch cũ mang nghĩa khác. Không có báo cáo nào sửa được điều này.
 
@@ -58,7 +60,7 @@ flowchart LR
     ITEM --> UOM
     CAT --> UOM
     UOM --> LOT
-    LOT --> SER
+    UOM --> SER
     LOT --> FEFO
     UOM --> ROP
 
@@ -96,7 +98,7 @@ Thuộc tính vật tư không sinh bút toán, nhưng chúng quyết định b�
 
 - **Nhóm hàng** quyết định tài khoản tồn kho được dùng khi nhập xuất.
 - **Đơn vị tính gốc** quyết định đơn giá lưu trên sổ kho — nếu tồn theo cái mà giá lưu theo thùng, giá trị tồn sai gấp hệ số quy đổi.
-- **Quản lý theo lô** quyết định mức chi tiết của giá vốn: không có lô thì mọi lần nhập cùng mã bị bình quân vào một giá, không phân biệt được lô đắt/lô rẻ.
+- **Quản lý theo lô** cho phép truy được giá trị theo từng lô, và nếu chính sách định giá chọn tính theo lô thì giá vốn cũng tách theo lô. Nếu không, giá vốn vẫn theo phương pháp định giá của mã hàng (xem [Định giá & báo cáo kho](./6000-dinh-gia-va-bao-cao-kho.md)).
 - **Quản lý theo serial** quyết định tài sản có định danh riêng hay không — ảnh hưởng tới quản lý tài sản cố định và bảo hành.
 
 Bản đồ tài khoản và nguyên tắc tất toán nằm duy nhất tại [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md); phần định giá chi tiết ở [Định giá & báo cáo kho](./6000-dinh-gia-va-bao-cao-kho.md).
@@ -123,13 +125,15 @@ Bản đồ tài khoản và nguyên tắc tất toán nằm duy nhất tại [H
 
 ### A. Ánh xạ sáu thuộc tính
 
+> **Lưu ý:** tên bảng, tên trường và đường dẫn menu thay đổi theo phiên bản và cấu hình. Ô đánh dấu `*` là chỗ cần xác nhận trên hệ thống thật trước khi đưa vào thiết kế.
+
 | Thuộc tính | Oracle EBS R12 | Epicor ERP | SAP S/4HANA | Odoo |
 |---|---|---|---|---|
 | Đơn vị tính gốc | `MTL_SYSTEM_ITEMS_B.primary_uom_code` | `Part.IUM` | `MARA.MEINS` | `product.template.uom_id` |
 | Bảng quy đổi | `MTL_UOM_CONVERSIONS`, `MTL_UOM_CLASS_CONVERSIONS` | `UOMConv`, `PartUOM` | `MARM` | `uom.uom` (factor theo nhóm) |
 | Quản lý lô | `Lot Control` trên Item + `MTL_LOT_NUMBERS` | `Part.TrackLots` + `PartLot` | `MARA.XCHPF` + `MCHA` | `tracking = lot` |
 | Quản lý serial | `Serial Control` + `MTL_SERIAL_NUMBERS` | `Part.TrackSerialNum` + `SerialNo` | `MARA.SERNP` + `OBJK` | `tracking = serial` |
-| Chiến lược FEFO | `Pick Rule` / `Lot Selection` | `FEFO` trên Warehouse/Part | `Batch Determination` / `FEFO` trong LE-WM | `removal_strategy = fefo` |
+| Chiến lược FEFO | `Pick Rule` / `Lot Selection` `*` | `FEFO` trên Warehouse/Part `*` | `Batch Determination` / `FEFO` trong LE-WM | `removal_strategy = fefo` |
 | Điểm đặt hàng lại | `MTL_SYSTEM_ITEMS_B.min_minmax_quantity`, `max_minmax_quantity`, `full_lead_time` | `PartPlant.MinimumQty`, `MaximumQty`, `LeadTime` | `MARC.MINBE`, `MARC.MABX` | `product.reorder.min_qty`, `max_qty` |
 
 **Lưu ý quan trọng:** các thông số Min/Max/Lead time phải lưu ở **cấp site/plant**, không lưu ở danh mục tổng — vì cùng một mã hàng ở hai nhà máy có thời gian giao và mức tiêu thụ khác nhau.
@@ -142,7 +146,7 @@ CREATE TABLE Item_Inventory_Attribute (
     Base_UOM           VARCHAR(10)  NOT NULL,
     Item_Class         VARCHAR(20)  NOT NULL,   -- quyết định tài khoản tồn kho
     Track_Lot          BIT          NOT NULL DEFAULT 0,
-    Track_Serial       BIT          NOT NULL DEFAULT 0,
+    Track_Serial       BIT          NOT NULL DEFAULT 0,   -- độc lập với Track_Lot
     Pick_Strategy      VARCHAR(10)  NOT NULL DEFAULT 'FIFO', -- FIFO | FEFO
     Shelf_Life_Days    INT          NULL,       -- bắt buộc > 0 nếu Pick_Strategy = FEFO
     Is_Locked          BIT          NOT NULL DEFAULT 0,      -- 1 = đã có giao dịch
@@ -164,7 +168,7 @@ CREATE TABLE Item_Plant_Planning (
 Bốn ràng buộc bắt buộc:
 
 1. **`Base_UOM` khóa vĩnh viễn** khi `Is_Locked = 1`. Đây là ràng buộc quan trọng nhất trong toàn bộ danh mục.
-2. **`Track_Serial = 1` thì `Track_Lot` phải bằng 1** — serial là cấp chi tiết hơn của lô, không tồn tại độc lập.
+2. **`Pick_Strategy = 'FEFO'` thì `Track_Lot = 1`** — ngày hết hạn gắn với lô, không có lô thì không có chỗ lưu hạn dùng để xếp thứ tự xuất.
 3. **`Pick_Strategy = 'FEFO'` bắt buộc `Shelf_Life_Days > 0`** — không có hạn dùng thì không thể FEFO.
 4. **`Lead_Time_Days` và `Min_Qty` không được bằng 0** khi `Planning_Method = MIN_MAX` — đây chính là lỗi làm hệ thống "im lặng" mãi mãi.
 
@@ -191,10 +195,18 @@ WHERE p.Planning_Method = 'MIN_MAX'
 **Số dư tồn kho siêu nhỏ do lỗi làm tròn quy đổi (hàng "ma" không xóa được):**
 
 ```sql
-SELECT t.Item_ID, t.To_Location, SUM(t.Qty) AS Ghost_Qty
-FROM Inventory_Transaction t
-GROUP BY t.Item_ID, t.To_Location
-HAVING SUM(t.Qty) > 0 AND SUM(t.Qty) < 0.01;
+WITH Moves AS (
+    SELECT To_Location_ID   AS Location_ID, Item_ID, Lot_No, Serial_No,  Qty_Base AS Qty
+    FROM Inventory_Transaction WHERE Is_Logical = 0
+    UNION ALL
+    SELECT From_Location_ID AS Location_ID, Item_ID, Lot_No, Serial_No, -Qty_Base AS Qty
+    FROM Inventory_Transaction WHERE Is_Logical = 0
+)
+SELECT m.Item_ID, m.Location_ID, m.Lot_No, m.Serial_No, SUM(m.Qty) AS Ghost_Qty
+FROM Moves m
+JOIN Inv_Location l ON l.Location_ID = m.Location_ID AND l.Location_Type = 'PHYSICAL'
+GROUP BY m.Item_ID, m.Location_ID, m.Lot_No, m.Serial_No
+HAVING SUM(m.Qty) > 0 AND SUM(m.Qty) < 0.01;
 ```
 
 **Epicor — mã hàng giao dịch chéo nhóm đơn vị nhưng thiếu bảng quy đổi đặc thù:**
@@ -244,7 +256,7 @@ WHERE pb.Company = 'YOUR_COMPANY_CODE'
 | 5 | Không chặn xuất lô đã hết hạn | Hàng hết hạn vào sản xuất hoặc giao khách | Validation cứng: `ExpirationDate >= TransactionDate` |
 | 6 | Thủ kho ghi đè đề xuất FEFO | Lô cận hạn nằm sâu, tới hạn thì hủy hàng loạt | Khóa override, hoặc bắt buộc giám sát kho xác nhận |
 | 7 | Cập nhật tồn kho mà không cập nhật serial | Tồn báo 10, quét serial chỉ được 9, đơn hàng treo | Cập nhật tồn và serial trong **cùng một transaction** |
-| 8 | Cho phép trùng số serial | Serial đã bán vẫn còn "trong kho", bảo hành xung đột | Unique constraint trên `(Serial_No, Status='IN STOCK')` |
+| 8 | Cho phép trùng số serial, hoặc chỉ chặn trùng khi đang trong kho | Serial đã bán bị nhập lại như hàng mới, lịch sử bảo hành lẫn lộn | Mỗi serial chỉ có **một bản ghi suốt đời**, duy nhất theo `(Item_ID, Serial_No)`. Khi bán, khách trả, bảo hành thì đổi cột trạng thái của bản ghi đó, không tạo bản ghi mới |
 | 9 | Min/Max bỏ trống hoặc bằng 0 | Hệ thống chạy hằng đêm nhưng không bao giờ đề xuất mua | Bắt buộc `Lead_Time_Days > 0`, `Min_Qty > 0` với phương pháp MIN_MAX |
 | 10 | Hàng `On-Order` ảo từ PO quá hạn chưa đóng | `Tồn + On-Order` luôn trên Min, hệ thống tê liệt đề xuất | Job tự đóng dòng PO quá hạn; báo cáo PO treo định kỳ |
 | 11 | Lưu Min/Max ở danh mục tổng thay vì theo site | Hai nhà máy dùng chung một ngưỡng, một bên luôn thiếu hàng | Lưu ở cấp item-site |
@@ -254,7 +266,7 @@ WHERE pb.Company = 'YOUR_COMPANY_CODE'
 - [ ] Mọi mã hàng có đơn vị gốc là đơn vị nhỏ nhất không chia được.
 - [ ] Đã rà bảng quy đổi đặc thù cho 100% mã có đơn vị mua hoặc bán khác đơn vị gốc.
 - [ ] Mã hàng quản lý lô: đã bật chặn xuất thiếu lot (đã test).
-- [ ] Mã hàng quản lý serial: unique constraint đã có, đã test nhập trùng.
+- [ ] Mã hàng quản lý serial: unique constraint theo `(Item_ID, Serial_No)` đã có, đã test nhập trùng, kể cả serial đã bán.
 - [ ] Mã hàng FEFO: 100% có ngày hết hạn và đã khóa quyền ghi đè của thủ kho.
 - [ ] Mã hàng Min-Max: 100% có `Lead_Time_Days > 0` và `Min_Qty > 0`.
 - [ ] Đã có job định kỳ quét PO/dòng đơn quá hạn chưa đóng.
