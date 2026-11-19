@@ -416,7 +416,7 @@ ORDER BY days_since_issue DESC;
 
 | # | Bẫy | Triệu chứng | Cách phòng tránh |
 |---|---|---|---|
-| 1 | Dựng báo cáo tồn kho bằng số dư hiện tại | Không tái hiện được số liệu tháng trước, kiểm toán không chấp nhận | Báo cáo phải dựng từ giao dịch, có điều kiện ngày <= AsOfDate |
+| 1 | Dựng báo cáo tồn kho bằng số dư hiện tại | Không tái hiện được số liệu tháng trước, kiểm toán không chấp nhận | Báo cáo phải dựng từ giao dịch, có điều kiện `ngày <= AsOfDate` |
 | 2 | Tính lại giá trị theo giá hiện hành, hoặc sửa giao dịch cũ khi có giá chính thức | Báo cáo lịch sử tự thay đổi mỗi lần giá thay đổi | Lưu `Unit_Cost` tại thời điểm giao dịch; giá chính thức và chi phí thu mua ghi thành dòng điều chỉnh ở `Inventory_Cost_Adjustment`, không `UPDATE` giao dịch |
 | 3 | Không phân bổ chi phí thu mua | Hàng tồn thấp hơn thực, giá vốn cao hơn thực | Phân bổ vào giá trị lô ngay khi nhập |
 | 4 | Đối chiếu kho-sổ cái gộp tổng | Lệch bù trừ giữa các nhóm che giấu sai số thực | Đối chiếu theo từng nhóm hàng / theo kho |
