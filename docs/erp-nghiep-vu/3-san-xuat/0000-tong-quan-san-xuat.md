@@ -70,6 +70,7 @@ flowchart LR
 | Lệnh sản xuất đang ở đâu, đã tiêu bao nhiêu? | [Lệnh sản xuất & WIP](./thuc-thi/6000-lenh-san-xuat-va-wip.md) |
 | Gửi nguyên liệu ra ngoài gia công thế nào? | [Gia công ngoài](./thuc-thi/7000-gia-cong-ngoai.md) |
 | Chi phí thực tế chênh định mức bao nhiêu, vì sao? | [Giá thành sản xuất](./thuc-thi/8000-gia-thanh-san-xuat.md) |
+| Cách triển khai đếm tuổi thọ khuôn trên Epicor? | [Triển khai Epicor: đếm số shot của khuôn](./thuc-thi/9100-trien-khai-epicor-shot-count-khuon.md) |
 
 ## Ranh giới trách nhiệm
 
