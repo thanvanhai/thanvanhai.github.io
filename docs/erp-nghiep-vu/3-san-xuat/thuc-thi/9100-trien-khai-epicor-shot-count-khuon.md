@@ -149,56 +149,46 @@ Db.JobAsmbl.With(LockHint.NoLock)
 
 *Bước 1 — BPM Data Directive thiết lập trên `JobOper`, và chi tiết điều kiện/hành động:*
 
-<p align="center">
+<div align="center">
   <img src="https://www.epiusers.help/uploads/default/original/3X/6/c/6c5a86b12db4a4a7e9ea0fb3fede07aa6d59b02a.png" alt="Cấu hình BPM Data Directive trên JobOper" style={{maxWidth: '740px', width: '100%', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-300)'}} />
-</p>
-
-<p align="center">
+</div>
+<div align="center">
   <img src="https://www.epiusers.help/uploads/default/original/3X/6/d/6d4fd07dddb70af61ac2e2cbd76e0e78ba2a5097.png" alt="Chi tiết điều kiện và hành động trong BPM" style={{maxWidth: '740px', width: '100%', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-300)'}} />
-</p>
-
+</div>
 *Bước 2 — Vấn đề: sau khi chạy `GetDetails` từ `AssemblySeq`, các dòng `JobOper` có `OpCode = "INJ"` vẫn không được set mã khuôn:*
 
-<p align="center">
+<div align="center">
   <img src="https://www.epiusers.help/uploads/default/original/3X/c/3/c307433f12e5fe8b3f6c5e388aa4e03304ef67b4.png" alt="GetDetails không tự set MoldingCode cho các dòng JobOper OpCode INJ" style={{maxWidth: '740px', width: '100%', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-300)'}} />
-</p>
-
+</div>
 *Bước 3 — Debug: kiểm tra BPM có duyệt qua `JobAsmbl` để lấy dữ liệu Assembly hay không:*
 
-<p align="center">
+<div align="center">
   <img src="https://www.epiusers.help/uploads/default/original/3X/6/a/6a04921d078706f93f2e5a50dee63ea8c603de49.png" alt="Kiểm tra BPM duyệt qua bảng JobAsmbl" style={{maxWidth: '740px', width: '100%', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-300)'}} />
-</p>
-
-<p align="center">
+</div>
+<div align="center">
   <img src="https://www.epiusers.help/uploads/default/original/3X/0/8/08bf3d36386bd09be8b13b1ba476768586297773.png" alt="Chi tiết dữ liệu JobAsmbl khi debug" style={{maxWidth: '740px', width: '100%', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-300)'}} />
-</p>
-
+</div>
 *Bước 4 — Giải pháp: LINQ Query lấy `PartNum` từ `JobAsmbl` theo đúng `AssemblySeq`:*
 
-<p align="center">
+<div align="center">
   <img src="https://www.epiusers.help/uploads/default/original/3X/3/f/3fed3c2a4b6b013543a9b301cfc276a5653dd089.png" alt="Đoạn LINQ Query tra cứu PartNum từ JobAsmbl" style={{maxWidth: '740px', width: '100%', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-300)'}} />
-</p>
-
+</div>
 *Bước 5 — Gán `PartNum` vừa tra được xuống `MoldingCode (Equip)` của dòng `JobOper` có `OpCode = "INJ"`:*
 
-<p align="center">
+<div align="center">
   <img src="https://www.epiusers.help/uploads/default/original/3X/c/2/c24f2ce4fc7caeecf91b7cc1fb1aa67e0160530a.png" alt="LINQ Query gán MoldingCode xuống JobOper theo OpCode INJ" style={{maxWidth: '740px', width: '100%', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-300)'}} />
-</p>
-
+</div>
 *Bước 6 — Kết quả: `MoldingCode (Equip)` trên `JobOper` đã được set đúng theo Assembly tương ứng, kiểm tra trên nhiều dòng khác nhau:*
 
-<p align="center">
+<div align="center">
   <img src="https://www.epiusers.help/uploads/default/original/3X/e/e/eea41dc1990bf9536f7186f237c374b3c3e3d4ae.png" alt="Kết quả cuối cùng: JobOper đã có MoldingCode được set tự động" style={{maxWidth: '740px', width: '100%', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-300)'}} />
-</p>
-
-<p align="center">
+</div>
+<div align="center">
   <img src="https://www.epiusers.help/uploads/default/original/3X/6/a/6a95af6a946ca4bc35083db55bded8e9f9d9fc89.png" alt="Kiểm tra lại kết quả trên nhiều dòng JobOper khác nhau" style={{maxWidth: '740px', width: '100%', borderRadius: '8px', border: '1px solid var(--ifm-color-emphasis-300)'}} />
-</p>
-
-<p align="center" style={{fontSize: '0.9em', color: 'var(--ifm-color-emphasis-700)'}}>
+</div>
+<div align="center" style={{fontSize: '0.9em', color: 'var(--ifm-color-emphasis-700)'}}>
   Nguồn ảnh: <a href="https://www.epiusers.help/t/how-to-default-value-in-all-joboper-with-opcode-inj-when-executing-getdetails-method-in-assemblyseq-0-for-all-erp-jobentry-getdetails/105966" target="_blank" rel="noopener noreferrer">Epicor User Help Forum</a>
-</p>
-
+</div>
 ### D. Bước 3 — BPM đếm shot theo công đoạn
 
 **Kích hoạt:** Data Directive trên `Erp.LaborDtl`, sự kiện **In-Transaction sau khi thêm dòng** (`RowMod = 'A'`) — không đợi đóng lệnh, để shot được tính theo thời gian thực.

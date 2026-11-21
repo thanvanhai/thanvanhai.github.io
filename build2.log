@@ -1,0 +1,18 @@
+
+> thanvanhai-docusaurus@0.0.0 build
+> docusaurus build
+
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[INFO] Website will be built for all these locales: 
+- vi
+- en
+[INFO] [vi] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[WARNING] Tags [bill-gates, microsoft, suu-tam] used in cau-chuyen/dont-mess-with-bill-gates.md are not defined in tags.yml
+[WARNING] Tags [steve-jobs, apple, lich-su, cau-chuyen] used in cau-chuyen/tieu-su-steve-jobs-vs-apple.md are not defined in tags.yml
+[WARNING] Tags [steve-jobs, apple, trich-dan, cam-hung, cong-nghe] used in cau-chuyen/mot-phut-voi-steve-jobs-77-triet-ly.md are not defined in tags.yml
+[WARNING] Tags [productivity, technical-writing, organization, database, docusaurus] used in cong-nghe/sparse-numbering-danh-so-thua-tranh-vo-tran.md are not defined in tags.yml
+[WARNING] Tags [jekyll, docusaurus, github, ssg] used in cong-nghe/so-sanh-docusaurus-va-jekyll.md are not defined in tags.yml
+[WARNING] Tags [reflector, ilspy, dotnet, decompiler, visual-studio, reverse-engineering] used in cong-nghe/reflector-ilspy-dich-nguoc-dll-exe-dotnet.md are not defined in tags.yml
