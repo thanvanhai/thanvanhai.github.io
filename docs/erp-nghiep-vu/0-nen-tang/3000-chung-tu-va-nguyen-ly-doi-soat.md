@@ -1,13 +1,13 @@
 ---
 id: chung-tu-va-nguyen-ly-doi-soat
-title: "4000 Chứng từ & nguyên lý đối soát"
+title: "3000 Chứng từ & nguyên lý đối soát"
 slug: /erp-nghiep-vu/nen-tang/chung-tu-va-nguyen-ly-doi-soat
-sidebar_position: 4000
+sidebar_position: 3000
 description: "Nguyên lý chuỗi chứng từ ERP: chứng từ nào sinh từ chứng từ nào, ba cặp đối soát chuẩn, và vì sao đối soát ở cấp dòng quan trọng hơn cấp chứng từ."
 tags: [erp, chung-tu, doi-soat, matching]
 ---
 
-# 4000 Chứng từ & nguyên lý đối soát
+# 3000 Chứng từ & nguyên lý đối soát
 
 Mọi giao dịch trong ERP đều bắt nguồn từ một chứng từ, và chứng từ đó lại bắt nguồn từ một chứng từ khác. Chuỗi này là thứ cho phép kế toán trả lời câu hỏi cơ bản nhất: **khoản tiền này đã trả cho cái gì**.
 
@@ -62,7 +62,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-to
 - **Hạch toán tài khoản trung gian**: [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md)
 - **Giao dịch kho do chứng từ sinh ra**: [Giao dịch nhập, xuất & chuyển](../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)
 - **Đóng kỳ và đối soát sổ phụ**: [Đóng kỳ & đối soát sổ phụ](../6-ke-toan-chung/5000-dong-ky-va-doi-soat-so-phu.md)
-- **Phân tách nhiệm vụ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](./5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Phân tách nhiệm vụ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](./4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 

@@ -1,4 +1,4 @@
-﻿---
+---
 id: don-mua-hang
 title: "3000 Đơn mua hàng"
 slug: /erp-nghiep-vu/mua-hang/don-mua-hang
@@ -74,7 +74,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-to
 - **Nhận hàng theo shipment**: [Nhận hàng & kiểm tra chất lượng](./4000-nhan-hang-va-kiem-qc.md)
 - **Khớp lệnh hóa đơn**: [Đối soát hóa đơn & 3-Way Match](./5000-doi-soat-hoa-don-va-3-way-match.md)
 - **Ghi giao dịch nhận vào kho**: [Giao dịch nhập, xuất & chuyển](../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)
-- **Ma trận phê duyệt và SoD**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Ma trận phê duyệt và SoD**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 

@@ -53,9 +53,9 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-to
 
 ## 4. Điểm chạm & rủi ro
 
-- **Chứng từ và đối soát**: [Chứng từ & nguyên lý đối soát](./4000-chung-tu-va-nguyen-ly-doi-soat.md)
+- **Chứng từ và đối soát**: [Chứng từ & nguyên lý đối soát](./3000-chung-tu-va-nguyen-ly-doi-soat.md)
 - **Giao dịch kho và loại chuyển động**: [Giao dịch nhập, xuất & chuyển](../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)
-- **Kiểm soát nội bộ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](./5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Kiểm soát nội bộ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](./4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 

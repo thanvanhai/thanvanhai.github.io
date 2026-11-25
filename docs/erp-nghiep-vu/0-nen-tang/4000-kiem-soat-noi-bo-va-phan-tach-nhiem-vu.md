@@ -1,13 +1,13 @@
 ---
 id: kiem-soat-noi-bo-va-phan-tach-nhiem-vu
-title: "5000 Kiểm soát nội bộ & phân tách nhiệm vụ"
+title: "4000 Kiểm soát nội bộ & phân tách nhiệm vụ"
 slug: /erp-nghiep-vu/nen-tang/kiem-soat-noi-bo-va-phan-tach-nhiem-vu
-sidebar_position: 5000
+sidebar_position: 4000
 description: "Nguyên lý ma trận phê duyệt theo hạn mức, phân tách nhiệm vụ (Segregation of Duties), phân quyền theo pháp nhân và yêu cầu audit trail trong hệ thống ERP."
 tags: [erp, internal-control, sod, approval, audit-trail]
 ---
 
-# 5000 Kiểm soát nội bộ & phân tách nhiệm vụ
+# 4000 Kiểm soát nội bộ & phân tách nhiệm vụ
 
 Kiểm soát nội bộ không phải để bắt lỗi kế toán — nó để **một người không thể tự mình hoàn tất một giao dịch khống**. Đây là nguyên tắc duy nhất đứng sau mọi yêu cầu về phê duyệt, hạn mức và phân quyền.
 
@@ -60,8 +60,8 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-to
 
 ## 4. Điểm chạm & rủi ro
 
-- **Tổ chức và pháp nhân** (phân quyền theo đơn vị): [Tổ chức & Pháp nhân](./2000-to-chuc-va-phap-nhan.md)
-- **Chứng từ và đối soát**: [Chứng từ & nguyên lý đối soát](./4000-chung-tu-va-nguyen-ly-doi-soat.md)
+- **Tổ chức và pháp nhân** (phân quyền theo đơn vị): [Tổ chức & Pháp nhân](./1000-to-chuc-va-phap-nhan.md)
+- **Chứng từ và đối soát**: [Chứng từ & nguyên lý đối soát](./3000-chung-tu-va-nguyen-ly-doi-soat.md)
 - **Duyệt PO theo hạn mức**: [Đơn mua hàng](../2-mua-hang/3000-don-mua-hang.md)
 - **Mở khóa hóa đơn AP**: [AP: Bẫy & kiểm soát](../5-cong-no/ap/4000-ap-bay-va-kiem-soat.md)
 - **Duyệt chi tiền**: [AP: Thanh toán & Cash Out](../5-cong-no/ap/3000-ap-thanh-toan-va-cash-out.md)

@@ -1,13 +1,13 @@
 ---
 id: master-data-va-tinh-bat-bien
-title: "4000 Master Data & tính bất biến"
+title: "2000 Master Data & tính bất biến"
 slug: /erp-nghiep-vu/nen-tang/master-data-va-tinh-bat-bien
-sidebar_position: 4000
+sidebar_position: 2000
 description: "Bốn danh mục nền của mọi ERP (item, nhà cung cấp, khách hàng, work center) và những trường bắt buộc bất biến sau khi phát sinh giao dịch đầu tiên."
 tags: [erp, master-data, item-master, supplier, customer]
 ---
 
-# 4000 Master Data & tính bất biến
+# 2000 Master Data & tính bất biến
 
 Trước khi có bất kỳ giao dịch nào, hệ thống phải biết **những thứ gì tồn tại**. Đó là dữ liệu nền. Và điểm quan trọng nhất của dữ liệu nền: **một khi đã phát sinh giao dịch, nhiều trường không được phép đổi nữa**.
 
@@ -70,7 +70,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-to
 - **Hồ sơ nhà cung cấp**: [Danh mục & hợp đồng mua](../2-mua-hang/2000-danh-muc-va-hop-dong-mua.md)
 - **Hồ sơ khách hàng**: [Danh mục & chính sách bán](../4-ban-hang/1000-danh-muc-va-chinh-sach-ban.md)
 - **Work center**: [Work Center & năng lực](../3-san-xuat/ky-thuat/1000-work-center-va-nang-luc.md)
-- **Phân quyền và SoD**: [Kiểm soát nội bộ & phân tách nhiệm vụ](./5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Phân quyền và SoD**: [Kiểm soát nội bộ & phân tách nhiệm vụ](./4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 

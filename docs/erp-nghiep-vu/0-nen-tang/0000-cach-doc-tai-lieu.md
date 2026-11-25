@@ -16,7 +16,7 @@ Tài liệu này viết cho người **làm nghiệp vụ ERP** — dùng SAP, O
 
 | Khối | Nội dung | Khi nào đọc |
 |---|---|---|
-| **Nền tảng** | Tổ chức, pháp nhân, thuật ngữ, chứng từ, kiểm soát nội bộ, đơn vị tính | Đọc trước tiên, một lần |
+| **Nền tảng** | Tổ chức, pháp nhân, dữ liệu nền, chứng từ, kiểm soát nội bộ, thuật ngữ, đơn vị tính | Đọc trước tiên, một lần |
 | **Kho** | Cấu trúc kho, giao dịch nhập xuất, giữ hàng, kiểm kê, định giá | Khi cần hiểu hàng hóa được ghi nhận thế nào |
 | **Mua hàng** | Nhu cầu, chọn nhà cung cấp, đơn mua, nhận hàng, đối soát hóa đơn | Khi làm nghiệp vụ mua |
 | **Sản xuất** | Kỹ thuật sản xuất, lệnh sản xuất, dở dang, giá thành | Khi làm nghiệp vụ sản xuất |

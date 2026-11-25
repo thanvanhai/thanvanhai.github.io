@@ -62,7 +62,7 @@ Hàng không đạt không chỉ có một đường "trả nhà cung cấp":
 - **Nhận theo thông báo giao hàng (ASN):** ASN giúp điền sẵn phiếu nhận, nhưng số lượng ghi sổ vẫn là số thực đếm.
 - **Nhận thiếu và đóng dòng PO:** nhận thiếu có thể chờ giao bù hoặc đóng dòng. Đóng dòng là quyết định của Mua hàng, không phải của Kho.
 - **Lô, hạn dùng, serial, chứng nhận chất lượng (COA):** thu thập ngay tại bước Nhận để không phải đoán lại về sau. Thiết lập theo vật tư xem [Kho 2000](../1-kho/2000-item-master-va-thuoc-tinh-kho.md).
-- **Khác đơn vị tính:** đơn vị mua khác đơn vị kho thì quy đổi ngay khi nhận theo [Nền tảng 6000](../0-nen-tang/6000-nguyen-ly-quy-doi-uom.md); không tự quy đổi bằng tay ở phiếu nhận.
+- **Khác đơn vị tính:** đơn vị mua khác đơn vị kho thì quy đổi ngay khi nhận theo [Nền tảng 6000 Nguyên lý quy đổi UOM](../0-nen-tang/6000-nguyen-ly-quy-doi-uom.md); không tự quy đổi bằng tay ở phiếu nhận.
 - **Sửa phiếu nhận sai:** dùng giao dịch đảo hoặc trả hàng (return/correct), không sửa trực tiếp số lượng.
 - **Cắt kỳ (cut-off):** cuối kỳ luôn có hàng đã nhận nhưng chưa kiểm hoặc chưa có hóa đơn. Danh sách này phải được chốt và chuyển cho kế toán, xem [Kế toán 5000](../6-ke-toan-chung/5000-dong-ky-va-doi-soat-so-phu.md).
 
@@ -81,7 +81,7 @@ Hàng không đạt không chỉ có một đường "trả nhà cung cấp":
 
 - **Kho** ghi số lượng thực nhận và thực hiện di chuyển; **QC** quyết định chất lượng; **Mua hàng** quyết định nội dung đơn đặt và xử lý nhà cung cấp; **Kế toán** ghi công nợ và duyệt hạch toán.
 - Trên PO, số lượng đã nhận là trường **do hệ thống cập nhật** từ phiếu nhận; không ai nhập tay vào đó.
-- Một người không được vừa lập PO, vừa nhận hàng, vừa duyệt hóa đơn. Chi tiết tại [Nền tảng 6000](../0-nen-tang/5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md).
+- Một người không được vừa lập PO, vừa nhận hàng, vừa duyệt hóa đơn. Chi tiết tại [Nền tảng 4000 Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md).
 
 Sản xuất và bán hàng không có vai trò trong bài này; họ chỉ **tiêu thụ kết quả**: vật tư chỉ khả dụng sau khi qua bước Nhập kho.
 

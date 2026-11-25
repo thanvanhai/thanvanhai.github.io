@@ -1,4 +1,4 @@
-﻿---
+---
 id: ap-bay-va-kiem-soat
 title: "4000 AP: Bẫy & kiểm soát"
 slug: /erp-nghiep-vu/cong-no/ap/bay-va-kiem-soat
@@ -61,7 +61,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../../6-ke
 - **Nhập hóa đơn và đối tất tạm ứng**: [Nhận hóa đơn & đối tất tạm ứng](./2000-ap-nhan-hoa-don-va-doi-tat-tam-ung.md)
 - **Chi tiền và đối trừ**: [Thanh toán & Cash Out](./3000-ap-thanh-toan-va-cash-out.md)
 - **Khớp lệnh và dung sai**: [Đối soát hóa đơn & 3-Way Match](../../2-mua-hang/5000-doi-soat-hoa-don-va-3-way-match.md)
-- **Phân tách nhiệm vụ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../../0-nen-tang/5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Phân tách nhiệm vụ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 ## 5. Triển khai tham chiếu ERP
 

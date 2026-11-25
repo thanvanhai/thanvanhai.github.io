@@ -1,4 +1,4 @@
-﻿---
+---
 id: ar-thu-tien-va-dunning
 title: "7000 AR: Thu tiền & nhắc nợ"
 slug: /erp-nghiep-vu/cong-no/ar/thu-tien-va-dunning
@@ -70,7 +70,7 @@ Bốn điểm cần nhớ:
 - **Tuổi nợ và báo cáo dòng tiền**: [Báo cáo công nợ (Aging & Cashflow)](../9000-bao-cao-cong-no-aging-cashflow.md)
 - **Hàng trả lại giảm trừ công nợ**: [RMA & đổi trả](../../4-ban-hang/4000-rma-va-doi-tra.md)
 - **Chênh lệch tỷ giá khi thu ngoại tệ**: [Đối trừ công nợ, netting & đa tiền tệ](../8000-cong-no-doi-tru-netting-va-tien-te.md)
-- **Phân tách nhiệm vụ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../../0-nen-tang/5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Phân tách nhiệm vụ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 
