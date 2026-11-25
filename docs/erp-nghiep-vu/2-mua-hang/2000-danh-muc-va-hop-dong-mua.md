@@ -1,4 +1,4 @@
----
+﻿---
 id: danh-muc-va-hop-dong-mua
 title: "2000 Danh mục & hợp đồng mua"
 slug: /erp-nghiep-vu/mua-hang/danh-muc-va-hop-dong-mua
@@ -72,7 +72,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-to
 - **Nguồn cung tự động từ MRP**: [Lệnh sản xuất & WIP](../3-san-xuat/thuc-thi/6000-lenh-san-xuat-va-wip.md)
 - **Nhu cầu tự động từ tồn kho**: [Item Master & thuộc tính kho](../1-kho/2000-item-master-va-thuoc-tinh-kho.md)
 - **Chuyển kho nội bộ thay vì mua**: [Giao dịch nhập, xuất & chuyển](../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)
-- **Kiểm soát phân quyền dữ liệu nền**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Kiểm soát phân quyền dữ liệu nền**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 
@@ -223,7 +223,7 @@ ORDER BY Remaining;
 - [Nhu cầu mua hàng & lựa chọn nhà cung cấp](./1000-nhu-cau-va-lua-chon-ncc.md)
 - [Đơn mua hàng](./3000-don-mua-hang.md)
 - [Thuế & tài sản cố định](../6-ke-toan-chung/3000-thue-va-tai-san-co-dinh.md)
-- [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

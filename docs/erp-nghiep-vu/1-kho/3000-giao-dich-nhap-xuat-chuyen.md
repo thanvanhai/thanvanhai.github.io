@@ -115,7 +115,7 @@ Quy tắc: module nguồn **tạo sự kiện / chứng từ nguồn**; dịch v
 | **Đảo** | Người có quyền, kèm lý do | ✅ Giao dịch đối ứng, trỏ về giao dịch gốc | Đảo bút toán tương ứng trong kỳ mở |
 | **Huỷ / phế** | Kho: lập phiếu huỷ đã được duyệt (hàng lỗi không trả được, hết hạn) | ✅ Xuất bin hoặc khu biệt trữ → `SCRAP` | Ghi chi phí hàng huỷ |
 
-**Phân quyền cốt lõi:** không module nào ngoài dịch vụ ghi sổ kho được `INSERT` vào bảng giao dịch. Nếu mua hàng hay bán hàng ghi thẳng, các kiểm tra (kỳ, âm kho, giá trị) bị bỏ qua và dòng chứng từ mất truy vết. Nguyên tắc tách nhiệm vụ chi tiết xem [4000 Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md).
+**Phân quyền cốt lõi:** không module nào ngoài dịch vụ ghi sổ kho được `INSERT` vào bảng giao dịch. Nếu mua hàng hay bán hàng ghi thẳng, các kiểm tra (kỳ, âm kho, giá trị) bị bỏ qua và dòng chứng từ mất truy vết. Nguyên tắc tách nhiệm vụ chi tiết xem [5000 Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md).
 
 ## 3. Hạch toán
 
@@ -151,7 +151,7 @@ Ba điều kho cần nhớ:
 - **Kiểm kê và âm kho** → [5000 Kiểm kê & điều chỉnh](./5000-kiem-ke-va-dieu-chinh.md)
 - **Chuyển giá trị sang sổ cái** → [6000 Định giá & báo cáo kho](./6000-dinh-gia-va-bao-cao-kho.md)
 - **Drop-ship:** [PO 6000 Mô hình mua đặc thù](../2-mua-hang/6000-mo-hinh-mua-dac-thu.md) và [BH 5000 Mô hình bán đặc thù](../4-ban-hang/5000-mo-hinh-ban-dac-thu.md)
-- **Quy đổi UOM:** [0-nền tảng 5000 Nguyên lý quy đổi UOM](../0-nen-tang/5000-nguyen-ly-quy-doi-uom.md)
+- **Quy đổi UOM:** [0-Nền tảng 6000 Nguyên lý quy đổi UOM](../0-nen-tang/6000-nguyen-ly-quy-doi-uom.md)
 
 **Rủi ro chính:** (1) cho sửa hoặc xóa giao dịch → mất audit trail; (2) giao dịch nhập thiếu giá trị → kho và GL lệch; (3) giao dịch ảo không cờ → On-hand bị thổi phồng, MRP đề xuất mua sai; (4) chuyển kho sinh hoặc không sinh bút toán sai quy tắc → sai bản chất chi phí; (5) module khác ghi thẳng vào bảng giao dịch → bỏ qua kiểm soát.
 
@@ -250,7 +250,7 @@ Bảng số dư chỉ là bản suy ra; nguồn sự thật vẫn là `Inventory
 | `Trx_Type` | Một trong năm loại gốc. Biến thể theo nghiệp vụ (nhập PO, nhập RMA, ...) phân biệt bằng `Trx_Source` và `Reason_Code` |
 | `From/To_Location_ID` | Luôn có giá trị. "Bên ngoài" là vị trí ảo có tên, không dùng `NULL` |
 | `Lot_No` / `Serial_No` | Hai trục độc lập: một mã hàng có thể có lô, có serial, cả hai hoặc không có. Khi có `Serial_No` thì `Qty_Base` của dòng đó luôn bằng 1. Xem [2000 Item Master & thuộc tính kho](./2000-item-master-va-thuoc-tinh-kho.md) |
-| `Qty` / `Qty_Base` | `Qty` theo UOM giao dịch; `Qty_Base` đã quy đổi, mọi báo cáo dùng cột này. Quy tắc quy đổi xem [0-nền tảng 5000](../0-nen-tang/5000-nguyen-ly-quy-doi-uom.md) |
+| `Qty` / `Qty_Base` | `Qty` theo UOM giao dịch; `Qty_Base` đã quy đổi, mọi báo cáo dùng cột này. Quy tắc quy đổi xem [0-Nền tảng 6000](../0-nen-tang/6000-nguyen-ly-quy-doi-uom.md) |
 | `Unit_Cost` | Bắt buộc với giao dịch nhập (trừ trường hợp hợp lệ có `Reason_Code`, ví dụ hàng mẫu tặng); giao dịch xuất kế thừa giá theo phương pháp tính giá. Với phương pháp bình quân cả kỳ, đơn giá thật của giao dịch xuất chỉ có sau khi chạy tính giá cuối kỳ: trong kỳ cột này để giá tạm tính hoặc `NULL`, còn giá chính thức ghi ở bảng giá trị riêng của dịch vụ tính giá, không `UPDATE` vào giao dịch. Xem [6000 Định giá & báo cáo kho](./6000-dinh-gia-va-bao-cao-kho.md) |
 | `Trx_Date` vs `Posting_Date` | Ngày xảy ra khác ngày hạch toán. Kiểm tra kỳ luôn dựa vào `Posting_Date` / `Period_ID` |
 | `Is_Logical` | `1` = giao dịch ảo, loại khỏi On-hand |

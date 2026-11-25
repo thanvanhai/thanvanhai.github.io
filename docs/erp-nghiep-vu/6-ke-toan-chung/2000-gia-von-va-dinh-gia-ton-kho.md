@@ -288,9 +288,9 @@ flowchart TD
 
 ### 3. Điểm giao thoa & Tham chiếu chéo (Cross-linking) sang các phân hệ khác
 
-* **Tham chiếu tờ khai hải quan:** Kế toán giá thành thực hiện phân bổ dựa trên thông tin tờ khai hải quan và điều kiện thương mại quốc tế đã cấu hình tại bài [5030 Thủ tục nhập khẩu, thông quan và điều kiện giao hàng quốc tế (Import Procurement)]().
-* **Điều chỉnh giá trị kho:** Sau khi hoàn thành phân bổ thực tế, giá trị tài sản kho được tự động cập nhật và tính lại đơn giá bình quân tại bài [5020 Định giá tồn kho cuối kỳ (Inventory Valuation)]() thuộc phân hệ Tồn kho.
-* **Tính toán giá thành sản phẩm:** Đơn giá nguyên vật liệu sau khi đã phân bổ đủ Landed Cost là căn cứ để tính toán chính xác chi phí sản xuất tại phân hệ [Kế toán Giá thành - COST]().
+* **Tham chiếu tờ khai hải quan:** Kế toán giá thành thực hiện phân bổ dựa trên thông tin tờ khai hải quan và điều kiện thương mại quốc tế (Incoterms) khai báo trên chứng từ nhập khẩu.
+* **Điều chỉnh giá trị kho:** Sau khi hoàn thành phân bổ thực tế, giá trị hàng trong kho được cập nhật và tính lại đơn giá bình quân; xem [6000 Định giá & báo cáo kho](../1-kho/6000-dinh-gia-va-bao-cao-kho.md).
+* **Tính toán giá thành sản phẩm:** Đơn giá nguyên vật liệu sau khi đã phân bổ đủ chi phí thu mua là căn cứ để tính chi phí sản xuất; xem [8000 Giá thành sản xuất](../3-san-xuat/thuc-thi/8000-gia-thanh-san-xuat.md).
 
 ---
 
@@ -428,10 +428,6 @@ Nếu đội ngũ của bạn đang tự xây dựng (In-house) mô-đun Giá th
     * *Triệu chứng:* Tài khoản trung gian Landed Cost Clearing bị treo số dư lớn cuối kỳ do kế toán AP nhập hóa đơn cước vận chuyển thực tế lệch nhiều so với số tiền thủ kho tạm tính ban đầu trên PO mà không có bước hạch toán xử lý chênh lệch.
     * *Giải pháp:* Hệ thống phải tự động tính toán phần chênh lệch giữa hóa đơn thực tế và tạm tính (Landed Cost Variance - LCV). Khoản chênh lệch này phải được hệ thống tự động hạch toán ghi nhận vào tài khoản chênh lệch để triệt tiêu hoàn toàn số dư tài khoản trung gian về không tại thời điểm duyệt hóa đơn. **Lưu ý:** nếu hệ thống chọn Kiến trúc B (không LCM) như trường hợp thực tế đang triển khai, lỗi này không phát sinh vì không có tài khoản trung gian nào cần tất toán — phụ phí được cộng dồn thẳng vào giá trị tồn kho ngay khi match, nên cần tập trung kiểm soát rủi ro ở lỗi số 2 thay vì lỗi này.
     
-<p align="center" style={{color: 'var(--ifm-color-primary)'}}>
-  <strong>Chúc các bạn thành công và vui vẻ!</strong>
-</p>
-
 ## Xem thêm
 
 - [Tổng quan Kế toán chung](./0000-tong-quan-ke-toan.md)

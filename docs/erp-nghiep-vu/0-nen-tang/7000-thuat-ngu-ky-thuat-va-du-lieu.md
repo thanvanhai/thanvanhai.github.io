@@ -1,13 +1,13 @@
 ---
 id: thuat-ngu-ky-thuat-va-du-lieu
-title: "6000 Thuật ngữ kỹ thuật & dữ liệu chuẩn"
+title: "7000 Thuật ngữ kỹ thuật & dữ liệu chuẩn"
 slug: /erp-nghiep-vu/nen-tang/thuat-ngu-ky-thuat-va-du-lieu
-sidebar_position: 6000
+sidebar_position: 7000
 description: "Bảng thuật ngữ kỹ thuật dùng chung cho mọi bài trong tài liệu: trạng thái chứng từ, loại chuyển động kho, cờ kiểm soát, định danh đối tượng và quy ước đặt tên."
 tags: [erp, glossary, du-lieu, quy-uoc]
 ---
 
-# 6000 Thuật ngữ kỹ thuật & dữ liệu chuẩn
+# 7000 Thuật ngữ kỹ thuật & dữ liệu chuẩn
 
 Khi một bài viết nói "chứng từ ở trạng thái `CONFIRMED`" hay "giao dịch có cờ `Is_Logical`", phải có một chỗ định nghĩa các giá trị đó một lần. Đây là chỗ đó.
 
@@ -53,9 +53,9 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-to
 
 ## 4. Điểm chạm & rủi ro
 
-- **Chứng từ và đối soát**: [Chứng từ & nguyên lý đối soát](./3000-chung-tu-va-nguyen-ly-doi-soat.md)
+- **Chứng từ và đối soát**: [Chứng từ & nguyên lý đối soát](./4000-chung-tu-va-nguyen-ly-doi-soat.md)
 - **Giao dịch kho và loại chuyển động**: [Giao dịch nhập, xuất & chuyển](../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)
-- **Kiểm soát nội bộ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](./4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Kiểm soát nội bộ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](./5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 
@@ -182,37 +182,6 @@ WHERE ph.Company = 'YOUR_COMPANY_CODE'
 - [ ] Giao dịch kho có ràng buộc `From <> To` và không NULL (đã test).
 - [ ] Trạng thái `APPROVED` và `CONFIRMED` tách biệt.
 - [ ] Đã test: cố gắng chuyển từ `POSTED` về `DRAFT` → hệ thống từ chối.
-# Thuật ngữ kỹ thuật & dữ liệu chuẩn
-
-> **Trạng thái:** khung tài liệu (đang hoàn thiện).
-
-## 0. Nguyên lý (áp dụng mọi ERP)
-
-_(Chưa biên soạn)_
-
-## 1. Luồng vận hành
-
-_(Chưa biên soạn)_
-
-## 2. Ai làm gì ở module nào
-
-_(Chưa biên soạn)_
-
-## 3. Hạch toán
-
-_(Chưa biên soạn)_
-
-## 4. Điểm chạm & rủi ro
-
-_(Chưa biên soạn)_
-
-## 5. Triển khai tham chiếu ERP
-
-_(Chưa biên soạn)_
-
-## 6. Bẫy thực chiến & Checklist
-
-_(Chưa biên soạn)_
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

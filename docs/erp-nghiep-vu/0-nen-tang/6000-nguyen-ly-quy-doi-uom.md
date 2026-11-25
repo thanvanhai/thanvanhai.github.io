@@ -1,13 +1,13 @@
 ---
 id: nguyen-ly-quy-doi-uom
-title: "5000 Nguyên lý quy đổi đơn vị tính (UOM)"
+title: "6000 Nguyên lý quy đổi đơn vị tính (UOM)"
 slug: /erp-nghiep-vu/nen-tang/nguyen-ly-quy-doi-uom
-sidebar_position: 5000
+sidebar_position: 6000
 description: "Vì sao báo cáo ERP lệch tồn kho và giá thành khi trộn đơn vị tính mua, bán và tồn kho; hai cấp quy đổi, lỗi làm tròn và nguyên tắc vàng lấy UOM tồn kho làm gốc."
 tags: [erp, uom, inventory, data-integrity]
 ---
 
-# 5000 Nguyên lý quy đổi đơn vị tính (UOM)
+# 6000 Nguyên lý quy đổi đơn vị tính (UOM)
 
 Đây là lỗi **không bao giờ báo lỗi**: hệ thống lưu đúng dữ liệu, báo cáo chạy được, số liệu trông hợp lệ — nhưng sai. Và nó sai âm thầm suốt nhiều tháng vì phần lớn mã hàng có hệ số quy đổi bằng 1 nên báo cáo vẫn đúng cho tới khi gặp mã hàng có hệ số khác.
 
@@ -62,7 +62,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-to
 - **Lệch UOM khi mua**: [Bẫy thực chiến mua hàng](../2-mua-hang/9000-bay-mua-hang.md)
 - **Lệch UOM giữa BOM và Item Master**: [Bẫy thực chiến sản xuất](../3-san-xuat/9000-bay-san-xuat.md)
 - **Giá vốn và định giá**: [Giá vốn & định giá tồn kho](../6-ke-toan-chung/2000-gia-von-va-dinh-gia-ton-kho.md)
-- **Danh mục nền và tính bất biến**: [Master Data & tính bất biến](./2000-item-master-va-thuoc-tinh.md)
+- **Danh mục nền và tính bất biến**: [Master Data & tính bất biến](./3000-master-data-va-tinh-bat-bien.md)
 
 **Rủi ro chính:**
 
@@ -105,7 +105,7 @@ Bốn ràng buộc bắt buộc:
 1. **Chỉ lưu `Multiply_Factor`**, không lưu hệ số chia. Quy đổi ngược được tính bằng phép chia khi cần.
 2. **`Multiply_Factor` kiểu `DECIMAL` với ít nhất 6 chữ số thập phân**, không dùng `FLOAT`.
 3. **Chặn lưu dòng BOM / PO / SO có UOM không quy đổi được về UOM gốc.**
-4. **Chặn đổi `Base_UOM` của mã hàng đã có giao dịch** (xem [Master Data & tính bất biến](./2000-item-master-va-thuoc-tinh.md)).
+4. **Chặn đổi `Base_UOM` của mã hàng đã có giao dịch** (xem [Master Data & tính bất biến](./3000-master-data-va-tinh-bat-bien.md)).
 
 ### C. Truy vấn kiểm soát
 

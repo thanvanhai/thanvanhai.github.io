@@ -37,18 +37,22 @@ flowchart LR
 | Khối | Vai trò | Đọc khi nào |
 |---|---|---|
 | **[0. Nền tảng](./0-nen-tang/0000-cach-doc-tai-lieu.md)** | Tổ chức, pháp nhân, chứng từ, kiểm soát, UOM, thuật ngữ | **Đọc trước tiên**, một lần |
-| **[1. Kho](1-kho/0000-tong-quan-kho.md)** | Sổ cái vật chất: cấu trúc, giao dịch, giữ hàng, kiểm kê, định giá | Khi cần biết "hàng ghi vào sổ kho thế nào" |
+| **[1. Kho](./1-kho/0000-tong-quan-kho.md)** | Sổ cái vật chất: cấu trúc, giao dịch, giữ hàng, kiểm kê, định giá | Khi cần biết "hàng ghi vào sổ kho thế nào" |
 | **[2. Mua hàng](./2-mua-hang/0000-tong-quan-p2p.md)** | Procure-to-Pay: nhu cầu → PO → nhận hàng → khớp hóa đơn | Khi làm đầu vào |
 | **[3. Sản xuất](./3-san-xuat/0000-tong-quan-san-xuat.md)** | Plan-to-Produce: kỹ thuật → thực thi → giá thành | Khi làm sản xuất |
 | **[4. Bán hàng](./4-ban-hang/0000-tong-quan-o2c.md)** | Order-to-Cash: đơn → giao → hóa đơn → RMA | Khi làm đầu ra |
 | **[5. Công nợ](./5-cong-no/0000-tong-quan-cong-no.md)** | AP gắn đầu vào, AR gắn đầu ra, netting và tuổi nợ | Khi làm công nợ |
 | **[6. Kế toán chung](./6-ke-toan-chung/0000-tong-quan-ke-toan.md)** | Tài khoản trung gian, giá vốn, thuế, tài sản cố định, GL, đóng kỳ | Khi làm tổng hợp & khóa sổ |
 
-## Nguyên tắc chống trùng lặp
+## Đọc theo hai đường
 
-- Mỗi khái niệm chỉ có **một bài gốc**: tài khoản trung gian, quy đổi UOM, khớp lệnh 2/3/4 chiều, quy trình nhận hàng 3 bước, giá vốn, đóng kỳ.
-- Các bài khác chỉ được **dẫn link 1–2 câu**, không định nghĩa lại.
-- Danh sách đầy đủ nằm ở bảng "Kiểm soát chống trùng" trong [Bản đồ di trú](./0-nen-tang/9000-ban-do-di-tru.md).
+**Theo quy trình** — khi bạn đang xử lý một công việc cụ thể: đi từ khối tương ứng ở bảng trên, theo các bài chi tiết 1000 → 9000 bên trong khối.
+
+**Theo khái niệm** — khi bạn cần tra một định nghĩa: mỗi khái niệm (tài khoản trung gian, quy đổi UOM, khớp lệnh 2/3/4 chiều, quy trình nhận hàng 3 bước, giá vốn, đóng kỳ) có đúng một bài gốc, nêu ở dòng "Xem thêm" của bài liên quan.
+
+## Cấu trúc một bài
+
+Mỗi bài chi tiết đi theo cùng một khung: **0. Nguyên lý** (áp dụng mọi ERP) → **1. Luồng vận hành** → **2. Ai làm gì ở module nào** → **3. Hạch toán** → **4. Điểm chạm & rủi ro** → **5. Triển khai tham chiếu ERP** (SAP, Oracle EBS, Epicor, Odoo) → **6. Bẫy thực chiến & Checklist**. Nhờ vậy bài nào cũng đọc được độc lập mà không cần đọc lại từ đầu.
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

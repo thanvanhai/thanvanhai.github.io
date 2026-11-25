@@ -105,7 +105,7 @@ Bản đồ tài khoản và nguyên tắc tất toán nằm duy nhất tại [H
 
 ## 4. Điểm chạm & rủi ro
 
-- **Nguyên lý quy đổi đơn vị tính** — bài gốc, định nghĩa hai tầng quy đổi và lỗi làm tròn: [Nguyên lý quy đổi UOM](../0-nen-tang/5000-nguyen-ly-quy-doi-uom.md)
+- **Nguyên lý quy đổi đơn vị tính** — bài gốc, định nghĩa hai tầng quy đổi và lỗi làm tròn: [Nguyên lý quy đổi UOM](../0-nen-tang/6000-nguyen-ly-quy-doi-uom.md)
 - **Ghi giao dịch theo đơn vị gốc**: [Giao dịch nhập, xuất & chuyển](./3000-giao-dich-nhap-xuat-chuyen.md)
 - **Vị trí/kho gắn với thuộc tính khả dụng**: [Cấu trúc kho & vị trí](./1000-cau-truc-kho-va-vi-tri.md)
 - **Đếm và điều chỉnh khi lô/serial lệch**: [Kiểm kê & điều chỉnh](./5000-kiem-ke-va-dieu-chinh.md)
@@ -281,7 +281,7 @@ WHERE pb.Company = 'YOUR_COMPANY_CODE'
 - [Giao dịch nhập, xuất & chuyển](./3000-giao-dich-nhap-xuat-chuyen.md)
 - [Kiểm kê & điều chỉnh](./5000-kiem-ke-va-dieu-chinh.md)
 - [Định giá & báo cáo kho](./6000-dinh-gia-va-bao-cao-kho.md)
-- [Nguyên lý quy đổi đơn vị tính](../0-nen-tang/5000-nguyen-ly-quy-doi-uom.md)
+- [Nguyên lý quy đổi đơn vị tính](../0-nen-tang/6000-nguyen-ly-quy-doi-uom.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

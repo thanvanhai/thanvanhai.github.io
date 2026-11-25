@@ -1,13 +1,13 @@
 ---
 id: to-chuc-va-phap-nhan
-title: "Tổ chức & Pháp nhân (Legal Entity / Ledger)"
+title: "2000 Tổ chức & Pháp nhân (Legal Entity / Ledger)"
 slug: /erp-nghiep-vu/nen-tang/to-chuc-va-phap-nhan
-sidebar_position: 1000
+sidebar_position: 2000
 description: "Mô hình phân cấp tổ chức ERP (Legal Entity, Ledger, Operating Unit, Warehouse, Cost Center) và nguyên tắc tách/gộp sổ cái."
 tags: [erp, legal-entity, ledger]
 ---
 
-# 1000 Tổ chức & Pháp nhân (Legal Entity / Ledger)
+# 2000 Tổ chức & Pháp nhân (Legal Entity / Ledger)
 
 Quyết định **đầu tiên và quan trọng nhất** khi triển khai phân hệ tài chính cho một tập đoàn nhiều pháp nhân: mỗi công ty con có **sổ sách kế toán riêng biệt**, hay nhiều công ty **dùng chung một sổ**, phân biệt bằng một mã số?
 
@@ -65,7 +65,7 @@ Nếu tập đoàn có nhiều nhóm đồng nhất, tổng số sổ = tổng t
 - **Sổ cái và hợp nhất báo cáo**: [Sổ cái & báo cáo tài chính](../6-ke-toan-chung/4000-so-cai-va-bao-cao-tai-chinh.md)
 - **Giao dịch nội bộ giữa pháp nhân**: [Đối trừ công nợ, netting & đa tiền tệ](../5-cong-no/8000-cong-no-doi-tru-netting-va-tien-te.md)
 - **Mua/bán nội bộ**: [Mô hình mua đặc thù](../2-mua-hang/6000-mo-hinh-mua-dac-thu.md), [Mô hình bán đặc thù](../4-ban-hang/5000-mo-hinh-ban-dac-thu.md)
-- **Phân quyền theo pháp nhân**: [Kiểm soát nội bộ & phân tách nhiệm vụ](./4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Phân quyền theo pháp nhân**: [Kiểm soát nội bộ & phân tách nhiệm vụ](./5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 
@@ -197,7 +197,7 @@ Trong Epicor, **Company** là ranh giới phân tách cao nhất và đảm nhi�
 ## Xem thêm
 
 - [Cách đọc tài liệu](./0000-cach-doc-tai-lieu.md)
-- [Kiểm soát nội bộ & phân tách nhiệm vụ](./4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- [Kiểm soát nội bộ & phân tách nhiệm vụ](./5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 - [Sổ cái & báo cáo tài chính](../6-ke-toan-chung/4000-so-cai-va-bao-cao-tai-chinh.md)
 - [Đối trừ công nợ, netting & đa tiền tệ](../5-cong-no/8000-cong-no-doi-tru-netting-va-tien-te.md)
 

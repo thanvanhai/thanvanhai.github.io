@@ -1,4 +1,4 @@
----
+﻿---
 id: nhu-cau-va-lua-chon-ncc
 title: "1000 Nhu cầu mua hàng & lựa chọn nhà cung cấp"
 slug: /erp-nghiep-vu/mua-hang/nhu-cau-va-lua-chon-ncc
@@ -78,7 +78,7 @@ Bản đồ tài khoản và nguyên tắc tất toán ở [Hạch toán & tài 
 - **Giá và nhà cung cấp đã thỏa thuận** — nguồn để giải phóng thay vì mời thầu lại: [Danh mục & hợp đồng mua](./2000-danh-muc-va-hop-dong-mua.md)
 - **Nhu cầu tự động từ tồn kho**: [Item Master & thuộc tính kho](../1-kho/2000-item-master-va-thuoc-tinh-kho.md)
 - **Nhu cầu tự động từ sản xuất**: [Lệnh sản xuất & WIP](../3-san-xuat/thuc-thi/6000-lenh-san-xuat-va-wip.md)
-- **Kiểm soát ngân sách và phê duyệt**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Kiểm soát ngân sách và phê duyệt**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 
@@ -214,7 +214,7 @@ ORDER BY Days_Pending DESC;
 - [Tổng quan Mua hàng](./0000-tong-quan-p2p.md)
 - [Danh mục & hợp đồng mua](./2000-danh-muc-va-hop-dong-mua.md)
 - [Đơn mua hàng](./3000-don-mua-hang.md)
-- [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 - [Bẫy thực chiến mua hàng](./9000-bay-mua-hang.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>

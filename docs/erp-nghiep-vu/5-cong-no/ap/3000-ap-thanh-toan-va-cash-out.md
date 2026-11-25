@@ -1,4 +1,4 @@
----
+﻿---
 id: ap-thanh-toan-va-cash-out
 title: "3000 AP: Thanh toán & Cash Out"
 slug: /erp-nghiep-vu/cong-no/ap/thanh-toan-va-cash-out
@@ -69,7 +69,7 @@ Bốn điểm cần nhớ:
 - **Thuế khấu trừ tại nguồn khi chi trả**: [Thuế & tài sản cố định](../../6-ke-toan-chung/3000-thue-va-tai-san-co-dinh.md)
 - **Chênh lệch tỷ giá khi thanh toán ngoại tệ**: [Đối trừ công nợ, netting & đa tiền tệ](../8000-cong-no-doi-tru-netting-va-tien-te.md)
 - **Đối chiếu số dư sau chi**: [Báo cáo công nợ (Aging & Cashflow)](../9000-bao-cao-cong-no-aging-cashflow.md)
-- **Phân tách nhiệm vụ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Phân tách nhiệm vụ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../../0-nen-tang/5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 

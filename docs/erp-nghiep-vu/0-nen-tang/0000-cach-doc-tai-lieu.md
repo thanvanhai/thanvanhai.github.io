@@ -68,7 +68,7 @@ Nếu bạn có câu hỏi cụ thể, đi thẳng tới đây:
 
 ## Một nguyên tắc khi đọc
 
-Mỗi khái niệm chỉ được định nghĩa **một lần** ở bài gốc. Gặp lại ở bài khác, bạn sẽ thấy dẫn link thay vì giải thích lại — vì nếu giải thích lại ở nhiều nơi, sớm muộn các chỗ đó cũng nói khác nhau, và người đọc không biết tin chỗ nào.
+Mỗi khái niệm có **một bài gốc** duy nhất. Gặp lại ở bài khác, bạn sẽ thấy dẫn link tới bài gốc thay vì giải thích lại — giữ được một nguồn sự thật cho mỗi khái niệm.
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

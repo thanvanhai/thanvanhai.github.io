@@ -1,4 +1,4 @@
----
+﻿---
 id: danh-muc-va-chinh-sach-ban
 title: "1000 Danh mục & chính sách bán"
 slug: /erp-nghiep-vu/ban-hang/danh-muc-va-chinh-sach-ban
@@ -72,7 +72,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-to
 - **Dùng bảng giá khi lập đơn**: [Tiếp nhận đơn & ATP](./2000-tiep-nhan-don-va-atp.md)
 - **Chặn xuất hàng khi khách quá hạn nợ**: [Giao hàng & xuất kho](./3000-giao-hang-va-xuat-kho.md)
 - **Hạn mức và dư nợ thực tế**: [AR - Xuất hóa đơn & hạn mức tín dụng](../5-cong-no/ar/6000-ar-xuat-hoa-don-va-han-muc-tin-dung.md)
-- **Chống trùng khách hàng**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Chống trùng khách hàng**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 
@@ -244,7 +244,7 @@ ORDER BY oh.OrderDate;
 - [Tiếp nhận đơn & ATP](./2000-tiep-nhan-don-va-atp.md)
 - [Giao hàng & xuất kho](./3000-giao-hang-va-xuat-kho.md)
 - [AR - Xuất hóa đơn & hạn mức tín dụng](../5-cong-no/ar/6000-ar-xuat-hoa-don-va-han-muc-tin-dung.md)
-- [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/5000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

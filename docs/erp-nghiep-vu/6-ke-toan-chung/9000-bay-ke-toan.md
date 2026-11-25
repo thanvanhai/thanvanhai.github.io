@@ -198,33 +198,24 @@ WHERE pt.Company = 'YOUR_COMPANY_CODE'
 
 ## 7. Bẫy current cost: join vào bảng giá hiện hành thay vì giá tại thời điểm
 
-> Phần này là case thực chiến — lỗi xuất hiện ở mọi ERP, không riêng hệ nào.
+Một mặt hàng sản xuất có giá nguyên liệu đầu vào tăng dần theo quý: Quý 1 là 3.0, Quý 2 là 3.2, Quý 3 là 4.0. Nhưng báo cáo join Job sản xuất với bảng Item để lấy giá lại hiển thị **đúng một con số 4.0 cho cả ba quý**, kể cả những Job đã đóng sổ từ Quý 1.
 
+Giá Quý 1 và Quý 2 không hề biến mất — hệ thống vẫn lưu đầy đủ. Nguyên nhân là **báo cáo đang join sai bảng**.
 
-### Mở đầu bằng một câu hỏi tưởng chừng đơn giản
+### Gốc rễ: hai loại bảng giá luôn tồn tại song song
 
-Có lần tôi ngồi xem lại giá của 1 mặt hàng sản xuất qua từng quý: Quý 1 giá 3.0, Quý 2 giá 3.2, Quý 3 giá 4.0 — đúng như kỳ vọng, giá nguyên liệu đầu vào tăng dần theo thời gian.
-
-Nhưng khi lên báo cáo, join dữ liệu Job sản xuất với bảng Item để lấy giá, kết quả lại khiến tôi khựng lại: **tất cả các quý đều hiện ra đúng 1 con số — 4.0**. Kể cả những Job đã chạy và đóng sổ từ tận Quý 1.
-
-Câu hỏi đầu tiên bật ra: giá của Quý 1, Quý 2 đã biến mất đi đâu? Có phải hệ thống không lưu lại lịch sử?
-
-Câu trả lời, hoá ra, đơn giản hơn nhiều — và cũng phổ biến hơn nhiều so với tôi tưởng: **không phải dữ liệu bị mất, mà là báo cáo đang join sai bảng.**
-
-### Gốc rễ vấn đề: 2 loại bảng cost luôn tồn tại song song trong mọi ERP
-
-Đây là điều tôi nhận ra sau khi đào sâu vào cả những hệ thống mình từng làm — Oracle EBS, Epicor, và cả tham chiếu qua SAP, Microsoft Dynamics: bất kỳ ERP nào cũng có 2 kiểu bảng liên quan đến giá, tồn tại song song:
+ERP nào cũng có hai kiểu bảng liên quan đến giá, tồn tại song song:
 
 | Loại bảng | Đặc điểm | Ví dụ thực tế |
 |---|---|---|
 | **Master / Snapshot table** | Chỉ giữ **giá hiện hành duy nhất** — bị ghi đè mỗi lần cập nhật | `Part.Cost` (Epicor), `CST_ITEM_COSTS` (Oracle EBS), `MBEW` (SAP) |
 | **Transaction / Ledger table** | Giữ **giá tại đúng thời điểm phát sinh giao dịch** — không bao giờ bị ghi đè | `JobMtl/JobOpr` (Epicor), `WIP_TRANSACTION_ACCOUNTING_LINES` (Oracle EBS), `COEP` (SAP), `InventTrans` (Dynamics) |
 
-Điều thú vị là: đây không phải là 1 thiếu sót trong thiết kế phần mềm. Đây là nguyên tắc **bắt buộc** của bất kỳ hệ thống kế toán nào — sổ sách của quá khứ không được phép tự đổi theo thời gian. Nếu giá của 1 Job đã đóng ở Quý 1 tự động "nhảy" theo giá hiện tại, toàn bộ báo cáo tài chính đã công bố trước đó coi như vô nghĩa.
+Đây không phải thiếu sót trong thiết kế phần mềm mà là nguyên tắc **bắt buộc** của bất kỳ hệ thống kế toán nào: sổ sách của quá khứ không được phép tự đổi theo thời gian. Nếu giá của một Job đã đóng ở Quý 1 tự động "nhảy" theo giá hiện tại, toàn bộ báo cáo tài chính đã công bố trước đó trở nên vô nghĩa.
 
 ### Cái bẫy nằm ở đâu khi viết SQL
 
-Nhìn lại đúng câu query đã gây ra sai lệch:
+Câu query gây ra sai lệch:
 
 ```sql
 -- SAI: luôn ra giá hiện hành, không phải giá lúc Job thực sự chạy
@@ -244,11 +235,11 @@ JOIN job_transaction txn ON txn.job_id = job.job_id
 
 Sự khác biệt chỉ nằm ở **join vào bảng nào** — nhưng hậu quả là toàn bộ báo cáo lịch sử bị "đồng bộ hóa nhầm" về giá hiện tại.
 
-**Một phép thử nhanh để tự kiểm tra**: nếu bạn chạy lại đúng 1 query sau 3 tháng, mà kết quả của các Job *cũ* thay đổi theo giá mới hiện tại — thì query đang join sai bảng.
+**Phép thử nhanh:** chạy lại đúng query đó sau 3 tháng. Nếu kết quả của các Job *cũ* thay đổi theo giá mới hiện tại thì query đang join sai bảng.
 
 ### Nhìn cụ thể qua Oracle EBS
 
-Ví dụ trên Oracle EBS — hệ thống tôi đang trực tiếp làm việc — có sẵn các bảng phân vai rõ ràng:
+Oracle EBS phân vai bảng rõ ràng:
 
 | Nhu cầu | Bảng nên dùng |
 |---|---|
@@ -268,11 +259,11 @@ AND csu.ORGANIZATION_ID = :org_id
 ORDER BY csu.LAST_UPDATE_DATE
 ```
 
-Ngay cả bản thân "giá chuẩn" của Item cũng có 1 bảng lịch sử riêng — không cần phải suy ngược từ Variance để đoán lại giá quá khứ, chỉ cần biết đúng bảng để tra.
+Ngay cả "giá chuẩn" của Item cũng có bảng lịch sử riêng — không cần suy ngược từ Variance để đoán lại giá quá khứ, chỉ cần biết đúng bảng để tra.
 
-### Không riêng gì Oracle — nhìn rộng ra các ERP lớn
+### Các ERP lớn dùng chung một kiến trúc gốc
 
-Sau khi đối chiếu qua nhiều hệ thống — kể cả Epicor và Microsoft Dynamics AX mà tôi từng làm trước đây, cùng SAP — điều khiến tôi bất ngờ là **tất cả đều dùng chung 1 kiến trúc gốc**, chỉ khác tên bảng:
+Oracle EBS, Epicor, SAP và Microsoft Dynamics AX **dùng chung một kiến trúc gốc**, chỉ khác tên bảng:
 
 | Khái niệm | Oracle EBS | Epicor | SAP | Microsoft Dynamics AX |
 |---|---|---|---|---|
@@ -284,29 +275,29 @@ Sau khi đối chiếu qua nhiều hệ thống — kể cả Epicor và Microso
 | Giá theo thời điểm (không ghi đè) | `WIP_TRANSACTION_ACCOUNTING_LINES` | `JobMtl`/`JobOpr` | `COEP` | `InventTrans` |
 | Lịch sử giá chuẩn | `CST_STANDARD_COST_UPDATES` | Cost History | Costing Run (`CK11N`) | Cost Version theo kỳ |
 
-Nói cách khác: **bất kể bạn đang dùng ERP nào, nếu viết report join thẳng Job/Order vào bảng Item Master để lấy giá, đều dính đúng lỗi y hệt nhau.** Đây không phải sự trùng hợp của các nhà cung cấp phần mềm — đây là hệ quả tất yếu của nguyên tắc kế toán.
+Nói cách khác: **dùng ERP nào cũng vậy, nếu report join thẳng Job/Order vào bảng Item Master để lấy giá thì đều dính đúng lỗi này.** Đây không phải sự trùng hợp của các nhà cung cấp phần mềm mà là hệ quả tất yếu của nguyên tắc kế toán.
 
 ### Vì sao Job thực tế không bao giờ khớp 100% với BOM chuẩn
 
-Một điều liên quan mà tôi cũng từng thắc mắc: khi tạo Job/Order từ BOM, hệ thống thực chất **copy (snapshot)** toàn bộ BOM + Routing tại đúng thời điểm đó thành 1 bản riêng gắn với Job. Sau đó, người vận hành hoàn toàn có thể sửa trực tiếp trên Job (đổi nguyên liệu thay thế do thiếu hàng, thêm bớt công đoạn...) mà không ảnh hưởng ngược lại BOM gốc.
+Khi tạo Job/Order từ BOM, hệ thống **copy (snapshot)** toàn bộ BOM + Routing tại đúng thời điểm đó thành một bản riêng gắn với Job. Sau đó người vận hành có thể sửa trực tiếp trên Job — đổi nguyên liệu thay thế do thiếu hàng, thêm bớt công đoạn — mà không ảnh hưởng ngược lại BOM gốc.
 
-Đây chính là lý do khiến Job thực tế và BOM chuẩn gần như không bao giờ khớp tuyệt đối — và điều này hoàn toàn có chủ đích trong thiết kế ERP, để linh hoạt xử lý phát sinh sản xuất thực tế.
+Đó là lý do Job thực tế và BOM chuẩn gần như không bao giờ khớp tuyệt đối. Điều này có chủ đích trong thiết kế ERP, để linh hoạt xử lý phát sinh sản xuất thực tế.
 
-### Không phải mọi phương pháp tính giá đều dễ dính bẫy như nhau
+### Mức độ dễ dính bẫy phụ thuộc phương pháp tính giá
 
-Đào sâu hơn, tôi nhận ra mức độ "dễ dính bẫy current cost" còn phụ thuộc vào **phương pháp tính giá (Costing Method)** mà doanh nghiệp đang áp dụng:
+Mức độ "dễ dính bẫy current cost" phụ thuộc vào **phương pháp tính giá (Costing Method)** đang áp dụng:
 
 **Standard Costing** — giá được thiết lập trước theo kỳ, mọi chênh lệch tách riêng thành Variance. Vì có bảng lịch sử update giá đi kèm, đây là phương pháp tương đối an toàn nếu viết report đúng cách.
 
 **Actual Costing (FIFO/LIFO/Lot-specific)** — mỗi giao dịch tự mang giá riêng theo đúng lô hàng, không có khái niệm "giá hiện hành" chung để nhầm lẫn.
 
-**Moving Average Cost** — đây chính là phương pháp **dễ dính bẫy nhất**. Giá được tính lại bình quân mỗi lần nhập kho, và bản chất field lưu giá chỉ là **1 cột duy nhất liên tục bị cập nhật** — giống hệt tình huống "Part.Cost" ở Epicor mà tôi mô tả ban đầu. Nếu không có thêm 1 bảng lưu lại lịch sử giá tại từng thời điểm, sẽ không cách nào tra lại chính xác giá quá khứ.
+**Moving Average Cost** — **dễ dính bẫy nhất**. Giá được tính lại bình quân mỗi lần nhập kho, và field lưu giá chỉ là **một cột duy nhất liên tục bị cập nhật** (như `Part.Cost` ở Epicor). Không có thêm bảng lưu lịch sử giá tại từng thời điểm thì không cách nào tra lại chính xác giá quá khứ.
 
-**Backflush Costing** — dồn chi phí về thời điểm hoàn thành sản phẩm, dùng cho sản xuất liên tục; đây là 1 dạng xấp xỉ có chủ đích, cần hiểu rõ độ trễ khi phân tích chi tiết.
+**Backflush Costing** — dồn chi phí về thời điểm hoàn thành sản phẩm, dùng cho sản xuất liên tục. Đây là dạng xấp xỉ có chủ đích, cần hiểu rõ độ trễ khi phân tích chi tiết.
 
-### Bài toán khó hơn: 1 kỳ báo cáo, nhiều giá — lấy giá nào?
+### Một kỳ báo cáo, nhiều giá — lấy giá nào?
 
-Đây là câu hỏi thực tế nhất khi lên báo cáo theo quý/năm: nếu trong 1 năm, 1 Item đổi giá 3–4 lần, thì không tồn tại "1 giá đúng duy nhất" cho cả kỳ — chỉ có **giá đúng cho đúng mục đích sử dụng**:
+Nếu trong một năm một Item đổi giá 3–4 lần thì không tồn tại "một giá đúng duy nhất" cho cả kỳ — chỉ có **giá đúng cho đúng mục đích sử dụng**:
 
 | Mục đích báo cáo | Cách xử lý phù hợp |
 |---|---|
@@ -324,21 +315,21 @@ WHERE txn.item_id = :item_id
 AND txn.transaction_date BETWEEN :tu_ngay AND :den_ngay
 ```
 
-Nguyên tắc xuyên suốt: **dữ liệu hiển thị phải đúng với giao dịch đã thực sự xảy ra tại đúng thời điểm — không suy diễn, không làm tròn cho đẹp, không gán 1 giá đại diện nếu bản chất có nhiều giá khác nhau.**
+Nguyên tắc xuyên suốt: **dữ liệu hiển thị phải đúng với giao dịch đã thực sự xảy ra tại đúng thời điểm — không suy diễn, không làm tròn cho đẹp, không gán một giá đại diện nếu bản chất có nhiều giá khác nhau.**
 
-### Giá mua và giá bán: bài toán "current cost" lặp lại ở cả 2 phía
+### Giá mua và giá bán: bài toán current cost lặp lại ở cả hai phía
 
-Một điều tôi chỉ nhận ra sau khi đi sâu hơn: giá mua (chi phí đầu vào) và giá bán (giá ra thị trường) là 2 nhánh khác nhau, nhưng liên kết chặt với nhau — giá nguyên liệu tăng thường kéo theo áp lực tăng giá bán, dù giá bán còn phụ thuộc nhiều yếu tố khác (cạnh tranh, hợp đồng, nhu cầu thị trường) chứ không chỉ riêng chi phí.
+Giá mua (chi phí đầu vào) và giá bán (giá ra thị trường) là hai nhánh khác nhau nhưng liên kết chặt với nhau — giá nguyên liệu tăng thường kéo theo áp lực tăng giá bán, dù giá bán còn phụ thuộc cạnh tranh, hợp đồng và nhu cầu thị trường chứ không chỉ riêng chi phí.
 
-Điểm đáng chú ý nhất: khi phân tích **margin** (lợi nhuận gộp), bài toán "point-in-time" lặp lại trên **cả 2 trục cùng lúc**:
+Khi phân tích **margin** (lợi nhuận gộp), bài toán "point-in-time" lặp lại trên **cả hai trục cùng lúc**:
 
 ```
 Margin thực tế 1 đơn hàng = Giá bán tại thời điểm bán − Giá vốn tại thời điểm sản xuất/xuất kho
 ```
 
-Nếu báo cáo margin lấy nhầm giá bán theo Price List hiện tại, và giá vốn theo Standard Cost hiện tại — thay vì lấy đúng giá đã chốt tại từng transaction — sai số sẽ dồn theo cả 2 chiều, khiến con số margin cuối cùng lệch xa hơn cả việc chỉ sai 1 phía.
+Nếu báo cáo margin lấy nhầm giá bán theo Price List hiện tại và giá vốn theo Standard Cost hiện tại — thay vì lấy đúng giá đã chốt tại từng transaction — sai số dồn theo cả hai chiều, khiến con số margin cuối cùng lệch xa hơn cả việc chỉ sai một phía.
 
-### Vài lưu ý khác không thể bỏ qua
+### Các lưu ý khác
 
 - **Cost Rollup không tự lan truyền**: giá nguyên liệu đổi không tự động cập nhật giá thành phẩm cấp trên (multi-level BOM) cho đến khi chạy lại Cost Rollup.
 - **Job đã đóng không bị ảnh hưởng bởi giá đổi sau này** — đúng nguyên tắc, nhưng dễ gây hiểu lầm nếu ai đó kỳ vọng ngược lại.
@@ -347,11 +338,11 @@ Nếu báo cáo margin lấy nhầm giá bán theo Price List hiện tại, và 
 - **Actual Costing theo Lot/Serial** khiến "giá của Item" có thể tồn tại nhiều mức song song cùng lúc, không chỉ biến động theo thời gian.
 - **Overhead phân bổ theo %** không cố định như nhiều người tưởng — nó tự đổi theo khi Material Cost thay đổi.
 
-### Bài học rộng hơn cả ERP
+### Nguyên lý rộng hơn: point-in-time value
 
-Nguyên lý "point-in-time value" này thực ra chính là khái niệm **Slowly Changing Dimension (SCD)** quen thuộc trong Data Warehouse — áp dụng cho bất kỳ dữ liệu nào biến động theo thời gian: giá vàng, tỷ giá, giá cổ phiếu... Bất cứ khi nào cần biết "giá trị tại 1 thời điểm quá khứ", câu trả lời không bao giờ nằm ở "giá trị hiện tại", mà phải nằm ở dữ liệu có gắn timestamp.
+Nguyên lý "point-in-time value" chính là khái niệm **Slowly Changing Dimension (SCD)** quen thuộc trong Data Warehouse, áp dụng cho mọi dữ liệu biến động theo thời gian: giá vàng, tỷ giá, giá cổ phiếu. Cần biết "giá trị tại một thời điểm quá khứ" thì câu trả lời không bao giờ nằm ở "giá trị hiện tại", mà phải nằm ở dữ liệu có gắn timestamp.
 
-### Checklist bỏ túi khi viết báo cáo costing
+### Checklist khi viết báo cáo costing
 
 - Xác định rõ Costing Method đang dùng (Standard/Actual/Moving Average) — mỗi loại có rủi ro khác nhau
 - Xác định rõ bảng nào là *current*, bảng nào là *historical* trước khi viết query
@@ -362,7 +353,7 @@ Nguyên lý "point-in-time value" này thực ra chính là khái niệm **Slowl
 
 ---
 
-*Không có công thức đúng tuyệt đối cho việc lấy giá trong báo cáo — chỉ có nguyên tắc bất biến: dữ liệu hiển thị phải phản ánh đúng giao dịch thực tế tại đúng thời điểm, và cách tổng hợp phải phù hợp với câu hỏi mà báo cáo đang trả lời. Nguyên tắc này không đổi dù bạn dùng Oracle EBS, Epicor, SAP, Microsoft Dynamics, hay bất kỳ ERP nào khác — vì nó đến từ bản chất kế toán, không phải từ cách 1 phần mềm cụ thể được thiết kế.*
+Không có công thức đúng tuyệt đối cho việc lấy giá trong báo cáo — chỉ có nguyên tắc bất biến: dữ liệu hiển thị phải phản ánh đúng giao dịch thực tế tại đúng thời điểm, và cách tổng hợp phải phù hợp với câu hỏi mà báo cáo đang trả lời. Nguyên tắc này không đổi dù dùng Oracle EBS, Epicor, SAP, Microsoft Dynamics hay bất kỳ ERP nào khác, vì nó đến từ bản chất kế toán chứ không từ cách một phần mềm cụ thể được thiết kế.
 
 
 ## Xem thêm

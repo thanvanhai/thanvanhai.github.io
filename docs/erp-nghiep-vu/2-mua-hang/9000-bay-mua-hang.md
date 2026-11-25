@@ -61,7 +61,7 @@ Nguyên tắc tài khoản và tất toán ở [Hạch toán & tài khoản trun
 
 ## 4. Điểm chạm & rủi ro
 
-- **Nguyên lý quy đổi đơn vị tính** — định nghĩa duy nhất về UOM: [Nguyên lý quy đổi UOM](../0-nen-tang/5000-nguyen-ly-quy-doi-uom.md)
+- **Nguyên lý quy đổi đơn vị tính** — định nghĩa duy nhất về UOM: [Nguyên lý quy đổi UOM](../0-nen-tang/6000-nguyen-ly-quy-doi-uom.md)
 - **Thuộc tính đơn vị tính gốc của mã hàng**: [Item Master & thuộc tính kho](../1-kho/2000-item-master-va-thuoc-tinh-kho.md)
 - **Số lượng thực nhận để đối chiếu**: [Nhận hàng & kiểm tra chất lượng](./4000-nhan-hang-va-kiem-qc.md)
 - **Khớp lệnh và chống trùng hóa đơn**: [Đối soát hóa đơn & 3-Way Match](./5000-doi-soat-hoa-don-va-3-way-match.md)
@@ -87,7 +87,7 @@ GROUP BY l.PO_No, l.Item_ID, l.UOM, l.Qty_Ordered, l.Qty_In_Base_UOM
 HAVING l.Qty_In_Base_UOM <> ISNULL(SUM(r.Qty_Received), 0);
 ```
 
-**Nguyên tắc vàng:** mọi phép so sánh, cộng dồn phải quy về **đơn vị tồn kho (đơn vị nhỏ nhất)**. Chi tiết ở [Nguyên lý quy đổi UOM](../0-nen-tang/5000-nguyen-ly-quy-doi-uom.md).
+**Nguyên tắc vàng:** mọi phép so sánh, cộng dồn phải quy về **đơn vị tồn kho (đơn vị nhỏ nhất)**. Chi tiết ở [Nguyên lý quy đổi UOM](../0-nen-tang/6000-nguyen-ly-quy-doi-uom.md).
 
 **Bẫy 2 — Đơn mua và yêu cầu treo lâu ngày**
 
@@ -209,7 +209,7 @@ ORDER BY Days_Open DESC;
 ## Xem thêm
 
 - [Tổng quan Mua hàng](./0000-tong-quan-p2p.md)
-- [Nguyên lý quy đổi UOM](../0-nen-tang/5000-nguyen-ly-quy-doi-uom.md)
+- [Nguyên lý quy đổi UOM](../0-nen-tang/6000-nguyen-ly-quy-doi-uom.md)
 - [Đối soát hóa đơn & 3-Way Match](./5000-doi-soat-hoa-don-va-3-way-match.md)
 - [Nhận hàng & kiểm tra chất lượng](./4000-nhan-hang-va-kiem-qc.md)
 - [Item Master & thuộc tính kho](../1-kho/2000-item-master-va-thuoc-tinh-kho.md)
