@@ -55,9 +55,9 @@ Hàng vào, hàng ra, hàng đổi chỗ — mỗi lần như vậy là một **
 
 ## Bắt đầu đọc từ đâu
 
-Nếu bạn mới làm quen với module kho, đọc **Cấu trúc kho & vị trí** trước để hiểu kho được mô hình hóa thế nào, rồi sang **Giao dịch nhập, xuất & chuyển** — bài quan trọng nhất, nơi mọi thứ khác đều dẫn về.
+Nếu mới làm quen với module kho, đọc **Cấu trúc kho & vị trí** trước để hiểu kho được mô hình hóa thế nào, rồi sang **Giao dịch nhập, xuất & chuyển** — bài quan trọng nhất, nơi mọi thứ khác đều dẫn về.
 
-Nếu bạn đang gặp sự cố thực tế (tồn kho lệch, hàng bị giữ ảo, báo cáo không khớp), đi thẳng tới bài tương ứng trong bảng năm câu hỏi ở trên.
+Nếu đang gặp sự cố thực tế (tồn kho lệch, hàng bị giữ ảo, báo cáo không khớp), đi thẳng tới bài tương ứng trong bảng năm câu hỏi ở trên.
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

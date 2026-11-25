@@ -260,7 +260,7 @@ flowchart TD
 
 ### Kiến trúc B — Không có module LCM (Match phụ phí trực tiếp vào Receipt)
 
-Với các hệ thống không triển khai LCM riêng — như hệ thống đang chạy thực tế của bạn — không có bút toán ước tính hay tài khoản trung gian độc lập. Thay vào đó, hóa đơn phụ phí (cước vận chuyển/hải quan) được khớp lệnh trực tiếp vào giao dịch nhận hàng gốc (`RECEIVE` transaction) thông qua kiểu đối soát **Match to Receipt** với loại dòng `FREIGHT` hoặc `MISCELLANEOUS`, không phải `ITEM`:
+Với các hệ thống không triển khai LCM riêng — trường hợp phổ biến — không có bút toán ước tính hay tài khoản trung gian độc lập. Thay vào đó, hóa đơn phụ phí (cước vận chuyển/hải quan) được khớp lệnh trực tiếp vào giao dịch nhận hàng gốc (`RECEIVE` transaction) thông qua kiểu đối soát **Match to Receipt** với loại dòng `FREIGHT` hoặc `MISCELLANEOUS`, không phải `ITEM`:
 
 ```mermaid
 flowchart TD
@@ -381,7 +381,7 @@ ORDER BY
     rsh.receipt_num DESC;
 ```
 
-> **Lưu ý chọn đúng query theo kiến trúc hệ thống:** Nếu hệ thống của bạn có triển khai module LCM đầy đủ (bảng `inl_ship_headers_all`/`inl_ship_lines_all` tồn tại và có dữ liệu), hãy dùng cách tiếp cận dựa trên các bảng đó để so sánh chi phí ước tính (`est_unit_landed_cost`) với chi phí thực tế. Nếu hệ thống không triển khai LCM — như trường hợp phổ biến ở trên — dùng query dựa trên `rcv_transactions` kết hợp `ap_invoice_lines_all` như trên, vì đây là cách duy nhất phản ánh đúng cách chi phí phụ phí được ghi nhận vào hệ thống.
+> **Lưu ý chọn đúng query theo kiến trúc hệ thống:** Nếu hệ thống có triển khai module LCM đầy đủ (bảng `inl_ship_headers_all`/`inl_ship_lines_all` tồn tại và có dữ liệu), dùng cách tiếp cận dựa trên các bảng đó để so sánh chi phí ước tính (`est_unit_landed_cost`) với chi phí thực tế. Nếu hệ thống không triển khai LCM — trường hợp phổ biến — dùng query dựa trên `rcv_transactions` kết hợp `ap_invoice_lines_all` như trên, vì đây là cách duy nhất phản ánh đúng cách chi phí phụ phí được ghi nhận vào hệ thống.
 
 ### B. Cho Epicor ERP (Truy vấn cơ sở dữ liệu SQL Server)
 
@@ -414,7 +414,7 @@ ORDER BY
 
 ### 6. Giải pháp khắc phục lỗi phổ biến & Cảnh báo cho Hệ thống tự xây (In-house)
 
-Nếu đội ngũ của bạn đang tự xây dựng (In-house) mô-đun Giá thành kế toán, hãy đặc biệt chú ý các điểm thiết kế sau để tránh các bẫy lỗi hệ thống nghiêm trọng:
+Nếu đội ngũ đang tự xây dựng (In-house) mô-đun Giá thành kế toán, các điểm thiết kế sau cần được đặc biệt lưu ý để tránh các bẫy lỗi hệ thống nghiêm trọng:
 
 1. **Bẫy lỗi sửa đổi thô bạo giá trị lịch sử nhập kho (Data Corruption Pitfall):**
     * *Triệu chứng:* Khi hóa đơn hãng tàu về phát sinh thêm chi phí 1,500 USD, lập trình viên viết câu lệnh SQL để cập nhật trực tiếp (Update) đơn giá trong bảng lịch sử nhập kho cũ từ 10$ thành 13.5$. Việc này làm sai lệch toàn bộ số liệu báo cáo tài chính đã khóa sổ của các tuần trước và làm vỡ luồng đối chiếu công nợ của kế toán.

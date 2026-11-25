@@ -209,7 +209,7 @@ Sau hóa đơn cước, số dư trung gian chi phí mua hàng của lô này v�
 
 ## 4. Điểm chạm & rủi ro
 
-- Cơ cấu tổ chức, pháp nhân, sổ cái → [Nền tảng 1000 Tổ chức & pháp nhân](../0-nen-tang/1000-to-chuc-va-phap-nhan.md).
+- Cơ cấu tổ chức, pháp nhân, sổ cái → [Nền tảng 2000 Tổ chức & pháp nhân](../0-nen-tang/2000-to-chuc-va-phap-nhan.md).
 - Sinh bút toán nhận hàng và hai cấu hình ghi nhận → [4000 Nhận hàng & kiểm tra chất lượng](../2-mua-hang/4000-nhan-hang-va-kiem-qc.md).
 - Khớp lệnh và tất toán → [5000 Đối soát hóa đơn & 3-Way Match](../2-mua-hang/5000-doi-soat-hoa-don-va-3-way-match.md).
 - Giao dịch kho sinh bút toán (chuyển kho, drop-ship, điều chỉnh) → [Kho 3000](../1-kho/3000-giao-dich-nhap-xuat-chuyen.md).

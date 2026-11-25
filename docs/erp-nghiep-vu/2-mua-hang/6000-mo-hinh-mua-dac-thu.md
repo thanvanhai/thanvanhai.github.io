@@ -18,7 +18,7 @@ Bài này chỉ ra điểm khác biệt cốt lõi của từng mô hình và c�
 
 ## 0. Nguyên lý (áp dụng mọi ERP)
 
-1. **Quyền sở hữu và vị trí vật lý là hai thứ khác nhau.** Hàng ký gửi nằm trong kho bạn nhưng thuộc nhà cung cấp. Hàng gửi gia công ra ngoài không còn trong kho bạn nhưng vẫn thuộc bạn. Mọi mô hình trong bài này đều xoay quanh việc tách rời hai khái niệm đó.
+1. **Quyền sở hữu và vị trí vật lý là hai thứ khác nhau.** Hàng ký gửi nằm trong kho doanh nghiệp nhưng thuộc nhà cung cấp. Hàng gửi gia công ra ngoài không còn trong kho doanh nghiệp nhưng vẫn thuộc doanh nghiệp. Mọi mô hình trong bài này đều xoay quanh việc tách rời hai khái niệm đó.
 2. **Gia công ngoài không phải mua dịch vụ.** Vật tư gửi đi vẫn là tài sản của doanh nghiệp; nhà thầu chỉ thêm giá trị gia công. Ghi nhận thành phẩm bằng đúng giá trị dịch vụ sẽ **làm biến mất** giá trị nguyên vật liệu gốc.
 3. **Hàng ký gửi không phải tài sản của doanh nghiệp cho tới khi tiêu dùng.** Ghi tăng tài sản và công nợ ngay khi nhận là vi phạm nguyên tắc kế toán và tạo ra khoản nợ phải trả không có thực.
 4. **Mua nội bộ giữa các pháp nhân là giao dịch bán/mua, không phải chuyển kho.** Cùng một tập đoàn nhưng hai pháp nhân là hai thực thể kế toán độc lập — phải có hóa đơn, có doanh thu và giá vốn ở cả hai bên.

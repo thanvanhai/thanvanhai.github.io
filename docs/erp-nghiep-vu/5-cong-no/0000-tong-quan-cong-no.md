@@ -75,8 +75,8 @@ Nguyên tắc: **người tạo chứng từ gốc không được tự ghi nợ
 
 ## Bắt đầu đọc từ đâu
 
-Nếu bạn làm **phải trả**, đọc theo thứ tự `ap/1000 → ap/4000` rồi sang `8000`, `9000`.
-Nếu bạn làm **phải thu**, đọc theo thứ tự `ar/5000 → ar/7000` rồi sang `8000`, `9000`.
+Nếu làm **phải trả**, đọc theo thứ tự `ap/1000 → ap/4000` rồi sang `8000`, `9000`.
+Nếu làm **phải thu**, đọc theo thứ tự `ar/5000 → ar/7000` rồi sang `8000`, `9000`.
 
 Nếu đang xử lý sự cố:
 

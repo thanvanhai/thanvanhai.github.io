@@ -266,7 +266,3 @@ ORDER BY h.EntryDate DESC;
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
 </div>
-
-<div align="center" style={{color: 'var(--ifm-color-primary)'}}>
-  <strong>Chúc các bạn thành công và vui vẻ!</strong>
-</div>

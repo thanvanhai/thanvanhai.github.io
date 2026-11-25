@@ -177,7 +177,7 @@ Ba điều kho cần nhớ:
 **Cách lấy danh mục chuẩn:**
 - Oracle EBS: bảng `MTL_TRANSACTION_TYPES` (`transaction_type_id`, `transaction_type_name`).
 - SAP: bảng cấu hình Movement Type (`T156`) và lịch sử chứng từ vật tư (`MKPF`/`MSEG`, hoặc `MATDOC` trên S/4HANA).
-- Epicor: danh mục `TranType` trong `Erp.PartTran` của chính môi trường bạn.
+- Epicor: danh mục `TranType` trong `Erp.PartTran` của môi trường triển khai.
 
 ### B. Mô hình dữ liệu gợi ý cho hệ thống tự xây
 

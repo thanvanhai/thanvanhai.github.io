@@ -73,7 +73,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../../6-ke
 - **Dùng work center trong công đoạn**: [Routing & công đoạn](./3000-routing-va-cong-doan.md)
 - **Chi phí giờ máy vào giá thành**: [Giá thành sản xuất](../thuc-thi/8000-gia-thanh-san-xuat.md)
 - **Lịch sản xuất và năng lực khả dụng**: [Lệnh sản xuất & WIP](../thuc-thi/6000-lenh-san-xuat-va-wip.md)
-- **Trung tâm chi phí**: [Tổ chức & Pháp nhân](../../0-nen-tang/1000-to-chuc-va-phap-nhan.md)
+- **Trung tâm chi phí**: [Tổ chức & Pháp nhân](../../0-nen-tang/2000-to-chuc-va-phap-nhan.md)
 
 > Nếu nhà máy dùng **khuôn gá** làm tài nguyên ràng buộc thứ hai (ép nhựa, dập, đúc), xem [Triển khai Epicor: đếm số shot của khuôn](../thuc-thi/9100-trien-khai-epicor-shot-count-khuon.md) — bài này không trình bày khuôn.
 

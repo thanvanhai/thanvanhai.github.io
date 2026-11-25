@@ -10,7 +10,7 @@ tags: [erp, tong-quan]
 
 # Cách đọc tài liệu ERP Nghiệp vụ
 
-Tài liệu này viết cho người **làm nghiệp vụ ERP** — dù bạn dùng SAP, Oracle EBS, Epicor, Odoo hay hệ thống do doanh nghiệp tự xây. Nội dung được tổ chức theo **quy trình vận hành thật**, không theo module phần mềm, vì ngoài đời người ta không "vận hành module" mà vận hành một quy trình đi xuyên nhiều phân hệ.
+Tài liệu này viết cho người **làm nghiệp vụ ERP** — dùng SAP, Oracle EBS, Epicor, Odoo hay hệ thống do doanh nghiệp tự xây. Nội dung được tổ chức theo **quy trình vận hành thật**, không theo module phần mềm, vì ngoài đời người ta không "vận hành module" mà vận hành một quy trình đi xuyên nhiều phân hệ.
 
 ## Bảy khối tài liệu
 
@@ -43,7 +43,7 @@ Hàng đi qua kho, tiền đi ngược chiều qua công nợ, và kế toán ch
 
 ## Tra cứu theo tình huống
 
-Nếu bạn có câu hỏi cụ thể, đi thẳng tới đây:
+Nếu có câu hỏi cụ thể, đi thẳng tới đây:
 
 | Tình huống | Xem bài |
 |---|---|
@@ -63,12 +63,12 @@ Nếu bạn có câu hỏi cụ thể, đi thẳng tới đây:
 3. **Ai làm gì ở module nào** — bảng phân vai giữa các bộ phận, đây là phần hay bị bỏ sót khi triển khai.
 4. **Hạch toán** — chỉ dẫn tới bài gốc về tài khoản, không định nghĩa trùng.
 5. **Điểm chạm & rủi ro** — bài này nối sang bài nào, và sai ở đây thì hỏng cái gì.
-6. **Triển khai tham chiếu** — cấu hình và câu truy vấn cụ thể trên Oracle EBS, Epicor, SAP, Odoo. Bạn có thể bỏ qua phần này nếu chỉ cần nghiệp vụ thuần.
+6. **Triển khai tham chiếu** — cấu hình và câu truy vấn cụ thể trên Oracle EBS, Epicor, SAP, Odoo. Phần này có thể bỏ qua nếu chỉ cần nghiệp vụ thuần.
 7. **Bẫy thực chiến & Checklist** — lỗi đã gặp ngoài thực tế và cách phòng tránh.
 
 ## Một nguyên tắc khi đọc
 
-Mỗi khái niệm có **một bài gốc** duy nhất. Gặp lại ở bài khác, bạn sẽ thấy dẫn link tới bài gốc thay vì giải thích lại — giữ được một nguồn sự thật cho mỗi khái niệm.
+Mỗi khái niệm có **một bài gốc** duy nhất. Gặp lại ở bài khác, bài đó dẫn link tới bài gốc thay vì giải thích lại — giữ được một nguồn sự thật cho mỗi khái niệm.
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

@@ -19,7 +19,7 @@ Bài này gom các lỗi xuất hiện ở **nhiều doanh nghiệp khác nhau, 
 1. **Lỗi nguy hiểm nhất là lỗi không báo lỗi.** Hệ thống chấp nhận dữ liệu sai và chạy tiếp. Vì vậy cần truy vấn kiểm soát định kỳ, không chỉ dựa vào validation.
 2. **Mọi bẫy trong mua hàng đều quy về một trong ba gốc:** đơn vị tính không đồng nhất, chứng từ bị bỏ dở không đóng, hoặc dữ liệu nhập trùng.
 3. **Phòng tránh rẻ hơn sửa.** Một ràng buộc ở tầng dữ liệu chặn được hàng trăm giờ dọn dẹp về sau.
-4. **Bẫy phải có cách phát hiện, không chỉ có cách mô tả.** Mỗi bẫy trong bài này đều kèm truy vấn tìm ra các trường hợp đang tồn tại trong dữ liệu của bạn.
+4. **Bẫy phải có cách phát hiện, không chỉ có cách mô tả.** Mỗi bẫy trong bài này đều kèm truy vấn tìm ra các trường hợp đang tồn tại trong dữ liệu thực tế.
 
 ## 1. Luồng vận hành
 

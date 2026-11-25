@@ -62,7 +62,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-to
 - **Lệch UOM khi mua**: [Bẫy thực chiến mua hàng](../2-mua-hang/9000-bay-mua-hang.md)
 - **Lệch UOM giữa BOM và Item Master**: [Bẫy thực chiến sản xuất](../3-san-xuat/9000-bay-san-xuat.md)
 - **Giá vốn và định giá**: [Giá vốn & định giá tồn kho](../6-ke-toan-chung/2000-gia-von-va-dinh-gia-ton-kho.md)
-- **Danh mục nền và tính bất biến**: [Master Data & tính bất biến](./3000-master-data-va-tinh-bat-bien.md)
+- **Danh mục nền và tính bất biến**: [Master Data & tính bất biến](./4000-master-data-va-tinh-bat-bien.md)
 
 **Rủi ro chính:**
 
@@ -105,7 +105,7 @@ Bốn ràng buộc bắt buộc:
 1. **Chỉ lưu `Multiply_Factor`**, không lưu hệ số chia. Quy đổi ngược được tính bằng phép chia khi cần.
 2. **`Multiply_Factor` kiểu `DECIMAL` với ít nhất 6 chữ số thập phân**, không dùng `FLOAT`.
 3. **Chặn lưu dòng BOM / PO / SO có UOM không quy đổi được về UOM gốc.**
-4. **Chặn đổi `Base_UOM` của mã hàng đã có giao dịch** (xem [Master Data & tính bất biến](./3000-master-data-va-tinh-bat-bien.md)).
+4. **Chặn đổi `Base_UOM` của mã hàng đã có giao dịch** (xem [Master Data & tính bất biến](./4000-master-data-va-tinh-bat-bien.md)).
 
 ### C. Truy vấn kiểm soát
 

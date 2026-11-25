@@ -64,7 +64,7 @@ Nguyên tắc: **không ai được làm hai vai trò trên cùng một chứng 
 
 ## Bắt đầu đọc từ đâu
 
-Nếu bạn triển khai từ đầu, đọc theo thứ tự 1000 → 9000. Nếu đang xử lý sự cố, đi thẳng tới bài tương ứng:
+Nếu triển khai từ đầu, đọc theo thứ tự 1000 → 9000. Nếu đang xử lý sự cố, đi thẳng tới bài tương ứng:
 
 - Hóa đơn lệch giá hoặc lệch số lượng → [Đối soát hóa đơn & 3-Way Match](./5000-doi-soat-hoa-don-va-3-way-match.md)
 - Hàng về kho mà chưa có hóa đơn → [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md)

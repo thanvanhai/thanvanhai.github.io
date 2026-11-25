@@ -9,7 +9,7 @@ tags: [erp, manufacturing, epicor, tooling, bpm, shot-count]
 
 # 9100 Triển khai Epicor: đếm số shot của khuôn
 
-> **Bài này là case study triển khai cụ thể trên Epicor 10.2**, không phải nguyên lý chung. Nguyên lý tính năng lực (máy, người, ca kíp, hiệu suất) nằm ở [Work Center & năng lực](../ky-thuat/1000-work-center-va-nang-luc.md); cách khai công đoạn và gán tài nguyên vào routing ở [Routing & công đoạn](../ky-thuat/3000-routing-va-cong-doan.md). Nếu bạn không dùng Epicor, đọc hai bài kia là đủ.
+> **Bài này là case study triển khai cụ thể trên Epicor 10.2**, không phải nguyên lý chung. Nguyên lý tính năng lực (máy, người, ca kíp, hiệu suất) nằm ở [Work Center & năng lực](../ky-thuat/1000-work-center-va-nang-luc.md); cách khai công đoạn và gán tài nguyên vào routing ở [Routing & công đoạn](../ky-thuat/3000-routing-va-cong-doan.md). Nếu hệ thống không dùng Epicor, đọc hai bài kia là đủ.
 
 Khuôn ép nhựa có tuổi thọ tính bằng **số lần ép (shot)**, không phải số sản phẩm. Một khuôn 4 lòng ép 1 lần ra 4 sản phẩm — nên khuôn 50.000 shot làm ra 200.000 sản phẩm. Đếm sai đơn vị này thì hoặc khuôn gãy sớm, hoặc thay khuôn lãng phí.
 
@@ -283,7 +283,7 @@ ORDER BY ld.OpCode;
 
 ### F. Đối chiếu cách tiếp cận ở các hệ thống khác
 
-Cùng một bài toán "quản tuổi thọ khuôn", mỗi hệ thống đặt khuôn ở một nơi khác nhau — điều này quan trọng khi bạn chuyển đổi hoặc so sánh:
+Cùng một bài toán "quản tuổi thọ khuôn", mỗi hệ thống đặt khuôn ở một nơi khác nhau — điều này quan trọng khi chuyển đổi hoặc so sánh:
 
 | | Oracle EBS | Epicor | SAP S/4HANA | Odoo |
 |---|---|---|---|---|

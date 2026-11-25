@@ -60,7 +60,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-to
 
 ## 4. Điểm chạm & rủi ro
 
-- **Tổ chức và pháp nhân** (phân quyền theo đơn vị): [Tổ chức & Pháp nhân](./1000-to-chuc-va-phap-nhan.md)
+- **Tổ chức và pháp nhân** (phân quyền theo đơn vị): [Tổ chức & Pháp nhân](./2000-to-chuc-va-phap-nhan.md)
 - **Chứng từ và đối soát**: [Chứng từ & nguyên lý đối soát](./4000-chung-tu-va-nguyen-ly-doi-soat.md)
 - **Duyệt PO theo hạn mức**: [Đơn mua hàng](../2-mua-hang/3000-don-mua-hang.md)
 - **Mở khóa hóa đơn AP**: [AP: Bẫy & kiểm soát](../5-cong-no/ap/4000-ap-bay-va-kiem-soat.md)
