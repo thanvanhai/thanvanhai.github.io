@@ -61,11 +61,11 @@ Nếu tập đoàn có nhiều nhóm đồng nhất, tổng số sổ = tổng t
 
 ## 4. Điểm chạm & rủi ro
 
-- **Hệ thống tài khoản dùng chung**: [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md)
-- **Sổ cái và hợp nhất báo cáo**: [Sổ cái & báo cáo tài chính](../6-ke-toan-chung/4000-so-cai-va-bao-cao-tai-chinh.md)
-- **Giao dịch nội bộ giữa pháp nhân**: [Đối trừ công nợ, netting & đa tiền tệ](../5-cong-no/8000-cong-no-doi-tru-netting-va-tien-te.md)
-- **Mua/bán nội bộ**: [Mô hình mua đặc thù](../2-mua-hang/6000-mo-hinh-mua-dac-thu.md), [Mô hình bán đặc thù](../4-ban-hang/5000-mo-hinh-ban-dac-thu.md)
-- **Phân quyền theo pháp nhân**: [Kiểm soát nội bộ & phân tách nhiệm vụ](./4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Hệ thống tài khoản dùng chung**: [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md)
+- **Sổ cái và hợp nhất báo cáo**: [Sổ cái & báo cáo tài chính](../5-ke-toan/ke-toan-tong-hop/2000-so-cai-va-bao-cao-tai-chinh.md)
+- **Giao dịch nội bộ giữa pháp nhân**: [Đối trừ công nợ, netting & đa tiền tệ](../5-ke-toan/cong-no/3000-cong-no-doi-tru-netting-va-tien-te.md)
+- **Mua/bán nội bộ**: [Mô hình mua đặc thù](../2-mua-hang/2030-mo-hinh-mua-dac-thu.md), [Mô hình bán đặc thù](../4-ban-hang/2030-mo-hinh-ban-dac-thu.md)
+- **Phân quyền theo pháp nhân**: [Kiểm soát nội bộ & phân tách nhiệm vụ](./2010-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 
@@ -197,9 +197,9 @@ Trong Epicor, **Company** là ranh giới phân tách cao nhất và đảm nhi�
 ## Xem thêm
 
 - [Cách đọc tài liệu](./0000-cach-doc-tai-lieu.md)
-- [Kiểm soát nội bộ & phân tách nhiệm vụ](./4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
-- [Sổ cái & báo cáo tài chính](../6-ke-toan-chung/4000-so-cai-va-bao-cao-tai-chinh.md)
-- [Đối trừ công nợ, netting & đa tiền tệ](../5-cong-no/8000-cong-no-doi-tru-netting-va-tien-te.md)
+- [Kiểm soát nội bộ & phân tách nhiệm vụ](./2010-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- [Sổ cái & báo cáo tài chính](../5-ke-toan/ke-toan-tong-hop/2000-so-cai-va-bao-cao-tai-chinh.md)
+- [Đối trừ công nợ, netting & đa tiền tệ](../5-ke-toan/cong-no/3000-cong-no-doi-tru-netting-va-tien-te.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

@@ -70,15 +70,15 @@ Ba điều cần biết khi triển khai:
 2. **PR không có giá trị cam kết cho tới khi quy ra giá ước tính hoặc giá báo giá thắng thầu.** Báo cáo ngân sách dựa trên PR chưa có giá chỉ là đếm số lượng.
 3. **Chuyển PR thành PO là thời điểm cam kết chi chính thức** — từ đây mới có nghĩa vụ tiềm tàng với nhà cung cấp.
 
-Bản đồ tài khoản và nguyên tắc tất toán ở [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md).
+Bản đồ tài khoản và nguyên tắc tất toán ở [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md).
 
 ## 4. Điểm chạm & rủi ro
 
-- **Chuyển yêu cầu thành đơn mua**: [Đơn mua hàng](./3000-don-mua-hang.md)
-- **Giá và nhà cung cấp đã thỏa thuận** — nguồn để giải phóng thay vì mời thầu lại: [Danh mục & hợp đồng mua](./2000-danh-muc-va-hop-dong-mua.md)
-- **Nhu cầu tự động từ tồn kho**: [Item Master & thuộc tính kho](../1-kho/2000-item-master-va-thuoc-tinh-kho.md)
-- **Nhu cầu tự động từ sản xuất**: [Lệnh sản xuất & WIP](../3-san-xuat/thuc-thi/6000-lenh-san-xuat-va-wip.md)
-- **Kiểm soát ngân sách và phê duyệt**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Chuyển yêu cầu thành đơn mua**: [Đơn mua hàng](./2000-don-mua-hang.md)
+- **Giá và nhà cung cấp đã thỏa thuận** — nguồn để giải phóng thay vì mời thầu lại: [Danh mục & hợp đồng mua](./1010-danh-muc-va-hop-dong-mua.md)
+- **Nhu cầu tự động từ tồn kho**: [Item Master & thuộc tính kho](../1-kho/1010-item-master-va-thuoc-tinh-kho.md)
+- **Nhu cầu tự động từ sản xuất**: [Lệnh sản xuất & WIP](../3-san-xuat/2000-lenh-san-xuat-va-wip.md)
+- **Kiểm soát ngân sách và phê duyệt**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/2010-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 
@@ -212,9 +212,9 @@ ORDER BY Days_Pending DESC;
 ## Xem thêm
 
 - [Tổng quan Mua hàng](./0000-tong-quan-p2p.md)
-- [Danh mục & hợp đồng mua](./2000-danh-muc-va-hop-dong-mua.md)
-- [Đơn mua hàng](./3000-don-mua-hang.md)
-- [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- [Danh mục & hợp đồng mua](./1010-danh-muc-va-hop-dong-mua.md)
+- [Đơn mua hàng](./2000-don-mua-hang.md)
+- [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/2010-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 - [Bẫy thực chiến mua hàng](./9000-bay-mua-hang.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>

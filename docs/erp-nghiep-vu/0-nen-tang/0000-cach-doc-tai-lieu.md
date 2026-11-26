@@ -2,9 +2,9 @@
 id: cach-doc-tai-lieu
 title: "Cách đọc tài liệu ERP Nghiệp vụ"
 sidebar_label: Cách đọc tài liệu
-slug: /erp-nghiep-vu/nen-tang/tong-quan
+slug: /nen-tang/tong-quan
 sidebar_position: 0
-description: "Bản đồ tài liệu ERP Nghiệp vụ theo bảy khối: Nền tảng, Kho, Mua hàng, Sản xuất, Bán hàng, Công nợ, Kế toán chung — và cách tra cứu theo tình huống."
+description: "Bản đồ tài liệu ERP Nghiệp vụ theo sáu khối: Nền tảng, Kho, Mua hàng, Sản xuất, Bán hàng, Kế toán — và cách tra cứu theo tình huống."
 tags: [erp, tong-quan]
 ---
 
@@ -12,17 +12,29 @@ tags: [erp, tong-quan]
 
 Tài liệu này viết cho người **làm nghiệp vụ ERP** — dùng SAP, Oracle EBS, Epicor, Odoo hay hệ thống do doanh nghiệp tự xây. Nội dung được tổ chức theo **quy trình vận hành thật**, không theo module phần mềm, vì ngoài đời người ta không "vận hành module" mà vận hành một quy trình đi xuyên nhiều phân hệ.
 
-## Bảy khối tài liệu
+## Ba nhóm tài liệu
 
-| Khối | Nội dung | Khi nào đọc |
-|---|---|---|
-| **Nền tảng** | Tổ chức, pháp nhân, dữ liệu nền, chứng từ, kiểm soát nội bộ, thuật ngữ, đơn vị tính | Đọc trước tiên, một lần |
-| **Kho** | Cấu trúc kho, giao dịch nhập xuất, giữ hàng, kiểm kê, định giá | Khi cần hiểu hàng hóa được ghi nhận thế nào |
-| **Mua hàng** | Nhu cầu, chọn nhà cung cấp, đơn mua, nhận hàng, đối soát hóa đơn | Khi làm nghiệp vụ mua |
-| **Sản xuất** | Kỹ thuật sản xuất, lệnh sản xuất, dở dang, giá thành | Khi làm nghiệp vụ sản xuất |
-| **Bán hàng** | Đơn bán, giao hàng, đổi trả, mô hình bán đặc thù | Khi làm nghiệp vụ bán |
-| **Công nợ** | Phải trả, phải thu, đối trừ, tuổi nợ, dòng tiền | Khi làm công nợ |
-| **Kế toán chung** | Tài khoản trung gian, giá vốn, thuế, tài sản cố định, sổ cái, đóng kỳ | Khi làm tổng hợp và khóa sổ |
+### 🟢 Nhóm 1: Tổ chức & Dữ liệu gốc (Organization & Master Data)
+
+*Mục đích: Xác lập nền móng pháp lý và dữ liệu không bao giờ được sửa sai — trước khi nhập bất kỳ giao dịch nào.*
+
+- **[1000 Tổ chức & Pháp nhân (Legal Entity / Ledger)](./1000-to-chuc-va-phap-nhan.md)** — Pháp nhân, sổ kế toán, đơn vị hạch toán và ranh giới báo cáo.
+- **[1010 Master Data & tính bất biến](./1010-master-data-va-tinh-bat-bien.md)** — Vì sao mã hàng, mã đối tác, đơn vị tính đã dùng thì không được sửa.
+
+### 🟡 Nhóm 2: Chứng từ & Kiểm soát nội bộ (Documents & Internal Control)
+
+*Mục đích: Cách ghi nhận việc đã xảy ra, và cách tách quyền để không ai tự làm tự duyệt.*
+
+- **[2000 Chứng từ & nguyên lý đối soát](./2000-chung-tu-va-nguyen-ly-doi-soat.md)** — Chứng từ gốc, đối tượng đối soát, và vì sao sổ phải khớp chứng từ.
+- **[2010 Kiểm soát nội bộ & phân tách nhiệm vụ](./2010-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)** — Tạo – duyệt – ghi sổ phải do ba người khác nhau.
+
+### 🔴 Nhóm 3: Thuật ngữ & Quy đổi (Glossary & UOM)
+
+*Mục đích: Thống nhất ngôn ngữ giữa các hệ thống và xử lý đơn vị tính — nguồn gốc của nhiều sai số báo cáo.*
+
+- **[3000 Glossary & ánh xạ thuật ngữ](./3000-glossary-va-anh-xa-he-thong.md)** — Cùng một khái niệm, mỗi hãng ERP gọi một kiểu.
+- **[3010 Thuật ngữ kỹ thuật & dữ liệu chuẩn](./3010-thuat-ngu-ky-thuat-va-du-lieu.md)** — Từ điển thuật ngữ dùng xuyên suốt tài liệu.
+- **[3020 Nguyên lý quy đổi đơn vị tính (UOM)](./3020-nguyen-ly-quy-doi-uom.md)** — Vì sao báo cáo sai dù hệ thống lưu đúng.
 
 ## Mọi thứ nối với nhau theo một dòng
 
@@ -39,7 +51,7 @@ flowchart LR
     KHO -->|Giá trị hàng tồn| KT
 ```
 
-Hàng đi qua kho, tiền đi ngược chiều qua công nợ, và kế toán chung là nơi ghi nhận giá trị của cả hai. Đây là lý do tài liệu không tách rời từng module: hiểu một bước mà không thấy nó nối sang đâu thì không dùng được trong công việc thật.
+Hàng đi qua kho, tiền đi ngược chiều qua công nợ, và khối kế toán là nơi ghi nhận giá trị của cả hai. Đây là lý do tài liệu không tách rời từng module: hiểu một bước mà không thấy nó nối sang đâu thì không dùng được trong công việc thật.
 
 ## Tra cứu theo tình huống
 
@@ -47,7 +59,7 @@ Nếu có câu hỏi cụ thể, đi thẳng tới đây:
 
 | Tình huống | Xem bài |
 |---|---|
-| Hàng về kho rồi mà hóa đơn chưa về thì ghi thế nào? | Kế toán chung → Hạch toán & tài khoản trung gian |
+| Hàng về kho rồi mà hóa đơn chưa về thì ghi thế nào? | Kế toán → Tổng hợp → Hạch toán & tài khoản trung gian |
 | Hóa đơn lệch giá hoặc lệch số lượng so với đơn mua | Mua hàng → Đối soát hóa đơn & 3-Way Match |
 | Báo cáo tồn kho lệch so với thực tế | Kho → Kiểm kê & điều chỉnh |
 | Tồn kho đúng số lượng nhưng lệch tiền so với sổ cái | Kho → Định giá & báo cáo kho |

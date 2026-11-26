@@ -64,15 +64,15 @@ Dữ liệu nền bán hàng không sinh bút toán, nhưng quyết định số
 - **Khuyến mãi tại thời điểm bán** (giảm giá, quà tặng) cũng là giảm trừ doanh thu hoặc chi phí bán hàng tùy bản chất.
 - **Rebate theo kỳ** là khoản trích lập trong kỳ và hoàn trả khi đạt ngưỡng — phải tính trước vào chi phí bán hàng, không đợi tới khi trả.
 
-Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md); doanh thu và thuế ở [AR - Nguyên lý & tài khoản](../5-cong-no/ar/5000-ar-nguyen-ly-va-tai-khoan.md).
+Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md); doanh thu và thuế ở [AR - Nguyên lý & tài khoản](../5-ke-toan/cong-no/2000-ar-nguyen-ly-va-tai-khoan.md).
 
 ## 4. Điểm chạm & rủi ro
 
 - **Dùng hạn mức khi xác nhận đơn**: [Tiếp nhận đơn & ATP](./2000-tiep-nhan-don-va-atp.md)
 - **Dùng bảng giá khi lập đơn**: [Tiếp nhận đơn & ATP](./2000-tiep-nhan-don-va-atp.md)
-- **Chặn xuất hàng khi khách quá hạn nợ**: [Giao hàng & xuất kho](./3000-giao-hang-va-xuat-kho.md)
-- **Hạn mức và dư nợ thực tế**: [AR - Xuất hóa đơn & hạn mức tín dụng](../5-cong-no/ar/6000-ar-xuat-hoa-don-va-han-muc-tin-dung.md)
-- **Chống trùng khách hàng**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- **Chặn xuất hàng khi khách quá hạn nợ**: [Giao hàng & xuất kho](./2010-giao-hang-va-xuat-kho.md)
+- **Hạn mức và dư nợ thực tế**: [AR - Xuất hóa đơn & hạn mức tín dụng](../5-ke-toan/cong-no/2010-ar-xuat-hoa-don-va-han-muc-tin-dung.md)
+- **Chống trùng khách hàng**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/2010-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 **Rủi ro chính:**
 
@@ -242,9 +242,9 @@ ORDER BY oh.OrderDate;
 
 - [Tổng quan Bán hàng](./0000-tong-quan-o2c.md)
 - [Tiếp nhận đơn & ATP](./2000-tiep-nhan-don-va-atp.md)
-- [Giao hàng & xuất kho](./3000-giao-hang-va-xuat-kho.md)
-- [AR - Xuất hóa đơn & hạn mức tín dụng](../5-cong-no/ar/6000-ar-xuat-hoa-don-va-han-muc-tin-dung.md)
-- [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/4000-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
+- [Giao hàng & xuất kho](./2010-giao-hang-va-xuat-kho.md)
+- [AR - Xuất hóa đơn & hạn mức tín dụng](../5-ke-toan/cong-no/2010-ar-xuat-hoa-don-va-han-muc-tin-dung.md)
+- [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/2010-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

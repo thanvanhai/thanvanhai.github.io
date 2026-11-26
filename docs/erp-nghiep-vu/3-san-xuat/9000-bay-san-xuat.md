@@ -57,15 +57,15 @@ Các bẫy này gây hệ quả kế toán gián tiếp:
 - **WIP treo** → chi phí nằm trên tài khoản dở dang, lãi kỳ sai.
 - **Chênh lệch không giải trình** → mọi quyết định giá đều dựa trên số sai.
 
-Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../).
+Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md).
 
 ## 4. Điểm chạm & rủi ro
 
-- **Đơn vị tính gốc của mã hàng** (bài gốc về UOM): [Nguyên lý quy đổi UOM](../)
-- **Cấu trúc BOM và định mức**: [BOM & định mức](./ky-thuat/2000-bom-va-dinh-muc.md)
-- **Thuộc tính mã hàng phía kho**: [Item Master & thuộc tính kho](../)
-- **Vòng đời lệnh sản xuất**: [Lệnh sản xuất & WIP](./thuc-thi/6000-lenh-san-xuat-va-wip.md)
-- **Phân tích chênh lệch**: [Giá thành sản xuất](./thuc-thi/8000-gia-thanh-san-xuat.md)
+- **Đơn vị tính gốc của mã hàng** (bài gốc về UOM): [Nguyên lý quy đổi UOM](../0-nen-tang/3020-nguyen-ly-quy-doi-uom.md)
+- **Cấu trúc BOM và định mức**: [BOM & định mức](./1010-bom-va-dinh-muc.md)
+- **Thuộc tính mã hàng phía kho**: [Item Master & thuộc tính kho](../1-kho/1010-item-master-va-thuoc-tinh-kho.md)
+- **Vòng đời lệnh sản xuất**: [Lệnh sản xuất & WIP](./2000-lenh-san-xuat-va-wip.md)
+- **Phân tích chênh lệch**: [Giá thành sản xuất](./2020-gia-thanh-san-xuat.md)
 
 ## 5. Triển khai tham chiếu ERP
 
@@ -198,10 +198,10 @@ ORDER BY j.JobNum;
 ## Xem thêm
 
 - [Tổng quan Sản xuất](./0000-tong-quan-san-xuat.md)
-- [BOM & định mức](./ky-thuat/2000-bom-va-dinh-muc.md)
-- [Lệnh sản xuất & WIP](./thuc-thi/6000-lenh-san-xuat-va-wip.md)
-- [Giá thành sản xuất](./thuc-thi/8000-gia-thanh-san-xuat.md)
-- [Nguyên lý quy đổi UOM](../)
+- [BOM & định mức](./1010-bom-va-dinh-muc.md)
+- [Lệnh sản xuất & WIP](./2000-lenh-san-xuat-va-wip.md)
+- [Giá thành sản xuất](./2020-gia-thanh-san-xuat.md)
+- [Nguyên lý quy đổi UOM](../0-nen-tang/3020-nguyen-ly-quy-doi-uom.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

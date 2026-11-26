@@ -61,17 +61,17 @@ Bốn điểm chốt: **báo giá còn hạn**, **tín dụng đạt**, **ATP đ
 Đơn bán **chưa sinh bút toán doanh thu** — doanh thu ghi khi xuất hóa đơn, giá vốn ghi khi xuất kho. Nhưng đơn đã xác nhận có hai hệ quả tài chính gián tiếp:
 
 - **Chiếm hạn mức tín dụng của khách** — ảnh hưởng đến khả năng nhận đơn tiếp theo.
-- **Cam kết chi phí sản xuất/mua hàng** nếu là đơn sản xuất theo đơn hoặc đơn mua liên kết — xem [Mô hình bán đặc thù](./5000-mo-hinh-ban-dac-thu.md).
+- **Cam kết chi phí sản xuất/mua hàng** nếu là đơn sản xuất theo đơn hoặc đơn mua liên kết — xem [Mô hình bán đặc thù](./2030-mo-hinh-ban-dac-thu.md).
 
-Bản đồ tài khoản doanh thu, thuế và giá vốn ở [AR - Nguyên lý & tài khoản](../5-cong-no/ar/5000-ar-nguyen-ly-va-tai-khoan.md) và [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md).
+Bản đồ tài khoản doanh thu, thuế và giá vốn ở [AR - Nguyên lý & tài khoản](../5-ke-toan/cong-no/2000-ar-nguyen-ly-va-tai-khoan.md) và [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md).
 
 ## 4. Điểm chạm & rủi ro
 
 - **Hạn mức và khóa đơn**: [Danh mục & chính sách bán](./1000-danh-muc-va-chinh-sach-ban.md)
-- **Cơ chế tính ATP và giữ hàng** (bài gốc): [Giữ hàng, phân bổ & ATP](../1-kho/4000-giu-hang-phan-bo-va-atp.md)
-- **Xuất kho theo đơn**: [Giao hàng & xuất kho](./3000-giao-hang-va-xuat-kho.md)
-- **Ngày hoàn thành lệnh sản xuất**: [Lệnh sản xuất & WIP](../3-san-xuat/thuc-thi/6000-lenh-san-xuat-va-wip.md)
-- **Ngày giao của đơn mua**: [Đơn mua hàng](../2-mua-hang/3000-don-mua-hang.md)
+- **Cơ chế tính ATP và giữ hàng** (bài gốc): [Giữ hàng, phân bổ & ATP](../1-kho/2010-giu-hang-phan-bo-va-atp.md)
+- **Xuất kho theo đơn**: [Giao hàng & xuất kho](./2010-giao-hang-va-xuat-kho.md)
+- **Ngày hoàn thành lệnh sản xuất**: [Lệnh sản xuất & WIP](../3-san-xuat/2000-lenh-san-xuat-va-wip.md)
+- **Ngày giao của đơn mua**: [Đơn mua hàng](../2-mua-hang/2000-don-mua-hang.md)
 
 **Rủi ro chính:**
 
@@ -247,9 +247,9 @@ ORDER BY Days_Late DESC;
 
 - [Tổng quan Bán hàng](./0000-tong-quan-o2c.md)
 - [Danh mục & chính sách bán](./1000-danh-muc-va-chinh-sach-ban.md)
-- [Giao hàng & xuất kho](./3000-giao-hang-va-xuat-kho.md)
-- [Giữ hàng, phân bổ & ATP](../1-kho/4000-giu-hang-phan-bo-va-atp.md)
-- [Lệnh sản xuất & WIP](../3-san-xuat/thuc-thi/6000-lenh-san-xuat-va-wip.md)
+- [Giao hàng & xuất kho](./2010-giao-hang-va-xuat-kho.md)
+- [Giữ hàng, phân bổ & ATP](../1-kho/2010-giu-hang-phan-bo-va-atp.md)
+- [Lệnh sản xuất & WIP](../3-san-xuat/2000-lenh-san-xuat-va-wip.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

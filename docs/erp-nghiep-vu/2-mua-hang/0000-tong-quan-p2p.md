@@ -2,7 +2,7 @@
 id: tong-quan-p2p
 title: "Tổng quan Mua hàng (Procure-to-Pay)"
 sidebar_label: Tổng quan Mua hàng
-slug: /erp-nghiep-vu/mua-hang/tong-quan
+slug: /mua-hang/tong-quan
 sidebar_position: 0
 description: "Bức tranh toàn cảnh Procure-to-Pay: nhu cầu, chọn nhà cung cấp, đơn mua, nhận hàng, khớp lệnh hóa đơn và công nợ phải trả — cùng ranh giới trách nhiệm với kho và kế toán."
 date: 2026-08-01
@@ -32,16 +32,30 @@ flowchart LR
 
 Điểm mấu chốt: **bước 4 và 6 thuộc hai chuỗi kiểm soát khác nhau**. Bước 4 chứng minh *hàng có thật*; bước 6 chứng minh *giá và số lượng trên hóa đơn hợp lệ*. Một doanh nghiệp có thể nhận đúng hàng mà vẫn bị xuất hóa đơn sai giá — và ngược lại.
 
-## Mỗi bước trả lời một câu hỏi
+## Ba nhóm tài liệu
 
-| Bước | Câu hỏi cần trả lời | Bài chi tiết |
-|---|---|---|
-| Nhu cầu | Mua gì, bao nhiêu, cho ai, ai duyệt? | [Nhu cầu & lựa chọn nhà cung cấp](./1000-nhu-cau-va-lua-chon-ncc.md) |
-| Chọn nguồn cung | Mua của ai, giá nào, điều kiện gì? | [Danh mục & hợp đồng mua](./2000-danh-muc-va-hop-dong-mua.md) |
-| Đơn mua | Đặt chính thức những gì, khi nào? | [Đơn mua hàng](./3000-don-mua-hang.md) |
-| Nhận hàng | Thực tế nhận được gì, có đạt chất lượng không? | [Nhận hàng & kiểm tra chất lượng](./4000-nhan-hang-va-kiem-qc.md) |
-| Đối soát | Hóa đơn có khớp với điều đã đặt và đã nhận? | [Đối soát hóa đơn & 3-Way Match](./5000-doi-soat-hoa-don-va-3-way-match.md) |
-| Công nợ | Trả bao nhiêu, khi nào, cho ai? | [Công nợ phải trả](../5-cong-no/ap/1000-ap-nguyen-ly-va-tai-khoan.md) |
+### 🟢 Nhóm 1: Dữ liệu gốc & Thiết lập nền tảng (Master Data & Setup)
+
+*Mục đích: Xác lập mua gì, của ai, với điều kiện nào — trước khi phát sinh bất kỳ đơn mua nào.*
+
+- **[1000 Nhu cầu mua hàng & lựa chọn nhà cung cấp](./1000-nhu-cau-va-lua-chon-ncc.md)** — Mua gì, bao nhiêu, cho ai, ai duyệt; chọn nguồn cung.
+- **[1010 Danh mục & hợp đồng mua](./1010-danh-muc-va-hop-dong-mua.md)** — Danh mục nhà cung cấp, giá thỏa thuận, điều kiện giao và thanh toán.
+
+### 🟡 Nhóm 2: Vận hành Procure-to-Pay (Operations)
+
+*Mục đích: Luồng chạy thật của một đơn mua từ lúc đặt đến lúc khớp hóa đơn.*
+
+- **[2000 Đơn mua hàng](./2000-don-mua-hang.md)** — Đặt chính thức những gì, khi nào, giao về đâu.
+- **[2010 Nhận hàng & kiểm tra chất lượng](./2010-nhan-hang-va-kiem-qc.md)** — Thực tế nhận được gì, có đạt chất lượng không.
+- **[2020 Đối soát hóa đơn & 3-Way Match](./2020-doi-soat-hoa-don-va-3-way-match.md)** — Hóa đơn có khớp với điều đã đặt và đã nhận.
+- **[2030 Mô hình mua đặc thù](./2030-mo-hinh-mua-dac-thu.md)** — Hàng giao thẳng, mua dịch vụ, mua tài sản, mua kèm gia công.
+
+### 🔴 Nhóm 3: Kiểm soát & Báo cáo (Control & Reporting)
+
+*Mục đích: Đo lường hiệu quả mua hàng, đối soát với kế toán và học từ các sai sót thực tế.*
+
+- **[3000 Báo cáo mua hàng](./3000-bao-cao-mua-hang.md)** — Chi tiêu theo nhà cung cấp/nhóm hàng, đơn treo, thời gian giao thực tế.
+- **[9000 Bẫy thực chiến mua hàng](./9000-bay-mua-hang.md)** — Những lỗi khiến mua hàng thất thoát mà sổ sách vẫn cân.
 
 ## Ranh giới trách nhiệm
 
@@ -57,18 +71,18 @@ Nguyên tắc: **không ai được làm hai vai trò trên cùng một chứng 
 
 ## Mua hàng liên quan gì tới các phần khác
 
-- **Kho** ghi nhận số lượng thực nhận và giữ hàng: [Nhận hàng & kiểm tra chất lượng](./4000-nhan-hang-va-kiem-qc.md), [Giao dịch nhập, xuất & chuyển](../1-kho/3000-giao-dich-nhap-xuat-chuyen.md)
-- **Công nợ** nhận hóa đơn đã khớp và thực hiện trả tiền: [AP - Nguyên lý & tài khoản](../5-cong-no/ap/1000-ap-nguyen-ly-va-tai-khoan.md)
-- **Kế toán chung** nhận bút toán tăng tài sản và tài khoản trung gian: [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md)
-- **Sản xuất** tạo nhu cầu mua từ MRP và nhận nguyên liệu qua kho: [Lệnh sản xuất & WIP](../3-san-xuat/thuc-thi/6000-lenh-san-xuat-va-wip.md)
+- **Kho** ghi nhận số lượng thực nhận và giữ hàng: [Nhận hàng & kiểm tra chất lượng](./2010-nhan-hang-va-kiem-qc.md), [Giao dịch nhập, xuất & chuyển](../1-kho/2000-giao-dich-nhap-xuat-chuyen.md)
+- **Công nợ** nhận hóa đơn đã khớp và thực hiện trả tiền: [AP - Nguyên lý & tài khoản](../5-ke-toan/cong-no/1000-ap-nguyen-ly-va-tai-khoan.md)
+- **Kế toán chung** nhận bút toán tăng tài sản và tài khoản trung gian: [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md)
+- **Sản xuất** tạo nhu cầu mua từ MRP và nhận nguyên liệu qua kho: [Lệnh sản xuất & WIP](../3-san-xuat/2000-lenh-san-xuat-va-wip.md)
 
 ## Bắt đầu đọc từ đâu
 
 Nếu triển khai từ đầu, đọc theo thứ tự 1000 → 9000. Nếu đang xử lý sự cố, đi thẳng tới bài tương ứng:
 
-- Hóa đơn lệch giá hoặc lệch số lượng → [Đối soát hóa đơn & 3-Way Match](./5000-doi-soat-hoa-don-va-3-way-match.md)
-- Hàng về kho mà chưa có hóa đơn → [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md)
-- Hàng giao thẳng cho khách, không qua kho → [Mô hình mua đặc thù](./6000-mo-hinh-mua-dac-thu.md)
+- Hóa đơn lệch giá hoặc lệch số lượng → [Đối soát hóa đơn & 3-Way Match](./2020-doi-soat-hoa-don-va-3-way-match.md)
+- Hàng về kho mà chưa có hóa đơn → [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md)
+- Hàng giao thẳng cho khách, không qua kho → [Mô hình mua đặc thù](./2030-mo-hinh-mua-dac-thu.md)
 - Đơn mua treo hàng tháng không ai xử lý → [Bẫy thực chiến mua hàng](./9000-bay-mua-hang.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>

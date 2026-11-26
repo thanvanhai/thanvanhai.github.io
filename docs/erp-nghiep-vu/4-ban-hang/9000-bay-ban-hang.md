@@ -61,15 +61,15 @@ Các bẫy này đều gây **hệ quả kế toán**, dù không phải lỗi k
 - Vượt hạn mức → nợ xấu, phải trích lập dự phòng.
 - Đa tiền tệ → doanh thu và chênh lệch tỷ giá gộp nhau, báo cáo sai bản chất.
 
-Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md).
+Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md).
 
 ## 4. Điểm chạm & rủi ro
 
-- **Cơ chế giữ hàng và ATP** (bài gốc): [Giữ hàng, phân bổ & ATP](../1-kho/4000-giu-hang-phan-bo-va-atp.md)
+- **Cơ chế giữ hàng và ATP** (bài gốc): [Giữ hàng, phân bổ & ATP](../1-kho/2010-giu-hang-phan-bo-va-atp.md)
 - **Hạn mức tín dụng và khóa đơn**: [Danh mục & chính sách bán](./1000-danh-muc-va-chinh-sach-ban.md)
 - **Kiểm tra tín dụng và ATP khi nhận đơn**: [Tiếp nhận đơn & ATP](./2000-tiep-nhan-don-va-atp.md)
-- **Thời điểm ghi doanh thu theo điều kiện giao**: [Giao hàng & xuất kho](./3000-giao-hang-va-xuat-kho.md)
-- **Đa tiền tệ và chênh lệch tỷ giá**: [Đối trừ công nợ, netting & đa tiền tệ](../5-cong-no/8000-cong-no-doi-tru-netting-va-tien-te.md)
+- **Thời điểm ghi doanh thu theo điều kiện giao**: [Giao hàng & xuất kho](./2010-giao-hang-va-xuat-kho.md)
+- **Đa tiền tệ và chênh lệch tỷ giá**: [Đối trừ công nợ, netting & đa tiền tệ](../5-ke-toan/cong-no/3000-cong-no-doi-tru-netting-va-tien-te.md)
 
 ## 5. Triển khai tham chiếu ERP
 
@@ -221,8 +221,8 @@ ORDER BY Days_Held DESC;
 - [Tổng quan Bán hàng](./0000-tong-quan-o2c.md)
 - [Danh mục & chính sách bán](./1000-danh-muc-va-chinh-sach-ban.md)
 - [Tiếp nhận đơn & ATP](./2000-tiep-nhan-don-va-atp.md)
-- [Giao hàng & xuất kho](./3000-giao-hang-va-xuat-kho.md)
-- [Giữ hàng, phân bổ & ATP](../1-kho/4000-giu-hang-phan-bo-va-atp.md)
+- [Giao hàng & xuất kho](./2010-giao-hang-va-xuat-kho.md)
+- [Giữ hàng, phân bổ & ATP](../1-kho/2010-giu-hang-phan-bo-va-atp.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

@@ -25,7 +25,7 @@ Bài này nói về cách mô hình hóa không gian kho trong hệ thống ERP,
 3. **Cấp chi tiết hơn không luôn tốt hơn.** Mỗi tầng thêm vào là một trường bắt buộc trên mọi giao dịch, một chỗ có thể nhập sai. Nếu doanh nghiệp không cần, đừng bật.
 4. **Không phải mọi "kho" đều chứa hàng bán được.** Khu chờ kiểm, khu biệt trữ hàng lỗi, kho ký gửi, hàng đang đi đường — đều là vị trí hợp lệ để ghi nhận, nhưng mỗi loại có quy tắc riêng: khu chờ kiểm và khu biệt trữ không tính vào tồn khả dụng; kho ký gửi dùng được nhưng không phải tài sản của mình; hàng đang đi đường chưa nằm trong kho nào. Hệ thống phải phân biệt được bằng thuộc tính, không bằng tên kho đặt tùy hứng.
 5. **Vị trí có thuộc tính vận hành, không chỉ có mã.** Cùng một ô kệ có thể bị khóa, đang kiểm kê, chỉ chứa hàng nguy hiểm, hoặc có giới hạn tải trọng. Bỏ qua các thuộc tính này dẫn đến hệ thống cho phép cất hàng nơi không thể cất.
-6. **Chuyển vị trí không phải chuyển quyền sở hữu.** Chuyển giữa các bin, hoặc giữa các kho trong cùng pháp nhân và cùng tài khoản tồn kho, chỉ đổi vị trí: không sinh bút toán, không đổi giá trị tồn. Bút toán chỉ phát sinh khi chuyển khác pháp nhân (thành giao dịch bán/mua nội bộ), khác tài khoản tồn kho, hoặc có hàng đang đi đường. Chi tiết xem [Giao dịch nhập, xuất & chuyển](./3000-giao-dich-nhap-xuat-chuyen.md).
+6. **Chuyển vị trí không phải chuyển quyền sở hữu.** Chuyển giữa các bin, hoặc giữa các kho trong cùng pháp nhân và cùng tài khoản tồn kho, chỉ đổi vị trí: không sinh bút toán, không đổi giá trị tồn. Bút toán chỉ phát sinh khi chuyển khác pháp nhân (thành giao dịch bán/mua nội bộ), khác tài khoản tồn kho, hoặc có hàng đang đi đường. Chi tiết xem [Giao dịch nhập, xuất & chuyển](./2000-giao-dich-nhap-xuat-chuyen.md).
 
 ## 1. Luồng vận hành
 
@@ -64,12 +64,12 @@ Năm loại kho trong sơ đồ đều dùng chung một cơ chế ghi giao dị
 | Loại kho | Chứa hàng thật? | Tính vào tồn khả dụng? | Sinh bút toán tài sản? |
 |---|---|---|---|
 | Kho chính | Có | Có | Có |
-| Khu chờ kiểm | Có | Không | Tùy cấu hình ghi nhận: có nếu ghi nhận khi nhận hàng, không nếu ghi nhận khi nhập kho (xem [Nhận hàng & kiểm tra chất lượng](../2-mua-hang/4000-nhan-hang-va-kiem-qc.md)) |
+| Khu chờ kiểm | Có | Không | Tùy cấu hình ghi nhận: có nếu ghi nhận khi nhận hàng, không nếu ghi nhận khi nhập kho (xem [Nhận hàng & kiểm tra chất lượng](../2-mua-hang/2010-nhan-hang-va-kiem-qc.md)) |
 | Khu biệt trữ (hàng lỗi) | Có | Không | Tùy cấu hình ghi nhận như khu chờ kiểm; hàng lỗi không được coi là tài sản dùng được |
 | Kho ký gửi (hàng của NCC) | Có | Có, dùng được cho sản xuất và bán | Không — chưa phải tài sản của mình |
 | Kho hàng đi đường | Có, đang trên đường | Không — chưa tới kho | Hàng mua từ NCC: tùy điều kiện giao hàng (xem mục 3). Hàng chuyển giữa hai kho của mình: Có |
 
-**Kho đặc biệt khác với vị trí ảo.** Các loại kho ở bảng trên đều ghi hàng có thật (kể cả hàng đang trên đường) và nằm trong cây kho. Ngoài ra hệ thống còn có các *vị trí ảo* như `SUPPLIER`, `CUSTOMER`, `WIP`, `ADJUSTMENT`, `SCRAP`: chúng đại diện cho thế giới bên ngoài kho, không chứa hàng và không nằm trong cây kho. Chi tiết xem [Giao dịch nhập, xuất & chuyển](./3000-giao-dich-nhap-xuat-chuyen.md).
+**Kho đặc biệt khác với vị trí ảo.** Các loại kho ở bảng trên đều ghi hàng có thật (kể cả hàng đang trên đường) và nằm trong cây kho. Ngoài ra hệ thống còn có các *vị trí ảo* như `SUPPLIER`, `CUSTOMER`, `WIP`, `ADJUSTMENT`, `SCRAP`: chúng đại diện cho thế giới bên ngoài kho, không chứa hàng và không nằm trong cây kho. Chi tiết xem [Giao dịch nhập, xuất & chuyển](./2000-giao-dich-nhap-xuat-chuyen.md).
 
 ## 2. Ai làm gì ở module nào
 
@@ -81,7 +81,7 @@ Năm loại kho trong sơ đồ đều dùng chung một cơ chế ghi giao dị
 | Chỉ định vị trí khi xuất hàng | ✅ cấp phát bin cụ thể | — | Cấp phát bin cho cấp liệu | Đề xuất kho theo đơn | — |
 | Khóa ô kệ khi kiểm kê | ✅ sở hữu | — | — | — | — |
 | Mapping kho sang tài khoản kế toán | Cung cấp danh mục kho | — | — | — | ✅ gán tài khoản theo kho/nhóm hàng |
-| Điều chuyển giữa các kho | ✅ thực hiện | — | — | — | Nhận bút toán khi khác pháp nhân, khác tài khoản tồn kho hoặc có hàng đang đi đường (xem [3000 mục 3](./3000-giao-dich-nhap-xuat-chuyen.md)) |
+| Điều chuyển giữa các kho | ✅ thực hiện | — | — | — | Nhận bút toán khi khác pháp nhân, khác tài khoản tồn kho hoặc có hàng đang đi đường (xem [3000 mục 3](./2000-giao-dich-nhap-xuat-chuyen.md)) |
 
 **Quy tắc phân quyền:** cây kho là **danh mục nền** — thay đổi nó ảnh hưởng tới mọi giao dịch đã và sẽ phát sinh. Chỉ một nhóm người được tạo/sửa mã kho, và mọi thay đổi phải có hiệu lực theo ngày, không ghi đè lịch sử.
 
@@ -90,19 +90,19 @@ Năm loại kho trong sơ đồ đều dùng chung một cơ chế ghi giao dị
 Cấu trúc kho tự nó không sinh bút toán. Nhưng nó quyết định **tài khoản nào được dùng** khi giao dịch phát sinh:
 
 - **Kho chính** của một nhà máy thường map sang tài khoản tồn kho theo nhóm vật tư.
-- **Khu chờ kiểm và khu biệt trữ:** tài khoản phụ thuộc cấu hình ghi nhận. Nếu ghi nhận khi nhận hàng, giá trị nằm ở tài khoản hàng chờ kiểm và chỉ chuyển sang tài khoản tồn kho ở bước nhập kho. Nếu ghi nhận khi nhập kho, chưa có bút toán nào. Xem [Nhận hàng & kiểm tra chất lượng](../2-mua-hang/4000-nhan-hang-va-kiem-qc.md).
+- **Khu chờ kiểm và khu biệt trữ:** tài khoản phụ thuộc cấu hình ghi nhận. Nếu ghi nhận khi nhận hàng, giá trị nằm ở tài khoản hàng chờ kiểm và chỉ chuyển sang tài khoản tồn kho ở bước nhập kho. Nếu ghi nhận khi nhập kho, chưa có bút toán nào. Xem [Nhận hàng & kiểm tra chất lượng](../2-mua-hang/2010-nhan-hang-va-kiem-qc.md).
 - **Kho ký gửi** **không** map sang tài khoản tài sản — đó là hàng của nhà cung cấp, chỉ ghi nhận số lượng và theo dõi công nợ khi tiêu dùng.
-- **Kho hàng đi đường:** với hàng mua từ nhà cung cấp, chỉ ghi vào tài khoản hàng mua đang đi đường khi điều kiện giao hàng đã chuyển rủi ro và quyền kiểm soát hàng cho mình trước lúc hàng tới kho (thường gặp ở điều kiện giao tại điểm đi, như FOB hay CIF theo Incoterms). Nếu điều kiện giao là giao tại kho người mua (như DAP) thì chưa ghi nhận cho tới khi hàng tới. Với hàng chuyển giữa hai kho của mình, hàng luôn là tài sản của mình nên ghi qua tài khoản hàng đang đi đường cho tới khi bên nhận xác nhận (xem [3000 mục 3](./3000-giao-dich-nhap-xuat-chuyen.md)). Điều kiện cụ thể do kế toán xác nhận theo hợp đồng.
+- **Kho hàng đi đường:** với hàng mua từ nhà cung cấp, chỉ ghi vào tài khoản hàng mua đang đi đường khi điều kiện giao hàng đã chuyển rủi ro và quyền kiểm soát hàng cho mình trước lúc hàng tới kho (thường gặp ở điều kiện giao tại điểm đi, như FOB hay CIF theo Incoterms). Nếu điều kiện giao là giao tại kho người mua (như DAP) thì chưa ghi nhận cho tới khi hàng tới. Với hàng chuyển giữa hai kho của mình, hàng luôn là tài sản của mình nên ghi qua tài khoản hàng đang đi đường cho tới khi bên nhận xác nhận (xem [3000 mục 3](./2000-giao-dich-nhap-xuat-chuyen.md)). Điều kiện cụ thể do kế toán xác nhận theo hợp đồng.
 
-Bản đồ tài khoản và nguyên tắc tất toán nằm duy nhất tại [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md).
+Bản đồ tài khoản và nguyên tắc tất toán nằm duy nhất tại [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md).
 
 ## 4. Điểm chạm & rủi ro
 
-- **Ghi giao dịch vào vị trí**: [Giao dịch nhập, xuất & chuyển](./3000-giao-dich-nhap-xuat-chuyen.md)
-- **Khu chờ kiểm trong quy trình nhận hàng**: [Nhận hàng & kiểm tra chất lượng](../2-mua-hang/4000-nhan-hang-va-kiem-qc.md)
-- **Cấp phát bin khi giao hàng**: [Giữ hàng, phân bổ & ATP](./4000-giu-hang-phan-bo-va-atp.md)
-- **Khóa ô kệ khi kiểm kê**: [Kiểm kê & điều chỉnh](./5000-kiem-ke-va-dieu-chinh.md)
-- **Mã hàng và quản lý lô/serial theo vị trí**: [Item Master & thuộc tính kho](./2000-item-master-va-thuoc-tinh-kho.md)
+- **Ghi giao dịch vào vị trí**: [Giao dịch nhập, xuất & chuyển](./2000-giao-dich-nhap-xuat-chuyen.md)
+- **Khu chờ kiểm trong quy trình nhận hàng**: [Nhận hàng & kiểm tra chất lượng](../2-mua-hang/2010-nhan-hang-va-kiem-qc.md)
+- **Cấp phát bin khi giao hàng**: [Giữ hàng, phân bổ & ATP](./2010-giu-hang-phan-bo-va-atp.md)
+- **Khóa ô kệ khi kiểm kê**: [Kiểm kê & điều chỉnh](./3000-kiem-ke-va-dieu-chinh.md)
+- **Mã hàng và quản lý lô/serial theo vị trí**: [Item Master & thuộc tính kho](./1010-item-master-va-thuoc-tinh-kho.md)
 
 **Rủi ro chính:**
 
@@ -124,7 +124,7 @@ Bản đồ tài khoản và nguyên tắc tất toán nằm duy nhất tại [H
 | Kho | Subinventory | Warehouse | Storage Location (SLoc) | Location (internal) |
 | Khu vực | Subinventory + Locator nhóm | `WhseBin` theo prefix | SLoc + Storage Section | Location con |
 | Ô kệ | Locator (Inventory Location) | Bin (`PartBin`) | Storage Bin (WM) | Location chi tiết |
-| Khu chờ kiểm | Receiving Inspection (khu nhận, ngoài subinventory thường) `*` | Kho/bin kiểm tra riêng `*` | Cơ chế 1: GR blocked stock. Cơ chế 2: stock in quality inspection (xem [Nhận hàng & kiểm tra chất lượng](../2-mua-hang/4000-nhan-hang-va-kiem-qc.md)) | Vị trí Input / Quality |
+| Khu chờ kiểm | Receiving Inspection (khu nhận, ngoài subinventory thường) `*` | Kho/bin kiểm tra riêng `*` | Cơ chế 1: GR blocked stock. Cơ chế 2: stock in quality inspection (xem [Nhận hàng & kiểm tra chất lượng](../2-mua-hang/2010-nhan-hang-va-kiem-qc.md)) | Vị trí Input / Quality |
 | Kho ký gửi | Consigned Subinventory | Consignment Warehouse | SLoc đặc biệt + `Special Stock` | Location với `owner_id` khác |
 
 ### B. Hệ thống tự xây — thiết kế tối thiểu
@@ -205,7 +205,7 @@ ORDER BY pb.WarehouseCode, pb.BinNum, pb.PartNum;
 | 3 | Đổi mã kho đã có giao dịch | Báo cáo lịch sử hiện mã kho không tồn tại, dữ liệu mồ côi | Chỉ đặt `Is_Blocked = 1`, tạo mã mới nếu cần |
 | 4 | Xuống mức ô kệ khi kho nhỏ | Thủ kho chọn bin ngẫu nhiên, chênh lệch kiểm kê tăng | Bắt đầu ở mức kho; nâng cấp khi số bin vượt ngưỡng vận hành |
 | 5 | Kho ký gửi tính vào tài sản | Báo cáo tài sản phồng lên bằng hàng của nhà cung cấp | `Ownership = VENDOR`, báo cáo tài sản lọc theo ownership |
-| 6 | Chuyển kho khác pháp nhân, khác tài khoản tồn kho hoặc có hàng đi đường mà không sinh bút toán | Hai công ty trong tập đoàn cùng có một lô hàng trong sổ, hoặc giá trị tồn nằm sai tài khoản | Áp quy tắc ở [3000 mục 3](./3000-giao-dich-nhap-xuat-chuyen.md); chuyển khác pháp nhân phải là bán/mua nội bộ |
+| 6 | Chuyển kho khác pháp nhân, khác tài khoản tồn kho hoặc có hàng đi đường mà không sinh bút toán | Hai công ty trong tập đoàn cùng có một lô hàng trong sổ, hoặc giá trị tồn nằm sai tài khoản | Áp quy tắc ở [3000 mục 3](./2000-giao-dich-nhap-xuat-chuyen.md); chuyển khác pháp nhân phải là bán/mua nội bộ |
 | 7 | Không đánh dấu ô kệ đang kiểm kê | Thủ kho nhập/xuất vào ô đang đếm, chênh lệch giả | Khóa theo bin trong suốt thời gian đếm |
 
 **Checklist trước go-live:**
@@ -221,10 +221,10 @@ ORDER BY pb.WarehouseCode, pb.BinNum, pb.PartNum;
 ## Xem thêm
 
 - [Tổng quan Kho](./0000-tong-quan-kho.md)
-- [Item Master & thuộc tính kho](./2000-item-master-va-thuoc-tinh-kho.md)
-- [Giao dịch nhập, xuất & chuyển](./3000-giao-dich-nhap-xuat-chuyen.md)
-- [Kiểm kê & điều chỉnh](./5000-kiem-ke-va-dieu-chinh.md)
-- [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md)
+- [Item Master & thuộc tính kho](./1010-item-master-va-thuoc-tinh-kho.md)
+- [Giao dịch nhập, xuất & chuyển](./2000-giao-dich-nhap-xuat-chuyen.md)
+- [Kiểm kê & điều chỉnh](./3000-kiem-ke-va-dieu-chinh.md)
+- [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>

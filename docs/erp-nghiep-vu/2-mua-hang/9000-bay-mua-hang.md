@@ -57,15 +57,15 @@ Các bẫy trong bài **không sinh bút toán sai ngay**, mà gây **hệ quả
 - Hóa đơn trùng → trả tiền hai lần cho một lô hàng.
 - Nhà cung cấp trùng → dư nợ bị chia, có thể trả cả hai bên.
 
-Nguyên tắc tài khoản và tất toán ở [Hạch toán & tài khoản trung gian](../6-ke-toan-chung/1000-hach-toan-va-tai-khoan-trung-gian.md).
+Nguyên tắc tài khoản và tất toán ở [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md).
 
 ## 4. Điểm chạm & rủi ro
 
-- **Nguyên lý quy đổi đơn vị tính** — định nghĩa duy nhất về UOM: [Nguyên lý quy đổi UOM](../0-nen-tang/6000-nguyen-ly-quy-doi-uom.md)
-- **Thuộc tính đơn vị tính gốc của mã hàng**: [Item Master & thuộc tính kho](../1-kho/2000-item-master-va-thuoc-tinh-kho.md)
-- **Số lượng thực nhận để đối chiếu**: [Nhận hàng & kiểm tra chất lượng](./4000-nhan-hang-va-kiem-qc.md)
-- **Khớp lệnh và chống trùng hóa đơn**: [Đối soát hóa đơn & 3-Way Match](./5000-doi-soat-hoa-don-va-3-way-match.md)
-- **Chống trùng nhà cung cấp**: [Danh mục & hợp đồng mua](./2000-danh-muc-va-hop-dong-mua.md)
+- **Nguyên lý quy đổi đơn vị tính** — định nghĩa duy nhất về UOM: [Nguyên lý quy đổi UOM](../0-nen-tang/3020-nguyen-ly-quy-doi-uom.md)
+- **Thuộc tính đơn vị tính gốc của mã hàng**: [Item Master & thuộc tính kho](../1-kho/1010-item-master-va-thuoc-tinh-kho.md)
+- **Số lượng thực nhận để đối chiếu**: [Nhận hàng & kiểm tra chất lượng](./2010-nhan-hang-va-kiem-qc.md)
+- **Khớp lệnh và chống trùng hóa đơn**: [Đối soát hóa đơn & 3-Way Match](./2020-doi-soat-hoa-don-va-3-way-match.md)
+- **Chống trùng nhà cung cấp**: [Danh mục & hợp đồng mua](./1010-danh-muc-va-hop-dong-mua.md)
 
 ## 5. Triển khai tham chiếu ERP
 
@@ -87,7 +87,7 @@ GROUP BY l.PO_No, l.Item_ID, l.UOM, l.Qty_Ordered, l.Qty_In_Base_UOM
 HAVING l.Qty_In_Base_UOM <> ISNULL(SUM(r.Qty_Received), 0);
 ```
 
-**Nguyên tắc vàng:** mọi phép so sánh, cộng dồn phải quy về **đơn vị tồn kho (đơn vị nhỏ nhất)**. Chi tiết ở [Nguyên lý quy đổi UOM](../0-nen-tang/6000-nguyen-ly-quy-doi-uom.md).
+**Nguyên tắc vàng:** mọi phép so sánh, cộng dồn phải quy về **đơn vị tồn kho (đơn vị nhỏ nhất)**. Chi tiết ở [Nguyên lý quy đổi UOM](../0-nen-tang/3020-nguyen-ly-quy-doi-uom.md).
 
 **Bẫy 2 — Đơn mua và yêu cầu treo lâu ngày**
 
@@ -209,10 +209,10 @@ ORDER BY Days_Open DESC;
 ## Xem thêm
 
 - [Tổng quan Mua hàng](./0000-tong-quan-p2p.md)
-- [Nguyên lý quy đổi UOM](../0-nen-tang/6000-nguyen-ly-quy-doi-uom.md)
-- [Đối soát hóa đơn & 3-Way Match](./5000-doi-soat-hoa-don-va-3-way-match.md)
-- [Nhận hàng & kiểm tra chất lượng](./4000-nhan-hang-va-kiem-qc.md)
-- [Item Master & thuộc tính kho](../1-kho/2000-item-master-va-thuoc-tinh-kho.md)
+- [Nguyên lý quy đổi UOM](../0-nen-tang/3020-nguyen-ly-quy-doi-uom.md)
+- [Đối soát hóa đơn & 3-Way Match](./2020-doi-soat-hoa-don-va-3-way-match.md)
+- [Nhận hàng & kiểm tra chất lượng](./2010-nhan-hang-va-kiem-qc.md)
+- [Item Master & thuộc tính kho](../1-kho/1010-item-master-va-thuoc-tinh-kho.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>
   <strong>Chúc các bạn thành công và vui vẻ!</strong>
