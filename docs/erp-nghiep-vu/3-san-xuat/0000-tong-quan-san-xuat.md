@@ -2,7 +2,7 @@
 id: tong-quan-san-xuat
 title: "Tổng quan Sản xuất (Plan-to-Produce)"
 sidebar_label: Tổng quan Sản xuất
-slug: /san-xuat/tong-quan
+slug: /erp-nghiep-vu/san-xuat/tong-quan
 sidebar_position: 0
 description: "Bức tranh toàn cảnh Plan-to-Produce: kỹ thuật sản xuất (Work Center, BOM, Routing, phiên bản, ECO), thực thi (lệnh sản xuất, WIP, gia công ngoài) và giá thành — nằm giữa mua hàng và bán hàng."
 date: 2026-08-17
@@ -60,7 +60,7 @@ flowchart LR
 
 ## Ba nhóm tài liệu
 
-### 🟢 Nhóm 1: Kỹ thuật sản xuất (Engineering / Master Data)
+### 🟢 I. Kỹ thuật sản xuất (Engineering / Master Data)
 
 *Mục đích: Xác lập sản phẩm được làm từ gì, qua công đoạn nào, với phiên bản nào — dữ liệu nền ít thay đổi.*
 
@@ -70,7 +70,7 @@ flowchart LR
 - **[1030 Phiên bản sản xuất & quy mô lô](./1030-phien-ban-san-xuat-va-lo.md)** — Với sản phẩm này thì dùng BOM và Routing nào.
 - **[1040 Thay đổi kỹ thuật & ECO](./1040-thay-doi-ky-thuat-va-eco.md)** — Ai duyệt thay đổi kỹ thuật, có hiệu lực khi nào.
 
-### 🟡 Nhóm 2: Thực thi sản xuất (Execution)
+### 🟡 II. Thực thi sản xuất (Execution)
 
 *Mục đích: Giao dịch hằng ngày — chạy lệnh, cấp liệu, nhập thành phẩm và tính ra giá thành thực tế.*
 
@@ -78,7 +78,7 @@ flowchart LR
 - **[2010 Gia công ngoài](./2010-gia-cong-ngoai.md)** — Gửi nguyên liệu ra ngoài gia công thế nào.
 - **[2020 Giá thành sản xuất](./2020-gia-thanh-san-xuat.md)** — Chi phí thực tế chênh định mức bao nhiêu, vì sao.
 
-### 🔴 Nhóm 3: Bẫy & triển khai tham chiếu (Pitfalls & Reference)
+### 🔴 III. Bẫy & triển khai tham chiếu (Pitfalls & Reference)
 
 *Mục đích: Lỗi đã gặp ngoài thực tế và cách triển khai cụ thể trên hệ thống.*
 

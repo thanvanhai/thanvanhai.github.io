@@ -2,7 +2,7 @@
 id: cach-doc-tai-lieu
 title: "Cách đọc tài liệu ERP Nghiệp vụ"
 sidebar_label: Cách đọc tài liệu
-slug: /nen-tang/tong-quan
+slug: /erp-nghiep-vu/nen-tang/tong-quan
 sidebar_position: 0
 description: "Bản đồ tài liệu ERP Nghiệp vụ theo sáu khối: Nền tảng, Kho, Mua hàng, Sản xuất, Bán hàng, Kế toán — và cách tra cứu theo tình huống."
 date: 2026-07-20
@@ -37,21 +37,21 @@ Tài liệu này dành cho những người cùng làm việc quanh một hệ t
 
 ## Khối Nền tảng gồm ba nhóm
 
-### 🟢 Nhóm 1: Tổ chức & Dữ liệu gốc (Organization & Master Data)
+### 🟢 I. Tổ chức & Dữ liệu gốc (Organization & Master Data)
 
 *Mục đích: Xác lập nền móng pháp lý và dữ liệu không bao giờ được sửa sai — trước khi nhập bất kỳ giao dịch nào.*
 
 - **[1000 Tổ chức & Pháp nhân (Legal Entity / Ledger)](./1000-to-chuc-va-phap-nhan.md)** — Pháp nhân, sổ kế toán, đơn vị hạch toán và ranh giới báo cáo.
 - **[1010 Master Data & tính bất biến](./1010-master-data-va-tinh-bat-bien.md)** — Vì sao mã hàng, mã đối tác, đơn vị tính đã dùng thì không được sửa.
 
-### 🟡 Nhóm 2: Chứng từ & Kiểm soát nội bộ (Documents & Internal Control)
+### 🟡 II. Chứng từ & Kiểm soát nội bộ (Documents & Internal Control)
 
 *Mục đích: Cách ghi nhận việc đã xảy ra, và cách tách quyền để không ai tự làm tự duyệt.*
 
 - **[2000 Chứng từ & nguyên lý đối soát](./2000-chung-tu-va-nguyen-ly-doi-soat.md)** — Chứng từ gốc, đối tượng đối soát, và vì sao sổ phải khớp chứng từ.
 - **[2010 Kiểm soát nội bộ & phân tách nhiệm vụ](./2010-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)** — Tạo – duyệt – ghi sổ phải do ba người khác nhau.
 
-### 🔴 Nhóm 3: Thuật ngữ & Quy đổi (Glossary & UOM)
+### 🔴 III. Thuật ngữ & Quy đổi (Glossary & UOM)
 
 *Mục đích: Thống nhất ngôn ngữ giữa các hệ thống và xử lý đơn vị tính — nguồn gốc của nhiều sai số báo cáo.*
 

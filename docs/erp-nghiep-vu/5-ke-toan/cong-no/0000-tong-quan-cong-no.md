@@ -2,7 +2,7 @@
 id: tong-quan-cong-no
 title: "Tổng quan Kế toán công nợ (AP / AR)"
 sidebar_label: Tổng quan Công nợ
-slug: /ke-toan/cong-no/tong-quan
+slug: /erp-nghiep-vu/ke-toan/cong-no/tong-quan
 sidebar_position: 0
 description: "Hai dòng công nợ đối xứng: Phải trả gắn với mua hàng, Phải thu gắn với bán hàng — cùng chu kỳ dòng tiền, cùng bộ câu hỏi, nhưng rủi ro và kiểm soát khác nhau."
 date: 2026-09-14
@@ -53,7 +53,7 @@ Gộp hai bên thành một bài sẽ buộc phải viết mọi nội dung hai 
 
 ## Ba nhóm tài liệu
 
-### 🟢 Nhóm 1: Kế toán phải trả — AP (Accounts Payable)
+### 🟢 I. Kế toán phải trả — AP (Accounts Payable)
 
 *Mục đích: Ghi nhận và tất toán mọi khoản nợ với nhà cung cấp — dòng tiền chi ra.*
 
@@ -61,7 +61,7 @@ Gộp hai bên thành một bài sẽ buộc phải viết mọi nội dung hai 
 - **[1010 AP: Nhận hóa đơn & đối tất tạm ứng](./1010-ap-nhan-hoa-don-va-doi-tat-tam-ung.md)** — Chứng từ nào được phép ghi nợ.
 - **[1020 AP: Thanh toán & Cash Out](./1020-ap-thanh-toan-va-cash-out.md)** — Tiền chi ra đối trừ vào hóa đơn nào.
 
-### 🟡 Nhóm 2: Kế toán phải thu — AR (Accounts Receivable)
+### 🟡 II. Kế toán phải thu — AR (Accounts Receivable)
 
 *Mục đích: Ghi nhận và thu hồi mọi khoản khách nợ — dòng tiền thu vào.*
 
@@ -69,7 +69,7 @@ Gộp hai bên thành một bài sẽ buộc phải viết mọi nội dung hai 
 - **[2010 AR: Xuất hóa đơn & hạn mức tín dụng](./2010-ar-xuat-hoa-don-va-han-muc-tin-dung.md)** — Kiểm soát hạn mức trước khi bán chịu.
 - **[2020 AR: Thu tiền & nhắc nợ](./2020-ar-thu-tien-va-dunning.md)** — Tiền về đối trừ hóa đơn nào, nhắc nợ theo tuổi nợ.
 
-### 🔴 Nhóm 3: Đối soát, báo cáo & kiểm soát (Reconciliation & Control)
+### 🔴 III. Đối soát, báo cáo & kiểm soát (Reconciliation & Control)
 
 *Mục đích: Hai bên dùng chung — đối trừ, báo cáo tuổi nợ, dòng tiền và các bẫy gây lệch sổ.*
 

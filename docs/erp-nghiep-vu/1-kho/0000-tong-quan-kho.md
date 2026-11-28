@@ -2,7 +2,7 @@
 id: tong-quan-kho
 title: "Tổng quan Kho (Inventory)"
 sidebar_label: Tổng quan Kho
-slug: /kho/tong-quan
+slug: /erp-nghiep-vu/kho/tong-quan
 sidebar_position: 0
 description: "Kho là sổ cái vật chất của doanh nghiệp: cấu trúc vị trí, năm loại giao dịch, giữ hàng, kiểm kê và định giá — nguồn dữ liệu cho sổ cái tài chính."
 date: 2026-07-29
@@ -19,21 +19,21 @@ Vì vậy kho không phải là "phân hệ phụ" của mua hàng hay bán hàn
 
 ## Ba nhóm tài liệu
 
-### 🟢 Nhóm 1: Dữ liệu gốc & Thiết lập nền tảng (Master Data & Setup)
+### 🟢 I. Dữ liệu gốc & Thiết lập nền tảng (Master Data & Setup)
 
 *Mục đích: Thiết lập hệ thống trước khi có thể thực hiện bất kỳ giao dịch kho nào.*
 
 - **[1000 Cấu trúc kho & vị trí](./1000-cau-truc-kho-va-vi-tri.md)** — Site, Warehouse, Location/Bin: kho được mô hình hóa thành các tầng nào.
 - **[1010 Item Master & thuộc tính kho](./1010-item-master-va-thuoc-tinh-kho.md)** — Mã hàng, UOM, Lot/Serial, điều kiện bảo quản.
 
-### 🟡 Nhóm 2: Vận hành & Điều phối kho (Operations & Fulfillment)
+### 🟡 II. Vận hành & Điều phối kho (Operations & Fulfillment)
 
 *Mục đích: Các luồng chuyển động thực tế của hàng hóa và đáp ứng đơn hàng.*
 
 - **[2000 Giao dịch nhập, xuất & chuyển](./2000-giao-dich-nhap-xuat-chuyen.md)** — Inbound, Outbound, Internal Transfer: năm loại giao dịch và lý do không bao giờ "sửa số tồn".
 - **[2010 Giữ hàng, phân bổ & ATP](./2010-giu-hang-phan-bo-va-atp.md)** — Reservation, Allocation, Available to Promise phục vụ Bán hàng và Sản xuất.
 
-### 🔴 Nhóm 3: Kiểm soát, Định giá & Báo cáo (Control & Valuation)
+### 🔴 III. Kiểm soát, Định giá & Báo cáo (Control & Valuation)
 
 *Mục đích: Đối soát thực tế với sổ sách, tính giá trị tồn kho và tích hợp Kế toán.*
 

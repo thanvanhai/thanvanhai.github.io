@@ -2,7 +2,7 @@
 id: tong-quan-o2c
 title: "Tổng quan Bán hàng (Order-to-Cash)"
 sidebar_label: Tổng quan Bán hàng
-slug: /ban-hang/tong-quan
+slug: /erp-nghiep-vu/ban-hang/tong-quan
 sidebar_position: 0
 description: "Bức tranh toàn cảnh Order-to-Cash: báo giá, đơn bán, kiểm tra tín dụng và ATP, giao hàng, xuất hóa đơn, đổi trả và thu tiền — cùng ranh giới trách nhiệm với kho và kế toán."
 date: 2026-08-31
@@ -35,13 +35,13 @@ flowchart LR
 
 ## Ba nhóm tài liệu
 
-### 🟢 Nhóm 1: Dữ liệu gốc & Thiết lập nền tảng (Master Data & Setup)
+### 🟢 I. Dữ liệu gốc & Thiết lập nền tảng (Master Data & Setup)
 
 *Mục đích: Xác lập bán cho ai, giá nào, chiết khấu và chính sách — trước khi phát sinh đơn bán.*
 
 - **[1000 Danh mục & chính sách bán](./1000-danh-muc-va-chinh-sach-ban.md)** — Bảng giá, chiết khấu, hạn mức tín dụng, điều kiện giao hàng.
 
-### 🟡 Nhóm 2: Vận hành Order-to-Cash (Operations)
+### 🟡 II. Vận hành Order-to-Cash (Operations)
 
 *Mục đích: Luồng chạy thật từ lúc nhận đơn đến lúc thu tiền và xử lý đổi trả.*
 
@@ -50,7 +50,7 @@ flowchart LR
 - **[2020 RMA & đổi trả](./2020-rma-va-doi-tra.md)** — Nhận lại hàng và trả tiền khách thế nào.
 - **[2030 Mô hình bán đặc thù](./2030-mo-hinh-ban-dac-thu.md)** — Giao thẳng, bán kèm dịch vụ, bán ký gửi, bán dự án.
 
-### 🔴 Nhóm 3: Kiểm soát & Báo cáo (Control & Reporting)
+### 🔴 III. Kiểm soát & Báo cáo (Control & Reporting)
 
 *Mục đích: Đo lường doanh thu, lợi nhuận gộp, tỷ lệ đổi trả và học từ các sai sót thực tế.*
 

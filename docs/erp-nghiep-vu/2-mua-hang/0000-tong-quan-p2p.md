@@ -2,7 +2,7 @@
 id: tong-quan-p2p
 title: "Tổng quan Mua hàng (Procure-to-Pay)"
 sidebar_label: Tổng quan Mua hàng
-slug: /mua-hang/tong-quan
+slug: /erp-nghiep-vu/mua-hang/tong-quan
 sidebar_position: 0
 description: "Bức tranh toàn cảnh Procure-to-Pay: nhu cầu, chọn nhà cung cấp, đơn mua, nhận hàng, khớp lệnh hóa đơn và công nợ phải trả — cùng ranh giới trách nhiệm với kho và kế toán."
 date: 2026-08-06
@@ -34,14 +34,14 @@ flowchart LR
 
 ## Ba nhóm tài liệu
 
-### 🟢 Nhóm 1: Dữ liệu gốc & Thiết lập nền tảng (Master Data & Setup)
+### 🟢 I. Dữ liệu gốc & Thiết lập nền tảng (Master Data & Setup)
 
 *Mục đích: Xác lập mua gì, của ai, với điều kiện nào — trước khi phát sinh bất kỳ đơn mua nào.*
 
 - **[1000 Nhu cầu mua hàng & lựa chọn nhà cung cấp](./1000-nhu-cau-va-lua-chon-ncc.md)** — Mua gì, bao nhiêu, cho ai, ai duyệt; chọn nguồn cung.
 - **[1010 Danh mục & hợp đồng mua](./1010-danh-muc-va-hop-dong-mua.md)** — Danh mục nhà cung cấp, giá thỏa thuận, điều kiện giao và thanh toán.
 
-### 🟡 Nhóm 2: Vận hành Procure-to-Pay (Operations)
+### 🟡 II. Vận hành Procure-to-Pay (Operations)
 
 *Mục đích: Luồng chạy thật của một đơn mua từ lúc đặt đến lúc khớp hóa đơn.*
 
@@ -50,7 +50,7 @@ flowchart LR
 - **[2020 Đối soát hóa đơn & 3-Way Match](./2020-doi-soat-hoa-don-va-3-way-match.md)** — Hóa đơn có khớp với điều đã đặt và đã nhận.
 - **[2030 Mô hình mua đặc thù](./2030-mo-hinh-mua-dac-thu.md)** — Hàng giao thẳng, mua dịch vụ, mua tài sản, mua kèm gia công.
 
-### 🔴 Nhóm 3: Kiểm soát & Báo cáo (Control & Reporting)
+### 🔴 III. Kiểm soát & Báo cáo (Control & Reporting)
 
 *Mục đích: Đo lường hiệu quả mua hàng, đối soát với kế toán và học từ các sai sót thực tế.*
 
