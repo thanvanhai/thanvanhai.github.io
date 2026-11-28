@@ -92,7 +92,7 @@ flowchart TD
 
 1. Mỗi chức năng một tài khoản (hoặc một tiểu khoản riêng). Danh sách chức năng nằm ở bảng B.
 2. **Khoản "nhận hàng chưa hóa đơn" mặc định đặt ở tài khoản phải trả khác, mở chi tiết riêng,** không đặt trong phải trả người bán. Lý do: số dư phải trả người bán chỉ chứa nợ đã có hóa đơn, nên đối chiếu số dư với nhà cung cấp khớp. Đổi lại cần quy tắc trình bày trên báo cáo tài chính (mục 3G). Phương án thay thế (dùng chi tiết của phải trả người bán với giá tạm tính) cũng dùng được nếu kế toán trưởng chọn và ghi vào tài liệu thiết kế; điều quan trọng là **chọn một và nhất quán**.
-3. Thuế GTGT đầu vào **không đi qua tài khoản trung gian.** Hàng về chưa hóa đơn thì chưa ghi thuế; thuế chỉ ghi khi có hóa đơn hợp lệ. Đối soát chỉ so khớp trên giá trị trước thuế (xem [3000](../thue-va-tai-san/1000-thue-va-tai-san-co-dinh.md)).
+3. Thuế GTGT đầu vào **không đi qua tài khoản trung gian.** Hàng về chưa hóa đơn thì chưa ghi thuế; thuế chỉ ghi khi có hóa đơn hợp lệ. Đối soát chỉ so khớp trên giá trị trước thuế (xem [3000](../thue/1000-thue-va-hoa-don-dien-tu.md)).
 4. **Trung gian chi phí mua hàng là tài khoản riêng**, tách khỏi trung gian nhận hàng chưa hóa đơn (nguyên lý 7), vì đối tượng đối chiếu khác nhau (NCC hàng và NCC dịch vụ vận chuyển, hải quan, bảo hiểm).
 
 ### B. Bản đồ bút toán (chốt tại đây)

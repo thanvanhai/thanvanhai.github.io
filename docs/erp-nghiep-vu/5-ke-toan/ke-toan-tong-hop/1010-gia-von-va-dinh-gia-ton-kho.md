@@ -430,7 +430,7 @@ Nếu đội ngũ đang tự xây dựng (In-house) mô-đun Giá thành kế to
     
 ## Xem thêm
 
-- [Tổng quan Kế toán chung](../../5-ke-toan/0000-tong-quan-ke-toan.md)
+- [Tổng quan Kế toán](../../5-ke-toan/index.mdx)
 - [Hạch toán & tài khoản trung gian](../../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md)
 - [Định giá & báo cáo kho](../../1-kho/3010-dinh-gia-va-bao-cao-kho.md)
 - [Giá thành sản xuất](../../3-san-xuat/2020-gia-thanh-san-xuat.md)

@@ -211,7 +211,7 @@ ORDER BY FiscalYear DESC, FiscalPeriod DESC;
 
 ## Xem thêm
 
-- [Tổng quan Kế toán chung](../../5-ke-toan/0000-tong-quan-ke-toan.md)
+- [Tổng quan Kế toán](../../5-ke-toan/index.mdx)
 - [Hạch toán & tài khoản trung gian](../../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md)
 - [Giá vốn & định giá tồn kho](./1010-gia-von-va-dinh-gia-ton-kho.md)
 - [Sổ cái & báo cáo tài chính](./2000-so-cai-va-bao-cao-tai-chinh.md)

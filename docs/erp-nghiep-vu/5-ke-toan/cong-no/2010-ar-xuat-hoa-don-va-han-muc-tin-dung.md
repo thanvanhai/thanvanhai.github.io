@@ -69,7 +69,7 @@ Bốn điểm cần nhớ:
 - **Tính ATP và giữ hàng**: [Tiếp nhận đơn & ATP](../../4-ban-hang/2000-tiep-nhan-don-va-atp.md)
 - **Thu tiền sau khi xuất hóa đơn**: [Thu tiền & nhắc nợ](./2020-ar-thu-tien-va-dunning.md)
 - **Hàng trả lại và đổi trả**: [RMA & đổi trả](../../4-ban-hang/2020-rma-va-doi-tra.md)
-- **Thuế GTGT đầu ra**: [Thuế & tài sản cố định](../thue-va-tai-san/1000-thue-va-tai-san-co-dinh.md)
+- **Thuế GTGT đầu ra**: [Thuế & tài sản cố định](../tai-san-co-dinh/1000-tai-san-co-dinh-va-khau-hao.md)
 
 **Rủi ro chính:**
 

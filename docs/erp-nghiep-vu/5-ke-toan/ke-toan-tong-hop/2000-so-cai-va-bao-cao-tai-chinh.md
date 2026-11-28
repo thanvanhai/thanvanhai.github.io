@@ -90,7 +90,7 @@ Khi doanh nghiệp phải báo cáo theo nhiều chuẩn mực, mỗi chuẩn m�
 
 - **Bút toán từ phân hệ nguồn**: [Hạch toán & tài khoản trung gian](../../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md)
 - **Giá vốn vào kết quả kinh doanh**: [Giá vốn & định giá tồn kho](./1010-gia-von-va-dinh-gia-ton-kho.md)
-- **Thuế phải nộp**: [Thuế & tài sản cố định](../thue-va-tai-san/1000-thue-va-tai-san-co-dinh.md)
+- **Thuế phải nộp**: [Thuế & tài sản cố định](../tai-san-co-dinh/1000-tai-san-co-dinh-va-khau-hao.md)
 - **Khóa sổ và đối chiếu trước báo cáo**: [Đóng kỳ & đối soát sổ phụ](./2010-dong-ky-va-doi-soat-so-phu.md)
 - **Sai số thường gặp trong sổ cái**: [Bẫy kế toán](../../5-ke-toan/ke-toan-tong-hop/9000-bay-ke-toan.md)
 
@@ -257,9 +257,9 @@ ORDER BY h.EntryDate DESC;
 
 ## Xem thêm
 
-- [Tổng quan Kế toán chung](../../5-ke-toan/0000-tong-quan-ke-toan.md)
+- [Tổng quan Kế toán](../../5-ke-toan/index.mdx)
 - [Hạch toán & tài khoản trung gian](../../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md)
-- [Thuế & tài sản cố định](../thue-va-tai-san/1000-thue-va-tai-san-co-dinh.md)
+- [Thuế & tài sản cố định](../tai-san-co-dinh/1000-tai-san-co-dinh-va-khau-hao.md)
 - [Đóng kỳ & đối soát sổ phụ](./2010-dong-ky-va-doi-soat-so-phu.md)
 - [Bẫy kế toán](../../5-ke-toan/ke-toan-tong-hop/9000-bay-ke-toan.md)
 

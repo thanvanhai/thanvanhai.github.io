@@ -83,7 +83,7 @@ Ba điều kho cần nhớ:
 - **Giá theo hợp đồng khung** — đơn vị so khớp là từng release: [Danh mục & hợp đồng mua](./1010-danh-muc-va-hop-dong-mua.md)
 - **Ghi nhận hóa đơn và trả tiền**: [AP - Nguyên lý & tài khoản](../5-ke-toan/cong-no/1000-ap-nguyen-ly-va-tai-khoan.md)
 - **Chênh lệch tỷ giá**: [Đối trừ công nợ, netting & đa tiền tệ](../5-ke-toan/cong-no/3000-cong-no-doi-tru-netting-va-tien-te.md)
-- **Thuế GTGT đầu vào**: [Thuế & tài sản cố định](../5-ke-toan/thue-va-tai-san/1000-thue-va-tai-san-co-dinh.md)
+- **Thuế GTGT đầu vào**: [Thuế & tài sản cố định](../5-ke-toan/tai-san-co-dinh/1000-tai-san-co-dinh-va-khau-hao.md)
 
 **Rủi ro chính:**
 

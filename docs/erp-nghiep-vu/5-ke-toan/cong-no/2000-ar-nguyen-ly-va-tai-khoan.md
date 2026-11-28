@@ -92,7 +92,7 @@ Ba loại chiết khấu cần phân biệt vì hạch toán khác nhau:
 - **Thu tiền và đối trừ**: [Thu tiền & nhắc nợ](./2020-ar-thu-tien-va-dunning.md)
 - **Thời điểm ghi doanh thu theo điều kiện giao**: [Giao hàng & xuất kho](../../4-ban-hang/2010-giao-hang-va-xuat-kho.md)
 - **Giá vốn và định giá tồn kho**: [Giá vốn & định giá tồn kho](../ke-toan-tong-hop/1010-gia-von-va-dinh-gia-ton-kho.md)
-- **Thuế GTGT đầu ra**: [Thuế & tài sản cố định](../thue-va-tai-san/1000-thue-va-tai-san-co-dinh.md)
+- **Thuế GTGT đầu ra**: [Thuế & tài sản cố định](../tai-san-co-dinh/1000-tai-san-co-dinh-va-khau-hao.md)
 - **Chênh lệch tỷ giá**: [Đối trừ công nợ, netting & đa tiền tệ](./3000-cong-no-doi-tru-netting-va-tien-te.md)
 
 **Rủi ro chính:**

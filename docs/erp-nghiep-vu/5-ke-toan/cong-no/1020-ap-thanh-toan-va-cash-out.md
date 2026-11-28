@@ -66,7 +66,7 @@ Bốn điểm cần nhớ:
 
 - **Hóa đơn được trả**: [Nhận hóa đơn & đối tất tạm ứng](./1010-ap-nhan-hoa-don-va-doi-tat-tam-ung.md)
 - **Khóa hóa đơn trước khi chi**: [Đối soát hóa đơn & 3-Way Match](../../2-mua-hang/2020-doi-soat-hoa-don-va-3-way-match.md)
-- **Thuế khấu trừ tại nguồn khi chi trả**: [Thuế & tài sản cố định](../thue-va-tai-san/1000-thue-va-tai-san-co-dinh.md)
+- **Thuế khấu trừ tại nguồn khi chi trả**: [Thuế & tài sản cố định](../tai-san-co-dinh/1000-tai-san-co-dinh-va-khau-hao.md)
 - **Chênh lệch tỷ giá khi thanh toán ngoại tệ**: [Đối trừ công nợ, netting & đa tiền tệ](./3000-cong-no-doi-tru-netting-va-tien-te.md)
 - **Đối chiếu số dư sau chi**: [Báo cáo công nợ (Aging & Cashflow)](./3010-bao-cao-cong-no-aging-cashflow.md)
 - **Phân tách nhiệm vụ**: [Kiểm soát nội bộ & phân tách nhiệm vụ](../../0-nen-tang/2010-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)

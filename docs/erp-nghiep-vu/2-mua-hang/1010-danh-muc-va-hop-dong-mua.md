@@ -64,7 +64,7 @@ Dữ liệu nền mua hàng không sinh bút toán, nhưng quyết định bút 
 - **Hợp đồng khung** với hạn mức là cơ sở cho kế toán cam kết chi (nếu doanh nghiệp dùng).
 - **Nguồn cung `Transfer From`** không sinh bút toán công nợ — đó là chuyển kho nội bộ, chỉ sinh bút toán khi vượt pháp nhân.
 
-Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md); thuế ở [Thuế & tài sản cố định](../5-ke-toan/thue-va-tai-san/1000-thue-va-tai-san-co-dinh.md).
+Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md); thuế ở [Thuế & tài sản cố định](../5-ke-toan/tai-san-co-dinh/1000-tai-san-co-dinh-va-khau-hao.md).
 
 ## 4. Điểm chạm & rủi ro
 
@@ -222,7 +222,7 @@ ORDER BY Remaining;
 - [Tổng quan Mua hàng](./0000-tong-quan-p2p.md)
 - [Nhu cầu mua hàng & lựa chọn nhà cung cấp](./1000-nhu-cau-va-lua-chon-ncc.md)
 - [Đơn mua hàng](./2000-don-mua-hang.md)
-- [Thuế & tài sản cố định](../5-ke-toan/thue-va-tai-san/1000-thue-va-tai-san-co-dinh.md)
+- [Thuế & tài sản cố định](../5-ke-toan/tai-san-co-dinh/1000-tai-san-co-dinh-va-khau-hao.md)
 - [Kiểm soát nội bộ & phân tách nhiệm vụ](../0-nen-tang/2010-kiem-soat-noi-bo-va-phan-tach-nhiem-vu.md)
 
 <div align="center" style={{color: 'var(--ifm-color-primary)'}}>

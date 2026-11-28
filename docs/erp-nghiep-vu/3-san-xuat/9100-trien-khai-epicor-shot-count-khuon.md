@@ -78,7 +78,7 @@ flowchart LR
 
 Bài này không đụng tới bút toán — nó chỉ tạo và duy trì **dữ liệu tuổi thọ tài sản**. Hệ quả tài chính gián tiếp: chi phí thay khuôn phải được dự báo trước, và nếu khuôn gãy giữa ca thì chi phí phế phẩm tăng đột biến.
 
-Nếu doanh nghiệp quản lý khuôn như tài sản cố định, xem [Tài sản cố định](../5-ke-toan/thue-va-tai-san/1000-thue-va-tai-san-co-dinh.md).
+Nếu doanh nghiệp quản lý khuôn như tài sản cố định, xem [Tài sản cố định](../5-ke-toan/tai-san-co-dinh/1000-tai-san-co-dinh-va-khau-hao.md).
 
 ## 4. Điểm chạm & rủi ro
 

@@ -59,7 +59,7 @@ Nguyên tắc chung khi xử lý bất kỳ chênh lệch nào:
 
 - **Tài khoản trung gian và PPV/IPV** (bài gốc): [Hạch toán & tài khoản trung gian](../../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md)
 - **Giá vốn và chênh lệch định giá**: [Giá vốn & định giá tồn kho](./1010-gia-von-va-dinh-gia-ton-kho.md)
-- **Thuế và tài sản cố định**: [Thuế & tài sản cố định](../thue-va-tai-san/1000-thue-va-tai-san-co-dinh.md)
+- **Thuế và tài sản cố định**: [Thuế & tài sản cố định](../tai-san-co-dinh/1000-tai-san-co-dinh-va-khau-hao.md)
 - **Sổ cái và báo cáo tài chính**: [Sổ cái & báo cáo tài chính](./2000-so-cai-va-bao-cao-tai-chinh.md)
 - **Đóng kỳ và đối soát sổ phụ**: [Đóng kỳ & đối soát sổ phụ](./2010-dong-ky-va-doi-soat-so-phu.md)
 - **Chênh lệch tỷ giá công nợ**: [Đối trừ công nợ, netting & đa tiền tệ](../cong-no/3000-cong-no-doi-tru-netting-va-tien-te.md)
@@ -358,7 +358,7 @@ Không có công thức đúng tuyệt đối cho việc lấy giá trong báo c
 
 ## Xem thêm
 
-- [Tổng quan Kế toán chung](../../5-ke-toan/0000-tong-quan-ke-toan.md)
+- [Tổng quan Kế toán](../../5-ke-toan/index.mdx)
 - [Hạch toán & tài khoản trung gian](../../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md)
 - [Giá vốn & định giá tồn kho](./1010-gia-von-va-dinh-gia-ton-kho.md)
 - [Đóng kỳ & đối soát sổ phụ](./2010-dong-ky-va-doi-soat-so-phu.md)

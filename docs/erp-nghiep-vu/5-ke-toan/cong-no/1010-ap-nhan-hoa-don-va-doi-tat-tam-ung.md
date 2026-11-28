@@ -70,7 +70,7 @@ Ba điểm nghiệp vụ cần nhớ:
 - **Khớp lệnh chi tiết**: [Đối soát hóa đơn & 3-Way Match](../../2-mua-hang/2020-doi-soat-hoa-don-va-3-way-match.md)
 - **Tài khoản trung gian và chênh lệch giá**: [Hạch toán & tài khoản trung gian](../../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md)
 - **Duyệt và chi tiền**: [Thanh toán & Cash Out](./1020-ap-thanh-toan-va-cash-out.md)
-- **Thuế GTGT đầu vào**: [Thuế & tài sản cố định](../thue-va-tai-san/1000-thue-va-tai-san-co-dinh.md)
+- **Thuế GTGT đầu vào**: [Thuế & tài sản cố định](../tai-san-co-dinh/1000-tai-san-co-dinh-va-khau-hao.md)
 - **Hồ sơ nhà cung cấp**: [Danh mục & hợp đồng mua](../../2-mua-hang/1010-danh-muc-va-hop-dong-mua.md)
 
 **Rủi ro chính:**
