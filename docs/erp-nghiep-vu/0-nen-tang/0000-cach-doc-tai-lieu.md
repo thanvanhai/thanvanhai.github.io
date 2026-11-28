@@ -5,7 +5,7 @@ sidebar_label: Cách đọc tài liệu
 slug: /nen-tang/tong-quan
 sidebar_position: 0
 description: "Bản đồ tài liệu ERP Nghiệp vụ theo sáu khối: Nền tảng, Kho, Mua hàng, Sản xuất, Bán hàng, Kế toán — và cách tra cứu theo tình huống."
-date: 2026-11-26
+date: 2026-07-20
 last_update:
   date: 2026-11-26
 tags: [erp, tong-quan]

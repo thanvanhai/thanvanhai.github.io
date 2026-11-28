@@ -1,20 +1,20 @@
 ---
 id: bao-cao-ban-hang
-title: "3000 Báo cáo bán hàng"
+title: "Báo cáo bán hàng"
 slug: /erp-nghiep-vu/ban-hang/bao-cao-ban-hang
 sidebar_position: 3000
 description: "Tỷ lệ hoàn thành đơn, backlog và tuổi đơn, phân tích doanh thu đa kênh, biên lợi nhuận theo đơn, và bộ chỉ số bán hàng dẫn tới hành động."
-date: 2026-08-18
+date: 2026-09-10
 last_update:
   date: 2026-11-19
 tags: [erp, sales, analytics, backlog, fill-rate, margin]
 ---
 
-# 3000 Báo cáo bán hàng
+# Báo cáo bán hàng
 
 Dữ liệu bán hàng bị đọc sai nhiều nhất là **doanh thu**. Doanh thu trên đơn đã ký chưa phải doanh thu; doanh thu đã xuất hóa đơn nhưng chưa thu tiền cũng chưa phải tiền. Bài này nói về các báo cáo trả lời được câu hỏi thật: **đơn có giao được không, giao có đúng hạn không, và có lãi không**.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Ba con số doanh thu phải tách rời.** Doanh thu đặt hàng (booking) — doanh thu đã giao (shipped) — doanh thu đã ghi sổ (invoiced). Gộp ba con số thành một là nguồn gốc của mọi tranh cãi giữa sales, kho và kế toán.
 2. **Backlog là chỉ số quan trọng nhất của bán hàng.** Tổng giá trị đơn đã cam kết nhưng chưa giao. Backlog tăng nhanh hơn doanh thu nghĩa là năng lực giao hàng không theo kịp bán, và tới một lúc sẽ đổ vỡ.

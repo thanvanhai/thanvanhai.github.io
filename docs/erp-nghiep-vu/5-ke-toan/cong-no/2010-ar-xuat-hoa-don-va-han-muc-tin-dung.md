@@ -1,17 +1,20 @@
 ---
 id: ar-xuat-hoa-don-va-han-muc-tin-dung
-title: "2010 AR: Xuất hóa đơn & hạn mức tín dụng"
+title: "AR: Xuất hóa đơn & hạn mức tín dụng"
 slug: /erp-nghiep-vu/ke-toan/cong-no/ar-xuat-hoa-don-va-han-muc-tin-dung
 sidebar_position: 2010
 description: "Ghi nhận hóa đơn bán hàng từ chứng từ giao hàng, kiểm soát phơi nhiễm tín dụng và chặn xuất hàng, phân cấp duyệt vượt hạn mức và xử lý hóa đơn điều chỉnh giảm."
+date: 2026-09-19
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, ar, billing, credit-limit]
 ---
 
-# 2010 AR: Xuất hóa đơn & hạn mức tín dụng
+# AR: Xuất hóa đơn & hạn mức tín dụng
 
 Hai việc tưởng như khác nhau nhưng cùng bảo vệ một thứ — dòng tiền thu về. **Hóa đơn** biến hàng đã giao thành khoản phải thu có căn cứ. **Hạn mức tín dụng** chặn việc giao thêm hàng cho khách không có khả năng trả.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Hóa đơn sinh từ chứng từ giao hàng, không từ đơn đặt hàng.** Số lượng trên hóa đơn là số khách đã ký nhận, không phải số đã đặt.
 2. **Phơi nhiễm tín dụng = dư nợ + đơn đã xác nhận chưa giao + đơn chờ duyệt.** Chỉ so dư nợ thì khách có thể đặt bao nhiêu cũng lọt.

@@ -1,17 +1,20 @@
 ---
 id: so-cai-va-bao-cao-tai-chinh
-title: "2000 Sổ cái & báo cáo tài chính"
+title: "Sổ cái & báo cáo tài chính"
 slug: /erp-nghiep-vu/ke-toan/tong-hop/so-cai-va-bao-cao-tai-chinh
 sidebar_position: 2000
 description: "Thiết kế hệ thống tài khoản và kích thước phân tích, kỳ kế toán, sổ cái song song, bút toán phân bổ định kỳ và bộ báo cáo tài chính ba báo cáo chính."
+date: 2026-10-03
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, gl, coa, reporting]
 ---
 
-# 2000 Sổ cái & báo cáo tài chính
+# Sổ cái & báo cáo tài chính
 
 Sổ cái là **nơi mọi bút toán hội tụ**, và báo cáo tài chính là sản phẩm cuối cùng. Thiết kế hệ thống tài khoản sai thì không báo cáo nào đúng, dù mọi bút toán đều cân.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Hệ thống tài khoản là kiến trúc, không phải danh sách.** Tài khoản phải đủ để lên được Bảng cân đối và Kết quả kinh doanh mà không phải sửa lại, và không quá nhiều đến mức người nhập liệu phải đoán.
 2. **Kích thước phân tích (chi nhánh, trung tâm chi phí, dự án) tách khỏi tài khoản.** Gộp hết vào mã tài khoản làm bùng nổ số tài khoản và không đổi được khi cơ cấu tổ chức thay đổi.

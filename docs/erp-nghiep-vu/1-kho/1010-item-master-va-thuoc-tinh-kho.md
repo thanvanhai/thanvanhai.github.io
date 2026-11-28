@@ -1,16 +1,16 @@
 ---
 id: item-master-va-thuoc-tinh-kho
-title: "1010 Item Master & thuộc tính kho"
+title: "Item Master & thuộc tính kho"
 slug: /erp-nghiep-vu/kho/item-master-va-thuoc-tinh-kho
 sidebar_position: 1010
 description: "Sáu thuộc tính kho của một mã hàng: đơn vị tính gốc, quản lý lô, quản lý serial, chiến lược xuất kho FEFO, điểm đặt hàng lại và những thuộc tính bất biến sau khi phát sinh giao dịch."
-date: 2026-07-24
+date: 2026-07-31
 last_update:
   date: 2026-11-19
 tags: [erp, inventory, item-master, uom, lot, serial, fefo, reorder-point]
 ---
 
-# 1010 Item Master & thuộc tính kho
+# Item Master & thuộc tính kho
 
 Một mã hàng không chỉ là "tên và đơn vị tính". Để hệ thống kho vận hành đúng, mỗi mã hàng phải trả lời được sáu câu hỏi: **đơn vị nào là gốc**, **có cần theo lô không**, **có cần theo serial không**, **khi xuất thì lấy lô nào trước**, **khi nào phải đặt thêm**, và **trường nào không được đổi nữa**.
 
@@ -18,7 +18,7 @@ Sáu câu trả lời đó chính là sáu thuộc tính dưới đây. Sai mộ
 
 ---
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Mọi số lượng trong hệ thống phải quy về một đơn vị gốc duy nhất.** Mua theo thùng, bán theo hộp, sản xuất theo cái — nhưng tồn kho chỉ có một con số và nó ở đơn vị nhỏ nhất không chia được. Không có đơn vị gốc thì mọi báo cáo sẽ so sánh những thứ khác đơn vị với nhau.
 

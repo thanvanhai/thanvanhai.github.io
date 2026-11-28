@@ -1,17 +1,20 @@
 ---
 id: thue-va-hoa-don-dien-tu
-title: "1000 Thuế & hóa đơn điện tử"
+title: "Thuế & hóa đơn điện tử"
 slug: /erp-nghiep-vu/ke-toan/thue/thue-va-hoa-don-dien-tu
 sidebar_position: 1000
 description: "Thuế GTGT đầu vào/đầu ra, điều kiện khấu trừ, thuế nhà thầu khai nộp thay và yêu cầu pháp lý của hóa đơn điện tử."
+date: 2026-10-09
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, tax, vat, einvoice]
 ---
 
-# 1000 Thuế & hóa đơn điện tử
+# Thuế & hóa đơn điện tử
 
 Thuế là phần **giá trị doanh nghiệp thu hộ hoặc nộp thay**, không phải giá trị hàng hóa. Nguyên tắc duy nhất cần nhớ: **giá trị ghi sổ không nhất thiết bằng số tiền đã trả** — hóa đơn có thuế tách khỏi giá trị hàng.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Thuế GTGT là thuế gián thu — doanh nghiệp không chịu, chỉ thu hộ.** Thuế đầu vào được khấu trừ với thuế đầu ra; chỉ chênh lệch mới phải nộp hoặc được hoàn.
 2. **Thuế tách khỏi giá trị tài sản và chi phí.** Hàng nhập kho ghi giá trị chưa thuế; thuế vào tài khoản thuế đầu vào được khấu trừ. Gộp thuế vào giá trị hàng làm tăng giá vốn giả.

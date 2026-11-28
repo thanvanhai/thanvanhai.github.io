@@ -5,6 +5,9 @@ sidebar_label: Tổng quan Công nợ
 slug: /ke-toan/cong-no/tong-quan
 sidebar_position: 0
 description: "Hai dòng công nợ đối xứng: Phải trả gắn với mua hàng, Phải thu gắn với bán hàng — cùng chu kỳ dòng tiền, cùng bộ câu hỏi, nhưng rủi ro và kiểm soát khác nhau."
+date: 2026-09-14
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, ap, ar, tong-quan]
 ---
 

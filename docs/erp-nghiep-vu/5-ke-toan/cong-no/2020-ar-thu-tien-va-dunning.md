@@ -1,17 +1,20 @@
 ---
 id: ar-thu-tien-va-dunning
-title: "2020 AR: Thu tiền & nhắc nợ"
+title: "AR: Thu tiền & nhắc nợ"
 slug: /erp-nghiep-vu/ke-toan/cong-no/ar-thu-tien-va-dunning
 sidebar_position: 2020
 description: "Ghi nhận tiền khách thanh toán và đối trừ hóa đơn, xử lý tiền thu chưa xác định đối tượng, phân cấp nhắc nợ theo tuổi nợ và trích lập dự phòng nợ khó đòi."
+date: 2026-09-21
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, ar, cash-receipt, dunning, bad-debt]
 ---
 
-# 2020 AR: Thu tiền & nhắc nợ
+# AR: Thu tiền & nhắc nợ
 
 Thu tiền là bước duy nhất trong chuỗi bán hàng mà tiền thực sự vào doanh nghiệp. Nhưng nhận được tiền chưa đủ — phải biết **tiền đó trả cho hóa đơn nào**, nếu không công nợ vẫn mở và khách vẫn bị coi là nợ dù đã trả.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Nhận tiền là chứng từ riêng, đối trừ là hành động riêng.** Một lần khách chuyển tiền có thể trả nhiều hóa đơn; một hóa đơn có thể được trả nhiều lần. Tách hai việc để còn đối chiếu được.
 2. **Tiền thu chưa xác định đối tượng không được bỏ mặc.** Khách chuyển khoản không ghi nội dung, hoặc trả thừa — khoản đó phải vào một tài khoản chờ, có người theo dõi, không treo vô hạn.

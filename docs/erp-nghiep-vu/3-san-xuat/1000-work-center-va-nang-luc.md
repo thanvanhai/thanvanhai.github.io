@@ -1,22 +1,22 @@
 ---
 id: work-center-va-nang-luc
-title: "1000 Work Center & năng lực"
+title: "Work Center & năng lực"
 slug: /erp-nghiep-vu/san-xuat/work-center-va-nang-luc
 sidebar_position: 1000
 description: "Khai báo trung tâm công việc, tài nguyên máy và nhân lực, lịch nhà máy và ca kíp, công thức tính năng lực khả dụng, hiệu suất thiết kế và liên kết work center với trung tâm chi phí."
-date: 2026-08-21
+date: 2026-08-18
 last_update:
   date: 2026-11-19
 tags: [erp, manufacturing, work-center, capacity, shifts, cost-center]
 ---
 
-# 1000 Work Center & năng lực
+# Work Center & năng lực
 
 Work Center là nơi nhà xưởng vật lý được số hóa thành **năng lực đo được**: mỗi giờ làm được bao nhiêu, vào lúc nào, với chi phí bao nhiêu. Mọi kế hoạch sản xuất đúng hay sai đều bắt nguồn từ con số này.
 
 Nếu khai năng lực cao hơn thực tế, lịch sản xuất hứa những ngày giao không thực hiện được. Nếu khai thấp hơn, doanh nghiệp từ chối đơn lẽ ra vẫn đáp ứng được.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Work Center là đơn vị năng lực, không phải một cái máy.** Nó gom các tài nguyên có cùng tính chất (dòng máy ép, tổ lắp ráp) và trả lời câu hỏi "mỗi giờ làm được bao nhiêu". Một máy cụ thể chỉ là một **resource** bên trong work center.
 2. **Năng lực = (số đơn vị song song) × (giờ khả dụng theo ca) × (hiệu suất).** Bỏ sót bất kỳ thừa số nào, lịch sản xuất sẽ hứa nhiều hơn thực tế làm được.

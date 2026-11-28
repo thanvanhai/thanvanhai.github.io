@@ -1,17 +1,20 @@
 ---
 id: nguyen-ly-quy-doi-uom
-title: "3020 Nguyên lý quy đổi đơn vị tính (UOM)"
+title: "Nguyên lý quy đổi đơn vị tính (UOM)"
 slug: /erp-nghiep-vu/nen-tang/nguyen-ly-quy-doi-uom
 sidebar_position: 3020
 description: "Vì sao báo cáo ERP lệch tồn kho và giá thành khi trộn đơn vị tính mua, bán và tồn kho; hai cấp quy đổi, lỗi làm tròn và nguyên tắc vàng lấy UOM tồn kho làm gốc."
+date: 2026-07-28
+last_update:
+  date: 2026-11-26
 tags: [erp, uom, inventory, data-integrity]
 ---
 
-# 3020 Nguyên lý quy đổi đơn vị tính (UOM)
+# Nguyên lý quy đổi đơn vị tính (UOM)
 
 Đây là lỗi **không bao giờ báo lỗi**: hệ thống lưu đúng dữ liệu, báo cáo chạy được, số liệu trông hợp lệ — nhưng sai. Và nó sai âm thầm suốt nhiều tháng vì phần lớn mã hàng có hệ số quy đổi bằng 1 nên báo cáo vẫn đúng cho tới khi gặp mã hàng có hệ số khác.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Mọi số lượng phải quy về một đơn vị gốc duy nhất.** Mua theo thùng, bán theo hộp, sản xuất theo cái — nhưng tồn kho chỉ có một con số ở đơn vị nhỏ nhất không chia được.
 2. **Có hai cấp quy đổi:** quy đổi chuẩn dùng chung cho cả nhóm đơn vị (1 tấn = 1.000 kg), và quy đổi đặc thù khai riêng cho từng mã (1 cây thép φ10 dài 12 m, φ16 chỉ dài 11,7 m).

@@ -1,22 +1,22 @@
 ---
 id: dinh-gia-va-bao-cao-kho
-title: "3010 Định giá & báo cáo kho"
+title: "Định giá & báo cáo kho"
 slug: /erp-nghiep-vu/kho/dinh-gia-va-bao-cao-kho
 sidebar_position: 3010
 description: "Ảnh hưởng của phương pháp tính giá tới sổ kho, báo cáo tồn kho - nhập xuất tồn - hàng chậm luân chuyển, chi phí thu mua phân bổ và đối chiếu kho với sổ cái."
-date: 2026-07-29
+date: 2026-08-05
 last_update:
   date: 2026-11-19
 tags: [erp, inventory, valuation, reporting, cogs]
 ---
 
-# 3010 Định giá & báo cáo kho
+# Định giá & báo cáo kho
 
 Kho lưu hai loại dữ liệu song song: **số lượng** và **giá trị**. Sai số lượng thì thấy ngay khi kiểm kê; sai giá trị thì im lặng, chỉ lộ ra khi đối chiếu sổ cái hoặc khi kiểm toán hỏi. Bài này nói về cách giá trị được gắn vào hàng tồn, cách ba báo cáo kho cốt lõi được dựng từ giao dịch, và chỗ nào hay làm lệch giữa kho và kế toán.
 
 ---
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Số lượng và giá trị là hai bài toán, không thể sửa bằng một chỗ.** Báo cáo tồn kho đúng số lượng vẫn có thể sai giá trị, và ngược lại. Khi lệch, phải xác định lệch ở đâu trước khi sửa.
 2. **Mỗi giao dịch mang giá trị tại thời điểm phát sinh, và không bị tính lại theo giá hiện tại.** Nếu giá chính thức chưa có lúc ghi (ví dụ bình quân cả kỳ) thì giao dịch mang giá tạm tính, còn giá chính thức được **ghi bổ sung** bằng một dòng điều chỉnh giá trị riêng, không sửa giao dịch gốc (xem mục 5B). Nhờ vậy báo cáo lịch sử không thay đổi mỗi lần giá nhập thay đổi.

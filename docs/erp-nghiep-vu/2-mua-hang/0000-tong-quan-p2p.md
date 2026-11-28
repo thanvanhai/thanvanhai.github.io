@@ -5,7 +5,7 @@ sidebar_label: Tổng quan Mua hàng
 slug: /mua-hang/tong-quan
 sidebar_position: 0
 description: "Bức tranh toàn cảnh Procure-to-Pay: nhu cầu, chọn nhà cung cấp, đơn mua, nhận hàng, khớp lệnh hóa đơn và công nợ phải trả — cùng ranh giới trách nhiệm với kho và kế toán."
-date: 2026-08-01
+date: 2026-08-06
 last_update:
   date: 2026-11-19
 tags: [erp, procurement, p2p, tong-quan]

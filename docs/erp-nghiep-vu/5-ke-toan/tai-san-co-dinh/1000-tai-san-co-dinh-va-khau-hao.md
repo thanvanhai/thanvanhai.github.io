@@ -1,17 +1,20 @@
 ---
 id: tai-san-co-dinh-va-khau-hao
-title: "1000 Tài sản cố định & khấu hao"
+title: "Tài sản cố định & khấu hao"
 slug: /erp-nghiep-vu/ke-toan/tai-san-co-dinh/tai-san-co-dinh-va-khau-hao
 sidebar_position: 1000
 description: "Vòng đời tài sản cố định: ghi tăng, tài sản dở dang, khấu hao, nhiều sổ khấu hao, nâng cấp và thanh lý."
+date: 2026-10-07
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, fixed-asset, depreciation]
 ---
 
-# 1000 Tài sản cố định & khấu hao
+# Tài sản cố định & khấu hao
 
 Tài sản cố định có một nguyên tắc riêng: **giá trị ghi sổ không nhất thiết bằng giá trị đã trả** — tài sản không khấu hao từ ngày trả tiền mà **từ ngày dùng được**.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Khấu hao bắt đầu từ ngày đưa vào sử dụng, không từ ngày mua hoặc ngày nhận hóa đơn.** Tài sản mua tháng 12 dùng từ tháng 1 thì khấu hao từ tháng 1.
 2. **Nguyên giá hình thành đủ thì mới bắt đầu khấu hao.** Tài sản đang lắp đặt, đang xây dựng chưa đưa vào dùng phải nằm ở tài khoản tài sản dở dang, không khấu hao.

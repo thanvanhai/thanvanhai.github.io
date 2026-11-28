@@ -1,20 +1,20 @@
 ---
 id: giao-hang-va-xuat-kho
-title: "2010 Giao hàng & xuất kho"
+title: "Giao hàng & xuất kho"
 slug: /erp-nghiep-vu/ban-hang/giao-hang-va-xuat-kho
 sidebar_position: 2010
 description: "Chỉ thị chuẩn bị hàng và gom đợt, đóng gói và tích hợp đơn vị vận chuyển, giao dịch xuất kho, xác nhận giao hàng (POD) và thời điểm chuyển quyền sở hữu theo điều kiện giao hàng."
-date: 2026-08-15
+date: 2026-09-07
 last_update:
   date: 2026-11-19
 tags: [erp, sales, shipping, picking, pod, incoterms]
 ---
 
-# 2010 Giao hàng & xuất kho
+# Giao hàng & xuất kho
 
 Đây là **điểm chuyển giao quan trọng nhất trong toàn bộ chuỗi bán hàng**: hàng rời kho của doanh nghiệp, quyền sở hữu có thể chuyển sang khách, và từ đây hệ thống mới được phép ghi giá vốn. Mọi sai lệch ở bước này dẫn tới hai lỗi nghiêm trọng: **ghi doanh thu non** (hàng chưa tới khách đã ghi) hoặc **bán hàng không có thật** (ghi giá vốn mà hàng vẫn còn trong kho).
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Nhặt hàng, xuất kho và giao hàng là ba sự kiện khác nhau.** Nhặt hàng là thao tác của thủ kho trong kho; xuất kho là **giao dịch trừ tồn**; giao hàng là hàng tới tay khách. Gộp ba việc vào một nút bấm khiến không ai biết hàng đang ở đâu.
 2. **Xuất kho và chuyển quyền sở hữu có thể không cùng lúc.** Điều kiện giao hàng quyết định thời điểm chuyển rủi ro và lợi ích. Ghi doanh thu theo ngày xuất kho khi Incoterms là DDP/DAP là **ghi doanh thu non** — hàng còn trên xe, chưa phải của khách.

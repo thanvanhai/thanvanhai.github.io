@@ -1,13 +1,13 @@
 ---
 id: trien-khai-epicor-shot-count-khuon
-title: "9100 Triển khai Epicor: đếm số shot của khuôn"
+title: "Triển khai Epicor: đếm số shot của khuôn"
 slug: /erp-nghiep-vu/san-xuat/trien-khai-epicor-shot-count-khuon
 sidebar_position: 9100
 description: "Case study triển khai trên Epicor 10.2: quản lý khuôn như Equipment, đếm số lần ép tích lũy, tự gán mã khuôn vào công đoạn khi GetDetails, và chặn lập lịch khi khuôn đang bảo trì."
 tags: [erp, manufacturing, epicor, tooling, bpm, shot-count]
 ---
 
-# 9100 Triển khai Epicor: đếm số shot của khuôn
+# Triển khai Epicor: đếm số shot của khuôn
 
 > **Bài này là case study triển khai cụ thể trên Epicor 10.2**, không phải nguyên lý chung. Nguyên lý tính năng lực (máy, người, ca kíp, hiệu suất) nằm ở [Work Center & năng lực](./1000-work-center-va-nang-luc.md); cách khai công đoạn và gán tài nguyên vào routing ở [Routing & công đoạn](./1020-routing-va-cong-doan.md). Nếu hệ thống không dùng Epicor, đọc hai bài kia là đủ.
 
@@ -15,7 +15,7 @@ Khuôn ép nhựa có tuổi thọ tính bằng **số lần ép (shot)**, khôn
 
 Epicor chuẩn không tính shot. Bài này mô tả cách triển khai nó bằng cấu hình có sẵn và BPM.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Khuôn là thiết bị cần bảo trì, không phải resource năng lực.** Epicor, SAP, Odoo đều xếp nó vào phân hệ bảo trì — vì câu hỏi chính là "còn bao nhiêu shot trước khi phải bảo dưỡng", không phải "còn rảnh mấy giờ".
 2. **Khuôn là ràng buộc thứ hai khi lập lịch.** Máy rảnh chưa đủ để chạy — phải có khuôn cùng rảnh. Lịch chỉ xếp được vào **vùng giao thoa** khi cả máy và khuôn cùng khả dụng.

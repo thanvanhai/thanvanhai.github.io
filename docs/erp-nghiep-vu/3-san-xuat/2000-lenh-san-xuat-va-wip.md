@@ -1,22 +1,22 @@
 ---
 id: lenh-san-xuat-va-wip
-title: "2000 Lệnh sản xuất & WIP"
+title: "Lệnh sản xuất & WIP"
 slug: /erp-nghiep-vu/san-xuat/lenh-san-xuat-va-wip
 sidebar_position: 2000
 description: "Phát hành lệnh sản xuất, cấp phát vật tư và backflush, ghi nhận giờ công và giờ máy, phế phẩm và kiểm tra IPQC, nhập kho thành phẩm và đóng lệnh — toàn bộ vòng đời WIP."
-date: 2026-08-26
+date: 2026-08-24
 last_update:
   date: 2026-11-19
 tags: [erp, manufacturing, work-order, wip, backflush, scrap]
 ---
 
-# 2000 Lệnh sản xuất & WIP
+# Lệnh sản xuất & WIP
 
 Tầng kỹ thuật định nghĩa **cách làm**; tầng thực thi ghi nhận **đã làm được bao nhiêu và tốn bao nhiêu**. Mọi con số giá thành đến từ đây — sai ở bước này thì sổ sách đúng cũng vô nghĩa vì dữ liệu gốc đã sai.
 
 Bài này gộp toàn bộ vòng đời một lệnh sản xuất: phát hành → cấp liệu → chạy máy → kiểm tra → nhập kho → đóng lệnh.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **WIP là tài khoản trung gian có thật, phải luôn được theo dõi.** Nguyên vật liệu xuất ra sản xuất chưa phải chi phí — nó đang chuyển từ kho sang dở dang. Chỉ khi nhập thành phẩm hoặc đóng lệnh mới thành chi phí thật.
 2. **Một lệnh sản xuất phải có trạng thái rõ ràng, không nhập nhằng.** Nháp → đã phát hành → đang chạy → hoàn thành một phần → hoàn thành → đóng. Trộn trạng thái làm không biết lệnh nào đang tiêu chi phí.

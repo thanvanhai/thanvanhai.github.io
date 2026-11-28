@@ -1,22 +1,22 @@
 ---
 id: gia-cong-ngoai
-title: "2010 Gia công ngoài"
+title: "Gia công ngoài"
 slug: /erp-nghiep-vu/san-xuat/gia-cong-ngoai
 sidebar_position: 2010
 description: "Gia công ngoài từ góc sản xuất: gửi vật tư cho nhà thầu phụ, theo dõi tồn tại nhà thầu, nhận lại bán thành phẩm, cộng giá trị gia công vào giá thành và kiểm soát hao hụt tại nhà thầu."
-date: 2026-08-27
+date: 2026-08-25
 last_update:
   date: 2026-11-19
 tags: [erp, manufacturing, subcontracting, osp, outside-processing]
 ---
 
-# 2010 Gia công ngoài
+# Gia công ngoài
 
 Có những công đoạn nhà máy không tự làm: nhiệt luyện, xi mạ, sơn tĩnh điện, đúc áp lực. Vật tư rời kho doanh nghiệp, đi qua nhà thầu, quay về với giá trị cao hơn. Trong khoảng giữa đó, **tài sản vẫn là của doanh nghiệp** nhưng nằm ngoài tầm kiểm soát vật lý — đây là vùng rủi ro lớn nhất của mô hình này.
 
 Bài này nhìn từ góc **sản xuất**: gửi gì, theo dõi thế nào, nhận về ra sao. Góc mua hàng (PO dịch vụ, đối soát hóa đơn gia công) ở [Mô hình mua đặc thù](../2-mua-hang/2030-mo-hinh-mua-dac-thu.md).
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Vật tư gửi đi vẫn là tài sản của doanh nghiệp.** Không phải xuất bán. Khi gửi, giá trị chuyển từ kho sang **tồn tại nhà thầu** — không được giảm tài sản, không được ghi chi phí.
 2. **Giá trị nhập về = giá trị vật tư gửi đi + phí gia công.** Đây là công thức quan trọng nhất của bài. Chỉ ghi phí gia công là làm mất giá trị vật tư gốc.

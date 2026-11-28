@@ -1,20 +1,20 @@
 ---
 id: danh-muc-va-chinh-sach-ban
-title: "1000 Danh mục & chính sách bán"
+title: "Danh mục & chính sách bán"
 slug: /erp-nghiep-vu/ban-hang/danh-muc-va-chinh-sach-ban
 sidebar_position: 1000
 description: "Hồ sơ khách hàng và phân nhóm, hạn mức tín dụng và khóa đơn, động cơ tính giá đa kênh, chống cộng dồn chiết khấu, khuyến mãi, rebate và phê duyệt đơn tự động."
-date: 2026-08-13
+date: 2026-09-04
 last_update:
   date: 2026-11-19
 tags: [erp, sales, customer-master, credit-limit, pricing, discount]
 ---
 
-# 1000 Danh mục & chính sách bán
+# Danh mục & chính sách bán
 
 Ba quyết định phải có trước khi bán được món hàng đầu tiên: **bán cho ai với hạn mức bao nhiêu**, **bán với giá nào**, và **giảm giá tối đa đến đâu**. Cả ba đều là dữ liệu nền — sai ở đây thì mọi đơn hàng phía sau đều sai, và sửa lại rất tốn kém vì không thể hồi tố các đơn đã xuất.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Khách hàng là một pháp nhân, không phải một cái tên.** Một khách gắn với mã số thuế, địa chỉ xuất hóa đơn, địa chỉ giao hàng, điều khoản thanh toán. Tạo trùng hai mã cho cùng một khách dẫn tới hạn mức bị chia đôi, công nợ không thấy hết.
 2. **Hạn mức tín dụng là rào chắn, không phải lời khuyên.** Nếu hệ thống chỉ cảnh báo mà vẫn cho bán, nhân viên bán hàng luôn chọn bán — vì doanh số của họ tính theo đơn đã ký, không theo tiền đã thu.

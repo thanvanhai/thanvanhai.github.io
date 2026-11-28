@@ -1,9 +1,12 @@
 ---
 id: to-chuc-va-phap-nhan
-title: "1000 Tổ chức & Pháp nhân (Legal Entity / Ledger)"
+title: "Tổ chức & Pháp nhân (Legal Entity / Ledger)"
 slug: /erp-nghiep-vu/nen-tang/to-chuc-va-phap-nhan
 sidebar_position: 1000
 description: "Mô hình phân cấp tổ chức ERP (Legal Entity, Ledger, Operating Unit, Warehouse, Cost Center) và nguyên tắc tách/gộp sổ cái."
+date: 2026-07-22
+last_update:
+  date: 2026-11-28
 tags: [erp, legal-entity, ledger]
 ---
 
@@ -13,7 +16,7 @@ Quyết định **đầu tiên và quan trọng nhất** khi triển khai phân 
 
 Đổi kiến trúc sau khi đã có giao dịch thực tế là việc cực kỳ tốn kém — đòi hỏi migrate toàn bộ dữ liệu lịch sử. Vì vậy phải chốt **trước khi thiết kế Hệ thống tài khoản**.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Đây không phải một câu hỏi duy nhất cho cả tập đoàn, mà là câu hỏi lặp lại ở từng nhóm.** Tổ chức đa quốc gia có nhiều lớp phân cấp hơn người mới triển khai thường hình dung.
 2. **Ba cấp cơ bản:** Tập đoàn (chỉ tồn tại trên báo cáo hợp nhất, không phát sinh giao dịch) → Quốc gia (currency, calendar, chuẩn mực kế toán) → Pháp nhân (nơi giao dịch thực sự phát sinh).
@@ -121,7 +124,8 @@ Nhờ gộp 2 pháp nhân cùng ngành SX ở Quốc gia 1, giảm từ 6 xuốn
 | Bảng | Vai trò |
 |---|---|
 | `gl_ledgers` | Thông tin bản thân sổ cái |
-| `xle_entity_profiles` | Thông tin pháp nhân, cột `territory_code` xác định quốc gia |
+| `xle_entity_profiles` | Thông tin pháp nhân, cột `geography_id` liên kết sang `hz_geographies` để xác định quốc gia |
+| `hz_geographies` | Danh mục địa lý, cột `country_code` cho biết mã quốc gia |
 | `gl_ledger_norm_seg_vals` | Bảng trung gian — mỗi dòng là một cặp gán Sổ + Pháp nhân + Giá trị Balancing Segment |
 | `hr_operating_units` | Đơn vị vận hành (AP/AR/PO), gắn cố định một sổ và một pháp nhân mặc định |
 
@@ -129,6 +133,7 @@ Nhờ gộp 2 pháp nhân cùng ngành SX ở Quốc gia 1, giảm từ 6 xuốn
 erDiagram
   GL_LEDGERS ||--o{ GL_LEDGER_NORM_SEG_VALS : "1 so co nhieu dong gan"
   XLE_ENTITY_PROFILES ||--o{ GL_LEDGER_NORM_SEG_VALS : "1 phap nhan co the xuat hien nhieu dong"
+  HZ_GEOGRAPHIES ||--o{ XLE_ENTITY_PROFILES : "geography_id"
   GL_LEDGERS ||--o{ HR_OPERATING_UNITS : "set_of_books_id"
   XLE_ENTITY_PROFILES ||--o{ HR_OPERATING_UNITS : "default_legal_context_id"
 
@@ -137,29 +142,54 @@ erDiagram
     varchar name
     varchar currency_code
   }
+  HZ_GEOGRAPHIES {
+    number geography_id PK
+    varchar country_code
+  }
   XLE_ENTITY_PROFILES {
     number legal_entity_id PK
     varchar name
-    varchar territory_code
+    number geography_id FK
   }
   GL_LEDGER_NORM_SEG_VALS {
-    number record_id PK
     number ledger_id FK
     number legal_entity_id FK
+    varchar segment_type_code
     varchar segment_value
   }
 ```
 
+**Kiểm tra hiện trạng: mỗi quốc gia đang có bao nhiêu pháp nhân trong từng sổ.** Có hai cách, cùng cho kết quả tương đương.
+
+**Cách 1 — dùng view chuẩn `xle_firstparty_information_v` (ngắn gọn, ít join):**
+
 ```sql
--- Kiểm tra hiện trạng: mỗi quốc gia đang có bao nhiêu pháp nhân trong từng sổ
-SELECT le.territory_code                      AS quoc_gia,
+SELECT le.country                             AS quoc_gia,
+       gbsv.ledger_id,
+       COUNT(DISTINCT gbsv.segment_value)     AS so_phap_nhan_trong_so
+FROM   gl_ledger_norm_seg_vals gbsv
+JOIN   xle_firstparty_information_v le ON le.legal_entity_id = gbsv.legal_entity_id
+GROUP  BY le.country, gbsv.ledger_id
+ORDER  BY quoc_gia, gbsv.ledger_id;
+```
+
+**Cách 2 — join trực tiếp `hz_geographies`:**
+
+```sql
+SELECT hg.country_code                        AS quoc_gia,
        gbsv.ledger_id,
        COUNT(DISTINCT gbsv.segment_value)     AS so_phap_nhan_trong_so
 FROM   gl_ledger_norm_seg_vals gbsv
 JOIN   xle_entity_profiles le ON le.legal_entity_id = gbsv.legal_entity_id
-GROUP  BY le.territory_code, gbsv.ledger_id
+JOIN   hz_geographies hg      ON hg.geography_id = le.geography_id
+GROUP  BY hg.country_code, gbsv.ledger_id
 ORDER  BY quoc_gia, gbsv.ledger_id;
 ```
+
+:::note Lưu ý khi chạy truy vấn
+- Tên cột của view `xle_firstparty_information_v` có thể khác nhau giữa các phiên bản R12 và Cloud. Chạy `DESC xle_firstparty_information_v` để kiểm tra trước.
+- Bảng `gl_ledger_norm_seg_vals` có cột `segment_type_code` phân biệt Balancing Segment với Management Segment. Nếu sổ có gán cả hai loại, hãy chạy `SELECT DISTINCT segment_type_code FROM gl_ledger_norm_seg_vals` rồi thêm điều kiện lọc phù hợp, tránh đếm lẫn.
+:::
 
 **Operating Unit độc lập với quyết định A/B ở tầng sổ.** Dù chọn gộp hay tách, mỗi pháp nhân **vẫn có Operating Unit riêng** — hóa đơn AP/AR của pháp nhân này vẫn tách bạch hoàn toàn qua `ORG_ID`. Gộp sổ chỉ giảm số "cuốn sổ cái" cần quản lý ở tầng kế toán tổng hợp, còn tầng vận hành hằng ngày (nhập hóa đơn, đơn hàng) vẫn tách theo OU.
 

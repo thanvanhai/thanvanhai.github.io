@@ -1,20 +1,20 @@
 ---
 id: routing-va-cong-doan
-title: "1020 Routing & công đoạn"
+title: "Routing & công đoạn"
 slug: /erp-nghiep-vu/san-xuat/routing-va-cong-doan
 sidebar_position: 1020
 description: "Thiết lập quy trình công nghệ, công đoạn chuẩn, bốn loại thời gian định mức (setup, run, wait, transit), công đoạn gia công ngoài, routing thay thế và điểm kiểm tra chất lượng."
-date: 2026-08-23
+date: 2026-08-20
 last_update:
   date: 2026-11-19
 tags: [erp, manufacturing, routing, operation, lead-time, subcontracting]
 ---
 
-# 1020 Routing & công đoạn
+# Routing & công đoạn
 
 BOM nói sản phẩm **cần gì**; Routing nói sản phẩm **được làm thế nào và mất bao lâu**. Sai ở Routing thì hoặc hứa ngày giao không thực hiện được, hoặc giá thành thiếu giờ công và giờ máy.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Tổng thời gian sản xuất không chỉ là thời gian máy chạy.** Có bốn loại thời gian trên mỗi công đoạn: **chuẩn bị máy (setup)**, **gia công (run)**, **chờ (wait)**, và **vận chuyển (transit)**. Bỏ ba loại sau, lead time trên hệ thống ngắn hơn thực tế rất nhiều.
 2. **Setup cố định theo lô, Run tỷ lệ theo số lượng.** Gá đặt máy mất 2 giờ dù làm 1 cái hay 1.000 cái; gia công mất 0,02 giờ mỗi cái. Gộp hai loại này làm sai cả lập lịch lẫn giá thành khi quy mô lô thay đổi.

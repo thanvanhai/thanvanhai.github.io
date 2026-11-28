@@ -1,22 +1,22 @@
 ---
 id: tiep-nhan-don-va-atp
-title: "2000 Tiếp nhận đơn & ATP"
+title: "Tiếp nhận đơn & ATP"
 slug: /erp-nghiep-vu/ban-hang/tiep-nhan-don-va-atp
 sidebar_position: 2000
 description: "Báo giá và chuyển đổi sang đơn bán, đồng bộ đơn đa kênh, đơn đặt trước và backorder, kiểm tra khả năng cung ứng theo trục thời gian (ATP), khóa tín dụng và phê duyệt đơn tự động."
-date: 2026-08-14
+date: 2026-09-05
 last_update:
   date: 2026-11-19
 tags: [erp, sales, sales-order, atp, credit-check, backorder]
 ---
 
-# 2000 Tiếp nhận đơn & ATP
+# Tiếp nhận đơn & ATP
 
 Đơn bán hàng là **cam kết hai chiều**: khách cam kết mua, doanh nghiệp cam kết giao. Hầu hết tranh chấp bán hàng bắt nguồn từ bước này — hoặc hứa giao hàng không có, hoặc hứa giá không có phép, hoặc nhận đơn của khách không đủ khả năng thanh toán.
 
 Bài này nói về ba chốt chặn khi xác nhận đơn: **giá**, **tín dụng**, và **khả năng cung ứng (ATP)**.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Báo giá là văn bản có hạn, không phải bảng giá tham khảo.** Giá chào gắn với thời điểm và điều kiện thị trường. Dùng báo giá hết hạn để tạo đơn là tự nguyện bán lỗ.
 2. **Chuyển báo giá sang đơn phải mang theo dữ liệu, không gõ lại.** Nhập lại bằng tay dẫn tới lệch giá, lệch số lượng, lệch điều khoản — và không dòng nào có dấu vết đối chiếu.

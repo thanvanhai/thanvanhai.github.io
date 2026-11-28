@@ -1,20 +1,20 @@
 ---
 id: rma-va-doi-tra
-title: "2020 RMA & đổi trả"
+title: "RMA & đổi trả"
 slug: /erp-nghiep-vu/ban-hang/rma-va-doi-tra
 sidebar_position: 2020
 description: "Phê duyệt yêu cầu trả hàng có hạn hiệu lực, nhận hàng trả về kho, giảm trừ công nợ bằng credit memo, xử lý đổi hàng và bồi thường hư hỏng, phòng chống trả hàng khống."
-date: 2026-08-16
+date: 2026-09-08
 last_update:
   date: 2026-11-19
 tags: [erp, sales, rma, return, credit-memo, reverse-logistics]
 ---
 
-# 2020 RMA & đổi trả
+# RMA & đổi trả
 
 Khách trả hàng là nghiệp vụ bình thường, nhưng nó là **cửa sau của dòng tiền**: nếu để mở, doanh nghiệp vừa mất hàng vừa mất tiền, và trong nhiều trường hợp không có căn cứ để từ chối. Ba câu hỏi phải trả lời được trước khi nhận lại hàng: **khách có được phép trả không**, **hàng trả về có thật không**, và **giảm trừ công nợ bao nhiêu**.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Không có RMA thì không nhận hàng trả.** Hàng về kho mà không tham chiếu được RMA là hàng trả khống, hàng cũ đổi mới, hoặc hàng không phải do doanh nghiệp bán. Thủ kho không có cách nào phân biệt nếu không có chứng từ.
 2. **RMA phải có hạn hiệu lực.** Số RMA không hết hạn sẽ tồn đọng vĩnh viễn ở trạng thái "chờ nhận hàng", làm sai lệch mọi báo cáo dự kiến tồn kho trả về.

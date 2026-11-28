@@ -5,7 +5,7 @@ sidebar_label: Tổng quan Sản xuất
 slug: /san-xuat/tong-quan
 sidebar_position: 0
 description: "Bức tranh toàn cảnh Plan-to-Produce: kỹ thuật sản xuất (Work Center, BOM, Routing, phiên bản, ECO), thực thi (lệnh sản xuất, WIP, gia công ngoài) và giá thành — nằm giữa mua hàng và bán hàng."
-date: 2026-08-20
+date: 2026-08-17
 last_update:
   date: 2026-11-19
 tags: [erp, manufacturing, mfg, tong-quan]

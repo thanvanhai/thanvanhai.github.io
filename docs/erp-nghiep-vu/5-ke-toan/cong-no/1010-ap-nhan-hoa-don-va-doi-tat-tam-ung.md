@@ -1,19 +1,22 @@
 ---
 id: ap-nhan-hoa-don-va-doi-tat-tam-ung
-title: "1010 AP: Nhận hóa đơn & đối tất tạm ứng"
+title: "AP: Nhận hóa đơn & đối tất tạm ứng"
 slug: /erp-nghiep-vu/ke-toan/cong-no/ap-nhan-hoa-don-va-doi-tat-tam-ung
 sidebar_position: 1010
 description: "Ghi nhận hóa đơn nhà cung cấp có PO và không PO, hóa đơn dịch vụ, hóa đơn điều chỉnh, chặn trùng lặp, và quy trình đối tất khoản ứng trước với hóa đơn chính thức."
+date: 2026-09-16
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, ap, invoice, prepayment, duplicate-invoice]
 ---
 
-# 1010 AP: Nhận hóa đơn & đối tất tạm ứng
+# AP: Nhận hóa đơn & đối tất tạm ứng
 
 Hóa đơn là chứng từ **duy nhất** biến khoản nợ tiềm tàng thành nợ chính thức có hạn trả. Nhưng nó cũng là cửa ngõ của hai rủi ro lớn nhất trong toàn bộ chuỗi chi tiền: **nhập trùng** và **ghi nợ cho thứ chưa từng nhận**.
 
 Bài này nói về cách kiểm soát hai rủi ro đó, cùng cách đối tất khoản ứng trước.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Có hai loại hóa đơn, và chúng cần hai mức kiểm soát khác nhau.** Hóa đơn có PO phải khớp lệnh; hóa đơn không PO (điện, nước, thuê văn phòng, dịch vụ phát sinh) không có gì để khớp, nên phải kiểm soát bằng **người duyệt và hạn mức**, không bằng đối chiếu chứng từ.
 2. **Trùng số hóa đơn là rủi ro số một.** Cùng một nhà cung cấp, cùng một số hóa đơn, nhập hai lần → trả tiền hai lần. Hệ thống phải chặn ở tầng dữ liệu, không dựa vào trí nhớ người nhập.

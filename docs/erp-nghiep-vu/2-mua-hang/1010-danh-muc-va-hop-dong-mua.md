@@ -1,22 +1,22 @@
 ---
 id: danh-muc-va-hop-dong-mua
-title: "1010 Danh mục & hợp đồng mua"
+title: "Danh mục & hợp đồng mua"
 slug: /erp-nghiep-vu/mua-hang/danh-muc-va-hop-dong-mua
 sidebar_position: 1010
 description: "Hồ sơ nhà cung cấp, bảng giá mua, thỏa thuận khung, vòng đời hợp đồng (sửa đổi, gia hạn, kiểm soát hạn mức), quy tắc xác định nguồn cung và phân bổ tỷ lệ, quy tắc thuế đầu vào."
-date: 2026-08-03
+date: 2026-08-09
 last_update:
   date: 2026-11-19
 tags: [erp, procurement, supplier-master, contract, sourcing, quota]
 ---
 
-# 1010 Danh mục & hợp đồng mua
+# Danh mục & hợp đồng mua
 
 Trước khi có thể đặt hàng, hệ thống phải biết ba thứ: **mua của ai**, **giá bao nhiêu**, và **được mua tối đa bao nhiêu**. Ba câu trả lời này nằm ở ba nơi khác nhau — hồ sơ nhà cung cấp, bảng giá/hợp đồng, và quy tắc nguồn cung — và cả ba đều phải thống nhất thì đơn mua mới đúng ngay từ lần đầu.
 
 Bài này gom toàn bộ "dữ liệu nền của việc mua" vào một chỗ.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Nhà cung cấp là một thực thể pháp lý, không phải một cái tên.** Một mã nhà cung cấp gắn với mã số thuế, địa chỉ xuất hóa đơn, tài khoản ngân hàng và điều khoản thanh toán. Tạo trùng hai mã cho cùng một công ty dẫn tới công nợ bị xé làm hai nơi.
 2. **Giá phải có nguồn gốc, không phải gõ tay mỗi lần.** Giá trong hệ thống đến từ ba nguồn theo thứ tự ưu tiên: hợp đồng khung → bảng giá thỏa thuận → báo giá gần nhất. Giá nhập tay là ngoại lệ có phê duyệt, không phải mặc định.

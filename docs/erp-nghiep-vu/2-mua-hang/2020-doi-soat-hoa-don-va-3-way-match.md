@@ -1,22 +1,22 @@
 ---
 id: doi-soat-hoa-don-va-3-way-match
-title: "2020 Đối soát hóa đơn & 3-Way Match"
+title: "Đối soát hóa đơn & 3-Way Match"
 slug: /erp-nghiep-vu/mua-hang/doi-soat-hoa-don-va-3-way-match
 sidebar_position: 2020
 description: "Nguyên lý khớp lệnh 2/3/4 chiều giữa đơn mua, phiếu nhận và hóa đơn; dung sai giá và số lượng; cơ chế khóa và mở khóa thanh toán; xử lý sai lệch đơn giá, số lượng và tỷ giá."
-date: 2026-08-06
+date: 2026-08-12
 last_update:
   date: 2026-11-19
 tags: [erp, procurement, invoice-match, three-way-match, tolerance, hold]
 ---
 
-# 2020 Đối soát hóa đơn & 3-Way Match
+# Đối soát hóa đơn & 3-Way Match
 
 Đây là **chốt chặn cuối cùng của dòng tiền ra**. Phía trước, doanh nghiệp đã kiểm soát *mình muốn mua gì* (yêu cầu), *mình đặt mua gì* (đơn mua) và *mình nhận được gì* (phiếu nhận). Bước này kiểm tra *nhà cung cấp đang yêu cầu thanh toán cho cái gì* — và đó là câu hỏi khác với cả ba câu trước.
 
 Khớp lệnh trả lời một câu duy nhất: **hóa đơn này có trả cho đúng thứ ta đặt và đúng lượng ta nhận không?**
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Có bốn cách khớp, chọn theo bản chất hàng hóa.** Hàng lưu kho cần khớp 3 chiều (đặt – nhận – hóa đơn). Dịch vụ không qua kho chỉ khớp 2 chiều (đặt – hóa đơn). Hàng yêu cầu kiểm định nghiêm ngặt cần khớp 4 chiều (thêm kết quả QC). Chọn sai cách khớp là hoặc trả tiền cho hàng không có, hoặc chặn tiền oan.
 2. **So khớp trên giá trị trước thuế.** Thuế GTGT tách riêng khỏi phép so khớp số lượng/đơn giá, vì thuế suất có thể khác nhau giữa các dòng và thay đổi theo thời điểm.

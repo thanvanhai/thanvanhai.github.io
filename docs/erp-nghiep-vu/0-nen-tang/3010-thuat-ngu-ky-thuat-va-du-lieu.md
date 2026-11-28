@@ -1,17 +1,20 @@
 ---
 id: thuat-ngu-ky-thuat-va-du-lieu
-title: "3010 Thuật ngữ kỹ thuật & dữ liệu chuẩn"
+title: "Thuật ngữ kỹ thuật & dữ liệu chuẩn"
 slug: /erp-nghiep-vu/nen-tang/thuat-ngu-ky-thuat-va-du-lieu
 sidebar_position: 3010
 description: "Bảng thuật ngữ kỹ thuật dùng chung cho mọi bài trong tài liệu: trạng thái chứng từ, loại chuyển động kho, cờ kiểm soát, định danh đối tượng và quy ước đặt tên."
+date: 2026-07-27
+last_update:
+  date: 2026-11-26
 tags: [erp, glossary, du-lieu, quy-uoc]
 ---
 
-# 3010 Thuật ngữ kỹ thuật & dữ liệu chuẩn
+# Thuật ngữ kỹ thuật & dữ liệu chuẩn
 
 Khi một bài viết nói "chứng từ ở trạng thái `CONFIRMED`" hay "giao dịch có cờ `Is_Logical`", phải có một chỗ định nghĩa các giá trị đó một lần. Đây là chỗ đó.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Trạng thái chứng từ phải hữu hạn và có ý nghĩa nghiệp vụ.** Một chứng từ không thể có 20 trạng thái mà nửa số đó ai cũng không biết dùng khi nào.
 2. **Trạng thái chỉ được đi một chiều, trừ khi có quy trình rõ ràng cho chiều ngược lại.** Cho phép nhảy tự do giữa các trạng thái là bỏ mất kiểm soát quy trình.

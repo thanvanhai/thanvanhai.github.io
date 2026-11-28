@@ -1,17 +1,20 @@
 ---
 id: ap-bay-va-kiem-soat
-title: "9000 AP: Bẫy & kiểm soát"
+title: "AP: Bẫy & kiểm soát"
 slug: /erp-nghiep-vu/ke-toan/cong-no/ap-bay-va-kiem-soat
 sidebar_position: 9000
 description: "Các bẫy phổ biến trong công nợ phải trả: nhập trùng hóa đơn, khớp một lô nhận cho nhiều hóa đơn, tài khoản trung gian treo, mở khóa không lưu vết và vi phạm phân tách nhiệm vụ."
+date: 2026-09-24
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, ap, sod, kiem-soat]
 ---
 
-# 9000 AP: Bẫy & kiểm soát
+# AP: Bẫy & kiểm soát
 
 Bài này gom các lỗi lặp lại ở nhiều doanh nghiệp và nhiều hệ thống khác nhau. Điểm chung: **hệ thống không báo lỗi khi chúng xảy ra** — chỉ phát hiện khi đối chiếu công nợ hoặc kiểm toán.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Bốn khe hở lớn nhất của AP:** nhập trùng hóa đơn, khớp một lô nhận cho nhiều hóa đơn, tài khoản trung gian treo, và cùng một người làm nhiều vai trò.
 2. **Mỗi khe hở cần một ràng buộc ở tầng dữ liệu, không phải quy trình nhắc nhở.** Nhắc người dùng "nhớ kiểm tra trùng" là vô hiệu khi có một hóa đơn thứ hai đúng thật.

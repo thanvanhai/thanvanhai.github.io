@@ -1,16 +1,16 @@
 ---
 id: hach-toan-va-tai-khoan-trung-gian
-title: "1000 Hạch toán & tài khoản trung gian"
+title: "Hạch toán & tài khoản trung gian"
 slug: /erp-nghiep-vu/ke-toan/tong-hop/hach-toan-va-tai-khoan-trung-gian
 sidebar_position: 1000
 description: "Bài gốc về hạch toán các khoản trung gian trong chuỗi mua hàng - kho: nhận hàng chưa hóa đơn (GR/IR), hóa đơn trước hàng, hàng đi đường, chi phí mua hàng (landed cost), phải trả dịch vụ chưa hóa đơn, chênh lệch giá, nguyên tắc tất toán và trình bày báo cáo tài chính. Tài khoản định nghĩa theo chức năng, số hiệu đối chiếu theo hệ thống tài khoản đang áp dụng."
-date: 2026-11-17
+date: 2026-09-28
 last_update:
   date: 2026-11-17
 tags: [erp, finance, gr-ir, accrual, landed-cost, tai-khoan]
 ---
 
-# 1000 Hạch toán & tài khoản trung gian
+# Hạch toán & tài khoản trung gian
 
 Đây là **bài gốc** về các tài khoản trung gian. Mọi bài khác (nhận hàng, đối soát hóa đơn, AP, kho, giá vốn, đóng kỳ) chỉ **dẫn link** về đây và không định nghĩa lại. Đó là cách chống trùng và chống mâu thuẫn trong cách hạch toán.
 
@@ -20,7 +20,7 @@ tags: [erp, finance, gr-ir, accrual, landed-cost, tai-khoan]
 
 ---
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Sự kiện kinh tế phải được ghi nhận đúng kỳ phát sinh, kể cả khi chứng từ chưa đủ.** Hàng đã về nhưng chưa có hóa đơn vẫn là tài sản của doanh nghiệp và vẫn là nghĩa vụ phải trả, nên phải ghi nhận ngay, không chờ hóa đơn.
 2. **Chưa đủ căn cứ để ghi công nợ chính thức.** Giá và số lượng trên hóa đơn có thể khác PO và phiếu nhận. Vì vậy cần một **tài khoản trung gian** hứng khoản chưa chốt này.

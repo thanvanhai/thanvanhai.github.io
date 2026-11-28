@@ -1,20 +1,20 @@
 ---
 id: gia-thanh-san-xuat
-title: "2020 Giá thành sản xuất"
+title: "Giá thành sản xuất"
 slug: /erp-nghiep-vu/san-xuat/gia-thanh-san-xuat
 sidebar_position: 2020
 description: "Cuộn giá thành định mức từ BOM và Routing, tập hợp chi phí thực tế vào WIP, ba loại chênh lệch và cách phân tích, kết chuyển thành phẩm và xử lý chi phí chung chưa phân bổ."
-date: 2026-08-28
+date: 2026-08-26
 last_update:
   date: 2026-11-19
 tags: [erp, manufacturing, costing, variance, standard-cost, overhead]
 ---
 
-# 2020 Giá thành sản xuất
+# Giá thành sản xuất
 
 Giá thành là **nơi mọi sai sót của sản xuất đổ về**. Định mức BOM sai → chênh lệch vật tư. Routing sai → chênh lệch giờ công. Thiếu phân bổ chi phí chung → thành phẩm rẻ giả, lãi ảo. Bài này nói cách tập hợp chi phí, tính ba loại chênh lệch và kết chuyển thành phẩm đúng.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Có hai mô hình giá thành, và phải chọn một: giá thực tế hoặc giá tiêu chuẩn.** Không có mô hình thứ ba, và không trộn hai mô hình trong cùng một mã hàng.
 2. **Giá thành có ba thành phần, không phải một.** Nguyên vật liệu trực tiếp, nhân công trực tiếp, chi phí sản xuất chung. Thiếu chi phí chung là lỗi phổ biến nhất — thành phẩm rẻ giả, lãi báo cáo cao hơn thực.

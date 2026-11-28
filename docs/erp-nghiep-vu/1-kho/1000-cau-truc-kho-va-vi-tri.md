@@ -1,16 +1,16 @@
 ---
 id: cau-truc-kho-va-vi-tri
-title: "1000 Cấu trúc kho & vị trí"
+title: "Cấu trúc kho & vị trí"
 slug: /erp-nghiep-vu/kho/cau-truc-kho-va-vi-tri
 sidebar_position: 1000
 description: "Thiết kế cây kho nhiều tầng: công ty, site, kho, khu vực, dãy, kệ, ô; phân biệt kho chính với các loại kho đặc biệt (khu chờ kiểm, khu biệt trữ, ký gửi, hàng đi đường) và nguyên tắc gán vị trí khi nhập hàng."
-date: 2026-07-23
+date: 2026-07-30
 last_update:
-  date: 2026-11-19
+  date: 2026-11-28
 tags: [erp, inventory, warehouse, bin, location]
 ---
 
-# 1000 Cấu trúc kho & vị trí
+# Cấu trúc kho & vị trí
 
 Trước khi ghi được giao dịch kho đầu tiên, hệ thống phải trả lời được một câu: **hàng này nằm ở đâu**. Câu trả lời không phải "trong kho" — mà phải chính xác tới mức một người khác có thể đi tới và lấy đúng món hàng đó.
 
@@ -18,7 +18,7 @@ Bài này nói về cách mô hình hóa không gian kho trong hệ thống ERP,
 
 ---
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Kho là một cây phân cấp, không phải một danh sách.** Cấp trên bao cấp dưới, và mỗi tầng trả lời một loại câu hỏi khác nhau: pháp nhân nào sở hữu, hàng ở cơ sở nào, ở kho nào, ở khu nào, ở ô nào.
 2. **Độ chi tiết của vị trí phải khớp với cách doanh nghiệp thực sự lấy hàng.** Kho nhỏ lấy hàng bằng mắt thì dừng ở mức kho. Kho có hàng nghìn ô kệ thì phải xuống mức ô — nếu không, người lấy hàng sẽ ghi ô sai và tồn kho mất tin cậy ngay từ giao dịch đầu tiên.
@@ -81,7 +81,7 @@ Năm loại kho trong sơ đồ đều dùng chung một cơ chế ghi giao dị
 | Chỉ định vị trí khi xuất hàng | ✅ cấp phát bin cụ thể | — | Cấp phát bin cho cấp liệu | Đề xuất kho theo đơn | — |
 | Khóa ô kệ khi kiểm kê | ✅ sở hữu | — | — | — | — |
 | Mapping kho sang tài khoản kế toán | Cung cấp danh mục kho | — | — | — | ✅ gán tài khoản theo kho/nhóm hàng |
-| Điều chuyển giữa các kho | ✅ thực hiện | — | — | — | Nhận bút toán khi khác pháp nhân, khác tài khoản tồn kho hoặc có hàng đang đi đường (xem [3000 mục 3](./2000-giao-dich-nhap-xuat-chuyen.md)) |
+| Điều chuyển giữa các kho | ✅ thực hiện | — | — | — | Nhận bút toán khi khác pháp nhân, khác tài khoản tồn kho hoặc có hàng đang đi đường (xem [Giao dịch nhập, xuất & chuyển, mục 3](./2000-giao-dich-nhap-xuat-chuyen.md)) |
 
 **Quy tắc phân quyền:** cây kho là **danh mục nền** — thay đổi nó ảnh hưởng tới mọi giao dịch đã và sẽ phát sinh. Chỉ một nhóm người được tạo/sửa mã kho, và mọi thay đổi phải có hiệu lực theo ngày, không ghi đè lịch sử.
 
@@ -92,7 +92,7 @@ Cấu trúc kho tự nó không sinh bút toán. Nhưng nó quyết định **t�
 - **Kho chính** của một nhà máy thường map sang tài khoản tồn kho theo nhóm vật tư.
 - **Khu chờ kiểm và khu biệt trữ:** tài khoản phụ thuộc cấu hình ghi nhận. Nếu ghi nhận khi nhận hàng, giá trị nằm ở tài khoản hàng chờ kiểm và chỉ chuyển sang tài khoản tồn kho ở bước nhập kho. Nếu ghi nhận khi nhập kho, chưa có bút toán nào. Xem [Nhận hàng & kiểm tra chất lượng](../2-mua-hang/2010-nhan-hang-va-kiem-qc.md).
 - **Kho ký gửi** **không** map sang tài khoản tài sản — đó là hàng của nhà cung cấp, chỉ ghi nhận số lượng và theo dõi công nợ khi tiêu dùng.
-- **Kho hàng đi đường:** với hàng mua từ nhà cung cấp, chỉ ghi vào tài khoản hàng mua đang đi đường khi điều kiện giao hàng đã chuyển rủi ro và quyền kiểm soát hàng cho mình trước lúc hàng tới kho (thường gặp ở điều kiện giao tại điểm đi, như FOB hay CIF theo Incoterms). Nếu điều kiện giao là giao tại kho người mua (như DAP) thì chưa ghi nhận cho tới khi hàng tới. Với hàng chuyển giữa hai kho của mình, hàng luôn là tài sản của mình nên ghi qua tài khoản hàng đang đi đường cho tới khi bên nhận xác nhận (xem [3000 mục 3](./2000-giao-dich-nhap-xuat-chuyen.md)). Điều kiện cụ thể do kế toán xác nhận theo hợp đồng.
+- **Kho hàng đi đường:** với hàng mua từ nhà cung cấp, chỉ ghi vào tài khoản hàng mua đang đi đường khi điều kiện giao hàng đã chuyển rủi ro và quyền kiểm soát hàng cho mình trước lúc hàng tới kho (thường gặp ở điều kiện giao tại điểm đi, như FOB hay CIF theo Incoterms). Nếu điều kiện giao là giao tại kho người mua (như DAP) thì chưa ghi nhận cho tới khi hàng tới. Với hàng chuyển giữa hai kho của mình, hàng luôn là tài sản của mình nên ghi qua tài khoản hàng đang đi đường cho tới khi bên nhận xác nhận (xem [Giao dịch nhập, xuất & chuyển, mục 3](./2000-giao-dich-nhap-xuat-chuyen.md)). Điều kiện cụ thể do kế toán xác nhận theo hợp đồng.
 
 Bản đồ tài khoản và nguyên tắc tất toán nằm duy nhất tại [Hạch toán & tài khoản trung gian](../5-ke-toan/ke-toan-tong-hop/1000-hach-toan-va-tai-khoan-trung-gian.md).
 
@@ -120,14 +120,16 @@ Bản đồ tài khoản và nguyên tắc tất toán nằm duy nhất tại [H
 | Cấp | Oracle EBS R12 | Epicor ERP | SAP S/4HANA | Odoo |
 |---|---|---|---|---|
 | Pháp nhân | Operating Unit / Legal Entity | Company | Company Code | Company |
-| Cơ sở | Organization (Inventory Org) | Site | Plant | Warehouse group |
+| Cơ sở | Organization (Inventory Org) | Site | Plant | Warehouse (`stock.warehouse`) |
 | Kho | Subinventory | Warehouse | Storage Location (SLoc) | Location (internal) |
 | Khu vực | Subinventory + Locator nhóm | `WhseBin` theo prefix | SLoc + Storage Section | Location con |
 | Ô kệ | Locator (Inventory Location) | Bin (`PartBin`) | Storage Bin (WM) | Location chi tiết |
 | Khu chờ kiểm | Receiving Inspection (khu nhận, ngoài subinventory thường) `*` | Kho/bin kiểm tra riêng `*` | Cơ chế 1: GR blocked stock. Cơ chế 2: stock in quality inspection (xem [Nhận hàng & kiểm tra chất lượng](../2-mua-hang/2010-nhan-hang-va-kiem-qc.md)) | Vị trí Input / Quality |
-| Kho ký gửi | Consigned Subinventory | Consignment Warehouse | SLoc đặc biệt + `Special Stock` | Location với `owner_id` khác |
+| Kho ký gửi | Consigned Subinventory `*` | Consignment Warehouse `*` | SLoc đặc biệt + `Special Stock` | Hàng tồn (quant) có `owner_id` khác `*` |
 
 ### B. Hệ thống tự xây — thiết kế tối thiểu
+
+> **Lưu ý:** đoạn mã dưới đây là **gợi ý thiết kế** cho hệ thống tự xây, viết theo cú pháp SQL Server. Cần điều chỉnh kiểu dữ liệu và tên bảng theo hệ quản trị đang dùng.
 
 ```sql
 CREATE TABLE Inv_Location (
@@ -138,7 +140,7 @@ CREATE TABLE Inv_Location (
     Legal_Entity_ID VARCHAR(20)  NULL,       -- NULL với vị trí ảo dùng chung
     Site_ID         VARCHAR(50)  NULL,       -- NULL với vị trí ảo
     Warehouse_ID    VARCHAR(50)  NULL,       -- kho chứa vị trí này; NULL với vị trí ảo
-    Leaf_Level      VARCHAR(20)  NULL,       -- mức dùng để ghi giao dịch
+    Leaf_Level      VARCHAR(20)  NULL,       -- đặt ở dòng kho: mức thấp nhất được ghi giao dịch
     Is_Available    BIT NOT NULL DEFAULT 1,  -- có tính vào tồn khả dụng
     Is_Blocked      BIT NOT NULL DEFAULT 0,  -- đang khóa (kiểm kê, sự cố)
     Ownership       VARCHAR(20)  NOT NULL DEFAULT 'OWN', -- OWN | VENDOR | CUSTOMER
@@ -146,7 +148,7 @@ CREATE TABLE Inv_Location (
     Description     NVARCHAR(200)
 );
 -- Vị trí ảo: SUPPLIER, CUSTOMER, WIP, ADJUSTMENT, SCRAP
--- (Location_Type = 'VIRTUAL', Is_Available = 0), xem bài 3000
+-- (Location_Type = 'VIRTUAL', Is_Available = 0), xem bài Giao dịch nhập, xuất & chuyển
 ```
 
 Năm quy tắc bắt buộc:
@@ -159,7 +161,9 @@ Năm quy tắc bắt buộc:
 
 ### C. Truy vấn kiểm soát
 
-**Kho có thuộc tính khả dụng nhưng đang bị khóa — không ai bán được mà không biết lý do:**
+**Hệ thống tự xây — truy vấn gợi ý** (dựa trên bảng `Inv_Location` ở mục B và bảng `Inventory_Transaction` mô tả trong bài [Giao dịch nhập, xuất & chuyển](./2000-giao-dich-nhap-xuat-chuyen.md); tên bảng và cột mang tính minh họa).
+
+**Vị trí vừa khả dụng vừa bị khóa — hàng không bán được mà không ai biết lý do:**
 
 ```sql
 SELECT Location_ID, Level_Type, Is_Available, Is_Blocked, Ownership
@@ -167,7 +171,7 @@ FROM Inv_Location
 WHERE Location_Type = 'PHYSICAL' AND Is_Available = 1 AND Is_Blocked = 1;
 ```
 
-**Hàng đang nằm ở kho không khả dụng — kiểm tra có bị bỏ quên:**
+**Hàng đang nằm ở vị trí không khả dụng — kiểm tra có bị bỏ quên:**
 
 ```sql
 WITH Moves AS (
@@ -196,6 +200,10 @@ WHERE pb.Company = 'YOUR_COMPANY_CODE'
 ORDER BY pb.WarehouseCode, pb.BinNum, pb.PartNum;
 ```
 
+:::note Lưu ý khi chạy trên Epicor
+Tên cột có thể khác tùy phiên bản. Dùng `DESC` (hoặc xem metadata trong BAQ) để kiểm tra trước khi chạy.
+:::
+
 ## 6. Bẫy thực chiến & Checklist
 
 | # | Bẫy | Triệu chứng | Cách phòng tránh |
@@ -205,7 +213,7 @@ ORDER BY pb.WarehouseCode, pb.BinNum, pb.PartNum;
 | 3 | Đổi mã kho đã có giao dịch | Báo cáo lịch sử hiện mã kho không tồn tại, dữ liệu mồ côi | Chỉ đặt `Is_Blocked = 1`, tạo mã mới nếu cần |
 | 4 | Xuống mức ô kệ khi kho nhỏ | Thủ kho chọn bin ngẫu nhiên, chênh lệch kiểm kê tăng | Bắt đầu ở mức kho; nâng cấp khi số bin vượt ngưỡng vận hành |
 | 5 | Kho ký gửi tính vào tài sản | Báo cáo tài sản phồng lên bằng hàng của nhà cung cấp | `Ownership = VENDOR`, báo cáo tài sản lọc theo ownership |
-| 6 | Chuyển kho khác pháp nhân, khác tài khoản tồn kho hoặc có hàng đi đường mà không sinh bút toán | Hai công ty trong tập đoàn cùng có một lô hàng trong sổ, hoặc giá trị tồn nằm sai tài khoản | Áp quy tắc ở [3000 mục 3](./2000-giao-dich-nhap-xuat-chuyen.md); chuyển khác pháp nhân phải là bán/mua nội bộ |
+| 6 | Chuyển kho khác pháp nhân, khác tài khoản tồn kho hoặc có hàng đi đường mà không sinh bút toán | Hai công ty trong tập đoàn cùng có một lô hàng trong sổ, hoặc giá trị tồn nằm sai tài khoản | Áp quy tắc ở [Giao dịch nhập, xuất & chuyển, mục 3](./2000-giao-dich-nhap-xuat-chuyen.md); chuyển khác pháp nhân phải là bán/mua nội bộ |
 | 7 | Không đánh dấu ô kệ đang kiểm kê | Thủ kho nhập/xuất vào ô đang đếm, chênh lệch giả | Khóa theo bin trong suốt thời gian đếm |
 
 **Checklist trước go-live:**

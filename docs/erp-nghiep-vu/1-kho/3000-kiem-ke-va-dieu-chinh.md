@@ -1,16 +1,16 @@
 ---
 id: kiem-ke-va-dieu-chinh
-title: "3000 Kiểm kê & điều chỉnh tồn kho"
+title: "Kiểm kê & điều chỉnh tồn kho"
 slug: /erp-nghiep-vu/kho/kiem-ke-va-dieu-chinh
 sidebar_position: 3000
 description: "Kiểm kê định kỳ (cycle count) và kiểm kê toàn bộ, đếm mù, đóng băng số tồn, đếm lại, phê duyệt chênh lệch theo ngưỡng, điều chỉnh tăng giảm và đổi mã, xử lý âm kho cho hệ thống tự xây. Tham chiếu Epicor ERP 10.2 (E10.2)."
-date: 2026-07-28
+date: 2026-08-04
 last_update:
   date: 2026-11-19
 tags: [erp, inventory, cycle-count, physical-inventory, adjustment, negative-stock, freeze]
 ---
 
-# 3000 Kiểm kê & điều chỉnh tồn kho
+# Kiểm kê & điều chỉnh tồn kho
 
 Mọi con số tồn kho chỉ là *giả định* cho đến khi có người đếm thực tế. Kiểm kê là hoạt động duy nhất xác nhận giả định đó còn đúng — và cũng là hoạt động dễ bị làm cho hình thức nhất, vì nếu người đếm nhìn sẵn số trên hệ thống rồi ghi lại, kết quả kiểm kê luôn khớp và không phát hiện được gì.
 
@@ -18,7 +18,7 @@ Bài này nói về cách thiết kế kiểm kê để nó thực sự phát hi
 
 ---
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Kiểm kê không phải hoạt động tìm đường — mà là hoạt động xác nhận.** Nếu đếm xong rồi mới lấy số hệ thống so sánh, đó là kiểm tra chứ không phải kiểm kê. Đếm phải diễn ra **trước** khi người đếm thấy số hệ thống.
 2. **Không có hệ thống nào sổ sách khớp thực tế 100%.** Luôn có hao hụt, nhặt nhầm, đếm nhầm, giao nhầm. Mục tiêu không phải là chênh lệch bằng 0, mà là **biết mình lệch bao nhiêu và lệch vì sao**.

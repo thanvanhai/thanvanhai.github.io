@@ -5,7 +5,7 @@ sidebar_label: Tổng quan Bán hàng
 slug: /ban-hang/tong-quan
 sidebar_position: 0
 description: "Bức tranh toàn cảnh Order-to-Cash: báo giá, đơn bán, kiểm tra tín dụng và ATP, giao hàng, xuất hóa đơn, đổi trả và thu tiền — cùng ranh giới trách nhiệm với kho và kế toán."
-date: 2026-08-12
+date: 2026-08-31
 last_update:
   date: 2026-11-19
 tags: [erp, sales, o2c, tong-quan]

@@ -1,22 +1,22 @@
 ---
 id: nhu-cau-va-lua-chon-ncc
-title: "1000 Nhu cầu mua hàng & lựa chọn nhà cung cấp"
+title: "Nhu cầu mua hàng & lựa chọn nhà cung cấp"
 slug: /erp-nghiep-vu/mua-hang/nhu-cau-va-lua-chon-ncc
 sidebar_position: 1000
 description: "Yêu cầu mua hàng (PR), gom nhu cầu, phê duyệt theo hạn mức, mời thầu RFQ, phân tích báo giá, bảo mật thầu kín và mua sắm tự phục vụ qua danh mục điện tử."
-date: 2026-08-02
+date: 2026-08-07
 last_update:
   date: 2026-11-19
 tags: [erp, procurement, pr, rfq, sourcing, bidding]
 ---
 
-# 1000 Nhu cầu mua hàng & lựa chọn nhà cung cấp
+# Nhu cầu mua hàng & lựa chọn nhà cung cấp
 
 Mọi đồng tiền mua hàng đều bắt đầu từ một yêu cầu. Nếu khâu này lỏng, phía sau có kiểm soát tốt đến đâu cũng vô nghĩa: hệ thống chỉ có thể kiểm tra *"có đúng thứ đã yêu cầu không"*, không thể kiểm tra *"thứ đó có nên được yêu cầu không"*.
 
 Bài này nói về ba việc: **ai được yêu cầu**, **gom các yêu cầu nhỏ thành một đơn lớn**, và **chọn nhà cung cấp minh bạch**.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Yêu cầu mua hàng (PR) không phải chứng từ tài chính.** PR không sinh bút toán, không tạo nghĩa vụ phải trả — nó chỉ là ý định có kiểm soát. Nhưng chính vì thế nó là nơi duy nhất kiểm soát được ngân sách *trước khi* tiền được cam kết.
 2. **PR phải gắn với trung tâm chi phí hoặc dự án.** Một yêu cầu không quy được về ai chịu chi phí thì không thể kiểm tra ngân sách, và cũng không thể quy trách nhiệm khi chi tiêu vượt.

@@ -1,6 +1,6 @@
 ---
 id: bay-san-xuat
-title: "9000 Bẫy thực chiến sản xuất"
+title: "Bẫy thực chiến sản xuất"
 slug: /erp-nghiep-vu/san-xuat/bay-san-xuat
 sidebar_position: 9000
 description: "Tổng hợp lỗi thường gặp trong sản xuất: BOM vòng lặp, lệch đơn vị tính giữa BOM và Item Master, lệch Item Master giữa Kho và Sản xuất, WIP treo và chi phí chênh lệch không giải trình được."
@@ -10,11 +10,11 @@ last_update:
 tags: [erp, manufacturing, troubleshooting, wip, bom, uom]
 ---
 
-# 9000 Bẫy thực chiến sản xuất
+# Bẫy thực chiến sản xuất
 
 Các lỗi trong bài này đều có chung đặc điểm: **hệ thống chạy bình thường, không báo lỗi**, nhưng số liệu sai. Chỉ khi chênh lệch giá thành cuối kỳ hoặc kiểm kê mới phát hiện — và khi đó đã tích lũy nhiều kỳ.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Lỗi sản xuất thường bắt nguồn từ dữ liệu nền, không phải từ giao dịch.** BOM sai, routing sai, đơn vị tính sai → mọi lệnh sinh ra đều sai theo. Sửa giao dịch không cứu được dữ liệu nền.
 2. **Ba gốc lỗi phổ biến nhất:** vòng lặp cấu trúc, lệch đơn vị tính, và chứng từ mở không đóng.

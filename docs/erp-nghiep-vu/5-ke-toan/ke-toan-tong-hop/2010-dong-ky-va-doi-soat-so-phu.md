@@ -1,17 +1,20 @@
 ---
 id: dong-ky-va-doi-soat-so-phu
-title: "2010 Đóng kỳ & đối soát sổ phụ"
+title: "Đóng kỳ & đối soát sổ phụ"
 slug: /erp-nghiep-vu/ke-toan/tong-hop/dong-ky-va-doi-soat-so-phu
 sidebar_position: 2010
 description: "Chuỗi kiểm tra trước khi khóa sổ: đối chiếu sổ phụ kho, công nợ, giá thành với sổ cái; xử lý chênh lệch; thứ tự đóng kỳ kho và kỳ kế toán."
+date: 2026-10-05
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, period-close, reconciliation]
 ---
 
-# 2010 Đóng kỳ & đối soát sổ phụ
+# Đóng kỳ & đối soát sổ phụ
 
 Khóa sổ là hành động **không thể hoàn tác nhẹ nhàng**: sau khi đóng, mọi sửa chữa phải đi qua bút toán điều chỉnh ở kỳ sau và để lại dấu vết với kiểm toán. Vì vậy mọi việc đối chiếu phải xong **trước** khi bấm đóng.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Sổ phụ phải khớp sổ cái trước khi đóng kỳ.** Kho, công nợ, giá thành đều là sổ phụ; tài khoản tương ứng trên sổ cái là tổng của chúng. Lệch nghĩa là có giao dịch ghi thiếu hoặc ghi sai bên.
 2. **Đóng theo thứ tự: sổ phụ trước, sổ cái sau.** Khoá sổ cái khi sổ phụ còn mở sẽ khóa luôn khả năng sửa lỗi.

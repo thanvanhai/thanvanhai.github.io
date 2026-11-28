@@ -1,20 +1,20 @@
 ---
 id: thay-doi-ky-thuat-va-eco
-title: "1040 Thay đổi kỹ thuật & ECO"
+title: "Thay đổi kỹ thuật & ECO"
 slug: /erp-nghiep-vu/san-xuat/thay-doi-ky-thuat-va-eco
 sidebar_position: 1040
 description: "Quy trình yêu cầu và lệnh thay đổi kỹ thuật (ECR/ECO), ngày hiệu lực và phiên bản BOM/Routing, phân tích where-used trước khi thay đổi, và xử lý hàng tồn của phiên bản cũ."
-date: 2026-08-25
+date: 2026-08-23
 last_update:
   date: 2026-11-19
 tags: [erp, manufacturing, eco, ecr, change-management, where-used]
 ---
 
-# 1040 Thay đổi kỹ thuật & ECO
+# Thay đổi kỹ thuật & ECO
 
 Sản phẩm đang sản xuất không đứng yên. Khách đổi yêu cầu, nhà cung cấp ngừng bán linh kiện, phát hiện lỗi thiết kế, hoặc cần giảm chi phí. Mỗi thay đổi phải đi qua một quy trình có kiểm soát — nếu không, sẽ có người sửa BOM trực tiếp và hàng nghìn sản phẩm đang chạy bị đổi công thức mà không ai biết.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Sửa trực tiếp BOM/Routing đang chạy là lỗi nghiêm trọng nhất trong sản xuất.** Lệnh đang sản xuất dở sẽ đổi định mức giữa đường; không truy được lô nào làm theo thiết kế nào; và khi khách khiếu nại không biết hàng đó thuộc phiên bản nào.
 2. **Phân biệt yêu cầu và lệnh.** ECR (Engineering Change Request) là *đề nghị* thay đổi — có thể bị từ chối. ECO (Engineering Change Order) là *lệnh* thay đổi đã được duyệt — phải được thực thi. Gộp hai bước làm mất khả năng từ chối.

@@ -1,20 +1,20 @@
 ---
 id: mo-hinh-ban-dac-thu
-title: "2030 Mô hình bán đặc thù"
+title: "Mô hình bán đặc thù"
 slug: /erp-nghiep-vu/ban-hang/mo-hinh-ban-dac-thu
 sidebar_position: 2030
 description: "Năm mô hình bán không chuẩn: drop-ship, back-to-back, ký gửi đại lý, xuất khẩu và bán nội bộ — điểm khác biệt cốt lõi về quyền sở hữu, thời điểm ghi doanh thu và liên kết chứng từ."
-date: 2026-08-17
+date: 2026-09-09
 last_update:
   date: 2026-11-19
 tags: [erp, sales, drop-ship, back-to-back, consignment, export, intercompany]
 ---
 
-# 2030 Mô hình bán đặc thù
+# Mô hình bán đặc thù
 
 Năm mô hình dưới đây đều là "bán hàng" nhưng **không mô hình nào chạy đúng nếu dùng chung quy trình bán chuẩn**. Mỗi mô hình thất bại theo một cách riêng: ghi doanh thu trước khi được phép, tạo tồn kho ảo, hoặc hàng đi mà không ai biết đã đi.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Doanh thu ghi khi chuyển quyền sở hữu, không khi xuất kho.** Đây là ranh giới quan trọng nhất của cả bài. Drop-ship chuyển quyền khi khách nhận từ nhà cung cấp; ký gửi chuyển quyền khi đại lý bán ra, không phải khi giao cho đại lý.
 2. **Hàng ký gửi vẫn là tài sản của doanh nghiệp.** Nó nằm ngoài kho mình, nhưng vẫn thuộc mình. Bán khống nó cho khách khác là bán tài sản đã nằm ở nơi khác.

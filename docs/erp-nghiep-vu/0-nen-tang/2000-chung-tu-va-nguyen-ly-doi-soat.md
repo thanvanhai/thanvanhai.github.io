@@ -1,17 +1,20 @@
 ---
 id: chung-tu-va-nguyen-ly-doi-soat
-title: "2000 Chứng từ & nguyên lý đối soát"
+title: "Chứng từ & nguyên lý đối soát"
 slug: /erp-nghiep-vu/nen-tang/chung-tu-va-nguyen-ly-doi-soat
 sidebar_position: 2000
 description: "Nguyên lý chuỗi chứng từ ERP: chứng từ nào sinh từ chứng từ nào, ba cặp đối soát chuẩn, và vì sao đối soát ở cấp dòng quan trọng hơn cấp chứng từ."
+date: 2026-07-24
+last_update:
+  date: 2026-11-26
 tags: [erp, chung-tu, doi-soat, matching]
 ---
 
-# 2000 Chứng từ & nguyên lý đối soát
+# Chứng từ & nguyên lý đối soát
 
 Mọi giao dịch trong ERP đều bắt nguồn từ một chứng từ, và chứng từ đó lại bắt nguồn từ một chứng từ khác. Chuỗi này là thứ cho phép kế toán trả lời câu hỏi cơ bản nhất: **khoản tiền này đã trả cho cái gì**.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Không có chứng từ gốc, không có bút toán.** Bút toán không có căn cứ là bút toán không giải trình được khi kiểm toán.
 2. **Chứng từ phải truy ngược được.** Từ hóa đơn về đơn mua, từ đơn mua về yêu cầu, từ phiếu nhận về đơn mua — mất một mắt xích là đứt toàn bộ chuỗi.

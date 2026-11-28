@@ -1,17 +1,20 @@
 ---
 id: kiem-soat-noi-bo-va-phan-tach-nhiem-vu
-title: "2010 Kiểm soát nội bộ & phân tách nhiệm vụ"
+title: "Kiểm soát nội bộ & phân tách nhiệm vụ"
 slug: /erp-nghiep-vu/nen-tang/kiem-soat-noi-bo-va-phan-tach-nhiem-vu
 sidebar_position: 2010
 description: "Nguyên lý ma trận phê duyệt theo hạn mức, phân tách nhiệm vụ (Segregation of Duties), phân quyền theo pháp nhân và yêu cầu audit trail trong hệ thống ERP."
+date: 2026-07-25
+last_update:
+  date: 2026-11-26
 tags: [erp, internal-control, sod, approval, audit-trail]
 ---
 
-# 2010 Kiểm soát nội bộ & phân tách nhiệm vụ
+# Kiểm soát nội bộ & phân tách nhiệm vụ
 
 Kiểm soát nội bộ không phải để bắt lỗi kế toán — nó để **một người không thể tự mình hoàn tất một giao dịch khống**. Đây là nguyên tắc duy nhất đứng sau mọi yêu cầu về phê duyệt, hạn mức và phân quyền.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Một giao dịch tài chính phải qua ít nhất hai người.** Người khởi tạo và người phê duyệt luôn khác nhau. Không có ngoại lệ ở quy mô doanh nghiệp.
 2. **Phân tách theo xung đột lợi ích, không theo chức danh.** Câu hỏi là "người này có lợi gì nếu giao dịch này qua?", không phải "người này giữ chức gì?".

@@ -1,20 +1,20 @@
 ---
 id: bay-mua-hang
-title: "9000 Bẫy thực chiến mua hàng"
+title: "Bẫy thực chiến mua hàng"
 slug: /erp-nghiep-vu/mua-hang/bay-mua-hang
 sidebar_position: 9000
 description: "Tổng hợp lỗi thường gặp trong mua hàng: lệch đơn vị tính mua và kho, đơn mua và yêu cầu treo lâu ngày, hóa đơn trùng lặp, On-Order ảo và cách phát hiện bằng truy vấn."
-date: 2026-08-09
+date: 2026-08-16
 last_update:
   date: 2026-11-19
 tags: [erp, procurement, troubleshooting, uom, duplicate-invoice]
 ---
 
-# 9000 Bẫy thực chiến mua hàng
+# Bẫy thực chiến mua hàng
 
 Bài này gom các lỗi xuất hiện ở **nhiều doanh nghiệp khác nhau, nhiều hệ thống khác nhau**. Điểm chung: chúng không gây lỗi ngay khi xảy ra — hệ thống vẫn chạy, vẫn lưu, không báo gì. Chỉ khi đối chiếu hoặc kiểm toán mới phát hiện, và lúc đó thường đã tích lũy nhiều kỳ.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Lỗi nguy hiểm nhất là lỗi không báo lỗi.** Hệ thống chấp nhận dữ liệu sai và chạy tiếp. Vì vậy cần truy vấn kiểm soát định kỳ, không chỉ dựa vào validation.
 2. **Mọi bẫy trong mua hàng đều quy về một trong ba gốc:** đơn vị tính không đồng nhất, chứng từ bị bỏ dở không đóng, hoặc dữ liệu nhập trùng.

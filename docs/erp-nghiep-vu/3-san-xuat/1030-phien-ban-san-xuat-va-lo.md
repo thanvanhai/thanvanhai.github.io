@@ -1,22 +1,22 @@
 ---
 id: phien-ban-san-xuat-va-lo
-title: "1030 Phiên bản sản xuất & quy mô lô"
+title: "Phiên bản sản xuất & quy mô lô"
 slug: /erp-nghiep-vu/san-xuat/phien-ban-san-xuat-va-lo
 sidebar_position: 1030
 description: "Ghép BOM với Routing thành công thức sản xuất duy nhất, quy mô lô tối thiểu và tối đa, quy tắc tự động chọn phiên bản khi tạo lệnh sản xuất và ảnh hưởng tới giá thành."
-date: 2026-08-24
+date: 2026-08-21
 last_update:
   date: 2026-11-19
 tags: [erp, manufacturing, production-version, lot-size, recipe]
 ---
 
-# 1030 Phiên bản sản xuất & quy mô lô
+# Phiên bản sản xuất & quy mô lô
 
 Một sản phẩm có thể có **nhiều cách sản xuất**: cùng một vỏ tủ điện, nhà máy có thể dùng sơn tĩnh điện với dây chuyền tự động, hoặc sơn phun tay với định mức khác. BOM khác nhau, Routing khác nhau, giá thành khác nhau.
 
 Phiên bản sản xuất là **cầu nối khoá cặp** BOM và Routing đó lại, để hệ thống biết chính xác dùng công thức nào cho lệnh sản xuất này.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **BOM và Routing là hai tài liệu độc lập — cần một khoá ghép.** Không có cầu nối, hệ thống có thể lấy BOM cách A ghép với Routing cách B, tạo ra công thức không ai thiết kế.
 2. **Một sản phẩm có nhiều cách sản xuất là chuyện bình thường.** Khác máy, khác vật liệu thay thế, khác quy mô lô, khác nhà máy. Hệ thống phải mô hình hóa được sự đa dạng này, không ép về một công thức duy nhất.

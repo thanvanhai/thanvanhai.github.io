@@ -1,16 +1,16 @@
 ---
 id: giu-hang-phan-bo-va-atp
-title: "2010 Giữ hàng, phân bổ & ATP"
+title: "Giữ hàng, phân bổ & ATP"
 slug: /erp-nghiep-vu/kho/giu-hang-phan-bo-va-atp
 sidebar_position: 2010
 description: "Cơ chế giữ chỗ (soft allocation) và phân bổ (hard allocation) tồn kho, tính khả năng cung ứng ATP theo mốc thời gian, tồn an toàn, FEFO và shelf-life, giữ hàng ảo, tranh chấp cùng một lượng tồn kho và cách thiết kế chống oversell. Tham chiếu Epicor ERP 10.2 (E10.2)."
-date: 2026-07-25
+date: 2026-08-03
 last_update:
   date: 2026-11-19
 tags: [erp, inventory, reservation, allocation, atp, oversell, fefo, epicor-e10]
 ---
 
-# 2010 Giữ hàng, phân bổ & ATP
+# Giữ hàng, phân bổ & ATP
 
 Có hàng trong kho chưa có nghĩa là bán được hàng đó. Một SKU có 100 cái nhưng 60 cái đã bị đơn hàng khác giữ, 20 cái đang chờ xuất cho sản xuất, 10 cái hỏng chờ trả nhà cung cấp — thứ thực sự bán được chỉ còn 10. Bài này nói về cơ chế mà mọi hệ thống ERP dùng để phân biệt "còn hàng" với "bán được hàng", và những chỗ cơ chế đó sụp đổ trong thực tế.
 
@@ -18,7 +18,7 @@ Có hàng trong kho chưa có nghĩa là bán được hàng đó. Một SKU có
 
 ---
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Tồn kho là một con số, nhưng bán được hàng là một con số khác.** Hệ thống nào không tách được hai con số này sẽ bán quá số hàng đang có, hoặc ngược lại, từ chối những đơn lẽ ra vẫn đáp ứng được.
 

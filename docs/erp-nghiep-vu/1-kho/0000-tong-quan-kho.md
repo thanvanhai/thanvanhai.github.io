@@ -5,7 +5,7 @@ sidebar_label: Tổng quan Kho
 slug: /kho/tong-quan
 sidebar_position: 0
 description: "Kho là sổ cái vật chất của doanh nghiệp: cấu trúc vị trí, năm loại giao dịch, giữ hàng, kiểm kê và định giá — nguồn dữ liệu cho sổ cái tài chính."
-date: 2026-07-22
+date: 2026-07-29
 last_update:
   date: 2026-11-19
 tags: [erp, inventory, kho, tong-quan]

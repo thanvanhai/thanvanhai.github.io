@@ -1,20 +1,20 @@
 ---
 id: don-mua-hang
-title: "2000 Đơn mua hàng"
+title: "Đơn mua hàng"
 slug: /erp-nghiep-vu/mua-hang/don-mua-hang
 sidebar_position: 2000
 description: "Cấu trúc bốn tầng của đơn mua hàng (header, line, shipment, distribution), phê duyệt theo hạn mức, quản lý thay đổi và phiên bản PO, theo dõi tiến độ giao hàng và cổng nhà cung cấp."
-date: 2026-08-04
+date: 2026-08-10
 last_update:
   date: 2026-11-19
 tags: [erp, procurement, purchase-order, approval, revision]
 ---
 
-# 2000 Đơn mua hàng
+# Đơn mua hàng
 
 Đơn mua hàng là **chứng từ cam kết pháp lý đầu tiên** trong chuỗi mua. Sau khi ký phát hành, nó ràng buộc cả hai bên: nhà cung cấp phải giao đúng thứ đã ghi, doanh nghiệp phải nhận và trả tiền. Vì vậy đơn mua không được phép "sửa qua loa" — mọi thay đổi đều phải để lại dấu vết.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Đơn mua có bốn tầng, không phải hai.** Header (nhà cung cấp, điều khoản), Line (mặt hàng, đơn giá), Shipment/Release (giao bao nhiêu, khi nào, về đâu), Distribution (hạch toán vào chi phí nào). Thiếu tầng 3 thì không đặt được nhiều đợt giao; thiếu tầng 4 thì không phân bổ được chi phí cho nhiều bộ phận.
 2. **Một dòng đơn giá sỉ có thể giao nhiều đợt về nhiều địa điểm.** Đây là lý do tầng Shipment tồn tại: đặt 10.000 cái để hưởng giá sỉ, nhưng giao 3.000 về nhà máy A tuần này và 7.000 về nhà máy B tháng sau.

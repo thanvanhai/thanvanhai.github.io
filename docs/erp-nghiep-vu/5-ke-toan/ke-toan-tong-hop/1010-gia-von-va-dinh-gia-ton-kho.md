@@ -1,17 +1,20 @@
 ---
 id: gia-von-va-dinh-gia-ton-kho
-title: "1010 Giá vốn & định giá tồn kho"
+title: "Giá vốn & định giá tồn kho"
 slug: /erp-nghiep-vu/ke-toan/tong-hop/gia-von-va-dinh-gia-ton-kho
 sidebar_position: 1010
 description: "Bốn phương pháp tính giá tồn kho (FIFO, bình quân, tiêu chuẩn, thực tế đích danh), ảnh hưởng tới giá vốn hàng bán, chi phí thu mua phân bổ và định giá tồn kho cuối kỳ."
+date: 2026-10-02
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, cogs, valuation, fifo]
 ---
 
-# 1010 Giá vốn & định giá tồn kho
+# Giá vốn & định giá tồn kho
 
 Giá vốn là con số quyết định lãi lỗ, và nó là con số **dễ bị điều chỉnh nhất** vì cùng một lô hàng có thể ra nhiều giá vốn khác nhau tùy phương pháp. Chọn phương pháp sai hoặc trộn nhiều phương pháp trong cùng một mã hàng làm báo cáo lãi lỗ mất ý nghĩa.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Phương pháp tính giá là chính sách của doanh nghiệp, không phải tùy chọn của người nhập liệu.** Chọn một lần, áp cho toàn bộ mã hàng thuộc nhóm đó, có ngày hiệu lực.
 2. **Giá vốn = số lượng xuất × đơn giá theo phương pháp.** Sai ở đơn giá thì lãi kỳ này và kỳ sau lệch ngược chiều nhau — vì tổng giá vốn theo thời gian phải bằng tổng giá mua.

@@ -1,19 +1,22 @@
 ---
 id: ap-nguyen-ly-va-tai-khoan
-title: "1000 AP: Nguyên lý & tài khoản"
+title: "AP: Nguyên lý & tài khoản"
 slug: /erp-nghiep-vu/ke-toan/cong-no/ap-nguyen-ly-va-tai-khoan
 sidebar_position: 1000
 description: "Cơ chế công nợ phải trả: khi nào ghi nhận nợ, tài khoản phải trả nhà cung cấp lưỡng tính, tạm ứng trước, điều khoản thanh toán và sổ chi tiết theo từng nhà cung cấp."
+date: 2026-09-15
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, ap, tai-khoan, prepayment]
 ---
 
-# 1000 AP: Nguyên lý & tài khoản
+# AP: Nguyên lý & tài khoản
 
 Phải trả trả lời một câu duy nhất: **doanh nghiệp đang nợ ai, bao nhiêu, đến hạn khi nào**. Nhưng để trả lời đúng, hệ thống phải tách được ba trạng thái rất khác nhau của cùng một khoản nợ: *đã nhận hàng chưa có hóa đơn*, *đã có hóa đơn chưa đến hạn*, và *đã ứng trước chưa nhận hàng*.
 
 Bài này định nghĩa cơ chế ghi nhận và tài khoản. Các bước nghiệp vụ chi tiết ở [Nhận hóa đơn & đối tất tạm ứng](./1010-ap-nhan-hoa-don-va-doi-tat-tam-ung.md) và [Thanh toán & Cash Out](./1020-ap-thanh-toan-va-cash-out.md).
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Nợ phát sinh khi nhận hàng, không phải khi nhận hóa đơn.** Hàng đã về kho là doanh nghiệp đã có nghĩa vụ trả tiền, dù hóa đơn chưa tới. Ghi nợ muộn hơn thời điểm nhận hàng là làm sai kỳ kế toán.
 2. **Nhưng chưa đủ căn cứ để ghi nợ chính thức.** Giá và số lượng trên hóa đơn có thể khác PO và phiếu nhận. Vì vậy khoản nợ tạm thời nằm ở **tài khoản trung gian** cho tới khi khớp lệnh.

@@ -1,20 +1,20 @@
 ---
 id: bao-cao-mua-hang
-title: "3000 Báo cáo mua hàng"
+title: "Báo cáo mua hàng"
 slug: /erp-nghiep-vu/mua-hang/bao-cao-mua-hang
 sidebar_position: 3000
 description: "Phân tích cơ cấu chi tiêu, chi phí đơn vị, tỷ lệ nhà cung cấp độc quyền và bộ chỉ số đánh giá hiệu suất nhà cung cấp: giao đúng hạn, chất lượng, giá."
-date: 2026-08-08
+date: 2026-08-14
 last_update:
   date: 2026-11-19
 tags: [erp, procurement, spend-analysis, supplier-scorecard, otd]
 ---
 
-# 3000 Báo cáo mua hàng
+# Báo cáo mua hàng
 
 Dữ liệu mua hàng là nguồn thông tin quản trị bị bỏ phí nhiều nhất trong ERP. Hầu hết doanh nghiệp chỉ dùng để tra "đơn này đặt chưa" và "hóa đơn này trả chưa", trong khi cùng dữ liệu đó trả lời được những câu hỏi đáng giá hàng tỷ đồng: mua của ai nhiều nhất, nhà cung cấp nào giao trễ, giá đang tăng ở nhóm nào.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Chi tiêu phải nhìn theo ba chiều: nhóm hàng, nhà cung cấp, bộ phận.** Cùng một con số tổng nhưng ba cách chia cho ba quyết định khác nhau — mua gì để đàm phán giá, mua của ai để giảm rủi ro, bộ phận nào tiêu nhiều để kiểm soát ngân sách.
 2. **Giá mua không phải giá hóa đơn.** Giá thực tế phải gồm chi phí vận chuyển, thuế nhập khẩu, phụ phí — nếu không, nhà cung cấp báo giá rẻ nhưng tổng chi phí cao sẽ thắng thầu sai.

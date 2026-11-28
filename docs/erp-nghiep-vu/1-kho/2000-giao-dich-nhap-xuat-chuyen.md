@@ -1,22 +1,22 @@
 ---
 id: giao-dich-nhap-xuat-chuyen
-title: "2000 Giao dịch nhập, xuất & chuyển kho"
+title: "Giao dịch nhập, xuất & chuyển kho"
 slug: /erp-nghiep-vu/kho/giao-dich-nhap-xuat-chuyen
 sidebar_position: 2000
 description: "Bài gốc về giao dịch kho: năm loại chuyển động, cơ chế ghi sổ một chiều (append-only) với vị trí ảo có tên, giao dịch ảo cho drop-ship, nguyên tắc sinh bút toán và truy vấn kiểm soát tính toàn vẹn tồn kho."
-date: 2026-07-25
+date: 2026-08-02
 last_update:
   date: 2026-11-17
 tags: [erp, inventory, transaction, movement, logical-transaction]
 ---
 
-# 2000 Giao dịch nhập, xuất & chuyển kho
+# Giao dịch nhập, xuất & chuyển kho
 
 Đây là **bài gốc** về giao dịch kho. Mọi bài khác — [Nhận hàng](../2-mua-hang/2010-nhan-hang-va-kiem-qc.md), [Giao hàng](../4-ban-hang/2010-giao-hang-va-xuat-kho.md), [Lệnh sản xuất](../3-san-xuat/2000-lenh-san-xuat-va-wip.md), [Kiểm kê](./3000-kiem-ke-va-dieu-chinh.md) — chỉ mô tả **sự kiện nghiệp vụ dẫn tới** giao dịch. Cơ chế ghi sổ được định nghĩa duy nhất ở đây.
 
 ---
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Tồn kho không phải một con số, mà là kết quả cộng dồn của các giao dịch.** Hệ thống chuẩn không cho phép "sửa số tồn"; nó chỉ cho phép **ghi thêm giao dịch**. Muốn sửa sai, ghi giao dịch đảo. Đây là nền tảng của mọi audit trail trong kho.
 2. **Chỉ có 5 loại chuyển động gốc:** **Nhập (Receipt)**, **Xuất (Issue)**, **Chuyển (Transfer)**, **Điều chỉnh (Adjustment)** và **Đảo (Reversal)**. Mọi nghiệp vụ — mua, bán, sản xuất, trả hàng, chuyển kho — đều quy về một trong năm loại này. Kiểm kê **không phải** loại giao dịch; nó là *sự kiện* dẫn tới giao dịch Điều chỉnh. Các hệ thống lớn như SAP có hàng trăm movement type, nhưng đó đều là biến thể của năm loại gốc: khác nhau ở **quy tắc hạch toán** và **chứng từ nguồn**, không khác ở bản chất chuyển động.

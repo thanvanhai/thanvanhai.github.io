@@ -1,16 +1,16 @@
 ---
 id: nhan-hang-va-kiem-qc
-title: "2010 Nhận hàng & kiểm tra chất lượng"
+title: "Nhận hàng & kiểm tra chất lượng"
 slug: /erp-nghiep-vu/mua-hang/nhan-hang-va-kiem-qc
 sidebar_position: 2010
 description: "Bài gốc về quy trình nhận hàng 3 bước (Nhận - Kiểm - Nhập kho), kiểm tra chất lượng đầu vào (IQC), xử lý hàng không đạt, các tình huống nhận đặc biệt và điểm nối sang giao dịch kho, hạch toán và đối soát hóa đơn."
-date: 2026-08-05
+date: 2026-08-11
 last_update:
   date: 2026-11-17
 tags: [erp, procurement, receiving, iqc, putaway]
 ---
 
-# 2010 Nhận hàng & kiểm tra chất lượng
+# Nhận hàng & kiểm tra chất lượng
 
 Nhận hàng là điểm giao nhau giữa **giấy tờ (PO)** và **hàng thật**. Đây cũng là nơi phát sinh phần lớn sai lệch tồn kho và sai lệch công nợ về sau, vì con số ghi nhận tại bước này là căn cứ để kế toán đối soát hóa đơn (xem [5000 - Đối soát hóa đơn & 3-Way Match](./2020-doi-soat-hoa-don-va-3-way-match.md)).
 
@@ -20,7 +20,7 @@ Nhận hàng là điểm giao nhau giữa **giấy tờ (PO)** và **hàng thậ
 
 ---
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Hàng nhận về chưa phải hàng dùng được.** Giữa "xe hàng đã tới cổng" và "hàng đã được phép cấp cho sản xuất hoặc bán" có một bước trung gian bắt buộc với những mặt hàng cần kiểm: kiểm tra chất lượng. Hệ thống phải tách được hai trạng thái *đã nhận* và *khả dụng*; nếu không sẽ luôn có tồn kho ảo.
 2. **Khả dụng và giá trị là hai câu hỏi khác nhau.**

@@ -1,17 +1,20 @@
 ---
 id: ap-thanh-toan-va-cash-out
-title: "1020 AP: Thanh toán & Cash Out"
+title: "AP: Thanh toán & Cash Out"
 slug: /erp-nghiep-vu/ke-toan/cong-no/ap-thanh-toan-va-cash-out
 sidebar_position: 1020
 description: "Lập đề nghị thanh toán, phê duyệt chi tiền nhiều cấp, chạy thanh toán hàng loạt, chọn phương thức chi, đối trừ tiền với hóa đơn và xử lý chênh lệch nhỏ khi thanh toán."
+date: 2026-09-17
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, ap, payment, cash-out, sepa]
 ---
 
-# 1020 AP: Thanh toán & Cash Out
+# AP: Thanh toán & Cash Out
 
 Đây là bước **duy nhất trong chuỗi mua hàng mà tiền thực sự rời doanh nghiệp**. Mọi kiểm soát phía trước — yêu cầu, đơn mua, nhận hàng, khớp lệnh — đều chỉ có giá trị nếu bước này chỉ trả đúng số tiền cho đúng người vào đúng lúc.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Thanh toán là chứng từ riêng, không phải thao tác trên hóa đơn.** Một lần chi có thể trả nhiều hóa đơn; một hóa đơn có thể được trả nhiều lần. Gộp hai chiều này vào một bản ghi làm mất khả năng đối chiếu.
 2. **Duyệt chi phải tách khỏi người lập đề nghị.** Người muốn trả tiền không được là người duyệt trả tiền. Đây là nguyên tắc phân tách nhiệm vụ cốt lõi của AP.

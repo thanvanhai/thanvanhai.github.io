@@ -1,19 +1,22 @@
 ---
 id: ar-nguyen-ly-va-tai-khoan
-title: "2000 AR: Nguyên lý & tài khoản"
+title: "AR: Nguyên lý & tài khoản"
 slug: /erp-nghiep-vu/ke-toan/cong-no/ar-nguyen-ly-va-tai-khoan
 sidebar_position: 2000
 description: "Cơ chế công nợ phải thu: thời điểm ghi nhận doanh thu, tài khoản phải thu khách hàng lưỡng tính, thuế GTGT đầu ra, quan hệ với giá vốn và tiền khách trả trước."
+date: 2026-09-18
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, ar, revenue, tai-khoan]
 ---
 
-# 2000 AR: Nguyên lý & tài khoản
+# AR: Nguyên lý & tài khoản
 
 Phải thu trả lời câu hỏi **ai đang nợ mình, bao nhiêu, quá hạn bao lâu**. Nhưng để trả lời đúng, hệ thống phải tách được hai sự kiện thường xảy ra gần nhau nhưng không cùng lúc: **hàng đã đi** và **doanh thu đã ghi**.
 
 Bài này định nghĩa cơ chế ghi nhận và tài khoản. Các bước nghiệp vụ ở [Xuất hóa đơn & hạn mức tín dụng](./2010-ar-xuat-hoa-don-va-han-muc-tin-dung.md) và [Thu tiền & nhắc nợ](./2020-ar-thu-tien-va-dunning.md).
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Doanh thu ghi khi chuyển giao quyền sở hữu, không khi xuất kho.** Điều kiện giao hàng quyết định thời điểm này. Xuất kho rồi ghi doanh thu ngay với điều kiện giao tới đích là **ghi doanh thu non**.
 2. **Giá vốn và doanh thu là hai bút toán độc lập.** Xuất kho sinh giá vốn; xuất hóa đơn sinh doanh thu. Khoảng thời gian giữa hai việc chính là phần hàng đã giao nhưng chưa xuất hóa đơn — phải được theo dõi, không được để mất.

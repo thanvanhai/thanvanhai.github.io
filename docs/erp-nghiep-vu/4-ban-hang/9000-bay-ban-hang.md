@@ -1,20 +1,20 @@
 ---
 id: bay-ban-hang
-title: "9000 Bẫy thực chiến bán hàng"
+title: "Bẫy thực chiến bán hàng"
 slug: /erp-nghiep-vu/ban-hang/bay-ban-hang
 sidebar_position: 9000
 description: "Các lỗi thường gặp khi bán hàng: giữ hàng ảo, bán trùng khi đơn đồng thời, nghẽn đơn giờ cao điểm, vượt hạn mức tín dụng, ghi doanh thu non và sai lệch đa tiền tệ."
-date: 2026-08-19
+date: 2026-09-11
 last_update:
   date: 2026-11-19
 tags: [erp, sales, troubleshooting, ghost-reservation, oversell]
 ---
 
-# 9000 Bẫy thực chiến bán hàng
+# Bẫy thực chiến bán hàng
 
 Các lỗi trong bài này có chung một đặc điểm: **hệ thống không báo lỗi khi chúng xảy ra**. Đơn vẫn được tạo, hàng vẫn được ghi xuất, báo cáo vẫn ra số. Chỉ khi đối chiếu kho, đối chiếu công nợ hoặc khách khiếu nại mới phát hiện — và lúc đó đã tích lũy nhiều kỳ.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Bán hàng là bài toán đồng thời, không phải số học.** Hai người bấm xác nhận cùng một giây trên cùng một SKU còn 1 cái — hệ thống phải chặn một người. Kiểm tra rồi mới ghi mà không khóa dòng thì cả hai đều qua.
 2. **Ba gốc lỗi bao trùm gần hết:** giữ hàng không được giải phóng, kiểm tra không khóa dữ liệu, và định nghĩa doanh thu không thống nhất giữa các bộ phận.

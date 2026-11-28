@@ -1,17 +1,20 @@
 ---
 id: bao-cao-cong-no-aging-cashflow
-title: "3010 Báo cáo công nợ (Aging & Cashflow)"
+title: "Báo cáo công nợ (Aging & Cashflow)"
 slug: /erp-nghiep-vu/ke-toan/cong-no/bao-cao-cong-no-aging-cashflow
 sidebar_position: 3010
 description: "Phân tích tuổi nợ phải thu và phải trả, dự báo dòng tiền vào ra theo tuần, lập sao kê công nợ gửi đối tác và quản lý tranh chấp công nợ."
+date: 2026-09-23
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, aging, cashflow, sao-ke]
 ---
 
-# 3010 Báo cáo công nợ (Aging & Cashflow)
+# Báo cáo công nợ (Aging & Cashflow)
 
 Báo cáo công nợ không phải để "biết mình đang nợ bao nhiêu" — con số đó ai cũng biết. Nó để trả lời ba câu khó hơn: **tiền nào sắp vào, tiền nào sắp ra, và khoản nào đang có rủi ro không thu được**.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Tuổi nợ tính từ ngày đến hạn, không từ ngày phát sinh.** Hóa đơn ngày 1/1 với điều khoản 60 ngày thì hôm nay 20/2 vẫn chưa quá hạn, dù đã 50 ngày.
 2. **Aging phải phân dải, không chỉ "quá hạn / chưa quá hạn".** Dải 1–30, 31–60, 61–90, trên 90 ngày — vì mỗi dải cần hành động khác nhau.

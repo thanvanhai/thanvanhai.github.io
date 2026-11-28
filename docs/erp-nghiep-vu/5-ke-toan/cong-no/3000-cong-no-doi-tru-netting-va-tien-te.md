@@ -1,19 +1,22 @@
 ---
 id: cong-no-doi-tru-netting-va-tien-te
-title: "3000 Đối trừ công nợ, netting & đa tiền tệ"
+title: "Đối trừ công nợ, netting & đa tiền tệ"
 slug: /erp-nghiep-vu/ke-toan/cong-no/cong-no-doi-tru-netting-va-tien-te
 sidebar_position: 3000
 description: "Bù trừ công nợ giữa cùng một đối tượng vừa mua vừa bán, đối soát giao dịch nội bộ tập đoàn, và xử lý chênh lệch tỷ giá đã thực hiện so với đánh giá lại cuối kỳ."
+date: 2026-09-22
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, netting, forex, intercompany]
 ---
 
-# 3000 Đối trừ công nợ, netting & đa tiền tệ
+# Đối trừ công nợ, netting & đa tiền tệ
 
 Hai việc dùng chung cho cả AP và AR, và cả hai đều dễ sai vì **cùng một nghiệp vụ nhưng hai chế độ kế toán khác nhau**.
 
 **Netting** là xử lý khi một đối tượng vừa là khách vừa là nhà cung cấp. **Đa tiền tệ** là xử lý khi công nợ không bằng đồng tiền hạch toán.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Netting không phải là xóa nợ — đó là hai bút toán đối chiếu.** Giảm phải thu và giảm phải trả cùng lúc, số dư còn lại mới là khoản thực trả/thực thu.
 2. **Netting không phải bù trừ pháp lý tự động.** Muốn bù trừ có hiệu lực, phải có thỏa thuận bù trừ (netting agreement) hai bên ký. Hệ thống ghi nhận, không tạo ra quyền.

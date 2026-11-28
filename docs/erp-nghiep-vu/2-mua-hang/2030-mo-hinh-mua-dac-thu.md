@@ -1,22 +1,22 @@
 ---
 id: mo-hinh-mua-dac-thu
-title: "2030 Mô hình mua đặc thù"
+title: "Mô hình mua đặc thù"
 slug: /erp-nghiep-vu/mua-hang/mo-hinh-mua-dac-thu
 sidebar_position: 2030
 description: "Sáu mô hình mua không theo chuẩn: gia công ngoài, ký gửi và VMI, mua nội bộ giữa pháp nhân, mua dịch vụ và tài sản cố định, drop-ship, nhập khẩu — kèm điểm khác biệt cốt lõi của từng mô hình."
-date: 2026-08-07
+date: 2026-08-13
 last_update:
   date: 2026-11-19
 tags: [erp, procurement, subcontracting, consignment, vmi, intercompany, service-po, drop-ship, import]
 ---
 
-# 2030 Mô hình mua đặc thù
+# Mô hình mua đặc thù
 
 Sáu mô hình dưới đây đều là "mua hàng" nhưng **không mô hình nào chạy đúng nếu dùng chung quy trình Standard PO**. Mỗi mô hình thất bại theo một cách khác nhau: mất giá trị vật tư, ghi nhận tài sản không thuộc sở hữu, hoặc sinh tồn kho ảo.
 
 Bài này chỉ ra điểm khác biệt cốt lõi của từng mô hình và cách xử lý để không mắc các lỗi đó.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Quyền sở hữu và vị trí vật lý là hai thứ khác nhau.** Hàng ký gửi nằm trong kho doanh nghiệp nhưng thuộc nhà cung cấp. Hàng gửi gia công ra ngoài không còn trong kho doanh nghiệp nhưng vẫn thuộc doanh nghiệp. Mọi mô hình trong bài này đều xoay quanh việc tách rời hai khái niệm đó.
 2. **Gia công ngoài không phải mua dịch vụ.** Vật tư gửi đi vẫn là tài sản của doanh nghiệp; nhà thầu chỉ thêm giá trị gia công. Ghi nhận thành phẩm bằng đúng giá trị dịch vụ sẽ **làm biến mất** giá trị nguyên vật liệu gốc.

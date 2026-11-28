@@ -1,17 +1,20 @@
 ---
 id: bay-ke-toan
-title: "9000 Bẫy kế toán"
+title: "Bẫy kế toán"
 slug: /erp-nghiep-vu/ke-toan/tong-hop/bay-ke-toan
 sidebar_position: 9000
 description: "Các bẫy kế toán hay gặp: tài khoản trung gian treo lâu ngày, chênh lệch tỷ giá gộp nhầm chỗ, lệch sổ phụ với sổ cái, và chi phí chờ phân bổ không ai xử lý."
+date: 2026-10-06
+last_update:
+  date: 2026-11-19
 tags: [erp, finance, troubleshooting, gr-ir, forex]
 ---
 
-# 9000 Bẫy kế toán
+# Bẫy kế toán
 
 Các lỗi trong bài này đều **không báo lỗi khi xảy ra**. Sổ vẫn cân, báo cáo vẫn ra số, chỉ khi đối chiếu hoặc kiểm toán mới phát hiện — và thường đã tích lũy nhiều kỳ.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **Sổ phụ và sổ cái lệch nhau là bệnh, không phải sai số.** Mọi chênh lệch đều có nguyên nhân cụ thể: ghi thiếu một bên, ghi sai tài khoản, hoặc có giao dịch không qua sổ phụ.
 2. **Tài khoản trung gian có số dư nghĩa là còn giao dịch chưa hoàn tất.** Không phải "sai số bình thường" và không được xóa bằng bút toán cân cho đẹp.

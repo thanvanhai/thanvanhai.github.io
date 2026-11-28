@@ -1,22 +1,22 @@
 ---
 id: bom-va-dinh-muc
-title: "1010 BOM & định mức"
+title: "BOM & định mức"
 slug: /erp-nghiep-vu/san-xuat/bom-va-dinh-muc
 sidebar_position: 1010
 description: "BOM tiêu chuẩn và đa cấp, hao hụt và tỷ lệ thu hồi, vật tư thay thế, phantom BOM, khác biệt EBOM và MBOM, BOM cấu hình, liên kết vật tư với công đoạn và các lỗi thường gặp."
-date: 2026-08-22
+date: 2026-08-19
 last_update:
   date: 2026-11-19
 tags: [erp, manufacturing, bom, ebom, mbom, scrap]
 ---
 
-# 1010 BOM & định mức
+# BOM & định mức
 
 BOM là **danh sách nguyên liệu** của sản phẩm. Nó quyết định ba việc lớn: MRP mua bao nhiêu, kho cấp phát bao nhiêu, và kế toán tính giá thành bao nhiêu. Sai một dòng định mức, cả ba đều sai.
 
 Bài này gộp toàn bộ chủ đề BOM — từ cấu trúc đa cấp đến phân biệt EBOM/MBOM — vì chúng là các mặt khác nhau của cùng một dữ liệu nền.
 
-## 0. Nguyên lý (áp dụng mọi ERP)
+## Nguyên lý (áp dụng mọi ERP)
 
 1. **BOM là dữ liệu nền, không phải dữ liệu giao dịch.** Một mã hàng có đúng **một** BOM đang hiệu lực tại một thời điểm. Muốn thay đổi, tạo phiên bản mới có ngày hiệu lực — không sửa đè.
 2. **Mỗi dòng vật tư nên gắn với một công đoạn.** Khung xe tiêu hao ở công đoạn lắp khung, sơn tiêu hao ở công đoạn sơn. Gắn đúng công đoạn giúp cấp vật tư đúng lúc và trừ kho tự động (backflush) chính xác.
