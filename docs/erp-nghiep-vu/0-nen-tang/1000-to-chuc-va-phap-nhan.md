@@ -186,9 +186,11 @@ GROUP  BY hg.country_code, gbsv.ledger_id
 ORDER  BY quoc_gia, gbsv.ledger_id;
 ```
 
-:::note Lưu ý khi chạy truy vấn
+:::note[Lưu ý khi chạy truy vấn]
+
 - Tên cột của view `xle_firstparty_information_v` có thể khác nhau giữa các phiên bản R12 và Cloud. Chạy `DESC xle_firstparty_information_v` để kiểm tra trước.
 - Bảng `gl_ledger_norm_seg_vals` có cột `segment_type_code` phân biệt Balancing Segment với Management Segment. Nếu sổ có gán cả hai loại, hãy chạy `SELECT DISTINCT segment_type_code FROM gl_ledger_norm_seg_vals` rồi thêm điều kiện lọc phù hợp, tránh đếm lẫn.
+
 :::
 
 **Operating Unit độc lập với quyết định A/B ở tầng sổ.** Dù chọn gộp hay tách, mỗi pháp nhân **vẫn có Operating Unit riêng** — hóa đơn AP/AR của pháp nhân này vẫn tách bạch hoàn toàn qua `ORG_ID`. Gộp sổ chỉ giảm số "cuốn sổ cái" cần quản lý ở tầng kế toán tổng hợp, còn tầng vận hành hằng ngày (nhập hóa đơn, đơn hàng) vẫn tách theo OU.

@@ -152,16 +152,35 @@ WHERE Status = 'APPROVED'
   AND (Approved_By IS NULL OR Approved_At IS NULL);
 ```
 
-**Epicor — hạn mức duyệt chi theo role:**
+**Epicor — nhóm quyền (Security Group) đang cấu hình trên công ty:**
 
 ```sql
-SELECT u.UserID, u.Name, r.RoleID, r.Description
-FROM Erp.UserFile u
-JOIN Erp.UserComp uc ON uc.DcdUserID = u.DcdUserID
-JOIN Erp.UserRole r  ON r.UserID = u.UserID
-WHERE u.Company = 'YOUR_COMPANY_CODE'
-ORDER BY u.UserID, r.RoleID;
+SELECT sg.Company, sg.SecGroupCode, sg.SecGroupDesc, sg.CompanyVisibility
+FROM Ice.SecGroup sg
+WHERE sg.Company = 'YOUR_COMPANY_CODE'
+ORDER BY sg.SecGroupCode;
 ```
+
+**Epicor — tài khoản người dùng, trạng thái và cờ quản trị bảo mật:**
+
+```sql
+SELECT u.DcdUserID, u.Name, u.UserDisabled, u.SecurityMgr
+FROM Erp.UserFile u
+WHERE u.SecurityMgr = 1
+ORDER BY u.DcdUserID;
+```
+
+:::note[Giới hạn của cách gán quyền trong Epicor]
+
+Trong Epicor 10.2, phân quyền không nằm trong bảng quan hệ user ↔ role như các ERP khác:
+
+- `Erp.UserFile` **không có cột `Company`** — người dùng là tài khoản toàn hệ thống, không thuộc một công ty.
+- `Ice.SecGroup` chỉ lưu **nhóm quyền và mức nhìn thấy công ty** (`CompanyVisibility`), không lưu nội dung quyền theo từng menu/service.
+- Nội dung quyền chi tiết nằm ở bảng khác trong schema `Ice` và chỉ nên đọc qua **Security Workbench** hoặc **BAQ**, không truy vấn trực tiếp bằng SQL.
+
+Muốn kiểm tra ai có quyền duyệt chi vượt hạn mức, hãy dùng **Access Scope** trong Epicor Administration Console hoặc BAQ trên `Ice.SecGroup` kết hợp BAQ tùy chỉnh — SQL thuần không đủ để truy vết đầy đủ.
+
+:::
 
 ## 6. Bẫy thực chiến & Checklist
 
@@ -180,7 +199,7 @@ ORDER BY u.UserID, r.RoleID;
 
 **Checklist trước go-live:**
 
-- [ ] Ma trận phân tách nhiệm vụ đã ký duyệt (ít nhất 8 xung đột ở §5.B).
+- [ ] Ma trận phân tách nhiệm vụ đã ký duyệt (ít nhất 8 xung đột loại Tạo – Duyệt – Ghi sổ).
 - [ ] Hệ chặn được người tạo tự duyệt (đã test ở cả PO, hóa đơn AP, chi tiền).
 - [ ] `Approved_By` và `Approved_At` bắt buộc khi chuyển APPROVED (đã test).
 - [ ] Hạn mức phê duyệt cấu hình qua bảng tham số, không hard-code.

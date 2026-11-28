@@ -117,7 +117,7 @@ FROM Customer WHERE Status = 'ACTIVE'
 GROUP BY Tax_Code HAVING COUNT(*) > 1;
 ```
 
-:::note Phương ngữ SQL
+:::note[Phương ngữ SQL]
 `STRING_AGG` dùng được trên SQL Server 2017+ và PostgreSQL. Trên Oracle, thay bằng `LISTAGG(Vendor_ID, ', ') WITHIN GROUP (ORDER BY Vendor_ID)`.
 :::
 
@@ -170,7 +170,7 @@ WHERE  p.Company = 'YOUR_COMPANY_CODE'
 GROUP  BY p.PartNum, p.IUM, pt.UM;
 ```
 
-:::note Lưu ý khi chạy trên Epicor
+:::note[Lưu ý khi chạy trên Epicor]
 Đây là truy vấn **sàng lọc nghi vấn**, không phải kết luận. Một số loại giao dịch có thể ghi đơn vị tính khác `IUM` một cách hợp lệ, nên cần đối chiếu thêm với Change Log của Epicor. Tên cột có thể khác tùy phiên bản, dùng `DESC` (hoặc xem metadata trong BAQ) để kiểm tra trước khi chạy.
 :::
 

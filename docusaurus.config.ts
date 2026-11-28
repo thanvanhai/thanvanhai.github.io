@@ -93,6 +93,7 @@ const config: Config = {
           rehypePlugins: [rehypeKatex],
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
+          admonitions: true,
         },
         blog: {
           showReadingTime: true,
@@ -119,6 +120,7 @@ const config: Config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
+          admonitions: true,
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },

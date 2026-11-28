@@ -200,7 +200,7 @@ WHERE pb.Company = 'YOUR_COMPANY_CODE'
 ORDER BY pb.WarehouseCode, pb.BinNum, pb.PartNum;
 ```
 
-:::note Lưu ý khi chạy trên Epicor
+:::note[Lưu ý khi chạy trên Epicor]
 Tên cột có thể khác tùy phiên bản. Dùng `DESC` (hoặc xem metadata trong BAQ) để kiểm tra trước khi chạy.
 :::
 

@@ -3,7 +3,7 @@ id: thuat-ngu-ky-thuat-va-du-lieu
 title: "Thuật ngữ kỹ thuật & dữ liệu chuẩn"
 slug: /erp-nghiep-vu/nen-tang/thuat-ngu-ky-thuat-va-du-lieu
 sidebar_position: 3010
-description: "Bảng thuật ngữ kỹ thuật dùng chung cho mọi bài trong tài liệu: trạng thái chứng từ, loại chuyển động kho, cờ kiểm soát, định danh đối tượng và quy ước đặt tên."
+description: "Bảng thuật ngữ kỹ thuật chuẩn: trạng thái chứng từ, loại chuyển động kho, cờ kiểm soát, định danh đối tượng và quy ước đặt tên."
 date: 2026-07-27
 last_update:
   date: 2026-11-26
@@ -12,7 +12,7 @@ tags: [erp, glossary, du-lieu, quy-uoc]
 
 # Thuật ngữ kỹ thuật & dữ liệu chuẩn
 
-Khi một bài viết nói "chứng từ ở trạng thái `CONFIRMED`" hay "giao dịch có cờ `Is_Logical`", phải có một chỗ định nghĩa các giá trị đó một lần. Đây là chỗ đó.
+Một chứng từ ở trạng thái `CONFIRMED` hay một giao dịch mang cờ `Is_Logical` cần một định nghĩa duy nhất, dứt khoát. Đây là nơi tập trung những định nghĩa đó.
 
 ## Nguyên lý (áp dụng mọi ERP)
 
@@ -20,7 +20,7 @@ Khi một bài viết nói "chứng từ ở trạng thái `CONFIRMED`" hay "gia
 2. **Trạng thái chỉ được đi một chiều, trừ khi có quy trình rõ ràng cho chiều ngược lại.** Cho phép nhảy tự do giữa các trạng thái là bỏ mất kiểm soát quy trình.
 3. **Cờ kiểm soát (flag) phải là boolean có tên rõ ràng**, không dùng giá trị số mơ hồ (`0/1/2`) mà không có danh mục.
 4. **Mọi bảng giao dịch cần một định danh duy nhất, bất biến, không tái sử dụng.** Dùng số chứng từ làm khóa chính là lỗi thiết kế phổ biến.
-5. **Quy ước đặt tên phải thống nhất toàn tài liệu**, để đọc bài này rồi sang bài khác vẫn hiểu.
+5. **Quy ước đặt tên phải thống nhất trên toàn hệ thống**, để cùng một khái niệm không mang hai tên khác nhau ở hai phân hệ.
 
 ## 1. Luồng vận hành
 
@@ -69,7 +69,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../5-ke-to
 
 ## 5. Triển khai tham chiếu ERP
 
-### A. Trạng thái chứng từ chuẩn dùng trong tài liệu
+### A. Trạng thái chứng từ chuẩn
 
 | Trạng thái | Ý nghĩa | Ghi được bút toán? |
 |---|---|---|
@@ -95,7 +95,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../5-ke-to
 
 Chi tiết ở [Giao dịch nhập, xuất & chuyển](../1-kho/2000-giao-dich-nhap-xuat-chuyen.md).
 
-### C. Cờ kiểm soát dùng trong tài liệu
+### C. Cờ kiểm soát
 
 | Cờ | Ý nghĩa | Lưu ý |
 |---|---|---|
@@ -106,7 +106,7 @@ Chi tiết ở [Giao dịch nhập, xuất & chuyển](../1-kho/2000-giao-dich-n
 | `Ownership` | `OWN` / `VENDOR` / `CUSTOMER` | `VENDOR` là hàng ký gửi |
 | `InActive` | **=1 nghĩa là NGƯNG dùng** | Cờ đảo nghĩa — dễ viết ngược |
 
-### D. Quy ước đặt tên dùng trong tài liệu
+### D. Quy ước đặt tên
 
 | Tiền tố | Ý nghĩa | Ví dụ |
 |---|---|---|
@@ -150,14 +150,41 @@ FROM Inventory_Transaction
 WHERE From_Location_ID IS NULL OR To_Location_ID IS NULL;
 ```
 
-**Epicor — trạng thái đơn mua nằm ngoài danh mục:**
+**Epicor — đơn mua có trạng thái duyệt ngoài danh mục:**
 
 ```sql
-SELECT DISTINCT ph.Status
+-- POHeader.ApprovalStatus (nvarchar(2)): U = Unsubmitted, P = Pending, A = Approved, R = Rejected
+-- Không tồn tại cột POHeader.Status trong Epicor 10.2
+SELECT ph.Company, ph.PONum, ph.OrderDate, ph.ApprovalStatus,
+       ph.Approve, ph.OpenOrder, ph.VoidOrder
 FROM Erp.POHeader ph
 WHERE ph.Company = 'YOUR_COMPANY_CODE'
-  AND ph.Status NOT IN ('P','A','C','X');  -- Pending, Approved, Closed, Cancelled
+  AND (ph.ApprovalStatus NOT IN ('U','P','A','R') OR ph.ApprovalStatus IS NULL)
+ORDER BY ph.PONum;
 ```
+
+**Epicor — đơn đã duyệt nhưng chưa có người duyệt (dấu vết thiếu):**
+
+```sql
+SELECT ph.Company, ph.PONum, ph.ApprovalStatus, ph.ApprovedBy, ph.ApprovedDate
+FROM Erp.POHeader ph
+WHERE ph.Company = 'YOUR_COMPANY_CODE'
+  AND ph.ApprovalStatus = 'A'
+  AND (ph.ApprovedBy IS NULL OR ph.ApprovedBy = '')
+ORDER BY ph.PONum;
+```
+
+:::note[Ba cột trạng thái khác nhau trên `POHeader`]
+
+Epicor không gộp trạng thái vào một cột, mà tách thành ba trục độc lập:
+
+- **`ApprovalStatus`** (`nvarchar(2)`) — quy trình duyệt: `U` / `P` / `A` / `R`.
+- **`Approve`** (`bit`) — đã được duyệt hay chưa; khi `= 1`, PO **không sửa được** nữa.
+- **`OpenOrder`** / **`VoidOrder`** (`bit`) — vòng đời: còn mở hay đã hủy toàn bộ phần còn lại.
+
+Khi cần trạng thái tổng hợp của PO (draft / đã duyệt / đã đóng / đã hủy), phải **kết hợp cả ba trục** — không có một cột `Status` duy nhất như hệ tự xây.
+
+:::
 
 ## 6. Bẫy thực chiến & Checklist
 

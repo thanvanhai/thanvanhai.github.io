@@ -14,11 +14,11 @@ tags: [erp, glossary, thuat-ngu]
 
 Cùng một nghiệp vụ, bốn hệ thống gọi bốn tên. Đọc tài liệu của SAP xong chuyển sang Oracle sẽ tưởng là hai thế giới khác nhau — thực chất chỉ là khác cách đặt tên và khác điểm nhúng pháp nhân.
 
-Bài này gom thuật ngữ về một chỗ và chỉ ra **bốn khác biệt triết lý** chi phối mọi phần còn lại.
+Thuật ngữ được gom về một chỗ, kèm **bốn khác biệt triết lý** chi phối mọi phân hệ còn lại.
 
 ## Nguyên lý (áp dụng mọi ERP)
 
-1. **Thuật ngữ khác nhau, nghiệp vụ giống nhau.** Bảng đối chiếu bên dưới là công cụ để đọc tài liệu của hệ khác mà vẫn hiểu.
+1. **Thuật ngữ khác nhau, nghiệp vụ giống nhau.** Bảng đối chiếu là công cụ để đọc tài liệu của hệ khác mà vẫn hiểu đúng nghiệp vụ.
 2. **Khác biệt lớn nhất không nằm ở tên gọi mà ở chỗ pháp nhân được nhúng vào đâu:** field riêng (SAP, Odoo) hay segment trong chuỗi tài khoản (Oracle).
 3. **Mỗi hệ có một trục "sổ song song" riêng** để báo cáo đa chuẩn mực, và trục đó không dùng để tách pháp nhân.
 4. **Không bao giờ dịch máy thuật ngữ khi làm việc với đội triển khai.** Dùng đúng tên hệ thống đang chạy để tránh hiểu nhầm.
@@ -133,14 +133,22 @@ LEFT JOIN gl_ledger_norm_seg_vals gnorm ON gnorm.ledger_id = l.ledger_id
 GROUP BY l.name, l.currency_code;
 ```
 
-**Epicor — xác nhận Company và Book đang dùng:**
+**Epicor — xác nhận Company và sổ kế toán (Book) đang dùng:**
 
 ```sql
-SELECT c.Company, c.Name, b.BookID, b.Description
+SELECT c.Company, c.Name, c.LegalName, c.FiscalCalendarID,
+       b.BookID, b.Description, b.MainBook, b.CurrencyCode, b.BookType, b.Inactive
 FROM Erp.Company c
-LEFT JOIN Erp.Book b ON b.Company = c.Company
-WHERE c.Company = 'YOUR_COMPANY_CODE';
+LEFT JOIN Erp.GLBook b ON b.Company = c.Company
+WHERE c.Company = 'YOUR_COMPANY_CODE'
+ORDER BY b.MainBook DESC, b.BookID;
 ```
+
+:::note[Đúng tên bảng: `GLBook`, không phải `Book`]
+
+Trong Epicor 10.2 không có bảng `Erp.Book`. Sổ kế toán nằm ở **`Erp.GLBook`**, với `MainBook` (bit) đánh dấu sổ chính và các cột `BookType`, `CurrencyCode`, `FiscalCalendarID` cho biết loại sổ, đồng tiền và lịch kế toán của từng book. Tương tự, trung tâm chi phí ở Epicor là **`Erp.JCDept`** (không phải `Erp.Dept`).
+
+:::
 
 ## 6. Bẫy thực chiến & Checklist
 

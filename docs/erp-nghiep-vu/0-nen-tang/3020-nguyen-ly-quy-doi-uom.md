@@ -83,7 +83,7 @@ Bản đồ tài khoản ở [Hạch toán & tài khoản trung gian](../5-ke-to
 |---|---|---|---|---|
 | Đơn vị gốc | `MARA.MEINS` | `MTL_SYSTEM_ITEMS_B.primary_uom_code` | `Part.IUM` | `product.template.uom_id` |
 | Đơn vị mua | `MARC.BESTME` | Trường trên PO Line | `Part.PUM` | `product.supplierinfo` |
-| Đơn vị bán | `MVKE` (sales unit) | Trường trên Order Line | `Part.SUM` | `product.uom_id` |
+| Đơn vị bán | `MVKE` (sales unit) | Trường trên Order Line | `Part.SalesUM` | `product.uom_id` |
 | Bảng quy đổi chuẩn | `MARM` | `MTL_UOM_CONVERSIONS` | `Erp.UOMConv` | `uom.uom` (factor) |
 | Quy đổi đặc thù theo mã | `MARM` (theo vật tư) | `MTL_UOM_CONVERSIONS` (theo item) | `Erp.PartUOM` | `uom.uom` theo nhóm |
 
@@ -108,7 +108,7 @@ Bốn ràng buộc bắt buộc:
 1. **Chỉ lưu `Multiply_Factor`**, không lưu hệ số chia. Quy đổi ngược được tính bằng phép chia khi cần.
 2. **`Multiply_Factor` kiểu `DECIMAL` với ít nhất 6 chữ số thập phân**, không dùng `FLOAT`.
 3. **Chặn lưu dòng BOM / PO / SO có UOM không quy đổi được về UOM gốc.**
-4. **Chặn đổi `Base_UOM` của mã hàng đã có giao dịch** (xem [Master Data & tính bất biến](./1010-master-data-va-tinh-bat-bien.md)).
+4. **Chặn đổi `Base_UOM` của mã hàng đã có giao dịch.** Quy tắc bất biến của master data: [Master Data & tính bất biến](./1010-master-data-va-tinh-bat-bien.md).
 
 ### C. Truy vấn kiểm soát
 
